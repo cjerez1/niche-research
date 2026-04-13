@@ -1,0 +1,15 @@
+{
+  "name": "niche-scanner",
+  "version": "1.0.0",
+  "description": "Daily YouTube niche opportunity scanner for faceless channel discovery",
+  "main": "index.js",
+  "scripts": {
+    "scan": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "googleapis": "^144.0.0",
+    "marked": "^12.0.0",
+    "resend": "^3.0.0"
+  }
+}

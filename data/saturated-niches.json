@@ -1,0 +1,11 @@
+[
+  { "keywords": ["war documentary", "military documentary", "military history documentary"], "label": "War/military documentary (generic)" },
+  { "keywords": ["true crime", "true crime documentary", "murder mystery"], "label": "True crime (generic)" },
+  { "keywords": ["this is mercury", "this is venus", "this is mars", "this is jupiter", "planet profile"], "label": "Planet profiles" },
+  { "keywords": ["motivational speech", "self help", "self improvement motivation", "how to be successful"], "label": "Generic motivational/self-help" },
+  { "keywords": ["ai news", "artificial intelligence news", "ai update"], "label": "AI news commentary" },
+  { "keywords": ["cryptocurrency explained", "crypto for beginners", "bitcoin explained"], "label": "Cryptocurrency explainers (generic)" },
+  { "keywords": ["top 10", "top 15", "top 20", "countdown"], "label": "Top 10/countdown format (generic)" },
+  { "keywords": ["reaction video", "reacting to"], "label": "Reaction content" },
+  { "keywords": ["reddit stories", "reddit thread", "askreddit"], "label": "Reddit story narration" }
+]

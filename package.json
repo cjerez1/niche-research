@@ -7,6 +7,7 @@
     "scan": "node index.js"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.88.0",
     "dotenv": "^16.4.7",
     "googleapis": "^144.0.0",
     "marked": "^12.0.0",

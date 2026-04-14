@@ -1,10 +1,12 @@
 /**
- * Niche Bending Engine — suggests 2-3 twisted angles for high-scoring opportunities.
- * Purely rule-based, no API calls.
+ * Niche Bending Engine — uses Claude API to generate intelligent niche bend suggestions.
+ * Detects candidate niche via word frequency, matches bend strategies,
+ * then calls Claude to generate contextually appropriate titles and reasoning.
  */
 
-// Narrative/rhetorical words that appear frequently in clickbait titles
-// but are NOT actual topics. Must be filtered before topic extraction.
+const Anthropic = require('@anthropic-ai/sdk');
+
+// Narrative/rhetorical words common in clickbait — NOT actual topics
 const NARRATIVE_WORDS = new Set([
   'revealed', 'reveals', 'reveal', 'exposed', 'exposing', 'expose',
   'hidden', 'secret', 'secrets', 'truth', 'banned', 'shocking',
@@ -44,266 +46,7 @@ const STOP_WORDS = new Set([
   'before', 'over', 'under', 'between', 'never', 'still',
 ]);
 
-const BEND_TEMPLATES = [
-  // === FORMAT TRANSFERS ===
-  {
-    type: 'format_transfer',
-    name: 'Documentary → Home/DIY',
-    sourcePatterns: ['documentary', 'explained', 'history', 'science'],
-    targetNiche: 'home improvement / DIY',
-    rpmEstimate: '$8-$15',
-    competition: 'Low',
-    generateTitles: (niche) => [
-      `The Dark History of ${niche} That Builders Won't Tell You`,
-      `Why ${niche} Was Banned in 14 Countries — The Real Reason`,
-      `The $1 Fix That Stops ${niche} Damage Forever (Experts Exposed)`,
-    ],
-    why: 'Documentary-style storytelling drives watch time. Home/DIY has high RPM from advertiser demand. Very few channels combine both.',
-  },
-  {
-    type: 'format_transfer',
-    name: 'Exposé → Food Safety',
-    sourcePatterns: ['exposed', 'truth', 'warning', 'secret', 'hidden'],
-    targetNiche: 'food safety / health',
-    rpmEstimate: '$15-$30',
-    competition: 'Medium',
-    generateTitles: (niche) => [
-      `${niche} in Your Food Is Slowly Poisoning You — Exposed`,
-      `Supermarkets Don't Want You to Know This About ${niche}`,
-      `WARNING: The ${niche} Cover-Up in Your Kitchen`,
-    ],
-    why: 'Exposé format drives massive clicks through outrage/curiosity. Food/health niches command top RPM rates. Proven combo (see Aussie Exposed channel).',
-  },
-  {
-    type: 'format_transfer',
-    name: 'Mystery → Science',
-    sourcePatterns: ['mystery', 'mysterious', 'unknown', 'strange', 'weird'],
-    targetNiche: 'earth science / nature',
-    rpmEstimate: '$8-$15',
-    competition: 'Low',
-    generateTitles: (niche) => [
-      `Scientists Can't Explain What ${niche} Is Doing to the Earth`,
-      `The Mysterious ${niche} Phenomenon That Defies Physics`,
-      `This ${niche} Discovery Was Buried for 50 Years — Here's Why`,
-    ],
-    why: 'Mystery/curiosity framing transforms dry science into must-click content. Earth science has strong series potential with medium RPM.',
-  },
-  {
-    type: 'format_transfer',
-    name: 'Investigation → Corporate/Consumer',
-    sourcePatterns: ['crime', 'investigation', 'case', 'evidence', 'cover'],
-    targetNiche: 'corporate exposé / consumer protection',
-    rpmEstimate: '$10-$20',
-    competition: 'Low',
-    generateTitles: (niche) => [
-      `The ${niche} Scandal They Tried to Bury`,
-      `Inside the ${niche} Cover-Up: What They Don't Want You to Know`,
-      `How the ${niche} Industry Got Away With It for 20 Years`,
-    ],
-    why: 'Investigation format applied to corporate malfeasance. Avoids saturated true crime niche while keeping the tension/mystery hooks.',
-  },
-
-  // === AUDIENCE CROSS-POLLINATION ===
-  {
-    type: 'audience_cross',
-    name: 'History → Prepper/Survivalist',
-    sourcePatterns: ['history', 'ancient', 'civilization', 'empire', 'collapse'],
-    targetNiche: 'survival / prepper',
-    rpmEstimate: '$8-$15',
-    competition: 'Low',
-    generateTitles: (niche) => [
-      `How Ancient ${niche} Knowledge Could Save Your Life When Society Collapses`,
-      `The ${niche} Survival Technique the Government Doesn't Want You to Learn`,
-      `Every Empire That Ignored ${niche} Collapsed — We're Next`,
-    ],
-    why: 'History content targeted at survivalist audience. Preppers are engaged, high-watch-time viewers. Historical parallels create urgency.',
-  },
-  {
-    type: 'audience_cross',
-    name: 'Science → Parents/Family',
-    sourcePatterns: ['science', 'research', 'study', 'brain', 'health', 'body', 'genetic', 'dna'],
-    targetNiche: 'parenting / family health',
-    rpmEstimate: '$15-$25',
-    competition: 'Low',
-    generateTitles: (niche) => [
-      `What ${niche} Research Reveals About Your Child's Future`,
-      `Scientists Warn: ${niche} Is Changing Your Kids — And Nobody's Talking About It`,
-      `The ${niche} Secret Every Parent Needs to Know Before It's Too Late`,
-    ],
-    why: 'Science content reframed for parents. Parenting niche has extremely high RPM. Parents click on child safety/development content compulsively.',
-  },
-  {
-    type: 'audience_cross',
-    name: 'Technology → Seniors',
-    sourcePatterns: ['technology', 'tech', 'gadget', 'device', 'app', 'phone'],
-    targetNiche: 'seniors / over 50s',
-    rpmEstimate: '$10-$20',
-    competition: 'Low',
-    generateTitles: (niche) => [
-      `${niche} Has a Secret Feature You Never Knew About (Over 50s Guide)`,
-      `Stop Getting Scammed: The ${niche} Trick Everyone Over 60 Must Know`,
-      `Why ${niche} Was Designed to Confuse You — And How to Fix It`,
-    ],
-    why: 'Tech content for seniors is massively underserved. High RPM (insurance, health, finance ads target this demo). Low competition.',
-  },
-
-  // === EMOTIONAL REFRAMES ===
-  {
-    type: 'emotional_reframe',
-    name: 'DNA vs. History (Confrontational)',
-    sourcePatterns: ['dna', 'genetic', 'ancestry', 'genome', 'gene'],
-    targetNiche: 'same topic, confrontational framing',
-    rpmEstimate: 'Same RPM, 2-3x clicks',
-    competition: 'Low',
-    generateTitles: (niche) => [
-      `${niche} Just Proved Historians Were Wrong About Everything`,
-      `Ancient ${niche} Evidence Destroyed the Textbook Narrative`,
-      `The ${niche} Results They Tried to Suppress — Now Released`,
-    ],
-    why: '"DNA contradicts official history" framing adds conspiracy-adjacent tension without being conspiracy. Same content, dramatically higher CTR. OriginDecoder uses this angle.',
-  },
-  {
-    type: 'emotional_reframe',
-    name: 'Educational → Outrage',
-    sourcePatterns: ['explained', 'how', 'what', 'history of', 'the story'],
-    targetNiche: 'same topic, outrage framing',
-    rpmEstimate: 'Same RPM, 2-3x clicks',
-    competition: 'Medium',
-    generateTitles: (niche) => [
-      `Why the ${niche} Truth Should Make You Furious`,
-      `They Lied About ${niche} for Decades — Here's the Proof`,
-      `${niche} Was Covered Up for a Disturbing Reason`,
-    ],
-    why: 'Same content, stronger emotional hook. Outrage framing increases CTR 2-3x over neutral educational framing. Retains same audience.',
-  },
-  {
-    type: 'emotional_reframe',
-    name: 'Educational → Fear/Urgency',
-    sourcePatterns: ['explained', 'science', 'nature', 'earth', 'environment'],
-    targetNiche: 'same topic, urgency framing',
-    rpmEstimate: 'Same RPM, higher CTR',
-    competition: 'Medium',
-    generateTitles: (niche) => [
-      `${niche} Is Changing Right Now and No One Is Talking About It`,
-      `You Have 10 Years Before ${niche} Rewrites Everything`,
-      `WARNING: What Scientists Found About ${niche} Should Terrify You`,
-    ],
-    why: 'Urgency framing transforms passive educational content into must-watch content. Same production, dramatically higher CTR.',
-  },
-  {
-    type: 'emotional_reframe',
-    name: 'Informational → Personal Stakes',
-    sourcePatterns: ['product', 'review', 'consumer', 'buying', 'cost'],
-    targetNiche: 'same topic, personal impact framing',
-    rpmEstimate: 'Same RPM, higher engagement',
-    competition: 'Low',
-    generateTitles: (niche) => [
-      `${niche} Is Costing You Thousands — And You Don't Even Know`,
-      `The ${niche} Mistake 90% of People Make (Are You One of Them?)`,
-      `I Tested Every ${niche} Option — One Clear Winner (Saves You $$$)`,
-    ],
-    why: 'Making content personally relevant to the viewer increases watch time and engagement. "This affects YOU" beats "here are the facts."',
-  },
-
-  // === GEOGRAPHIC LOCALIZATION ===
-  {
-    type: 'geographic',
-    name: 'US Format → Australian Market',
-    sourcePatterns: ['food', 'health', 'consumer', 'exposed', 'warning', 'product'],
-    targetNiche: 'Australian audience',
-    rpmEstimate: '$10-$20 (AU market)',
-    competition: 'Low',
-    generateTitles: (niche) => [
-      `Australian ${niche} Exposed: What Woolworths Won't Tell You`,
-      `Why ${niche} Is Banned in 30 Countries But Legal in Australia`,
-      `Aussie ${niche} Warning: The Truth About What You're Buying`,
-    ],
-    why: 'US-proven formats adapted for AU audience. Less competition in AU market. Proven model (Aussie Exposed, Food Flip already working).',
-  },
-  {
-    type: 'geographic',
-    name: 'US Format → UK Market',
-    sourcePatterns: ['food', 'health', 'consumer', 'exposed', 'home', 'history'],
-    targetNiche: 'UK audience',
-    rpmEstimate: '$12-$22 (UK market)',
-    competition: 'Low',
-    generateTitles: (niche) => [
-      `The ${niche} Truth About Britain They Don't Want You to Know`,
-      `Why the NHS Is Warning About ${niche} — And Nobody Listens`,
-      `UK ${niche} Exposed: What Tesco Won't Tell You`,
-    ],
-    why: 'UK market has high RPM (strong pound, premium advertisers). Same English language, just localized references. Very few faceless channels targeting UK specifically.',
-  },
-
-  // === HYBRID TOPICS ===
-  {
-    type: 'hybrid',
-    name: 'History + Conspiracy',
-    sourcePatterns: ['history', 'ancient', 'hidden', 'forgotten', 'lost'],
-    targetNiche: 'alternative history / conspiracy-adjacent',
-    rpmEstimate: '$5-$12',
-    competition: 'Medium',
-    generateTitles: (niche) => [
-      `The ${niche} Site They Don't Want You to See on Google Maps`,
-      `Historians Refuse to Explain This ${niche} Discovery — So We Did`,
-      `${niche} Evidence Was Removed From Every Textbook — Here's Why`,
-    ],
-    why: 'Alternative history content gets massive engagement. Combining real history with mystery/conspiracy hooks drives clicks while maintaining credibility.',
-  },
-  {
-    type: 'hybrid',
-    name: 'Science + Horror',
-    sourcePatterns: ['science', 'nature', 'ocean', 'deep', 'space', 'earth'],
-    targetNiche: 'science horror / cosmic dread',
-    rpmEstimate: '$5-$10',
-    competition: 'Low',
-    generateTitles: (niche) => [
-      `What ${niche} Scientists Found at the Bottom of the Ocean Will Haunt You`,
-      `The Most Terrifying ${niche} Discovery Ever Made`,
-      `Scientists Opened a ${niche} Chamber — And Immediately Wished They Hadn't`,
-    ],
-    why: 'Horror framing on science content creates a unique niche with obsessive rewatch behavior. Low competition, strong thumbnail potential.',
-  },
-  {
-    type: 'hybrid',
-    name: 'Health + Finance',
-    sourcePatterns: ['health', 'medical', 'doctor', 'hospital', 'food', 'nutrition'],
-    targetNiche: 'health economics / medical costs',
-    rpmEstimate: '$20-$35',
-    competition: 'Low',
-    generateTitles: (niche) => [
-      `Why ${niche} Treatment Costs $50,000 in America But $50 Everywhere Else`,
-      `The ${niche} Industry Is Stealing From You — Here's How`,
-      `Exposed: How ${niche} Companies Keep You Sick for Profit`,
-    ],
-    why: 'Health + finance is the highest RPM niche combination possible. Both verticals attract premium advertisers. Very few channels combine them.',
-  },
-  {
-    type: 'hybrid',
-    name: 'Pest Control + Property',
-    sourcePatterns: ['home', 'house', 'building', 'property', 'maintenance', 'pest'],
-    targetNiche: 'pest control / property protection',
-    rpmEstimate: '$10-$20',
-    competition: 'Low',
-    generateTitles: (niche) => [
-      `The $1 Fix That Kills ${niche} Pests Permanently (Companies Hate This)`,
-      `Your ${niche} Property Has THIS Problem Right Now — Check Immediately`,
-      `Why Pest Control Companies Don't Want You to Know About This ${niche} Method`,
-    ],
-    why: 'Pest control + property protection targets homeowners (high-value demo). Shared advertiser base between home services and insurance. Leverages Claudio\'s pest control expertise.',
-  },
-];
-
-/**
- * Generate 2-3 niche bend suggestions for a high-scoring candidate.
- */
-function generateBends(candidate) {
-  const niche = detectCandidateNiche(candidate);
-  const matchedTemplates = matchBendTemplates(niche, candidate);
-  return matchedTemplates.slice(0, 3);
-}
-
-// Common acronyms that should be fully uppercased
+// Acronyms that should be fully uppercased
 const ACRONYMS = new Set([
   'dna', 'uk', 'us', 'usa', 'nasa', 'cia', 'fbi', 'nhs', 'ceo', 'cfo',
   'ai', 'ufo', 'ufos', 'fda', 'epa', 'gmo', 'gmos', 'hiv', 'aids',
@@ -312,7 +55,312 @@ const ACRONYMS = new Set([
 ]);
 
 /**
- * Capitalize a word properly — handles acronyms (DNA, UK, USA) and normal words.
+ * Bend strategy definitions — matched against channel content.
+ * Titles are generated by Claude, not templates.
+ */
+const BEND_STRATEGIES = [
+  // FORMAT TRANSFERS
+  {
+    type: 'format_transfer',
+    name: 'Documentary → Home/DIY',
+    sourcePatterns: ['documentary', 'explained', 'history', 'science'],
+    targetNiche: 'home improvement / DIY',
+    rpmEstimate: '$8-$15',
+    competition: 'Low',
+    briefing: 'Apply documentary-style storytelling to home improvement / DIY topics. High RPM from advertiser demand. Very few channels combine both.',
+  },
+  {
+    type: 'format_transfer',
+    name: 'Exposé → Food Safety',
+    sourcePatterns: ['exposed', 'truth', 'warning', 'secret', 'hidden', 'food', 'health'],
+    targetNiche: 'food safety / health',
+    rpmEstimate: '$15-$30',
+    competition: 'Medium',
+    briefing: 'Apply exposé/investigation format to food safety and health topics. Outrage + curiosity drives massive clicks. Food/health niches command top RPM.',
+  },
+  {
+    type: 'format_transfer',
+    name: 'Mystery → Science',
+    sourcePatterns: ['mystery', 'mysterious', 'unknown', 'strange', 'weird'],
+    targetNiche: 'earth science / nature',
+    rpmEstimate: '$8-$15',
+    competition: 'Low',
+    briefing: 'Apply mystery/curiosity framing to earth science or nature content. Transforms dry science into must-click content. Strong series potential.',
+  },
+  {
+    type: 'format_transfer',
+    name: 'Investigation → Corporate Exposé',
+    sourcePatterns: ['crime', 'investigation', 'case', 'evidence', 'cover'],
+    targetNiche: 'corporate exposé / consumer protection',
+    rpmEstimate: '$10-$20',
+    competition: 'Low',
+    briefing: 'Apply true-crime investigation format to corporate malfeasance. Avoids saturated true crime while keeping tension/mystery hooks.',
+  },
+
+  // AUDIENCE CROSS-POLLINATION
+  {
+    type: 'audience_cross',
+    name: 'History → Prepper/Survivalist',
+    sourcePatterns: ['history', 'ancient', 'civilization', 'empire', 'collapse'],
+    targetNiche: 'survival / prepper',
+    rpmEstimate: '$8-$15',
+    competition: 'Low',
+    briefing: 'Reframe historical content for survivalist/prepper audience. Historical parallels create urgency. Preppers are engaged, high-watch-time viewers.',
+  },
+  {
+    type: 'audience_cross',
+    name: 'Science → Parents/Family',
+    sourcePatterns: ['science', 'research', 'study', 'brain', 'health', 'body', 'genetic', 'dna'],
+    targetNiche: 'parenting / family health',
+    rpmEstimate: '$15-$25',
+    competition: 'Low',
+    briefing: 'Reframe science/health content for parents concerned about their children. Parenting niche has extremely high RPM. Parents click compulsively on child safety content.',
+  },
+  {
+    type: 'audience_cross',
+    name: 'Technology → Seniors',
+    sourcePatterns: ['technology', 'tech', 'gadget', 'device', 'app', 'phone'],
+    targetNiche: 'seniors / over 50s',
+    rpmEstimate: '$10-$20',
+    competition: 'Low',
+    briefing: 'Reframe tech content for seniors. Massively underserved audience. High RPM from insurance/health/finance advertisers targeting 50+ demographic.',
+  },
+
+  // EMOTIONAL REFRAMES
+  {
+    type: 'emotional_reframe',
+    name: 'DNA vs. History (Confrontational)',
+    sourcePatterns: ['dna', 'genetic', 'ancestry', 'genome', 'gene'],
+    targetNiche: 'same niche, confrontational framing',
+    rpmEstimate: 'Same RPM, 2-3x clicks',
+    competition: 'Low',
+    briefing: '"DNA contradicts official history" framing. Adds conspiracy-adjacent tension without being conspiracy. Same content, dramatically higher CTR. OriginDecoder uses this angle successfully.',
+  },
+  {
+    type: 'emotional_reframe',
+    name: 'Educational → Outrage',
+    sourcePatterns: ['explained', 'how', 'what', 'history of', 'the story'],
+    targetNiche: 'same niche, outrage framing',
+    rpmEstimate: 'Same RPM, 2-3x clicks',
+    competition: 'Medium',
+    briefing: 'Same educational content repackaged with outrage framing. Increases CTR 2-3x over neutral educational titles. Retains same audience.',
+  },
+  {
+    type: 'emotional_reframe',
+    name: 'Educational → Fear/Urgency',
+    sourcePatterns: ['explained', 'science', 'nature', 'earth', 'environment'],
+    targetNiche: 'same niche, urgency framing',
+    rpmEstimate: 'Same RPM, higher CTR',
+    competition: 'Medium',
+    briefing: 'Transform passive educational content into urgent must-watch content. Same production, dramatically higher CTR through fear/urgency hooks.',
+  },
+  {
+    type: 'emotional_reframe',
+    name: 'Informational → Personal Stakes',
+    sourcePatterns: ['product', 'review', 'consumer', 'buying', 'cost'],
+    targetNiche: 'same niche, personal impact framing',
+    rpmEstimate: 'Same RPM, higher engagement',
+    competition: 'Low',
+    briefing: 'Make content personally relevant to viewer. "This affects YOU" framing beats neutral facts. Increases watch time and engagement.',
+  },
+
+  // GEOGRAPHIC LOCALIZATION
+  {
+    type: 'geographic',
+    name: 'US Format → Australian Market',
+    sourcePatterns: ['food', 'health', 'consumer', 'exposed', 'warning', 'product'],
+    targetNiche: 'Australian audience',
+    rpmEstimate: '$10-$20 (AU market)',
+    competition: 'Low',
+    briefing: 'Adapt US-proven format for Australian audience. Less competition in AU market. Use Australian references (Woolworths, Coles, Medicare, TGA). Proven model.',
+  },
+  {
+    type: 'geographic',
+    name: 'US Format → UK Market',
+    sourcePatterns: ['food', 'health', 'consumer', 'exposed', 'home', 'history'],
+    targetNiche: 'UK audience',
+    rpmEstimate: '$12-$22 (UK market)',
+    competition: 'Low',
+    briefing: 'Adapt for UK market. High RPM from strong pound and premium advertisers. Use UK references (NHS, Tesco, Sainsbury\'s). Very few faceless channels target UK specifically.',
+  },
+
+  // HYBRID TOPICS
+  {
+    type: 'hybrid',
+    name: 'History + Conspiracy-Adjacent',
+    sourcePatterns: ['history', 'ancient', 'hidden', 'forgotten', 'lost'],
+    targetNiche: 'alternative history',
+    rpmEstimate: '$5-$12',
+    competition: 'Medium',
+    briefing: 'Combine real history with mystery/conspiracy-adjacent hooks. Massive engagement. Maintain credibility while adding "forbidden knowledge" tension.',
+  },
+  {
+    type: 'hybrid',
+    name: 'Science + Horror',
+    sourcePatterns: ['science', 'nature', 'ocean', 'deep', 'space', 'earth'],
+    targetNiche: 'science horror / cosmic dread',
+    rpmEstimate: '$5-$10',
+    competition: 'Low',
+    briefing: 'Apply horror framing to real science. Creates obsessive rewatch behavior. Low competition, strong thumbnail potential. Think "What scientists found terrified them."',
+  },
+  {
+    type: 'hybrid',
+    name: 'Health + Finance',
+    sourcePatterns: ['health', 'medical', 'doctor', 'hospital', 'food', 'nutrition'],
+    targetNiche: 'health economics / medical costs',
+    rpmEstimate: '$20-$35',
+    competition: 'Low',
+    briefing: 'Combine health content with financial angle (cost of treatment, industry profit motives). Highest RPM niche combination possible. Both verticals attract premium advertisers.',
+  },
+  {
+    type: 'hybrid',
+    name: 'Military + Geopolitics',
+    sourcePatterns: ['military', 'war', 'army', 'navy', 'soldier', 'weapon', 'battle', 'conflict', 'iran', 'china', 'russia'],
+    targetNiche: 'geopolitical analysis / defense',
+    rpmEstimate: '$8-$15',
+    competition: 'Medium',
+    briefing: 'Combine military content with geopolitical analysis. "What happens next" framing creates urgency. Defense/security audience is highly engaged and valuable to advertisers.',
+  },
+];
+
+// Singleton Claude client (lazy init)
+let anthropicClient = null;
+
+function getClient() {
+  if (!anthropicClient) {
+    anthropicClient = new Anthropic({
+      apiKey: process.env.ANTHROPIC_API_KEY,
+    });
+  }
+  return anthropicClient;
+}
+
+/**
+ * Generate 2-3 niche bend suggestions for a high-scoring candidate.
+ * Uses Claude API for contextually appropriate titles and reasoning.
+ */
+async function generateBends(candidate) {
+  const niche = detectCandidateNiche(candidate);
+  const matchedStrategies = matchBendStrategies(niche, candidate);
+
+  if (matchedStrategies.length === 0) return [];
+
+  // Pick top 3 strategies (diversified by type)
+  const selected = diversifyBends(matchedStrategies).slice(0, 3);
+
+  // Call Claude to generate titles and refine reasoning
+  try {
+    const enriched = await generateWithClaude(candidate, niche, selected);
+    return enriched;
+  } catch (err) {
+    console.error(`  Claude API failed for bends (${candidate.channelTitle}): ${err.message}`);
+    // Return strategies with fallback titles
+    return selected.map(s => ({
+      description: s.name,
+      type: s.type.replace('_', ' '),
+      baseNiche: niche.nicheLabel,
+      targetNiche: s.targetNiche,
+      whyItWorks: s.briefing,
+      exampleTitles: ['(Title generation unavailable — Claude API error)'],
+      estimatedCompetition: s.competition,
+      rpmEstimate: s.rpmEstimate,
+    }));
+  }
+}
+
+/**
+ * Call Claude API to generate contextually appropriate bend titles and reasoning.
+ */
+async function generateWithClaude(candidate, niche, strategies) {
+  const topVideos = [...candidate.videos]
+    .sort((a, b) => b.views - a.views)
+    .slice(0, 5);
+
+  const videoList = topVideos
+    .map(v => `- "${v.title}" (${v.views.toLocaleString()} views)`)
+    .join('\n');
+
+  const strategySummaries = strategies
+    .map((s, i) => `${i + 1}. **${s.name}** (${s.type.replace('_', ' ')})\n   Target: ${s.targetNiche}\n   Strategy: ${s.briefing}`)
+    .join('\n\n');
+
+  const prompt = `You are a YouTube niche strategist. A scanner found a small channel that could be a niche opportunity. Generate compelling "niche bend" title ideas — ways to take this channel's subject matter and repackage it for higher clicks, better RPM, or a different audience.
+
+CHANNEL: "${candidate.channelTitle}"
+DETECTED NICHE: ${niche.nicheLabel}
+SUBSCRIBERS: ${candidate.subscriberCount}
+TOP TOPICS: ${niche.topTopics.slice(0, 6).join(', ')}
+
+TOP PERFORMING VIDEOS:
+${videoList}
+
+For each of these ${strategies.length} bend strategies, generate 3 YouTube video titles and a one-sentence "why it works" explanation:
+
+${strategySummaries}
+
+RULES:
+- Titles must be specific to this channel's actual subject matter — not generic
+- Titles must read naturally as real YouTube video titles (grammatically correct, compelling)
+- Each title should be 50-80 characters, use curiosity/tension hooks
+- Do NOT use the word "revealed" or "exposed" in every title — vary your hooks
+- Think about what would actually make someone click
+- The "why it works" should be specific to this niche, not generic advice
+
+Respond in this exact JSON format (no markdown, no code fences, just raw JSON):
+[
+  {
+    "strategyIndex": 0,
+    "titles": ["Title 1", "Title 2", "Title 3"],
+    "whyItWorks": "One sentence explanation specific to this niche."
+  },
+  {
+    "strategyIndex": 1,
+    "titles": ["Title 1", "Title 2", "Title 3"],
+    "whyItWorks": "One sentence explanation specific to this niche."
+  }
+]`;
+
+  const client = getClient();
+  const response = await client.messages.create({
+    model: 'claude-sonnet-4-20250514',
+    max_tokens: 1024,
+    messages: [{ role: 'user', content: prompt }],
+  });
+
+  const text = response.content[0].text.trim();
+
+  // Parse JSON response
+  let parsed;
+  try {
+    parsed = JSON.parse(text);
+  } catch {
+    // Try extracting JSON from response if wrapped in anything
+    const jsonMatch = text.match(/\[[\s\S]*\]/);
+    if (jsonMatch) {
+      parsed = JSON.parse(jsonMatch[0]);
+    } else {
+      throw new Error('Could not parse Claude response as JSON');
+    }
+  }
+
+  // Build final bend objects
+  return strategies.map((strategy, i) => {
+    const claudeResult = parsed.find(p => p.strategyIndex === i) || parsed[i];
+    return {
+      description: strategy.name,
+      type: strategy.type.replace('_', ' '),
+      baseNiche: niche.nicheLabel,
+      targetNiche: strategy.targetNiche,
+      whyItWorks: claudeResult?.whyItWorks || strategy.briefing,
+      exampleTitles: claudeResult?.titles || ['(No titles generated)'],
+      estimatedCompetition: strategy.competition,
+      rpmEstimate: strategy.rpmEstimate,
+    };
+  });
+}
+
+/**
+ * Capitalize a word — handles acronyms (DNA, UK, USA) and normal words.
  */
 function capitalizeWord(word) {
   if (ACRONYMS.has(word)) return word.toUpperCase();
@@ -341,50 +389,34 @@ function detectCandidateNiche(candidate) {
     freq[w] = (freq[w] || 0) + 1;
   }
 
-  // Get top topic words — these should be actual subjects (DNA, Viking, Egyptian, etc.)
   const topTopics = Object.entries(freq)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 10)
     .map(([word]) => capitalizeWord(word));
 
-  // Build a readable niche label from top 2-3 topics
   const nicheLabel = topTopics.slice(0, 3).join(' / ');
 
   return { topTopics, nicheLabel, allText };
 }
 
 /**
- * Match bend templates against the candidate's detected niche.
+ * Match bend strategies against the candidate's detected niche.
  */
-function matchBendTemplates(niche, candidate) {
-  const bends = [];
-  // Build a niche phrase for title insertion (e.g., "DNA Ancestry" or "Ancient Egyptian")
-  const nichePhrase = niche.topTopics.slice(0, 2).join(' ');
+function matchBendStrategies(niche, candidate) {
+  const matched = [];
 
-  for (const template of BEND_TEMPLATES) {
-    const matchCount = template.sourcePatterns.filter(p =>
+  for (const strategy of BEND_STRATEGIES) {
+    const matchCount = strategy.sourcePatterns.filter(p =>
       niche.allText.includes(p)
     ).length;
 
     if (matchCount === 0) continue;
 
-    const titles = template.generateTitles(nichePhrase || 'This Topic');
-
-    bends.push({
-      description: template.name,
-      type: template.type.replace('_', ' '),
-      baseNiche: `${niche.nicheLabel}`,
-      targetNiche: template.targetNiche,
-      whyItWorks: template.why,
-      exampleTitles: titles,
-      estimatedCompetition: template.competition,
-      rpmEstimate: template.rpmEstimate,
-      matchStrength: matchCount,
-    });
+    matched.push({ ...strategy, matchStrength: matchCount });
   }
 
-  bends.sort((a, b) => b.matchStrength - a.matchStrength);
-  return diversifyBends(bends);
+  matched.sort((a, b) => b.matchStrength - a.matchStrength);
+  return matched;
 }
 
 /**

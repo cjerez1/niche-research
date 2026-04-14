@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ override: true });
 
 const { google } = require('googleapis');
 const path = require('path');
@@ -124,12 +124,19 @@ async function main() {
   // === PHASE 5: Growth analysis ===
   enhanceWithGrowthData(approved, history);
 
-  // === PHASE 2: Niche bending ===
+  // === PHASE 2: Niche bending (uses Claude API for title generation) ===
   let bendCount = 0;
-  for (const c of approved) {
-    if (c.score.totalScore >= config.bending.minScore) {
-      c.bends = generateBends(c);
-      bendCount += c.bends.length;
+  const bendCandidates = approved.filter(c => c.score.totalScore >= config.bending.minScore);
+  if (bendCandidates.length > 0) {
+    console.log(`\nGenerating niche bends for ${bendCandidates.length} candidates (Claude API)...`);
+    for (const c of bendCandidates) {
+      try {
+        c.bends = await generateBends(c);
+        bendCount += c.bends.length;
+      } catch (err) {
+        console.error(`  Bend generation failed for ${c.channelTitle}: ${err.message}`);
+        c.bends = [];
+      }
     }
   }
   if (bendCount > 0) console.log(`Generated ${bendCount} niche bends for top opportunities`);

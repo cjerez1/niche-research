@@ -133,6 +133,17 @@ function formatCandidate(c, isEscalated, historyTags) {
 
   md += `**Estimated RPM:** $${c.score.rpmEstimate[0]}-$${c.score.rpmEstimate[1]}\n`;
 
+  // Competition landscape
+  if (c.competitionLandscape) {
+    const cl = c.competitionLandscape;
+    md += `**Competition Landscape:** ${cl.saturationLevel} (${cl.totalCompetitors} competitors found)\n`;
+    md += `- Tiers: ${cl.tiers.over100k} channels 100K+ | ${cl.tiers['10k_100k']} channels 10K-100K | ${cl.tiers['1k_10k']} channels 1K-10K | ${cl.tiers.under1k} channels <1K\n`;
+    if (cl.topCompetitors.length > 0) {
+      md += `- Top competitors: ${cl.topCompetitors.map(tc => `${tc.title} (${formatNumber(tc.subscribers)})`).join(', ')}\n`;
+    }
+    md += `- Avg competitor age: ${cl.avgAge} days\n`;
+  }
+
   // Competitor signal
   if (c.competitorSignal) {
     md += `**Competitor signal:** Found alongside "${c.competitorSignal.competitorName}" — ${c.competitorSignal.reason}\n`;

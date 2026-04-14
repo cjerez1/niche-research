@@ -13,6 +13,7 @@ const { loadHistory, compareWithHistory, getDisappeared, saveHistory } = require
 const { enhanceWithGrowthData } = require('./src/tracking/growth-analyzer');
 const { generateBends } = require('./src/bending/niche-bender');
 const { sendReportEmail } = require('./src/output/email-sender');
+const { scanCompetition } = require('./src/scanner/competition-scanner');
 
 // Competitor mining — optional, depends on data file having real entries
 let mineCompetitorAdjacent, applyCompetitorBoost, competitorChannels;
@@ -132,6 +133,22 @@ async function main() {
     }
   }
   if (bendCount > 0) console.log(`Generated ${bendCount} niche bends for top opportunities`);
+
+  // === Competition landscape (for 60+ candidates) ===
+  if (config.competition.enabled) {
+    const competitionCandidates = approved.filter(c => c.score.totalScore >= config.competition.minScoreForScan);
+    if (competitionCandidates.length > 0) {
+      console.log(`\nScanning competition for ${competitionCandidates.length} top candidates...`);
+      for (const c of competitionCandidates) {
+        try {
+          c.competitionLandscape = await scanCompetition(youtube, c, config);
+          totalQuota += c.competitionLandscape.quotaUsed;
+        } catch (err) {
+          console.error(`  Competition scan failed for ${c.channelTitle}: ${err.message}`);
+        }
+      }
+    }
+  }
 
   // === PHASE 3: Apply competitor boost signals ===
   if (boostSignals.size > 0 && applyCompetitorBoost) {

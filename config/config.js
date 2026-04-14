@@ -71,6 +71,14 @@ const config = Object.freeze({
     maxBendsPerCandidate: 3,
   },
 
+  competition: {
+    enabled: true,
+    queriesPerNiche: 3,
+    minScoreForScan: 60,
+    cacheDir: path.join(__dirname, '..', 'niche-research', 'competition-cache'),
+    cacheTTLDays: 7,
+  },
+
   email: {
     enabled: !!process.env.RESEND_API_KEY,
     apiKey: process.env.RESEND_API_KEY,

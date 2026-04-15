@@ -2,7 +2,7 @@ name: Daily Niche Scan
 
 on:
   schedule:
-    - cron: '0 20 * * *'  # 20:00 UTC = 06:00 AEST (Melbourne)
+    - cron: '0 9 * * *'  # 09:00 UTC = 19:00 AEST (Melbourne) — 2 hours after YouTube quota reset
   workflow_dispatch:        # Manual trigger from GitHub UI / mobile app
 
 jobs:

@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 77,
+  "saturationLevel": "Crowded",
+  "tiers": {
+    "over100k": 63,
+    "10k_100k": 9,
+    "1k_10k": 5,
+    "under1k": 0
+  },
+  "topCompetitors": [
+    {
+      "title": "Dude Perfect",
+      "subscribers": 61900000,
+      "totalViews": 20423849204,
+      "videoCount": 560,
+      "ageDays": 6238
+    },
+    {
+      "title": "MR. INDIAN HACKER",
+      "subscribers": 50600000,
+      "totalViews": 10022487641,
+      "videoCount": 1313,
+      "ageDays": 5045
+    },
+    {
+      "title": "Ryan's World",
+      "subscribers": 40300000,
+      "totalViews": 63304551090,
+      "videoCount": 3673,
+      "ageDays": 4047
+    },
+    {
+      "title": "Jesser",
+      "subscribers": 40000000,
+      "totalViews": 10829549954,
+      "videoCount": 1627,
+      "ageDays": 5027
+    },
+    {
+      "title": "CKN ",
+      "subscribers": 19400000,
+      "totalViews": 14151008969,
+      "videoCount": 492,
+      "ageDays": 4036
+    }
+  ],
+  "avgAge": 3868,
+  "nicheSlug": "deeptreasure-divers",
+  "cachedAt": "2026-04-15T10:21:09.532Z"
+}

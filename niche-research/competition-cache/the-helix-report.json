@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 51,
+  "saturationLevel": "Crowded",
+  "tiers": {
+    "over100k": 15,
+    "10k_100k": 11,
+    "1k_10k": 16,
+    "under1k": 9
+  },
+  "topCompetitors": [
+    {
+      "title": "TEDx Talks",
+      "subscribers": 44200000,
+      "totalViews": 8875693064,
+      "videoCount": 258385,
+      "ageDays": 6139
+    },
+    {
+      "title": "ReelShort ",
+      "subscribers": 14300000,
+      "totalViews": 556737945,
+      "videoCount": 3782,
+      "ageDays": 1259
+    },
+    {
+      "title": "Inside Edition",
+      "subscribers": 13800000,
+      "totalViews": 25675706002,
+      "videoCount": 40196,
+      "ageDays": 4936
+    },
+    {
+      "title": "Law&Crime Network",
+      "subscribers": 7520000,
+      "totalViews": 6092578307,
+      "videoCount": 37187,
+      "ageDays": 3882
+    },
+    {
+      "title": "BLESSINGS",
+      "subscribers": 1050000,
+      "totalViews": 574686395,
+      "videoCount": 873,
+      "ageDays": 2682
+    }
+  ],
+  "avgAge": 2702,
+  "nicheSlug": "the-helix-report",
+  "cachedAt": "2026-04-15T10:21:13.224Z"
+}

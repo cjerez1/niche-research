@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 11,
+  "saturationLevel": "Emerging",
+  "tiers": {
+    "over100k": 1,
+    "10k_100k": 0,
+    "1k_10k": 5,
+    "under1k": 5
+  },
+  "topCompetitors": [
+    {
+      "title": "RealLyfe Productions",
+      "subscribers": 1530000,
+      "totalViews": 619669948,
+      "videoCount": 12621,
+      "ageDays": 5961
+    },
+    {
+      "title": "Natoshia ",
+      "subscribers": 7770,
+      "totalViews": 4177204,
+      "videoCount": 1202,
+      "ageDays": 664
+    },
+    {
+      "title": "عالمها",
+      "subscribers": 2030,
+      "totalViews": 523526,
+      "videoCount": 74,
+      "ageDays": 111
+    },
+    {
+      "title": "Sinais Ocultos",
+      "subscribers": 1140,
+      "totalViews": 114843,
+      "videoCount": 65,
+      "ageDays": 160
+    },
+    {
+      "title": "SlapLine News",
+      "subscribers": 1140,
+      "totalViews": 621454,
+      "videoCount": 308,
+      "ageDays": 884
+    }
+  ],
+  "avgAge": 774,
+  "nicheSlug": "exposey",
+  "cachedAt": "2026-04-15T10:21:06.302Z"
+}

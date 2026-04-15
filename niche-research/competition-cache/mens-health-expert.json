@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 93,
+  "saturationLevel": "Crowded",
+  "tiers": {
+    "over100k": 32,
+    "10k_100k": 23,
+    "1k_10k": 28,
+    "under1k": 10
+  },
+  "topCompetitors": [
+    {
+      "title": "Teachingmensfashion",
+      "subscribers": 7420000,
+      "totalViews": 1248614554,
+      "videoCount": 2756,
+      "ageDays": 4960
+    },
+    {
+      "title": "alpha m.",
+      "subscribers": 6920000,
+      "totalViews": 1466369167,
+      "videoCount": 2711,
+      "ageDays": 6491
+    },
+    {
+      "title": "Boxoffice Movie Scenes",
+      "subscribers": 5790000,
+      "totalViews": 4709511001,
+      "videoCount": 8400,
+      "ageDays": 2001
+    },
+    {
+      "title": "Real Men Real Style",
+      "subscribers": 3710000,
+      "totalViews": 519641259,
+      "videoCount": 2830,
+      "ageDays": 5608
+    },
+    {
+      "title": "Men's Health",
+      "subscribers": 1800000,
+      "totalViews": 599535855,
+      "videoCount": 2395,
+      "ageDays": 6229
+    }
+  ],
+  "avgAge": 1788,
+  "nicheSlug": "mens-health-expert",
+  "cachedAt": "2026-04-15T10:21:20.740Z"
+}

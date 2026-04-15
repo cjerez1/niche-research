@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 6,
+  "saturationLevel": "Emerging",
+  "tiers": {
+    "over100k": 4,
+    "10k_100k": 1,
+    "1k_10k": 1,
+    "under1k": 0
+  },
+  "topCompetitors": [
+    {
+      "title": "WUSA9",
+      "subscribers": 610000,
+      "totalViews": 518754283,
+      "videoCount": 80900,
+      "ageDays": 5276
+    },
+    {
+      "title": "KENS 5: Your San Antonio News Source",
+      "subscribers": 447000,
+      "totalViews": 449788550,
+      "videoCount": 91563,
+      "ageDays": 4408
+    },
+    {
+      "title": "WMUR-TV",
+      "subscribers": 180000,
+      "totalViews": 193828338,
+      "videoCount": 105205,
+      "ageDays": 6921
+    },
+    {
+      "title": "Mr Afro Deep",
+      "subscribers": 150000,
+      "totalViews": 48741553,
+      "videoCount": 5812,
+      "ageDays": 3860
+    },
+    {
+      "title": "Detroit PBS",
+      "subscribers": 62100,
+      "totalViews": 18982022,
+      "videoCount": 10722,
+      "ageDays": 6816
+    }
+  ],
+  "avgAge": 5752,
+  "nicheSlug": "black-chronicle",
+  "cachedAt": "2026-04-15T10:21:10.644Z"
+}

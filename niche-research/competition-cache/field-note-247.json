@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 22,
+  "saturationLevel": "Moderate",
+  "tiers": {
+    "over100k": 0,
+    "10k_100k": 1,
+    "1k_10k": 6,
+    "under1k": 15
+  },
+  "topCompetitors": [
+    {
+      "title": "gadgetstop321",
+      "subscribers": 14700,
+      "totalViews": 5598685,
+      "videoCount": 646,
+      "ageDays": 5405
+    },
+    {
+      "title": "E.O. Wilson Biodiversity Foundation",
+      "subscribers": 9650,
+      "totalViews": 522028,
+      "videoCount": 159,
+      "ageDays": 5204
+    },
+    {
+      "title": "LOES",
+      "subscribers": 6710,
+      "totalViews": 2629,
+      "videoCount": 5,
+      "ageDays": 3176
+    },
+    {
+      "title": "outen the lights",
+      "subscribers": 5620,
+      "totalViews": 1418157,
+      "videoCount": 194,
+      "ageDays": 893
+    },
+    {
+      "title": "Island By Film",
+      "subscribers": 3530,
+      "totalViews": 789493,
+      "videoCount": 115,
+      "ageDays": 3184
+    }
+  ],
+  "avgAge": 3313,
+  "nicheSlug": "field-note-247",
+  "cachedAt": "2026-04-15T10:21:17.438Z"
+}

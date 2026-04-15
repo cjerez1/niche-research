@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 50,
+  "saturationLevel": "Moderate",
+  "tiers": {
+    "over100k": 22,
+    "10k_100k": 10,
+    "1k_10k": 13,
+    "under1k": 5
+  },
+  "topCompetitors": [
+    {
+      "title": "GMA Public Affairs",
+      "subscribers": 28000000,
+      "totalViews": 19507453575,
+      "videoCount": 105596,
+      "ageDays": 6094
+    },
+    {
+      "title": "The Infographics Show",
+      "subscribers": 15400000,
+      "totalViews": 6756055824,
+      "videoCount": 6126,
+      "ageDays": 5526
+    },
+    {
+      "title": "Budha Subba Digital",
+      "subscribers": 8650000,
+      "totalViews": 3102042422,
+      "videoCount": 14937,
+      "ageDays": 5155
+    },
+    {
+      "title": "Nitish Rajput",
+      "subscribers": 8300000,
+      "totalViews": 935673036,
+      "videoCount": 110,
+      "ageDays": 2176
+    },
+    {
+      "title": "60 Minutes Australia",
+      "subscribers": 6590000,
+      "totalViews": 2696391154,
+      "videoCount": 6012,
+      "ageDays": 4844
+    }
+  ],
+  "avgAge": 2458,
+  "nicheSlug": "dubai-now",
+  "cachedAt": "2026-04-15T10:21:08.091Z"
+}

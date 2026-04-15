@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 95,
+  "saturationLevel": "Crowded",
+  "tiers": {
+    "over100k": 20,
+    "10k_100k": 15,
+    "1k_10k": 21,
+    "under1k": 39
+  },
+  "topCompetitors": [
+    {
+      "title": "Jeff Nippard",
+      "subscribers": 8320000,
+      "totalViews": 1969002843,
+      "videoCount": 617,
+      "ageDays": 4378
+    },
+    {
+      "title": "Ohara",
+      "subscribers": 1500000,
+      "totalViews": 489290214,
+      "videoCount": 630,
+      "ageDays": 2759
+    },
+    {
+      "title": "MIgardener",
+      "subscribers": 1390000,
+      "totalViews": 225186225,
+      "videoCount": 2433,
+      "ageDays": 5553
+    },
+    {
+      "title": "SugarMD",
+      "subscribers": 1060000,
+      "totalViews": 174225393,
+      "videoCount": 2155,
+      "ageDays": 2386
+    },
+    {
+      "title": "Cosmo Health",
+      "subscribers": 516000,
+      "totalViews": 232523321,
+      "videoCount": 3827,
+      "ageDays": 1358
+    }
+  ],
+  "avgAge": 1273,
+  "nicheSlug": "dr-daniel-thompson-senior-health",
+  "cachedAt": "2026-04-15T10:21:14.995Z"
+}

@@ -1,0 +1,22 @@
+{
+  "totalCompetitors": 1,
+  "saturationLevel": "Emerging",
+  "tiers": {
+    "over100k": 1,
+    "10k_100k": 0,
+    "1k_10k": 0,
+    "under1k": 0
+  },
+  "topCompetitors": [
+    {
+      "title": "National Science Foundation News",
+      "subscribers": 185000,
+      "totalViews": 41382650,
+      "videoCount": 1338,
+      "ageDays": 6307
+    }
+  ],
+  "avgAge": 6307,
+  "nicheSlug": "elitedecoded",
+  "cachedAt": "2026-04-15T10:21:16.075Z"
+}

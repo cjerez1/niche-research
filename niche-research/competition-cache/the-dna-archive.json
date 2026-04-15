@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 38,
+  "saturationLevel": "Moderate",
+  "tiers": {
+    "over100k": 6,
+    "10k_100k": 9,
+    "1k_10k": 5,
+    "under1k": 18
+  },
+  "topCompetitors": [
+    {
+      "title": "60 Minutes",
+      "subscribers": 4080000,
+      "totalViews": 1316243031,
+      "videoCount": 5090,
+      "ageDays": 7343
+    },
+    {
+      "title": "The List",
+      "subscribers": 1970000,
+      "totalViews": 1519525249,
+      "videoCount": 6685,
+      "ageDays": 3562
+    },
+    {
+      "title": "Doctor Eye Health",
+      "subscribers": 1360000,
+      "totalViews": 186752581,
+      "videoCount": 491,
+      "ageDays": 2967
+    },
+    {
+      "title": "The Analyst",
+      "subscribers": 587000,
+      "totalViews": 66813849,
+      "videoCount": 277,
+      "ageDays": 776
+    },
+    {
+      "title": "The History Hub",
+      "subscribers": 192000,
+      "totalViews": 17237768,
+      "videoCount": 232,
+      "ageDays": 978
+    }
+  ],
+  "avgAge": 1434,
+  "nicheSlug": "the-dna-archive",
+  "cachedAt": "2026-04-15T10:21:11.824Z"
+}

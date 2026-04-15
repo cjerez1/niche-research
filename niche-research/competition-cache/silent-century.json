@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 59,
+  "saturationLevel": "Crowded",
+  "tiers": {
+    "over100k": 10,
+    "10k_100k": 13,
+    "1k_10k": 17,
+    "under1k": 19
+  },
+  "topCompetitors": [
+    {
+      "title": "CoversPH",
+      "subscribers": 4580000,
+      "totalViews": 2684498511,
+      "videoCount": 1201,
+      "ageDays": 4001
+    },
+    {
+      "title": "Universal Records Philippines",
+      "subscribers": 3450000,
+      "totalViews": 3035029854,
+      "videoCount": 5458,
+      "ageDays": 6651
+    },
+    {
+      "title": "PRO music COVER",
+      "subscribers": 2450000,
+      "totalViews": 1843912311,
+      "videoCount": 802,
+      "ageDays": 3867
+    },
+    {
+      "title": "Ivory Music",
+      "subscribers": 1430000,
+      "totalViews": 1146761665,
+      "videoCount": 15247,
+      "ageDays": 4870
+    },
+    {
+      "title": "Nine Degrees North",
+      "subscribers": 1360000,
+      "totalViews": 1697063942,
+      "videoCount": 881,
+      "ageDays": 1472
+    }
+  ],
+  "avgAge": 2858,
+  "nicheSlug": "silent-century",
+  "cachedAt": "2026-04-15T10:21:18.965Z"
+}

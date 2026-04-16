@@ -60,7 +60,22 @@ function scoreCandidate(candidate, allCandidates) {
     maxPossible += maxPoints[key] * weight;
   }
 
-  const totalScore = Math.round((rawScore / maxPossible) * 100);
+  let totalScore = Math.round((rawScore / maxPossible) * 100);
+
+  // === NexLev bonus modifiers ===
+  const nx = candidate.nexlev;
+  if (nx) {
+    // Monetization bonus: already monetized = proven revenue niche
+    if (nx.isMonetized === true) totalScore += 3;
+    // Revenue signal: channel already earning $1K+/mo
+    if (nx.avgMonthlyRevenue > 1000) totalScore += 2;
+    // Outlier boost: significantly outperforming peers
+    if (nx.outlierScore >= 3) totalScore += 5;
+    else if (nx.outlierScore >= 2) totalScore += 3;
+    else if (nx.outlierScore >= 1.5) totalScore += 1;
+    // Cap at 100
+    totalScore = Math.min(100, totalScore);
+  }
 
   let tier;
   if (totalScore >= 80) tier = 'Launch candidate';
@@ -68,9 +83,14 @@ function scoreCandidate(candidate, allCandidates) {
   else if (totalScore >= 40) tier = 'Monitor';
   else tier = 'Low priority';
 
-  // Determine RPM estimate
-  const rpmTier = detectRpmTier(candidate);
-  const rpmEstimate = rpmTier ? RPM_TIERS[rpmTier].range : [3, 8];
+  // Determine RPM estimate — use NexLev actual RPM if available
+  let rpmEstimate;
+  if (nx?.rpm) {
+    rpmEstimate = [Math.round(nx.rpm * 0.8), Math.round(nx.rpm * 1.2)];
+  } else {
+    const rpmTier = detectRpmTier(candidate);
+    rpmEstimate = rpmTier ? RPM_TIERS[rpmTier].range : [3, 8];
+  }
 
   return { totalScore, breakdown, tier, rpmEstimate };
 }

@@ -3,8 +3,11 @@ const { marked } = require('marked');
 
 /**
  * Send the daily report as a styled HTML email via Resend.
+ * @param {string} content - Either markdown or pre-rendered HTML
+ * @param {object} config - App config
+ * @param {boolean} isHtml - If true, content is already HTML (dashboard format)
  */
-async function sendReportEmail(markdownContent, config) {
+async function sendReportEmail(content, config, isHtml = false) {
   if (!config.email.enabled) {
     console.log('Email delivery disabled (no RESEND_API_KEY set)');
     return;
@@ -16,8 +19,8 @@ async function sendReportEmail(markdownContent, config) {
   }
 
   const resend = new Resend(config.email.apiKey);
-  const html = convertReportToHtml(markdownContent);
-  const subject = buildEmailSubject(markdownContent);
+  const html = isHtml ? content : convertReportToHtml(content);
+  const subject = buildEmailSubject(isHtml ? content : content);
 
   try {
     const { data, error } = await resend.emails.send({
@@ -164,17 +167,15 @@ ${bodyHtml}
 /**
  * Build email subject from report content.
  */
-function buildEmailSubject(markdown) {
-  // Extract date from first line
-  const dateMatch = markdown.match(/Report — (\d{4}-\d{2}-\d{2})/);
-  const date = dateMatch ? dateMatch[1] : new Date().toISOString().split('T')[0];
+function buildEmailSubject(content) {
+  const date = new Date().toISOString().split('T')[0];
+  const hasEscalated = content.includes('ESCALATED');
 
-  // Extract opportunity count
-  const opMatch = markdown.match(/Opportunities scored 60\+: (\d+)/);
+  // Try to extract opportunity count from various formats
+  const opMatch = content.match(/Opportunities scored 60\+: (\d+)/) ||
+                  content.match(/Score 60\+.*?(\d+)/) ||
+                  content.match(/stat-num">(\d+)<\/div>\s*<div class="stat-label">Score 60\+/);
   const opCount = opMatch ? opMatch[1] : '0';
-
-  // Check for escalations
-  const hasEscalated = markdown.includes('ESCALATED');
 
   const prefix = hasEscalated ? '🚨 ' : '';
   const month = new Date(date).toLocaleDateString('en-AU', { month: 'short', day: 'numeric' });

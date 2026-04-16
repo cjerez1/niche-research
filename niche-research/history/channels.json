@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-15",
+  "lastUpdated": "2026-04-16",
   "channels": {
     "UClXLMgQJAxWrKJC8tMQaKbg": {
       "channelTitle": "The DNA Archive",
@@ -11,10 +11,16 @@
           "avgViews": 22274
         },
         {
-          "date": "2026-04-15",
+          "date": "2026-04-14",
+          "score": 68,
+          "subscribers": 3350,
+          "avgViews": 22876
+        },
+        {
+          "date": "2026-04-16",
           "score": 66,
-          "subscribers": 3530,
-          "avgViews": 24086
+          "subscribers": 3670,
+          "avgViews": 25120
         }
       ]
     },
@@ -28,10 +34,16 @@
           "avgViews": 23633
         },
         {
-          "date": "2026-04-15",
+          "date": "2026-04-14",
+          "score": 76,
+          "subscribers": 2280,
+          "avgViews": 23222
+        },
+        {
+          "date": "2026-04-16",
           "score": 74,
-          "subscribers": 2290,
-          "avgViews": 22777
+          "subscribers": 2300,
+          "avgViews": 22309
         }
       ]
     },
@@ -56,10 +68,16 @@
           "avgViews": 1170
         },
         {
-          "date": "2026-04-15",
+          "date": "2026-04-14",
           "score": 70,
-          "subscribers": 55,
-          "avgViews": 1275
+          "subscribers": 52,
+          "avgViews": 1239
+        },
+        {
+          "date": "2026-04-16",
+          "score": 70,
+          "subscribers": 60,
+          "avgViews": 1392
         }
       ]
     },
@@ -73,10 +91,16 @@
           "avgViews": 41303
         },
         {
-          "date": "2026-04-15",
+          "date": "2026-04-14",
           "score": 59,
-          "subscribers": 8150,
-          "avgViews": 39236
+          "subscribers": 8100,
+          "avgViews": 40211
+        },
+        {
+          "date": "2026-04-16",
+          "score": 61,
+          "subscribers": 8200,
+          "avgViews": 38301
         }
       ]
     },
@@ -90,10 +114,10 @@
           "avgViews": 615
         },
         {
-          "date": "2026-04-15",
-          "score": 61,
-          "subscribers": 411,
-          "avgViews": 626
+          "date": "2026-04-14",
+          "score": 66,
+          "subscribers": 412,
+          "avgViews": 619
         }
       ]
     },
@@ -107,10 +131,10 @@
           "avgViews": 9136
         },
         {
-          "date": "2026-04-15",
+          "date": "2026-04-14",
           "score": 63,
-          "subscribers": 3140,
-          "avgViews": 9067
+          "subscribers": 3070,
+          "avgViews": 9064
         }
       ]
     },
@@ -124,10 +148,16 @@
           "avgViews": 4280
         },
         {
-          "date": "2026-04-15",
+          "date": "2026-04-14",
           "score": 57,
-          "subscribers": 8520,
-          "avgViews": 7532
+          "subscribers": 6670,
+          "avgViews": 5711
+        },
+        {
+          "date": "2026-04-16",
+          "score": 57,
+          "subscribers": 9680,
+          "avgViews": 8709
         }
       ]
     },
@@ -152,10 +182,123 @@
           "avgViews": 27980
         },
         {
-          "date": "2026-04-15",
-          "score": 63,
+          "date": "2026-04-14",
+          "score": 68,
           "subscribers": 5860,
-          "avgViews": 27229
+          "avgViews": 28211
+        },
+        {
+          "date": "2026-04-16",
+          "score": 68,
+          "subscribers": 5860,
+          "avgViews": 27166.64
+        }
+      ]
+    },
+    "UCxXP9NeAlh0TNI-AFUdfroA": {
+      "channelTitle": "Dubai Now",
+      "snapshots": [
+        {
+          "date": "2026-04-14",
+          "score": 70,
+          "subscribers": 1100,
+          "avgViews": 33381
+        },
+        {
+          "date": "2026-04-16",
+          "score": 64,
+          "subscribers": 1160,
+          "avgViews": 43009
+        }
+      ]
+    },
+    "UCpz7PygTQ6FWy7NeTTmBTJQ": {
+      "channelTitle": "Black Chronicle",
+      "snapshots": [
+        {
+          "date": "2026-04-14",
+          "score": 66,
+          "subscribers": 242,
+          "avgViews": 882
+        }
+      ]
+    },
+    "UCSIY635D06diBmhOWd-0c8A": {
+      "channelTitle": "The Helix Report",
+      "snapshots": [
+        {
+          "date": "2026-04-14",
+          "score": 64,
+          "subscribers": 794,
+          "avgViews": 15127
+        },
+        {
+          "date": "2026-04-16",
+          "score": 64,
+          "subscribers": 802,
+          "avgViews": 13988
+        }
+      ]
+    },
+    "UC_iZw_YI9k9x4G71MvJ83-Q": {
+      "channelTitle": "EliteDecoded",
+      "snapshots": [
+        {
+          "date": "2026-04-14",
+          "score": 64,
+          "subscribers": 1240,
+          "avgViews": 14433
+        },
+        {
+          "date": "2026-04-16",
+          "score": 64,
+          "subscribers": 1250,
+          "avgViews": 14541
+        }
+      ]
+    },
+    "UCqFMUKYUDjfzN0V2-QW7DWw": {
+      "channelTitle": "Genetic Origins Lab",
+      "snapshots": [
+        {
+          "date": "2026-04-14",
+          "score": 59,
+          "subscribers": 360,
+          "avgViews": 732
+        },
+        {
+          "date": "2026-04-16",
+          "score": 55,
+          "subscribers": 451,
+          "avgViews": 745
+        }
+      ]
+    },
+    "UCihPT0YR-EQWbFv8iZWh2ag": {
+      "channelTitle": "Ancient DNA History",
+      "snapshots": [
+        {
+          "date": "2026-04-14",
+          "score": 59,
+          "subscribers": 1690,
+          "avgViews": 2091
+        },
+        {
+          "date": "2026-04-16",
+          "score": 59,
+          "subscribers": 1750,
+          "avgViews": 1856
+        }
+      ]
+    },
+    "UCXLevIU_C-3Yh_Kf-tzlF7w": {
+      "channelTitle": "Dr. Daniel Thompson | Senior Health",
+      "snapshots": [
+        {
+          "date": "2026-04-14",
+          "score": 67,
+          "subscribers": 4680,
+          "avgViews": 8115
         }
       ]
     },
@@ -170,91 +313,883 @@
         }
       ]
     },
-    "UCxXP9NeAlh0TNI-AFUdfroA": {
-      "channelTitle": "Dubai Now",
+    "UCW8n1yFiTwgIXRWwrRs8dNA": {
+      "channelTitle": "Health Signals",
       "snapshots": [
         {
-          "date": "2026-04-15",
+          "date": "2026-04-16",
+          "score": 79,
+          "subscribers": 9910,
+          "avgViews": 384336.71
+        }
+      ]
+    },
+    "UCTEMcac4t4xbLejDGOPkSfA": {
+      "channelTitle": "Forgotten Old American",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 74,
+          "subscribers": 3050,
+          "avgViews": 31951.91
+        }
+      ]
+    },
+    "UCttBk6NWX0xceGn6fODMIlA": {
+      "channelTitle": "Airpower Decoded",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 73,
+          "subscribers": 8420,
+          "avgViews": 76197.33
+        }
+      ]
+    },
+    "UCJtMgRjCOCkXiownDiDyakg": {
+      "channelTitle": "GLOBEdocs",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 71,
+          "subscribers": 1390,
+          "avgViews": 11088.62
+        }
+      ]
+    },
+    "UChJ2EB6kzS3o8fdvhBIlncg": {
+      "channelTitle": "Accidental Scholar",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 71,
+          "subscribers": 4180,
+          "avgViews": 225925
+        }
+      ]
+    },
+    "UC02gZK8ddXzCNxjlZlqKfoA": {
+      "channelTitle": "Volar Seguro",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 71,
+          "subscribers": 15400,
+          "avgViews": 236768.11
+        }
+      ]
+    },
+    "UCl42jG0SdOVmXjcy4MazKvw": {
+      "channelTitle": "Bille Finance",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
           "score": 70,
-          "subscribers": 1140,
-          "avgViews": 39713
+          "subscribers": 14200,
+          "avgViews": 47118.85
         }
       ]
     },
-    "UCpz7PygTQ6FWy7NeTTmBTJQ": {
-      "channelTitle": "Black Chronicle",
+    "UCPVYsnNMlcXUx2ENB_lIqLw": {
+      "channelTitle": "Bilge Rats",
       "snapshots": [
         {
-          "date": "2026-04-15",
+          "date": "2026-04-16",
           "score": 69,
-          "subscribers": 610,
-          "avgViews": 2115
+          "subscribers": 1960,
+          "avgViews": 32475.55
         }
       ]
     },
-    "UCSIY635D06diBmhOWd-0c8A": {
-      "channelTitle": "The Helix Report",
+    "UCeQwqYbOwt5pWPcvfDhffdg": {
+      "channelTitle": "CosierBuzzard29",
       "snapshots": [
         {
-          "date": "2026-04-15",
+          "date": "2026-04-16",
+          "score": 69,
+          "subscribers": 1990,
+          "avgViews": 84171
+        }
+      ]
+    },
+    "UCzG3MfPcl25FD9Zx5J2jmlA": {
+      "channelTitle": "Dubai Brief ",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 68,
+          "subscribers": 4310,
+          "avgViews": 27400.43
+        }
+      ]
+    },
+    "UCD7SCDkP-e3gfUc2ECQ5GHA": {
+      "channelTitle": "Automotive Ancestry",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 68,
+          "subscribers": 1980,
+          "avgViews": 13914.64
+        }
+      ]
+    },
+    "UCz8LM-qYRM9Jx-ytakX9ZLA": {
+      "channelTitle": "The Design Blueprint",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 68,
+          "subscribers": 5530,
+          "avgViews": 41887.32
+        }
+      ]
+    },
+    "UCM97BjrXauTOTgF2qJQWwCg": {
+      "channelTitle": "Lost UK",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 67,
+          "subscribers": 2920,
+          "avgViews": 20115.82
+        }
+      ]
+    },
+    "UCpB9K0RrHs7Ud_QQ6XdtyFA": {
+      "channelTitle": "That Trending Girl",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 67,
+          "subscribers": 3540,
+          "avgViews": 35029.35
+        }
+      ]
+    },
+    "UCyL5J-lo3XuYPPOiXvzbAWw": {
+      "channelTitle": "Forgotten Fleet ",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 67,
+          "subscribers": 2210,
+          "avgViews": 69638.2
+        }
+      ]
+    },
+    "UCk7axbdyPf_Pn3SJorC5WIA": {
+      "channelTitle": "911 Response",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 67,
+          "subscribers": 6340,
+          "avgViews": 107492.73
+        }
+      ]
+    },
+    "UCyCSbQ8ycQFpptUz5k6nltw": {
+      "channelTitle": "American Food History",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
           "score": 66,
-          "subscribers": 799,
-          "avgViews": 14534
+          "subscribers": 7180,
+          "avgViews": 57091
         }
       ]
     },
-    "UCXLevIU_C-3Yh_Kf-tzlF7w": {
-      "channelTitle": "Dr. Daniel Thompson | Senior Health",
+    "UCJ7gTKEr68s3EOAYX0Bi2-Q": {
+      "channelTitle": "WW2 War Relics",
       "snapshots": [
         {
-          "date": "2026-04-15",
-          "score": 64,
-          "subscribers": 4710,
-          "avgViews": 7942
-        }
-      ]
-    },
-    "UC_iZw_YI9k9x4G71MvJ83-Q": {
-      "channelTitle": "EliteDecoded",
-      "snapshots": [
-        {
-          "date": "2026-04-15",
-          "score": 64,
-          "subscribers": 1250,
-          "avgViews": 14485
-        }
-      ]
-    },
-    "UCihPT0YR-EQWbFv8iZWh2ag": {
-      "channelTitle": "Ancient DNA History",
-      "snapshots": [
-        {
-          "date": "2026-04-15",
-          "score": 59,
-          "subscribers": 1730,
-          "avgViews": 1784
-        }
-      ]
-    },
-    "UCGSIXp_6jdI_LRHhII3zUeA": {
-      "channelTitle": "Dr Aiden Core | Senior Health ",
-      "snapshots": [
-        {
-          "date": "2026-04-15",
-          "score": 56,
+          "date": "2026-04-16",
+          "score": 66,
           "subscribers": 1310,
-          "avgViews": 815
+          "avgViews": 11141.46
         }
       ]
     },
-    "UCqFMUKYUDjfzN0V2-QW7DWw": {
-      "channelTitle": "Genetic Origins Lab",
+    "UCZ1peId7bUge2mKuSDknvcg": {
+      "channelTitle": "Curiox Story",
       "snapshots": [
         {
-          "date": "2026-04-15",
+          "date": "2026-04-16",
+          "score": 66,
+          "subscribers": 1200,
+          "avgViews": 26938
+        }
+      ]
+    },
+    "UCl4K_oxVjMYZCg-_rBhnQ5g": {
+      "channelTitle": "Think Glitch",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 66,
+          "subscribers": 16,
+          "avgViews": 646
+        }
+      ]
+    },
+    "UCFiD8z23K8yPHy7w_YeEFCw": {
+      "channelTitle": "There's a catch - Joe",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 65,
+          "subscribers": 8910,
+          "avgViews": 18711.85
+        }
+      ]
+    },
+    "UCPqGFyLBBXwnAiQm13UK3eA": {
+      "channelTitle": "Histor",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 65,
+          "subscribers": 578,
+          "avgViews": 16500.5
+        }
+      ]
+    },
+    "UCk_X16alT78TAlhbvlv1d6A": {
+      "channelTitle": "Explore Wildlife TV",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 65,
+          "subscribers": 6430,
+          "avgViews": 125954.6
+        }
+      ]
+    },
+    "UCeqa0VMOUdnzB56UkWyqjoA": {
+      "channelTitle": "Rubel Hossain",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 64,
+          "subscribers": 1490,
+          "avgViews": 29600.9
+        }
+      ]
+    },
+    "UCcYLU-0kd5Pwc3vdEUMMBxQ": {
+      "channelTitle": "FEDERAL ECHO",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 64,
+          "subscribers": 1460,
+          "avgViews": 11841.05
+        }
+      ]
+    },
+    "UC4_IQo5UnbFjYOVrHFdGj2A": {
+      "channelTitle": "Prehistoric",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 64,
+          "subscribers": 2300,
+          "avgViews": 101017.75
+        }
+      ]
+    },
+    "UC7OMVRiJcIqoIHoC4u7lIsw": {
+      "channelTitle": "Shadow of the Gods",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 63,
+          "subscribers": 5450,
+          "avgViews": 61787.92
+        }
+      ]
+    },
+    "UCpHukLp3foEBWhyD4B3oyCA": {
+      "channelTitle": "One More Thing...",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 62,
+          "subscribers": 9550,
+          "avgViews": 19261.06
+        }
+      ]
+    },
+    "UC3EpqIjfEUiZi1GvWKCWyuA": {
+      "channelTitle": "POVrank",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 62,
+          "subscribers": 12200,
+          "avgViews": 48906.85
+        }
+      ]
+    },
+    "UCNYxi54P1Y6uf2NbTLGddKA": {
+      "channelTitle": "Harold The Peasant",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 62,
+          "subscribers": 1300,
+          "avgViews": 11658.7
+        }
+      ]
+    },
+    "UCWTTSkGVlM2CEFc8_OiWq3A": {
+      "channelTitle": "Fin Harrington ",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 61,
+          "subscribers": 8109,
+          "avgViews": 42961.5
+        }
+      ]
+    },
+    "UCRoe0-KY4lUuVyPh4yPrWFw": {
+      "channelTitle": "Historical Lore  ",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 61,
+          "subscribers": 564,
+          "avgViews": 5856.27
+        }
+      ]
+    },
+    "UCeb8q-ZlNp_fWkjNCZViwaw": {
+      "channelTitle": "Mimo Realm",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 59,
+          "subscribers": 254,
+          "avgViews": 7045.67
+        }
+      ]
+    },
+    "UC_FyRyHXHZ2a0tymulZlb9w": {
+      "channelTitle": "TV Boy",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 59,
+          "subscribers": 559,
+          "avgViews": 20999.25
+        }
+      ]
+    },
+    "UCgTXFUR44jasthWYusKvNmA": {
+      "channelTitle": "Royal Wealth Documentaries",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 59,
+          "subscribers": 2380,
+          "avgViews": 26962.25
+        }
+      ]
+    },
+    "UCrD5aa517oXJiuDymTRfrWg": {
+      "channelTitle": "Animated Geopolitics",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 59,
+          "subscribers": 9590,
+          "avgViews": 29404.12
+        }
+      ]
+    },
+    "UC2-wPCknAAfFkMwyJYhklHA": {
+      "channelTitle": "Ionic",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 59,
+          "subscribers": 6380,
+          "avgViews": 32863.92
+        }
+      ]
+    },
+    "UCd0_LSlYnG7CR5M9cmZzSOQ": {
+      "channelTitle": "MZANSI DATA",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 59,
+          "subscribers": 2150,
+          "avgViews": 50877.64
+        }
+      ]
+    },
+    "UCqivqxkLH7vAsrOwS4rK8bg": {
+      "channelTitle": "OLDworldexplain",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 59,
+          "subscribers": 5080,
+          "avgViews": 22665.43
+        }
+      ]
+    },
+    "UCFov2-ZJAm7rN-Teo2de9Hw": {
+      "channelTitle": "Animated Military",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 59,
+          "subscribers": 2840,
+          "avgViews": 51402
+        }
+      ]
+    },
+    "UCszcIw74UrkgLfyP6i8Ce_g": {
+      "channelTitle": "The Latest Find",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 58,
+          "subscribers": 876,
+          "avgViews": 7918.44
+        }
+      ]
+    },
+    "UChmXguBEIXR82TUyOJeC1hA": {
+      "channelTitle": "Operation Steel",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 58,
+          "subscribers": 1830,
+          "avgViews": 12072.36
+        }
+      ]
+    },
+    "UCUUjPENVuyaRRxb-DN8FTwA": {
+      "channelTitle": "MrCanada",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 58,
+          "subscribers": 993,
+          "avgViews": 26953
+        }
+      ]
+    },
+    "UCN9E7Snpg369IdqX0Fb-DoQ": {
+      "channelTitle": "ArcaneNj",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 58,
+          "subscribers": 1500,
+          "avgViews": 10249.8
+        }
+      ]
+    },
+    "UCmyKINrAcKC0wJ9udHYvzwA": {
+      "channelTitle": "Power Shift",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 57,
+          "subscribers": 8810,
+          "avgViews": 26507.75
+        }
+      ]
+    },
+    "UCRUHH9L0vS1cLeVaKVmvSUg": {
+      "channelTitle": "WsArc",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 57,
+          "subscribers": 3960,
+          "avgViews": 75138.81
+        }
+      ]
+    },
+    "UCnBBPm9gkahuHhQxr_mX27g": {
+      "channelTitle": "COURT LEGACY",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 55,
+          "subscribers": 1860,
+          "avgViews": 4937.89
+        }
+      ]
+    },
+    "UCwUzzUyIgM3J6ojeq5MYwOw": {
+      "channelTitle": "Vision Military Update",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 55,
+          "subscribers": 6820,
+          "avgViews": 48608.85
+        }
+      ]
+    },
+    "UCg9mr5aOD8rLO1mE_H_DVyA": {
+      "channelTitle": "Global Decline Explained",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 54,
+          "subscribers": 4700,
+          "avgViews": 34402.82
+        }
+      ]
+    },
+    "UCIbMVD6U73VhG3jk4DYAXvQ": {
+      "channelTitle": "BOXOLOGY",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 54,
+          "subscribers": 558,
+          "avgViews": 6512.44
+        }
+      ]
+    },
+    "UCbYzCaCCXKQ9UxfXE37IDUQ": {
+      "channelTitle": "Duke Basketball Update",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 54,
+          "subscribers": 636,
+          "avgViews": 7122.08
+        }
+      ]
+    },
+    "UCHNNpfH_9zcZu-3MM4Cgstw": {
+      "channelTitle": "NZ Special Forces",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 54,
+          "subscribers": 1980,
+          "avgViews": 29158.14
+        }
+      ]
+    },
+    "UCGDMWb6oWRySg2YDZr7vTiw": {
+      "channelTitle": "Industrial North",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 54,
+          "subscribers": 2660,
+          "avgViews": 20302.91
+        }
+      ]
+    },
+    "UCkf4ZhyckqAgr_bf-PPS7jA": {
+      "channelTitle": "Wild Animals - Animal Documentary",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 53,
+          "subscribers": 1720,
+          "avgViews": 24771.88
+        }
+      ]
+    },
+    "UCk-Q20FJmyuCQsPsErTlY6w": {
+      "channelTitle": "Royal Decoded",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 53,
+          "subscribers": 2550,
+          "avgViews": 11518.28
+        }
+      ]
+    },
+    "UCG3lp_yAsKlxT9Z-mxM5wCQ": {
+      "channelTitle": "Wolf of Politics",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 53,
+          "subscribers": 6700,
+          "avgViews": 61647
+        }
+      ]
+    },
+    "UCVQ9ExlLgzxITZGmFOEySRQ": {
+      "channelTitle": "The Rust & Revolve",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
           "score": 52,
-          "subscribers": 402,
-          "avgViews": 752
+          "subscribers": 5830,
+          "avgViews": 153997.5
+        }
+      ]
+    },
+    "UCBiiI-1OI3fr_XCPi47N49Q": {
+      "channelTitle": "Navy Battlefront",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 52,
+          "subscribers": 1010,
+          "avgViews": 7348.82
+        }
+      ]
+    },
+    "UCkE207iTQeVRZ3kbSTZGOaA": {
+      "channelTitle": "Daily State Brief",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 52,
+          "subscribers": 5130,
+          "avgViews": 13617.55
+        }
+      ]
+    },
+    "UCKrykRvQlHQPxi9aGSfVqDQ": {
+      "channelTitle": "The 7 Points Lists",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 52,
+          "subscribers": 3750,
+          "avgViews": 15877.38
+        }
+      ]
+    },
+    "UCWN5kBGD1A-TZk4Z0WkgJWg": {
+      "channelTitle": "Arcane Potter",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 52,
+          "subscribers": 1300,
+          "avgViews": 53733.75
+        }
+      ]
+    },
+    "UCQ2RzucORG5lDh8W18lMd0Q": {
+      "channelTitle": "Asteryn Extra",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 52,
+          "subscribers": 7780,
+          "avgViews": 26973
+        }
+      ]
+    },
+    "UCxUJEMOOrrFVgmtTVG2LGEg": {
+      "channelTitle": "SimpleEco",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 52,
+          "subscribers": 3830,
+          "avgViews": 17471.67
+        }
+      ]
+    },
+    "UCzWpFE4krMkNt1vClrGsk6Q": {
+      "channelTitle": "Stratter Hiser",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 51,
+          "subscribers": 1810,
+          "avgViews": 10068.19
+        }
+      ]
+    },
+    "UCbsQudwkYQQRCXIgDpWMhsA": {
+      "channelTitle": "Crisis Feed",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 51,
+          "subscribers": 4880,
+          "avgViews": 8593.17
+        }
+      ]
+    },
+    "UCArod0lahLBwatC_WoSTlsA": {
+      "channelTitle": "Memory Lane Black People",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 50,
+          "subscribers": 3040,
+          "avgViews": 7210.42
+        }
+      ]
+    },
+    "UCHIuqpf0qtT-TGz34R04BaA": {
+      "channelTitle": "Family Confessions",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 48,
+          "subscribers": 3430,
+          "avgViews": 8798.84
+        }
+      ]
+    },
+    "UCaICGDabRMrPLmXnyIfH29w": {
+      "channelTitle": "Zhang Manhwa",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 47,
+          "subscribers": 6720,
+          "avgViews": 61726.15
+        }
+      ]
+    },
+    "UCr55D5z3Rf0UCjlvqmNUPEg": {
+      "channelTitle": "Nocturne Classics",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 47,
+          "subscribers": 5200,
+          "avgViews": 19344.28
+        }
+      ]
+    },
+    "UCYZdN5MEX8xDCkGDOf9smYQ": {
+      "channelTitle": "Hidden War History",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 47,
+          "subscribers": 1460,
+          "avgViews": 5058.31
+        }
+      ]
+    },
+    "UC5WWC7g2mxNcjI8kP1rTskA": {
+      "channelTitle": "Otaku Srin ",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 47,
+          "subscribers": 2009,
+          "avgViews": 8656.11
+        }
+      ]
+    },
+    "UCNdM1J94Jx4J-1UKDSMHStg": {
+      "channelTitle": "African Tales by Eva",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 47,
+          "subscribers": 7350,
+          "avgViews": 21367.22
+        }
+      ]
+    },
+    "UCEAozZ8Oj_49fcXvmu2-BzQ": {
+      "channelTitle": "The Dusklight Stories",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 44,
+          "subscribers": 3160,
+          "avgViews": 13233.22
+        }
+      ]
+    },
+    "UCe4Tb5oHP50vhoXYP8XvANw": {
+      "channelTitle": "The Forgotten Fields",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 44,
+          "subscribers": 767,
+          "avgViews": 12960.84
+        }
+      ]
+    },
+    "UCm_LJEmMOqou0-mBe22hELQ": {
+      "channelTitle": "Untold Scripture",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 42,
+          "subscribers": 1420,
+          "avgViews": 7006.8
+        }
+      ]
+    },
+    "UCI47u8HmkFzXfZKx45R4gaw": {
+      "channelTitle": "Untold Legacy Of Bruce Lee",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 42,
+          "subscribers": 953,
+          "avgViews": 8654.53
+        }
+      ]
+    },
+    "UCALvx82gsCmhPMPVhktEokw": {
+      "channelTitle": "AIGrabbing",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 42,
+          "subscribers": 8580,
+          "avgViews": 14493.38
+        }
+      ]
+    },
+    "UCzOAb60KoN5_s1pnxqJSfdw": {
+      "channelTitle": "The Blueprint Vault",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 40,
+          "subscribers": 4770,
+          "avgViews": 4335.88
+        }
+      ]
+    },
+    "UC3vIPcb8jlhNU1ojp63lm4A": {
+      "channelTitle": "Villains Recap",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 39,
+          "subscribers": 5330,
+          "avgViews": 7706.13
+        }
+      ]
+    },
+    "UCCgn6fDtgjcfD0zCjXVPqjQ": {
+      "channelTitle": "MuscleFixxx1",
+      "snapshots": [
+        {
+          "date": "2026-04-16",
+          "score": 32,
+          "subscribers": 49300,
+          "avgViews": 24768.67
         }
       ]
     }

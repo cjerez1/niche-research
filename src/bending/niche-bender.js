@@ -284,46 +284,67 @@ async function generateWithClaude(candidate, niche, strategies) {
     .map((s, i) => `${i + 1}. **${s.name}** (${s.type.replace('_', ' ')})\n   Target: ${s.targetNiche}\n   Strategy: ${s.briefing}`)
     .join('\n\n');
 
-  const prompt = `You are a YouTube niche strategist. A scanner found a small channel that could be a niche opportunity. Generate compelling "niche bend" title ideas — ways to take this channel's subject matter and repackage it for higher clicks, better RPM, or a different audience.
+  const nx = candidate.nexlev || {};
+  const rpmInfo = nx.rpm ? `RPM: $${nx.rpm.toFixed(2)}` : '';
+  const revenueInfo = nx.avgMonthlyRevenue ? `Monthly Revenue: $${nx.avgMonthlyRevenue.toFixed(0)}` : '';
+  const outlierInfo = nx.outlierScore ? `Outlier Score: ${nx.outlierScore}x` : '';
+  const categoriesInfo = (nx.categories || []).length > 0 ? `Categories: ${nx.categories.join(', ')}` : '';
+
+  const prompt = `You are MUSE, a niche-bending strategist for a faceless YouTube automation business.
+
+Your job: Analyze this breakout channel's viral triggers, then generate "niche bends" — ways to take the SAME viral trigger and apply it to a different subject, format, or audience for higher clicks, better RPM, or less competition.
 
 CHANNEL: "${candidate.channelTitle}"
 DETECTED NICHE: ${niche.nicheLabel}
 SUBSCRIBERS: ${candidate.subscriberCount}
 TOP TOPICS: ${niche.topTopics.slice(0, 6).join(', ')}
+${rpmInfo ? rpmInfo + '\n' : ''}${revenueInfo ? revenueInfo + '\n' : ''}${outlierInfo ? outlierInfo + '\n' : ''}${categoriesInfo ? categoriesInfo + '\n' : ''}
 
 TOP PERFORMING VIDEOS:
 ${videoList}
 
-For each of these ${strategies.length} bend strategies, generate 3 YouTube video titles and a one-sentence "why it works" explanation:
+STEP 1 — VIRAL TRIGGER EXTRACTION:
+For each top video above, identify:
+- The surface topic (what the video is about)
+- The viral trigger underneath (WHY people click): curiosity gap, fear, forbidden knowledge, identity, scale shock, recency, outrage, nostalgia, mystery, transformation, versus/comparison, conspiracy-adjacent, disappearance, countdown pressure, superlative
+- Separability test: "If I changed the subject completely, would people still click?" (score 1-5)
+
+STEP 2 — NICHE BENDING:
+For the ${strategies.length} strategies below, use the strongest viral triggers (separability 3+) and bend them:
 
 ${strategySummaries}
 
+For each strategy, generate:
+- 2-3 working video titles (50-80 chars, natural YouTube titles that a real viewer would click)
+- One-line "why it works" explanation specific to THIS niche's triggers
+- Which of these channels it could work for: Food Flip (Australian health/food), Aussie Exposed (Australian consumer), Voidscape (space documentary), Dark Atlas (earth science), Crisis Alert (disaster/earth), The $1 Fix (home maintenance)
+- Thumbnail direction (one sentence)
+- Confidence: high, medium, or low
+
 RULES:
-- Titles must be specific to this channel's actual subject matter — not generic
-- Titles must read naturally as real YouTube video titles (grammatically correct, compelling)
-- Each title should be 50-80 characters, use curiosity/tension hooks
-- Do NOT use the word "revealed" or "exposed" in every title — vary your hooks
-- Think about what would actually make someone click
-- The "why it works" should be specific to this niche, not generic advice
+- Extract the VIRAL TRIGGER, not the topic. "DNA proves historians wrong" → trigger is "authority contradiction". Bend: apply that trigger to a different subject.
+- Titles must be specific and natural — not generic templates with blanks filled in
+- VARY your hooks. Never use "revealed" or "exposed" more than once across all titles
+- Each title must pass the "would I actually click this?" test
+- The "why it works" must reference the specific viral trigger, not generic marketing advice
 
 Respond in this exact JSON format (no markdown, no code fences, just raw JSON):
 [
   {
     "strategyIndex": 0,
+    "viralTriggers": ["curiosity gap", "forbidden knowledge"],
     "titles": ["Title 1", "Title 2", "Title 3"],
-    "whyItWorks": "One sentence explanation specific to this niche."
-  },
-  {
-    "strategyIndex": 1,
-    "titles": ["Title 1", "Title 2", "Title 3"],
-    "whyItWorks": "One sentence explanation specific to this niche."
+    "whyItWorks": "Specific explanation referencing the viral trigger.",
+    "targetChannel": "Dark Atlas",
+    "thumbnailDirection": "One sentence describing the thumbnail concept.",
+    "confidence": "high"
   }
 ]`;
 
   const client = getClient();
   const response = await client.messages.create({
-    model: 'claude-sonnet-4-20250514',
-    max_tokens: 1024,
+    model: 'claude-opus-4-20250514',
+    max_tokens: 2048,
     messages: [{ role: 'user', content: prompt }],
   });
 
@@ -355,6 +376,10 @@ Respond in this exact JSON format (no markdown, no code fences, just raw JSON):
       exampleTitles: claudeResult?.titles || ['(No titles generated)'],
       estimatedCompetition: strategy.competition,
       rpmEstimate: strategy.rpmEstimate,
+      viralTriggers: claudeResult?.viralTriggers || [],
+      targetChannel: claudeResult?.targetChannel || null,
+      thumbnailDirection: claudeResult?.thumbnailDirection || null,
+      confidence: claudeResult?.confidence || null,
     };
   });
 }

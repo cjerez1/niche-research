@@ -49,10 +49,6 @@ const config = Object.freeze({
     concurrency: 5,
   },
 
-  output: {
-    dir: path.join(__dirname, '..', 'niche-research', 'daily'),
-  },
-
   history: {
     dir: path.join(__dirname, '..', 'niche-research', 'history'),
     file: 'channels.json',
@@ -77,6 +73,15 @@ const config = Object.freeze({
     minScoreForScan: 60,
     cacheDir: path.join(__dirname, '..', 'niche-research', 'competition-cache'),
     cacheTTLDays: 7,
+  },
+
+  nexlev: {
+    cacheDir: path.join(__dirname, '..', 'niche-research', 'nexlev-cache'),
+  },
+
+  output: {
+    dir: path.join(__dirname, '..', 'niche-research', 'daily'),
+    dashboardDir: path.join(__dirname, '..', 'niche-research', 'dashboard'),
   },
 
   email: {

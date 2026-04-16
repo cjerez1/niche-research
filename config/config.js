@@ -13,7 +13,7 @@ const config = Object.freeze({
   },
 
   filters: {
-    maxChannelAgeDays: 60,
+    maxChannelAgeDays: 60, // content age (first video date), not channel creation
     idealChannelAgeDays: 30,
     maxSubscribers: 10000,
     minVideosWithViews: 3,

@@ -24,13 +24,12 @@ async function analyzeChannels(youtube, channelIds, config) {
 
       for (const channel of (response.data.items || [])) {
         const createdAt = new Date(channel.snippet.publishedAt);
-        const ageDays = Math.floor((Date.now() - createdAt.getTime()) / 86400000);
+        const channelAgeDays = Math.floor((Date.now() - createdAt.getTime()) / 86400000);
         const subscriberCount = parseInt(channel.statistics.subscriberCount) || 0;
         const videoCount = parseInt(channel.statistics.videoCount) || 0;
         const hiddenSubs = channel.statistics.hiddenSubscriberCount === true;
 
-        // Hard filters
-        if (ageDays > config.filters.maxChannelAgeDays) continue;
+        // Hard filters (subs + video count only — age checked in Pass 2 using first video date)
         if (!hiddenSubs && subscriberCount > config.filters.maxSubscribers) continue;
         if (videoCount < config.filters.minTotalVideos) continue;
 
@@ -41,7 +40,8 @@ async function analyzeChannels(youtube, channelIds, config) {
           description: channel.snippet.description || '',
           country: channel.snippet.country || 'unknown',
           createdAt,
-          ageDays,
+          channelAgeDays,
+          ageDays: channelAgeDays, // will be overwritten in Pass 2 with content age
           subscriberCount,
           hiddenSubs,
           totalViews: parseInt(channel.statistics.viewCount) || 0,
@@ -58,7 +58,7 @@ async function analyzeChannels(youtube, channelIds, config) {
     }
   }
 
-  console.log(`Pass 1: ${channelData.size} channels passed age/subs/videoCount filters (from ${ids.length})`);
+  console.log(`Pass 1: ${channelData.size} channels passed subs/videoCount filters (from ${ids.length})`);
 
   // Cap candidates to avoid quota overrun
   let candidates = Array.from(channelData.values());
@@ -89,24 +89,38 @@ async function analyzeChannels(youtube, channelIds, config) {
       const publishDates = items.map(item => new Date(item.contentDetails.videoPublishedAt));
       const itemVideoIds = items.map(item => item.contentDetails.videoId);
 
+      if (publishDates.length === 0) continue;
+
+      // === Content age: use first video upload date, NOT channel creation date ===
+      const oldestVideoDate = new Date(Math.min(...publishDates.map(d => d.getTime())));
+      const newestVideoDate = new Date(Math.max(...publishDates.map(d => d.getTime())));
+      const contentAgeDays = Math.floor((Date.now() - oldestVideoDate.getTime()) / 86400000);
+
+      // Filter on content age (when they actually started uploading)
+      if (contentAgeDays > config.filters.maxChannelAgeDays) continue;
+
+      // Overwrite ageDays with the real content age
+      candidate.ageDays = contentAgeDays;
+      candidate.contentStartDate = oldestVideoDate;
+      candidate.lastUploadDate = newestVideoDate;
+
+      // Check for rebranded/pivoted channel (channel created long before first video)
+      const daysBetweenCreationAndContent = Math.floor(
+        (oldestVideoDate.getTime() - candidate.createdAt.getTime()) / 86400000
+      );
+      candidate.flags.possiblyRebranded = daysBetweenCreationAndContent > 90;
+
       // Calculate upload frequency (videos per week in last 30 days)
       const thirtyDaysAgo = new Date();
       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
       const recentUploads = publishDates.filter(d => d >= thirtyDaysAgo).length;
-      const weeksActive = Math.max(1, Math.min(candidate.ageDays, 30) / 7);
+      const weeksActive = Math.max(1, Math.min(contentAgeDays, 30) / 7);
       const uploadFrequency = recentUploads / weeksActive;
 
       if (uploadFrequency < config.filters.minUploadsPerWeek) continue;
 
       candidate.uploadFrequency = Math.round(uploadFrequency * 10) / 10;
       candidate.recentUploadCount = recentUploads;
-
-      // Check for rebranded channel (first video much newer than channel creation)
-      if (publishDates.length > 0) {
-        const oldestVideo = new Date(Math.min(...publishDates.map(d => d.getTime())));
-        const daysBetween = Math.floor((oldestVideo.getTime() - candidate.createdAt.getTime()) / 86400000);
-        candidate.flags.possiblyRebranded = daysBetween > 180;
-      }
 
       videoIds.push(...itemVideoIds);
       candidate._videoIds = itemVideoIds;
@@ -118,7 +132,7 @@ async function analyzeChannels(youtube, channelIds, config) {
     }
   }
 
-  console.log(`Pass 2: ${survivingCandidates.length} channels passed upload frequency filter`);
+  console.log(`Pass 2: ${survivingCandidates.length} channels passed content-age + upload frequency filters`);
 
   // === PASS 3: Video metrics ===
   const videoDataMap = new Map();

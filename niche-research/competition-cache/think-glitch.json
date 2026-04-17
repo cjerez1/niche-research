@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 48,
+  "saturationLevel": "Moderate",
+  "tiers": {
+    "over100k": 35,
+    "10k_100k": 10,
+    "1k_10k": 1,
+    "under1k": 2
+  },
+  "topCompetitors": [
+    {
+      "title": "TEDx Talks",
+      "subscribers": 44300000,
+      "totalViews": 8877923754,
+      "videoCount": 258616,
+      "ageDays": 6141
+    },
+    {
+      "title": "TED-Ed",
+      "subscribers": 22600000,
+      "totalViews": 4583495855,
+      "videoCount": 2345,
+      "ageDays": 5525
+    },
+    {
+      "title": "BBC News",
+      "subscribers": 19600000,
+      "totalViews": 6862541735,
+      "videoCount": 29692,
+      "ageDays": 7314
+    },
+    {
+      "title": "SmarterEveryDay",
+      "subscribers": 11800000,
+      "totalViews": 1270044274,
+      "videoCount": 395,
+      "ageDays": 7318
+    },
+    {
+      "title": "ExpHub - Prashant Kirad",
+      "subscribers": 11600000,
+      "totalViews": 728171305,
+      "videoCount": 381,
+      "ageDays": 2041
+    }
+  ],
+  "avgAge": 3572,
+  "nicheSlug": "think-glitch",
+  "cachedAt": "2026-04-17T10:22:13.686Z"
+}

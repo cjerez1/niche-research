@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 6,
+  "saturationLevel": "Emerging",
+  "tiers": {
+    "over100k": 2,
+    "10k_100k": 0,
+    "1k_10k": 2,
+    "under1k": 2
+  },
+  "topCompetitors": [
+    {
+      "title": "Kawaii Kunicorn",
+      "subscribers": 3760000,
+      "totalViews": 2055720252,
+      "videoCount": 897,
+      "ageDays": 4144
+    },
+    {
+      "title": "Fynnpire",
+      "subscribers": 1520000,
+      "totalViews": 829425014,
+      "videoCount": 3620,
+      "ageDays": 4079
+    },
+    {
+      "title": "Direct History",
+      "subscribers": 4710,
+      "totalViews": 1464610,
+      "videoCount": 134,
+      "ageDays": 519
+    },
+    {
+      "title": "Viska Art",
+      "subscribers": 3680,
+      "totalViews": 355740,
+      "videoCount": 362,
+      "ageDays": 1464
+    },
+    {
+      "title": "Dora Morales",
+      "subscribers": 2,
+      "totalViews": 328,
+      "videoCount": 23,
+      "ageDays": 3377
+    }
+  ],
+  "avgAge": 2282,
+  "nicheSlug": "hidden-history-daily",
+  "cachedAt": "2026-04-17T10:22:23.682Z"
+}

@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 9,
+  "saturationLevel": "Emerging",
+  "tiers": {
+    "over100k": 8,
+    "10k_100k": 0,
+    "1k_10k": 1,
+    "under1k": 0
+  },
+  "topCompetitors": [
+    {
+      "title": "TED-Ed",
+      "subscribers": 22600000,
+      "totalViews": 4583495855,
+      "videoCount": 2345,
+      "ageDays": 5525
+    },
+    {
+      "title": "VICE",
+      "subscribers": 19100000,
+      "totalViews": 5532895613,
+      "videoCount": 4383,
+      "ageDays": 7427
+    },
+    {
+      "title": "BBC World Service",
+      "subscribers": 1990000,
+      "totalViews": 320380601,
+      "videoCount": 2875,
+      "ageDays": 2369
+    },
+    {
+      "title": "The Hindu",
+      "subscribers": 1970000,
+      "totalViews": 415158562,
+      "videoCount": 17900,
+      "ageDays": 5480
+    },
+    {
+      "title": "Curious Plus",
+      "subscribers": 875000,
+      "totalViews": 285057030,
+      "videoCount": 779,
+      "ageDays": 2219
+    }
+  ],
+  "avgAge": 3747,
+  "nicheSlug": "the-global-hindu",
+  "cachedAt": "2026-04-17T10:22:12.172Z"
+}

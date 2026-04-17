@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 45,
+  "saturationLevel": "Moderate",
+  "tiers": {
+    "over100k": 2,
+    "10k_100k": 13,
+    "1k_10k": 19,
+    "under1k": 11
+  },
+  "topCompetitors": [
+    {
+      "title": "Dr Emma Blake | Men's Health",
+      "subscribers": 144000,
+      "totalViews": 13514374,
+      "videoCount": 165,
+      "ageDays": 291
+    },
+    {
+      "title": "DR. NERITA",
+      "subscribers": 126000,
+      "totalViews": 11048548,
+      "videoCount": 446,
+      "ageDays": 196
+    },
+    {
+      "title": "Vitality Health 101",
+      "subscribers": 76000,
+      "totalViews": 6510435,
+      "videoCount": 298,
+      "ageDays": 301
+    },
+    {
+      "title": "DR. NORA HAYES",
+      "subscribers": 42000,
+      "totalViews": 3797142,
+      "videoCount": 75,
+      "ageDays": 223
+    },
+    {
+      "title": "Dr. Merry Markham | Men's Health",
+      "subscribers": 35300,
+      "totalViews": 1900408,
+      "videoCount": 87,
+      "ageDays": 182
+    }
+  ],
+  "avgAge": 304,
+  "nicheSlug": "dr-amara-urology-insights",
+  "cachedAt": "2026-04-17T10:22:19.293Z"
+}

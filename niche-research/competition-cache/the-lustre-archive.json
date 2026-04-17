@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 13,
+  "saturationLevel": "Emerging",
+  "tiers": {
+    "over100k": 2,
+    "10k_100k": 0,
+    "1k_10k": 1,
+    "under1k": 10
+  },
+  "topCompetitors": [
+    {
+      "title": "Unveiled",
+      "subscribers": 976000,
+      "totalViews": 125256572,
+      "videoCount": 1349,
+      "ageDays": 4372
+    },
+    {
+      "title": "BBC Global",
+      "subscribers": 760000,
+      "totalViews": 191624163,
+      "videoCount": 771,
+      "ageDays": 3177
+    },
+    {
+      "title": "Mr.Zooiii",
+      "subscribers": 1500,
+      "totalViews": 267964,
+      "videoCount": 1055,
+      "ageDays": 606
+    },
+    {
+      "title": "Chronicle Cortex",
+      "subscribers": 180,
+      "totalViews": 22711,
+      "videoCount": 40,
+      "ageDays": 167
+    },
+    {
+      "title": "Beyond Official Records",
+      "subscribers": 80,
+      "totalViews": 8714,
+      "videoCount": 66,
+      "ageDays": 407
+    }
+  ],
+  "avgAge": 793,
+  "nicheSlug": "the-lustre-archive",
+  "cachedAt": "2026-04-17T10:22:10.879Z"
+}

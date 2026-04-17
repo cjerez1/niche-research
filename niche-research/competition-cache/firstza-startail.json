@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 53,
+  "saturationLevel": "Crowded",
+  "tiers": {
+    "over100k": 43,
+    "10k_100k": 6,
+    "1k_10k": 3,
+    "under1k": 1
+  },
+  "topCompetitors": [
+    {
+      "title": "BRIGHT SIDE",
+      "subscribers": 44600000,
+      "totalViews": 11847737151,
+      "videoCount": 11385,
+      "ageDays": 3319
+    },
+    {
+      "title": "The Infographics Show",
+      "subscribers": 15400000,
+      "totalViews": 6758028833,
+      "videoCount": 6128,
+      "ageDays": 5528
+    },
+    {
+      "title": "GetsetflySCIENCE by Gaurav Thakur",
+      "subscribers": 9760000,
+      "totalViews": 1411580971,
+      "videoCount": 488,
+      "ageDays": 3344
+    },
+    {
+      "title": "Firstpost",
+      "subscribers": 9520000,
+      "totalViews": 5502092977,
+      "videoCount": 80213,
+      "ageDays": 2381
+    },
+    {
+      "title": "What If",
+      "subscribers": 8870000,
+      "totalViews": 1708716859,
+      "videoCount": 1611,
+      "ageDays": 2829
+    }
+  ],
+  "avgAge": 2912,
+  "nicheSlug": "firstza-startail",
+  "cachedAt": "2026-04-17T10:22:18.081Z"
+}

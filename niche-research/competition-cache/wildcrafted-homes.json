@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 23,
+  "saturationLevel": "Moderate",
+  "tiers": {
+    "over100k": 2,
+    "10k_100k": 1,
+    "1k_10k": 4,
+    "under1k": 16
+  },
+  "topCompetitors": [
+    {
+      "title": "Ice Cream Rolls",
+      "subscribers": 12600000,
+      "totalViews": 1773013006,
+      "videoCount": 2675,
+      "ageDays": 5301
+    },
+    {
+      "title": "Sharky & Sparky Tales",
+      "subscribers": 215000,
+      "totalViews": 99821113,
+      "videoCount": 414,
+      "ageDays": 700
+    },
+    {
+      "title": "Pundit Live",
+      "subscribers": 18000,
+      "totalViews": 11582477,
+      "videoCount": 1670,
+      "ageDays": 1022
+    },
+    {
+      "title": "Sweetsmiles Channel",
+      "subscribers": 1810,
+      "totalViews": 65142,
+      "videoCount": 168,
+      "ageDays": 2650
+    },
+    {
+      "title": "PrimeGen Process Pro",
+      "subscribers": 1750,
+      "totalViews": 783745,
+      "videoCount": 14,
+      "ageDays": 36
+    }
+  ],
+  "avgAge": 756,
+  "nicheSlug": "wildcrafted-homes",
+  "cachedAt": "2026-04-17T10:22:20.537Z"
+}

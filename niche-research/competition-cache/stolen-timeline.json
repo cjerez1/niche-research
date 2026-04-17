@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 51,
+  "saturationLevel": "Crowded",
+  "tiers": {
+    "over100k": 9,
+    "10k_100k": 7,
+    "1k_10k": 7,
+    "under1k": 28
+  },
+  "topCompetitors": [
+    {
+      "title": "MAD LAB",
+      "subscribers": 4140000,
+      "totalViews": 1087010078,
+      "videoCount": 259,
+      "ageDays": 3865
+    },
+    {
+      "title": "Top Fives",
+      "subscribers": 3100000,
+      "totalViews": 1325344411,
+      "videoCount": 2397,
+      "ageDays": 4038
+    },
+    {
+      "title": "MyLifeOutdoors",
+      "subscribers": 1210000,
+      "totalViews": 144290940,
+      "videoCount": 233,
+      "ageDays": 5919
+    },
+    {
+      "title": "Ultimate Fact",
+      "subscribers": 1070000,
+      "totalViews": 257242122,
+      "videoCount": 187,
+      "ageDays": 2409
+    },
+    {
+      "title": "HYPE+",
+      "subscribers": 1060000,
+      "totalViews": 533981295,
+      "videoCount": 3384,
+      "ageDays": 4401
+    }
+  ],
+  "avgAge": 1934,
+  "nicheSlug": "stolen-timeline",
+  "cachedAt": "2026-04-17T10:22:22.107Z"
+}

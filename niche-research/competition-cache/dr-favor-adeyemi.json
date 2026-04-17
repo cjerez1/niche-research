@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 91,
+  "saturationLevel": "Crowded",
+  "tiers": {
+    "over100k": 2,
+    "10k_100k": 15,
+    "1k_10k": 20,
+    "under1k": 54
+  },
+  "topCompetitors": [
+    {
+      "title": "Remedios Increibles",
+      "subscribers": 1680000,
+      "totalViews": 40638978,
+      "videoCount": 2343,
+      "ageDays": 3325
+    },
+    {
+      "title": "Dr. Adewale ",
+      "subscribers": 110000,
+      "totalViews": 5865127,
+      "videoCount": 37,
+      "ageDays": 41
+    },
+    {
+      "title": "Doctor Christopher Carter  | Senior Health",
+      "subscribers": 67100,
+      "totalViews": 1852075,
+      "videoCount": 77,
+      "ageDays": 62
+    },
+    {
+      "title": "Bio Bites",
+      "subscribers": 60700,
+      "totalViews": 1667482,
+      "videoCount": 38,
+      "ageDays": 37
+    },
+    {
+      "title": "Dr. Emily Carter",
+      "subscribers": 48500,
+      "totalViews": 3718793,
+      "videoCount": 334,
+      "ageDays": 1395
+    }
+  ],
+  "avgAge": 281,
+  "nicheSlug": "dr-favor-adeyemi",
+  "cachedAt": "2026-04-17T10:22:15.290Z"
+}

@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 20,
+  "saturationLevel": "Moderate",
+  "tiers": {
+    "over100k": 6,
+    "10k_100k": 5,
+    "1k_10k": 5,
+    "under1k": 4
+  },
+  "topCompetitors": [
+    {
+      "title": "TRANS7 OFFICIAL",
+      "subscribers": 27800000,
+      "totalViews": 16407769497,
+      "videoCount": 112541,
+      "ageDays": 4243
+    },
+    {
+      "title": "Washington Post",
+      "subscribers": 2850000,
+      "totalViews": 1665490934,
+      "videoCount": 24525,
+      "ageDays": 7231
+    },
+    {
+      "title": "Muslim Revert",
+      "subscribers": 759000,
+      "totalViews": 122638868,
+      "videoCount": 852,
+      "ageDays": 3970
+    },
+    {
+      "title": "Inomation",
+      "subscribers": 166000,
+      "totalViews": 29207751,
+      "videoCount": 173,
+      "ageDays": 416
+    },
+    {
+      "title": "Omar of the Orient",
+      "subscribers": 142000,
+      "totalViews": 8337259,
+      "videoCount": 220,
+      "ageDays": 1960
+    }
+  ],
+  "avgAge": 2438,
+  "nicheSlug": "fact-seeker",
+  "cachedAt": "2026-04-18T09:57:57.896Z"
+}

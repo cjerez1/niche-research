@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 86,
+  "saturationLevel": "Crowded",
+  "tiers": {
+    "over100k": 34,
+    "10k_100k": 11,
+    "1k_10k": 16,
+    "under1k": 25
+  },
+  "topCompetitors": [
+    {
+      "title": "✿ Kids Diana Show",
+      "subscribers": 138000000,
+      "totalViews": 123821179199,
+      "videoCount": 1603,
+      "ageDays": 3994
+    },
+    {
+      "title": "CNN",
+      "subscribers": 19500000,
+      "totalViews": 20435741221,
+      "videoCount": 181875,
+      "ageDays": 7502
+    },
+    {
+      "title": "NDTV",
+      "subscribers": 15700000,
+      "totalViews": 8328488646,
+      "videoCount": 271578,
+      "ageDays": 7285
+    },
+    {
+      "title": "Fox News",
+      "subscribers": 15200000,
+      "totalViews": 25064194958,
+      "videoCount": 136977,
+      "ageDays": 7151
+    },
+    {
+      "title": "NASA",
+      "subscribers": 14900000,
+      "totalViews": 1100459612,
+      "videoCount": 6109,
+      "ageDays": 6527
+    }
+  ],
+  "avgAge": 3167,
+  "nicheSlug": "astro-insight-documentaries",
+  "cachedAt": "2026-04-18T09:57:59.399Z"
+}

@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 66,
+  "saturationLevel": "Crowded",
+  "tiers": {
+    "over100k": 25,
+    "10k_100k": 23,
+    "1k_10k": 18,
+    "under1k": 0
+  },
+  "topCompetitors": [
+    {
+      "title": "Real Madrid",
+      "subscribers": 19600000,
+      "totalViews": 4088223058,
+      "videoCount": 8765,
+      "ageDays": 7318
+    },
+    {
+      "title": "Jessica Kaylee",
+      "subscribers": 12600000,
+      "totalViews": 11802537301,
+      "videoCount": 2265,
+      "ageDays": 1846
+    },
+    {
+      "title": "Serie A",
+      "subscribers": 10200000,
+      "totalViews": 4760480017,
+      "videoCount": 33228,
+      "ageDays": 4918
+    },
+    {
+      "title": "SMG4",
+      "subscribers": 9680000,
+      "totalViews": 5703014871,
+      "videoCount": 1000,
+      "ageDays": 6273
+    },
+    {
+      "title": "Bundesliga",
+      "subscribers": 5610000,
+      "totalViews": 3287390747,
+      "videoCount": 12078,
+      "ageDays": 7322
+    }
+  ],
+  "avgAge": 1863,
+  "nicheSlug": "pov-this-is-you",
+  "cachedAt": "2026-04-19T09:57:27.801Z"
+}

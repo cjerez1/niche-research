@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 86,
+  "saturationLevel": "Crowded",
+  "tiers": {
+    "over100k": 39,
+    "10k_100k": 21,
+    "1k_10k": 10,
+    "under1k": 16
+  },
+  "topCompetitors": [
+    {
+      "title": "Dr. Eric Berg DC",
+      "subscribers": 14600000,
+      "totalViews": 3418484153,
+      "videoCount": 5942,
+      "ageDays": 6355
+    },
+    {
+      "title": "linguamarina",
+      "subscribers": 8840000,
+      "totalViews": 290717601,
+      "videoCount": 523,
+      "ageDays": 3955
+    },
+    {
+      "title": "Fit Tuber",
+      "subscribers": 8210000,
+      "totalViews": 1109247676,
+      "videoCount": 660,
+      "ageDays": 3527
+    },
+    {
+      "title": "Gravity Transformation - Fat Loss Experts",
+      "subscribers": 5930000,
+      "totalViews": 1027163342,
+      "videoCount": 615,
+      "ageDays": 5184
+    },
+    {
+      "title": "Sketch",
+      "subscribers": 5470000,
+      "totalViews": 2434974119,
+      "videoCount": 2136,
+      "ageDays": 3513
+    }
+  ],
+  "avgAge": 1771,
+  "nicheSlug": "dr-henry-golfinos",
+  "cachedAt": "2026-04-19T09:57:25.896Z"
+}

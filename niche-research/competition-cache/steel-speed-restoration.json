@@ -1,0 +1,50 @@
+{
+  "totalCompetitors": 39,
+  "saturationLevel": "Moderate",
+  "tiers": {
+    "over100k": 1,
+    "10k_100k": 4,
+    "1k_10k": 10,
+    "under1k": 24
+  },
+  "topCompetitors": [
+    {
+      "title": "Bulldozer Jobs",
+      "subscribers": 290000,
+      "totalViews": 7302194,
+      "videoCount": 269,
+      "ageDays": 4406
+    },
+    {
+      "title": "Restorator man",
+      "subscribers": 37100,
+      "totalViews": 10222463,
+      "videoCount": 36,
+      "ageDays": 705
+    },
+    {
+      "title": "Rider Auto",
+      "subscribers": 29400,
+      "totalViews": 14830767,
+      "videoCount": 102,
+      "ageDays": 116
+    },
+    {
+      "title": "​Airplane and car repair",
+      "subscribers": 19700,
+      "totalViews": 7104,
+      "videoCount": 42,
+      "ageDays": 1387
+    },
+    {
+      "title": "Nova Flow",
+      "subscribers": 12900,
+      "totalViews": 6657932,
+      "videoCount": 178,
+      "ageDays": 391
+    }
+  ],
+  "avgAge": 539,
+  "nicheSlug": "steel-speed-restoration",
+  "cachedAt": "2026-04-20T10:57:43.049Z"
+}

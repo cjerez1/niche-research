@@ -1,50 +1,51 @@
 {
-  "totalCompetitors": 13,
+  "totalCompetitors": 1,
   "saturationLevel": "Emerging",
+  "directHits": 2,
+  "directHitLevel": "Low",
+  "topVideoViews": 21,
+  "topVideo": {
+    "title": "The Global Civilization That Was Erased 12,000 Years Ago",
+    "channelTitle": "Ancient Mystery Lab",
+    "views": 21,
+    "publishedAt": "2026-04-08T15:01:12Z",
+    "videoId": "djTDV4wBrSE"
+  },
+  "verdict": "CAUTION",
+  "verdictReason": "Low competition but also low demand",
   "tiers": {
-    "over100k": 2,
+    "over100k": 0,
     "10k_100k": 0,
-    "1k_10k": 1,
-    "under1k": 10
+    "1k_10k": 0,
+    "under1k": 1
   },
   "topCompetitors": [
     {
-      "title": "Unveiled",
-      "subscribers": 976000,
-      "totalViews": 125256572,
-      "videoCount": 1349,
-      "ageDays": 4372
-    },
-    {
-      "title": "BBC Global",
-      "subscribers": 760000,
-      "totalViews": 191624163,
-      "videoCount": 771,
-      "ageDays": 3177
-    },
-    {
-      "title": "Mr.Zooiii",
-      "subscribers": 1500,
-      "totalViews": 267964,
-      "videoCount": 1055,
-      "ageDays": 606
-    },
-    {
-      "title": "Chronicle Cortex",
-      "subscribers": 180,
-      "totalViews": 22711,
-      "videoCount": 40,
-      "ageDays": 167
-    },
-    {
-      "title": "Beyond Official Records",
-      "subscribers": 80,
-      "totalViews": 8714,
-      "videoCount": 66,
-      "ageDays": 407
+      "title": "Ancient Mystery Lab",
+      "subscribers": 1,
+      "totalViews": 64,
+      "videoCount": 18,
+      "ageDays": 22
     }
   ],
-  "avgAge": 793,
+  "directHitVideos": [
+    {
+      "title": "The Global Civilization That Was Erased 12,000 Years Ago",
+      "channelTitle": "Ancient Mystery Lab",
+      "views": 21,
+      "publishedAt": "2026-04-08T15:01:12Z",
+      "videoId": "djTDV4wBrSE"
+    },
+    {
+      "title": "7 Megalithic Sites That Are Physically Impossible to Construct",
+      "channelTitle": "Ancient Mystery Lab",
+      "views": 2,
+      "publishedAt": "2026-04-09T22:00:11Z",
+      "videoId": "4575wcvFSX4"
+    }
+  ],
+  "avgAge": 22,
+  "windowDays": 30,
   "nicheSlug": "the-lustre-archive",
-  "cachedAt": "2026-04-17T10:22:10.879Z"
+  "cachedAt": "2026-04-18T04:41:11.275Z"
 }

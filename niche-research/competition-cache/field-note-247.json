@@ -1,50 +1,100 @@
 {
-  "totalCompetitors": 22,
+  "totalCompetitors": 19,
   "saturationLevel": "Moderate",
+  "directHits": 20,
+  "directHitLevel": "High",
+  "topVideoViews": 143749,
+  "topVideo": {
+    "title": "USA vs Iran: Navy SEALs Destroy Underwater Sensor Network in the Strait of Hormuz",
+    "channelTitle": "Jack News of USA ",
+    "views": 143749,
+    "publishedAt": "2026-04-14T04:23:28Z",
+    "videoId": "lL1CpdefxLY"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
   "tiers": {
     "over100k": 0,
     "10k_100k": 1,
-    "1k_10k": 6,
+    "1k_10k": 3,
     "under1k": 15
   },
   "topCompetitors": [
     {
-      "title": "gadgetstop321",
-      "subscribers": 14700,
-      "totalViews": 5598685,
-      "videoCount": 646,
-      "ageDays": 5405
+      "title": "Jack News of USA ",
+      "subscribers": 10500,
+      "totalViews": 2292358,
+      "videoCount": 36,
+      "ageDays": 39
     },
     {
-      "title": "E.O. Wilson Biodiversity Foundation",
-      "subscribers": 9650,
-      "totalViews": 522028,
-      "videoCount": 159,
-      "ageDays": 5204
+      "title": "Fallen Glory",
+      "subscribers": 8120,
+      "totalViews": 1014950,
+      "videoCount": 88,
+      "ageDays": 236
     },
     {
-      "title": "LOES",
-      "subscribers": 6710,
-      "totalViews": 2629,
-      "videoCount": 5,
-      "ageDays": 3176
+      "title": "Fleet Strike USA",
+      "subscribers": 3850,
+      "totalViews": 1068507,
+      "videoCount": 45,
+      "ageDays": 63
     },
     {
-      "title": "outen the lights",
-      "subscribers": 5620,
-      "totalViews": 1418157,
-      "videoCount": 194,
-      "ageDays": 893
+      "title": "One BIGG Island In Space",
+      "subscribers": 3650,
+      "totalViews": 666319,
+      "videoCount": 204,
+      "ageDays": 5749
     },
     {
-      "title": "Island By Film",
-      "subscribers": 3530,
-      "totalViews": 789493,
-      "videoCount": 115,
-      "ageDays": 3184
+      "title": "Navy Recon",
+      "subscribers": 531,
+      "totalViews": 48746,
+      "videoCount": 15,
+      "ageDays": 472
     }
   ],
-  "avgAge": 3313,
+  "directHitVideos": [
+    {
+      "title": "USA vs Iran: Navy SEALs Destroy Underwater Sensor Network in the Strait of Hormuz",
+      "channelTitle": "Jack News of USA ",
+      "views": 143749,
+      "publishedAt": "2026-04-14T04:23:28Z",
+      "videoId": "lL1CpdefxLY"
+    },
+    {
+      "title": "Breaking: SEAL Team 6 and Virginia Class Subs Destroy Iranian Underwater Mines in Hormuz",
+      "channelTitle": "Fallen Glory",
+      "views": 52646,
+      "publishedAt": "2026-04-10T15:45:48Z",
+      "videoId": "Sp38Sw9VPNQ"
+    },
+    {
+      "title": "USA – Iran: Navy SEALs Destroy 74 Underwater Drones at Bandar Abbas | Secret Op",
+      "channelTitle": "Jack News of USA ",
+      "views": 34593,
+      "publishedAt": "2026-04-11T10:23:23Z",
+      "videoId": "1F8hjot77_w"
+    },
+    {
+      "title": "Injured US Colonel Hiked 5 Miles, Gained 7,000ft: Surviving 36 Hours in Iran",
+      "channelTitle": "Naval Blueprint",
+      "views": 7453,
+      "publishedAt": "2026-04-07T16:15:06Z",
+      "videoId": "nPkvsAD5QtI"
+    },
+    {
+      "title": "Breaking SEAL Team 6 and  Submarines Eliminate Iranian Underwater Mines in the Strait of Hormuz",
+      "channelTitle": "Navy Recon",
+      "views": 2661,
+      "publishedAt": "2026-04-12T20:19:30Z",
+      "videoId": "NUW8huWTE3o"
+    }
+  ],
+  "avgAge": 1345,
+  "windowDays": 30,
   "nicheSlug": "field-note-247",
-  "cachedAt": "2026-04-15T10:21:17.438Z"
+  "cachedAt": "2026-04-18T04:41:15.712Z"
 }

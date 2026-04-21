@@ -159,14 +159,57 @@ function renderCard(c, isEscalated) {
   const cl = c.competitionLandscape;
   let compHtml = '';
   if (cl) {
-    const satClass = cl.saturationLevel === 'Emerging' ? 'sat-emerging' :
-                     cl.saturationLevel === 'Moderate' ? 'sat-moderate' :
-                     cl.saturationLevel === 'Crowded' ? 'sat-crowded' : 'sat-saturated';
+    // Verdict styling (SOP: GO / CAUTION / BEND / SKIP)
+    const verdict = cl.verdict || '';
+    const verdictClass = verdict === 'GO' ? 'verdict-go' :
+                         verdict === 'CAUTION' ? 'verdict-caution' :
+                         verdict === 'BEND' ? 'verdict-bend' :
+                         verdict === 'SKIP' ? 'verdict-skip' : '';
+    const verdictBadge = verdict
+      ? `<span class="badge ${verdictClass}">${verdict}</span>`
+      : '';
+
+    // When SOP verdict is present, drop the legacy saturationLevel badge (conflicts & confuses).
+    // Fall back to the old badge only if no SOP verdict was produced.
+    let legacyBadge = '';
+    if (!verdict && cl.saturationLevel) {
+      const satClass = cl.saturationLevel === 'Emerging' ? 'sat-emerging' :
+                       cl.saturationLevel === 'Moderate' ? 'sat-moderate' :
+                       cl.saturationLevel === 'Crowded' ? 'sat-crowded' : 'sat-saturated';
+      legacyBadge = `<span class="badge ${satClass}">${cl.saturationLevel}</span>`;
+    }
+
+    // Direct hits + tier (only when SOP data present)
+    const hitsLine = typeof cl.directHits === 'number'
+      ? `<span class="comp-detail">${cl.directHits} direct hits (${cl.windowDays || 30}d · ${cl.directHitLevel || ''})</span>`
+      : '';
+
+    // Only show "channels in niche" if it meaningfully differs from direct hits
+    // (avoid "29 direct hits · 29 competitors" where both numbers are the same).
+    let channelsLine = '';
+    if (typeof cl.totalCompetitors === 'number') {
+      const hits = typeof cl.directHits === 'number' ? cl.directHits : -1;
+      const diff = hits >= 0 ? Math.abs(cl.totalCompetitors - hits) / Math.max(hits, 1) : 1;
+      if (hits < 0 || diff > 0.2) {
+        channelsLine = `<span class="comp-detail">${cl.totalCompetitors} channels in niche</span>`;
+      }
+    }
+
+    const topVideoLine = cl.topVideo
+      ? `<div class="comp-names">Top: ${esc(cl.topVideo.title)} — ${esc(cl.topVideo.channelTitle)} (${fmtNum(cl.topVideo.views)} views)</div>`
+      : '';
+    const reasonLine = cl.verdictReason
+      ? `<div class="comp-names">${esc(cl.verdictReason)}</div>`
+      : '';
     compHtml = `
       <div class="comp-row">
-        <span class="badge ${satClass}">${cl.saturationLevel}</span>
-        <span class="comp-detail">${cl.totalCompetitors} competitors</span>
+        ${verdictBadge}
+        ${legacyBadge}
+        ${hitsLine}
+        ${channelsLine}
       </div>
+      ${topVideoLine}
+      ${reasonLine}
       ${cl.topCompetitors?.length > 0 ? `<div class="comp-names">${cl.topCompetitors.slice(0, 3).map(tc => `${esc(tc.title)} (${fmtNum(tc.subscribers)})`).join(' · ')}</div>` : ''}
     `;
   }
@@ -213,7 +256,7 @@ function renderCard(c, isEscalated) {
       <div class="card-header">
         <div class="card-title-row">
           <a href="${c.channelUrl || nx.url || '#'}" target="_blank" class="card-name">${esc(c.channelTitle || nx.title)}</a>
-          <div class="score-badge ${scoreClass}">${score}</div>
+          <div class="score-badge ${scoreClass}">${score}/100</div>
         </div>
         <div class="card-tier">${tier} ${tagHtml} ${trend}</div>
         ${escalateHtml}
@@ -382,6 +425,10 @@ body {
 .sat-moderate { background: #ffd93d22; color: #ffd93d; }
 .sat-crowded { background: #ff990022; color: #ff9900; }
 .sat-saturated { background: #ff444422; color: #ff4444; }
+.verdict-go { background: #00cc6644; color: #00ff99; }
+.verdict-caution { background: #ffd93d44; color: #ffe066; }
+.verdict-bend { background: #ff990044; color: #ffb347; }
+.verdict-skip { background: #ff444444; color: #ff6b6b; }
 
 .card-score-breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 10px 0; }
 .score-bar { display: flex; align-items: center; gap: 6px; font-size: 11px; }

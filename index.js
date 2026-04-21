@@ -16,6 +16,7 @@ const { generateBends } = require('./src/bending/niche-bender');
 const { sendReportEmail } = require('./src/output/email-sender');
 const { scanCompetition } = require('./src/scanner/competition-scanner');
 const { loadNexlevCache, normalizeNexlevCandidate, mergeWithYouTubeResults } = require('./src/nexlev/discovery');
+const popping = require('./src/output/popping-section');
 
 // Competitor mining — optional
 let mineCompetitorAdjacent, applyCompetitorBoost, competitorChannels;
@@ -205,12 +206,34 @@ async function main() {
     disappeared,
   };
 
+  // === Load today's "popping off" channels (populated by scheduled task) ===
+  const poppingDir = path.join(__dirname, 'niche-research', 'popping-channels');
+  const poppingData = popping.loadPoppingChannels(poppingDir);
+  if (poppingData) {
+    console.log(`\nPopping-off longform cohort: ${poppingData.rankedChannels.length} channels (${poppingData.date})`);
+  }
+
   // === Generate markdown report ===
-  const report = generateReport(approved, rejected, reportMetadata);
+  let report = generateReport(approved, rejected, reportMetadata);
+  // Insert legend after the header block (before ESCALATED / TOP OPPORTUNITIES sections)
+  report = report.replace('\n---\n\n', `\n---\n${popping.renderLegendMarkdown()}---\n\n`);
+  if (poppingData) report += popping.renderMarkdown(poppingData);
   const reportPath = writeReport(report, config.output.dir);
 
   // === Generate HTML dashboard ===
-  const dashboardHtml = generateDashboard(approved, rejected, reportMetadata);
+  let dashboardHtml = generateDashboard(approved, rejected, reportMetadata);
+  {
+    // Always inject the legend at top of dashboard; popping section at bottom (dashboard isn't clipped).
+    const css = `<style>${popping.extraCss}</style>`;
+    const legend = popping.renderLegend();
+    dashboardHtml = dashboardHtml.replace('</head>', `${css}</head>`);
+    // Insert legend right after the </header> tag
+    dashboardHtml = dashboardHtml.replace('</header>', `</header>${legend}`);
+    if (poppingData) {
+      const section = popping.renderHtml(poppingData);
+      dashboardHtml = dashboardHtml.replace('</body>', `${section}</body>`);
+    }
+  }
   const dashboardDir = config.output.dashboardDir || path.join(__dirname, 'niche-research', 'dashboard');
   const dashboardPath = writeDashboard(dashboardHtml, dashboardDir);
 
@@ -219,7 +242,15 @@ async function main() {
 
   // === Email delivery (use dashboard HTML) ===
   try {
-    const emailHtml = generateEmailHtml(approved, rejected, reportMetadata);
+    let emailHtml = generateEmailHtml(approved, rejected, reportMetadata);
+    // Always inject popping CSS + legend. Popping section goes at TOP (after </header>) so it's
+    // above any Gmail [Message clipped] line (~102KB limit).
+    const css = `<style>${popping.extraCss}</style>`;
+    const legend = popping.renderLegend();
+    emailHtml = emailHtml.replace('</head>', `${css}</head>`);
+    const compactPopping = poppingData ? popping.renderHtmlCompact(poppingData) : '';
+    emailHtml = emailHtml.replace('</header>', `</header>${compactPopping}${legend}`);
+    console.log(`Email HTML size: ${emailHtml.length.toLocaleString()} bytes (Gmail clip threshold ~102,400)`);
     await sendReportEmail(emailHtml, config, true);
   } catch (err) {
     console.error(`Email failed (non-fatal): ${err.message}`);

@@ -1,2 +1,11 @@
 .env
 node_modules/
+
+# SSH keys — NEVER commit these
+*.key
+*.key.pub
+*.pem
+id_rsa*
+
+# Claude Code local settings
+.claude/settings.local.json

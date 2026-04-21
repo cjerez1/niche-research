@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 29,
+  "saturationLevel": "Moderate",
+  "directHits": 29,
+  "directHitLevel": "High",
+  "topVideoViews": 1149,
+  "topVideo": {
+    "title": "Top 3 Military Motorcycles – Steel Warhorses of the Battlefield",
+    "channelTitle": "War path",
+    "views": 1149,
+    "publishedAt": "2026-04-11T01:52:00Z",
+    "videoId": "tTZRLx3k2kg"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 0,
+    "10k_100k": 0,
+    "1k_10k": 7,
+    "under1k": 22
+  },
+  "topCompetitors": [
+    {
+      "title": "Army History",
+      "subscribers": 9370,
+      "totalViews": 777222,
+      "videoCount": 65,
+      "ageDays": 374
+    },
+    {
+      "title": "H-Criminal Records ",
+      "subscribers": 6890,
+      "totalViews": 836414,
+      "videoCount": 105,
+      "ageDays": 733
+    },
+    {
+      "title": "Era Epics",
+      "subscribers": 1520,
+      "totalViews": 331320,
+      "videoCount": 356,
+      "ageDays": 923
+    },
+    {
+      "title": "Sach story",
+      "subscribers": 1510,
+      "totalViews": 220692,
+      "videoCount": 112,
+      "ageDays": 181
+    },
+    {
+      "title": "Grand Lines",
+      "subscribers": 1350,
+      "totalViews": 83010,
+      "videoCount": 187,
+      "ageDays": 2213
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "Top 3 Military Motorcycles – Steel Warhorses of the Battlefield",
+      "channelTitle": "War path",
+      "views": 1149,
+      "publishedAt": "2026-04-11T01:52:00Z",
+      "videoId": "tTZRLx3k2kg"
+    },
+    {
+      "title": "The Gruesome Battlefield Secrets Archaeologists Dug Up at Little Bighorn",
+      "channelTitle": "History Aftermath",
+      "views": 258,
+      "publishedAt": "2026-04-07T17:07:45Z",
+      "videoId": "rdPSs-62XRU"
+    },
+    {
+      "title": "1 U.S. Marine vs 2,000 Japanese Soldiers #HistoryChannel #Storytelling #Documentary #Battlefield",
+      "channelTitle": "Insider Reality",
+      "views": 107,
+      "publishedAt": "2026-03-23T18:18:35Z",
+      "videoId": "2byW5yBi_NE"
+    },
+    {
+      "title": "What Happened When a Camp Commander Ordered Patton’s Men to Salute | Battles of the Century",
+      "channelTitle": "Battles Of the Century",
+      "views": 92,
+      "publishedAt": "2026-04-02T08:09:43Z",
+      "videoId": "ZyDTyuo7u_8"
+    },
+    {
+      "title": "I Ranked All the Battles of Ancient Greece | FULL DOCUMENTARY ANCIENT GREECE",
+      "channelTitle": "Daphne",
+      "views": 73,
+      "publishedAt": "2026-04-06T19:42:31Z",
+      "videoId": "eNBWPflLudg"
+    }
+  ],
+  "avgAge": 784,
+  "windowDays": 30,
+  "nicheSlug": "history-of-battlefields",
+  "cachedAt": "2026-04-21T00:18:14.492Z"
+}

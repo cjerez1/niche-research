@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-20",
+  "lastUpdated": "2026-04-21",
   "channels": {
     "UClXLMgQJAxWrKJC8tMQaKbg": {
       "channelTitle": "The DNA Archive",
@@ -21,30 +21,6 @@
           "score": 66,
           "subscribers": 3670,
           "avgViews": 25120
-        },
-        {
-          "date": "2026-04-17",
-          "score": 66,
-          "subscribers": 3810,
-          "avgViews": 26016
-        },
-        {
-          "date": "2026-04-18",
-          "score": 66,
-          "subscribers": 3930,
-          "avgViews": 26508
-        },
-        {
-          "date": "2026-04-19",
-          "score": 66,
-          "subscribers": 4030,
-          "avgViews": 26719
-        },
-        {
-          "date": "2026-04-20",
-          "score": 66,
-          "subscribers": 4100,
-          "avgViews": 26896
         }
       ]
     },
@@ -68,30 +44,6 @@
           "score": 74,
           "subscribers": 2300,
           "avgViews": 22309
-        },
-        {
-          "date": "2026-04-17",
-          "score": 74,
-          "subscribers": 2310,
-          "avgViews": 21845
-        },
-        {
-          "date": "2026-04-18",
-          "score": 74,
-          "subscribers": 2310,
-          "avgViews": 21335
-        },
-        {
-          "date": "2026-04-19",
-          "score": 71,
-          "subscribers": 2320,
-          "avgViews": 20826
-        },
-        {
-          "date": "2026-04-20",
-          "score": 71,
-          "subscribers": 2320,
-          "avgViews": 20324
         }
       ]
     },
@@ -126,30 +78,6 @@
           "score": 70,
           "subscribers": 60,
           "avgViews": 1392
-        },
-        {
-          "date": "2026-04-17",
-          "score": 67,
-          "subscribers": 63,
-          "avgViews": 1465
-        },
-        {
-          "date": "2026-04-18",
-          "score": 67,
-          "subscribers": 63,
-          "avgViews": 1448
-        },
-        {
-          "date": "2026-04-19",
-          "score": 70,
-          "subscribers": 65,
-          "avgViews": 1504
-        },
-        {
-          "date": "2026-04-20",
-          "score": 70,
-          "subscribers": 69,
-          "avgViews": 1547
         }
       ]
     },
@@ -173,24 +101,6 @@
           "score": 61,
           "subscribers": 8200,
           "avgViews": 38301
-        },
-        {
-          "date": "2026-04-17",
-          "score": 61,
-          "subscribers": 8250,
-          "avgViews": 37402
-        },
-        {
-          "date": "2026-04-18",
-          "score": 59,
-          "subscribers": 8280,
-          "avgViews": 36509
-        },
-        {
-          "date": "2026-04-19",
-          "score": 59,
-          "subscribers": 8310,
-          "avgViews": 35657
         }
       ]
     },
@@ -208,30 +118,6 @@
           "score": 66,
           "subscribers": 412,
           "avgViews": 619
-        },
-        {
-          "date": "2026-04-17",
-          "score": 64,
-          "subscribers": 413,
-          "avgViews": 621
-        },
-        {
-          "date": "2026-04-18",
-          "score": 64,
-          "subscribers": 415,
-          "avgViews": 622
-        },
-        {
-          "date": "2026-04-19",
-          "score": 64,
-          "subscribers": 414,
-          "avgViews": 622
-        },
-        {
-          "date": "2026-04-20",
-          "score": 61,
-          "subscribers": 414,
-          "avgViews": 622
         }
       ]
     },
@@ -249,24 +135,6 @@
           "score": 63,
           "subscribers": 3070,
           "avgViews": 9064
-        },
-        {
-          "date": "2026-04-18",
-          "score": 63,
-          "subscribers": 3360,
-          "avgViews": 9677
-        },
-        {
-          "date": "2026-04-19",
-          "score": 63,
-          "subscribers": 3470,
-          "avgViews": 10100
-        },
-        {
-          "date": "2026-04-20",
-          "score": 66,
-          "subscribers": 3580,
-          "avgViews": 10342
         }
       ]
     },
@@ -301,6 +169,12 @@
           "score": 75,
           "subscribers": 1890,
           "avgViews": 54614
+        },
+        {
+          "date": "2026-04-21",
+          "score": 76,
+          "subscribers": 2680,
+          "avgViews": 69660
         }
       ]
     },
@@ -326,28 +200,16 @@
           "avgViews": 27166.64
         },
         {
-          "date": "2026-04-17",
-          "score": 68,
-          "subscribers": 6300,
-          "avgViews": 28674
-        },
-        {
           "date": "2026-04-18",
           "score": 68,
-          "subscribers": 7660,
-          "avgViews": 34841
+          "subscribers": 7320,
+          "avgViews": 32565
         },
         {
-          "date": "2026-04-19",
-          "score": 68,
-          "subscribers": 8750,
-          "avgViews": 42256
-        },
-        {
-          "date": "2026-04-20",
+          "date": "2026-04-21",
           "score": 72,
-          "subscribers": 9360,
-          "avgViews": 98063
+          "subscribers": 9630,
+          "avgViews": 104441
         }
       ]
     },
@@ -367,28 +229,16 @@
           "avgViews": 43009
         },
         {
-          "date": "2026-04-17",
-          "score": 71,
-          "subscribers": 1190,
-          "avgViews": 43582
-        },
-        {
           "date": "2026-04-18",
           "score": 71,
           "subscribers": 1200,
-          "avgViews": 47204
+          "avgViews": 46756
         },
         {
-          "date": "2026-04-19",
+          "date": "2026-04-21",
           "score": 71,
-          "subscribers": 1230,
-          "avgViews": 48810
-        },
-        {
-          "date": "2026-04-20",
-          "score": 71,
-          "subscribers": 1260,
-          "avgViews": 51211
+          "subscribers": 1270,
+          "avgViews": 53431
         }
       ]
     },
@@ -417,30 +267,6 @@
           "score": 64,
           "subscribers": 802,
           "avgViews": 13988
-        },
-        {
-          "date": "2026-04-17",
-          "score": 64,
-          "subscribers": 805,
-          "avgViews": 14114
-        },
-        {
-          "date": "2026-04-18",
-          "score": 66,
-          "subscribers": 816,
-          "avgViews": 13764
-        },
-        {
-          "date": "2026-04-19",
-          "score": 64,
-          "subscribers": 828,
-          "avgViews": 13343
-        },
-        {
-          "date": "2026-04-20",
-          "score": 66,
-          "subscribers": 837,
-          "avgViews": 13084
         }
       ]
     },
@@ -458,30 +284,6 @@
           "score": 64,
           "subscribers": 1250,
           "avgViews": 14541
-        },
-        {
-          "date": "2026-04-17",
-          "score": 64,
-          "subscribers": 1260,
-          "avgViews": 13873
-        },
-        {
-          "date": "2026-04-18",
-          "score": 64,
-          "subscribers": 1260,
-          "avgViews": 14003
-        },
-        {
-          "date": "2026-04-19",
-          "score": 64,
-          "subscribers": 1270,
-          "avgViews": 14102
-        },
-        {
-          "date": "2026-04-20",
-          "score": 64,
-          "subscribers": 1270,
-          "avgViews": 14205
         }
       ]
     },
@@ -499,30 +301,6 @@
           "score": 55,
           "subscribers": 451,
           "avgViews": 745
-        },
-        {
-          "date": "2026-04-17",
-          "score": 55,
-          "subscribers": 498,
-          "avgViews": 754
-        },
-        {
-          "date": "2026-04-18",
-          "score": 55,
-          "subscribers": 527,
-          "avgViews": 760
-        },
-        {
-          "date": "2026-04-19",
-          "score": 55,
-          "subscribers": 559,
-          "avgViews": 766
-        },
-        {
-          "date": "2026-04-20",
-          "score": 55,
-          "subscribers": 600,
-          "avgViews": 746
         }
       ]
     },
@@ -542,26 +320,14 @@
           "avgViews": 1856
         },
         {
-          "date": "2026-04-17",
-          "score": 59,
-          "subscribers": 1780,
-          "avgViews": 1844
-        },
-        {
           "date": "2026-04-18",
-          "score": 59,
+          "score": 67,
           "subscribers": 1800,
-          "avgViews": 1896
+          "avgViews": 1888
         },
         {
-          "date": "2026-04-19",
-          "score": 59,
-          "subscribers": 1830,
-          "avgViews": 1931
-        },
-        {
-          "date": "2026-04-20",
-          "score": 59,
+          "date": "2026-04-21",
+          "score": 67,
           "subscribers": 1850,
           "avgViews": 1979
         }
@@ -808,28 +574,16 @@
           "avgViews": 646
         },
         {
-          "date": "2026-04-17",
-          "score": 68,
-          "subscribers": 17,
-          "avgViews": 690
-        },
-        {
           "date": "2026-04-18",
           "score": 68,
           "subscribers": 17,
           "avgViews": 692
         },
         {
-          "date": "2026-04-19",
-          "score": 68,
+          "date": "2026-04-21",
+          "score": 61,
           "subscribers": 19,
-          "avgViews": 768
-        },
-        {
-          "date": "2026-04-20",
-          "score": 68,
-          "subscribers": 19,
-          "avgViews": 769
+          "avgViews": 711
         }
       ]
     },
@@ -1493,284 +1247,20 @@
         }
       ]
     },
-    "UCufz7kPxN5SffVsDhTap-xg": {
-      "channelTitle": "Atlas News Report",
-      "snapshots": [
-        {
-          "date": "2026-04-17",
-          "score": 72,
-          "subscribers": 513,
-          "avgViews": 1407
-        },
-        {
-          "date": "2026-04-18",
-          "score": 72,
-          "subscribers": 519,
-          "avgViews": 1427
-        },
-        {
-          "date": "2026-04-19",
-          "score": 72,
-          "subscribers": 520,
-          "avgViews": 1434
-        },
-        {
-          "date": "2026-04-20",
-          "score": 72,
-          "subscribers": 519,
-          "avgViews": 1395
-        }
-      ]
-    },
     "UCbvoU14rQ3EJmA6JpEYG3mQ": {
       "channelTitle": "The Lustre Archive",
       "snapshots": [
         {
-          "date": "2026-04-17",
-          "score": 71,
-          "subscribers": 2730,
-          "avgViews": 39195
-        },
-        {
           "date": "2026-04-18",
           "score": 71,
           "subscribers": 2760,
-          "avgViews": 39900
+          "avgViews": 39785
         },
         {
-          "date": "2026-04-19",
+          "date": "2026-04-21",
           "score": 71,
-          "subscribers": 2780,
-          "avgViews": 35314
-        },
-        {
-          "date": "2026-04-20",
-          "score": 71,
-          "subscribers": 2810,
-          "avgViews": 35865
-        }
-      ]
-    },
-    "UC7r1fU5YO9A6MVTB-94KAzQ": {
-      "channelTitle": "The Global Hindu",
-      "snapshots": [
-        {
-          "date": "2026-04-17",
-          "score": 69,
-          "subscribers": 899,
-          "avgViews": 3701
-        },
-        {
-          "date": "2026-04-18",
-          "score": 69,
-          "subscribers": 927,
-          "avgViews": 3769
-        },
-        {
-          "date": "2026-04-19",
-          "score": 69,
-          "subscribers": 972,
-          "avgViews": 3809
-        },
-        {
-          "date": "2026-04-20",
-          "score": 69,
-          "subscribers": 1010,
-          "avgViews": 3869
-        }
-      ]
-    },
-    "UCDR6aTCctLO9uTQqJyQkjBg": {
-      "channelTitle": "Dr. Favor Adeyemi",
-      "snapshots": [
-        {
-          "date": "2026-04-17",
-          "score": 67,
-          "subscribers": 8290,
-          "avgViews": 44805
-        }
-      ]
-    },
-    "UCNKfcLUNDkwjSYJaAxj9QJw": {
-      "channelTitle": "Whatsanametravel",
-      "snapshots": [
-        {
-          "date": "2026-04-17",
-          "score": 64,
-          "subscribers": 1040,
-          "avgViews": 1436
-        },
-        {
-          "date": "2026-04-18",
-          "score": 64,
-          "subscribers": 1050,
-          "avgViews": 1447
-        },
-        {
-          "date": "2026-04-19",
-          "score": 64,
-          "subscribers": 1060,
-          "avgViews": 1449
-        },
-        {
-          "date": "2026-04-20",
-          "score": 64,
-          "subscribers": 1060,
-          "avgViews": 1458
-        }
-      ]
-    },
-    "UCASb-UiFkQJ7h0DegcPtVxw": {
-      "channelTitle": "firstza startail",
-      "snapshots": [
-        {
-          "date": "2026-04-17",
-          "score": 63,
-          "subscribers": 271,
-          "avgViews": 1528
-        },
-        {
-          "date": "2026-04-19",
-          "score": 58,
-          "subscribers": 317,
-          "avgViews": 1587
-        },
-        {
-          "date": "2026-04-20",
-          "score": 60,
-          "subscribers": 337,
-          "avgViews": 1740
-        }
-      ]
-    },
-    "UCnvRaC7eO1Ffy7S9FW0Nlqw": {
-      "channelTitle": "Dr. Amara Urology Insights",
-      "snapshots": [
-        {
-          "date": "2026-04-17",
-          "score": 63,
-          "subscribers": 699,
-          "avgViews": 1671
-        },
-        {
-          "date": "2026-04-18",
-          "score": 63,
-          "subscribers": 700,
-          "avgViews": 1673
-        },
-        {
-          "date": "2026-04-19",
-          "score": 63,
-          "subscribers": 701,
-          "avgViews": 1674
-        },
-        {
-          "date": "2026-04-20",
-          "score": 63,
-          "subscribers": 701,
-          "avgViews": 1629
-        }
-      ]
-    },
-    "UCkoYPEbSyu2RB5EUpMBmhaw": {
-      "channelTitle": "Wildcrafted Homes",
-      "snapshots": [
-        {
-          "date": "2026-04-17",
-          "score": 62,
-          "subscribers": 9770,
-          "avgViews": 209735
-        }
-      ]
-    },
-    "UCGDFXVDju_78qElyndM964w": {
-      "channelTitle": "Hidden History Daily",
-      "snapshots": [
-        {
-          "date": "2026-04-17",
-          "score": 61,
-          "subscribers": 1030,
-          "avgViews": 819
-        },
-        {
-          "date": "2026-04-18",
-          "score": 61,
-          "subscribers": 1030,
-          "avgViews": 820
-        }
-      ]
-    },
-    "UCKVOLS_DoQK3Ui3W9qBJkMA": {
-      "channelTitle": "Rumi Battle Hunter",
-      "snapshots": [
-        {
-          "date": "2026-04-17",
-          "score": 57,
-          "subscribers": 2100,
-          "avgViews": 47655
-        }
-      ]
-    },
-    "UCkJhF4q0DTEXsq9aMSVTx_A": {
-      "channelTitle": "Modern Heritage ",
-      "snapshots": [
-        {
-          "date": "2026-04-17",
-          "score": 53,
-          "subscribers": 1730,
-          "avgViews": 24974
-        },
-        {
-          "date": "2026-04-18",
-          "score": 59,
-          "subscribers": 1770,
-          "avgViews": 25761
-        },
-        {
-          "date": "2026-04-19",
-          "score": 59,
-          "subscribers": 1800,
-          "avgViews": 26422
-        },
-        {
-          "date": "2026-04-20",
-          "score": 59,
-          "subscribers": 1820,
-          "avgViews": 26987
-        }
-      ]
-    },
-    "UCtPn_tPkAGLBLAlvPw7Hl7Q": {
-      "channelTitle": "Reforge Workshop",
-      "snapshots": [
-        {
-          "date": "2026-04-17",
-          "score": 53,
-          "subscribers": 2940,
-          "avgViews": 89115
-        }
-      ]
-    },
-    "UC1kgclUaX83CgxOYHmrZvoA": {
-      "channelTitle": "fact seeker",
-      "snapshots": [
-        {
-          "date": "2026-04-18",
-          "score": 74,
-          "subscribers": 616,
-          "avgViews": 3388
-        },
-        {
-          "date": "2026-04-19",
-          "score": 76,
-          "subscribers": 653,
-          "avgViews": 3290
-        },
-        {
-          "date": "2026-04-20",
-          "score": 76,
-          "subscribers": 674,
-          "avgViews": 3378
+          "subscribers": 2840,
+          "avgViews": 32163
         }
       ]
     },
@@ -1779,54 +1269,15 @@
       "snapshots": [
         {
           "date": "2026-04-18",
+          "score": 67,
+          "subscribers": 191,
+          "avgViews": 5128
+        },
+        {
+          "date": "2026-04-21",
           "score": 65,
-          "subscribers": 195,
-          "avgViews": 5774
-        },
-        {
-          "date": "2026-04-19",
-          "score": 64,
-          "subscribers": 246,
-          "avgViews": 8383
-        },
-        {
-          "date": "2026-04-20",
-          "score": 57,
-          "subscribers": 309,
-          "avgViews": 10253
-        }
-      ]
-    },
-    "UCT22GCZ9UmUPBDapLuUS4SA": {
-      "channelTitle": "Dr. Henry Golfinos",
-      "snapshots": [
-        {
-          "date": "2026-04-19",
-          "score": 69,
-          "subscribers": 162,
-          "avgViews": 622
-        }
-      ]
-    },
-    "UCualeKYU1rTXc7dHet_fDow": {
-      "channelTitle": "POV; This Is You",
-      "snapshots": [
-        {
-          "date": "2026-04-19",
-          "score": 61,
-          "subscribers": 4760,
-          "avgViews": 13389
-        }
-      ]
-    },
-    "UCOITbOof_A2RFP5D1oHPJFA": {
-      "channelTitle": "Steel & Speed Restoration",
-      "snapshots": [
-        {
-          "date": "2026-04-20",
-          "score": 69,
-          "subscribers": 352,
-          "avgViews": 9734
+          "subscribers": 345,
+          "avgViews": 11536
         }
       ]
     },
@@ -1834,10 +1285,43 @@
       "channelTitle": "Dr Aiden Core | Senior Health ",
       "snapshots": [
         {
-          "date": "2026-04-20",
-          "score": 57,
-          "subscribers": 2030,
-          "avgViews": 1546
+          "date": "2026-04-18",
+          "score": 62,
+          "subscribers": 1430,
+          "avgViews": 934
+        }
+      ]
+    },
+    "UCT22GCZ9UmUPBDapLuUS4SA": {
+      "channelTitle": "Dr. Henry Golfinos",
+      "snapshots": [
+        {
+          "date": "2026-04-21",
+          "score": 73,
+          "subscribers": 227,
+          "avgViews": 813
+        }
+      ]
+    },
+    "UC20BHBNmP-pkKmASU0Rfosg": {
+      "channelTitle": "Forbidden Photos",
+      "snapshots": [
+        {
+          "date": "2026-04-21",
+          "score": 72,
+          "subscribers": 37,
+          "avgViews": 2379
+        }
+      ]
+    },
+    "UCASb-UiFkQJ7h0DegcPtVxw": {
+      "channelTitle": "firstza startail",
+      "snapshots": [
+        {
+          "date": "2026-04-21",
+          "score": 58,
+          "subscribers": 348,
+          "avgViews": 1821
         }
       ]
     }

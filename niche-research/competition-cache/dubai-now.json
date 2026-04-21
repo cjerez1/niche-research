@@ -1,50 +1,100 @@
 {
-  "totalCompetitors": 50,
-  "saturationLevel": "Moderate",
+  "totalCompetitors": 14,
+  "saturationLevel": "Emerging",
+  "directHits": 21,
+  "directHitLevel": "High",
+  "topVideoViews": 410140,
+  "topVideo": {
+    "title": "How Dubai’s Safe-Haven Status Is Being Tested",
+    "channelTitle": "Bloomberg Originals",
+    "views": 410140,
+    "publishedAt": "2026-03-20T08:00:44Z",
+    "videoId": "gsQg-w7V3Yo"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
   "tiers": {
-    "over100k": 22,
-    "10k_100k": 10,
-    "1k_10k": 13,
-    "under1k": 5
+    "over100k": 2,
+    "10k_100k": 2,
+    "1k_10k": 4,
+    "under1k": 6
   },
   "topCompetitors": [
     {
-      "title": "GMA Public Affairs",
-      "subscribers": 28000000,
-      "totalViews": 19507453575,
-      "videoCount": 105596,
-      "ageDays": 6094
+      "title": "Bloomberg Originals",
+      "subscribers": 5000000,
+      "totalViews": 1145349551,
+      "videoCount": 49381,
+      "ageDays": 7344
     },
     {
-      "title": "The Infographics Show",
-      "subscribers": 15400000,
-      "totalViews": 6756055824,
-      "videoCount": 6126,
-      "ageDays": 5526
+      "title": "Global Discovery Documentary",
+      "subscribers": 115000,
+      "totalViews": 32390059,
+      "videoCount": 780,
+      "ageDays": 561
     },
     {
-      "title": "Budha Subba Digital",
-      "subscribers": 8650000,
-      "totalViews": 3102042422,
-      "videoCount": 14937,
-      "ageDays": 5155
+      "title": "Inside Europe Today",
+      "subscribers": 19200,
+      "totalViews": 2883814,
+      "videoCount": 101,
+      "ageDays": 255
     },
     {
-      "title": "Nitish Rajput",
-      "subscribers": 8300000,
-      "totalViews": 935673036,
-      "videoCount": 110,
-      "ageDays": 2176
+      "title": "News Radar",
+      "subscribers": 16400,
+      "totalViews": 2449331,
+      "videoCount": 27,
+      "ageDays": 530
     },
     {
-      "title": "60 Minutes Australia",
-      "subscribers": 6590000,
-      "totalViews": 2696391154,
-      "videoCount": 6012,
-      "ageDays": 4844
+      "title": "Global Decline Explained",
+      "subscribers": 4880,
+      "totalViews": 1406610,
+      "videoCount": 45,
+      "ageDays": 210
     }
   ],
-  "avgAge": 2458,
+  "directHitVideos": [
+    {
+      "title": "How Dubai’s Safe-Haven Status Is Being Tested",
+      "channelTitle": "Bloomberg Originals",
+      "views": 410140,
+      "publishedAt": "2026-03-20T08:00:44Z",
+      "videoId": "gsQg-w7V3Yo"
+    },
+    {
+      "title": "Airports Shut Down, Dubai Tourism Collapsing — What’s Really Happening in This “Sin City”?",
+      "channelTitle": "Global Decline Explained",
+      "views": 272598,
+      "publishedAt": "2026-03-23T16:29:10Z",
+      "videoId": "9C58khg4otw"
+    },
+    {
+      "title": "Abandoned Luxury Yachts, Empty Marinas — Dubai Is COLLAPSING Fast!",
+      "channelTitle": "Behind UK",
+      "views": 237264,
+      "publishedAt": "2026-04-02T09:00:28Z",
+      "videoId": "Gh5tQ6e11y0"
+    },
+    {
+      "title": "The FALL of Dubai - IS THE END HERE? The Horrifying Truth Behind Sin City",
+      "channelTitle": "Dubai Secrets",
+      "views": 234237,
+      "publishedAt": "2026-03-28T19:30:00Z",
+      "videoId": "yCfMcEc_MR0"
+    },
+    {
+      "title": "Closed Hotels, Empty Airports — Is Dubai Tourism Dying in 2026?",
+      "channelTitle": "Inside Europe Today",
+      "views": 218704,
+      "publishedAt": "2026-03-23T14:11:05Z",
+      "videoId": "VE3STfkxc4I"
+    }
+  ],
+  "avgAge": 838,
+  "windowDays": 30,
   "nicheSlug": "dubai-now",
-  "cachedAt": "2026-04-15T10:21:08.091Z"
+  "cachedAt": "2026-04-18T04:41:09.340Z"
 }

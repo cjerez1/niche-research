@@ -22,9 +22,15 @@ async function scanCompetition(youtube, candidate, config) {
   const queries = generateNicheQueries(candidate);
   let quotaUsed = 0;
 
-  // Search for competitors
+  // Per SOP: filter to last 30 days so "direct hits" count is meaningful.
+  const windowDays = config.competition.directHitWindowDays || 30;
+  const publishedAfter = new Date(Date.now() - windowDays * 86400000).toISOString();
+
+  // Search for competitors — collect both channels AND videos (for direct-hit count)
   const competitorChannelIds = new Set();
   const channelVideoCount = new Map(); // track how many videos per channel appear
+  const directHitVideoIds = new Set(); // unique videos on this angle in the window
+  const directHitVideos = []; // {videoId, title, channelId, channelTitle, publishedAt}
 
   for (const query of queries.slice(0, config.competition.queriesPerNiche)) {
     try {
@@ -36,13 +42,25 @@ async function scanCompetition(youtube, candidate, config) {
         maxResults: 50,
         videoDuration: 'medium',
         relevanceLanguage: 'en',
+        publishedAfter,
       });
       quotaUsed += 100;
 
       for (const item of (response.data.items || [])) {
         const chId = item.snippet.channelId;
+        const vidId = item.id?.videoId;
         competitorChannelIds.add(chId);
         channelVideoCount.set(chId, (channelVideoCount.get(chId) || 0) + 1);
+        if (vidId && !directHitVideoIds.has(vidId)) {
+          directHitVideoIds.add(vidId);
+          directHitVideos.push({
+            videoId: vidId,
+            title: item.snippet.title,
+            channelId: chId,
+            channelTitle: item.snippet.channelTitle,
+            publishedAt: item.snippet.publishedAt,
+          });
+        }
       }
 
       await setTimeout(100);
@@ -55,6 +73,35 @@ async function scanCompetition(youtube, candidate, config) {
     }
   }
 
+  // Remove the candidate's own videos from direct hits
+  const directHitsFiltered = directHitVideos.filter(v => v.channelId !== candidate.channelId);
+
+  // Fetch view counts for the top few direct hits to benchmark demand (SOP step 3)
+  const topHitIds = directHitsFiltered.slice(0, 10).map(v => v.videoId);
+  const videoViewsMap = new Map();
+  if (topHitIds.length > 0) {
+    try {
+      const vidResp = await youtube.videos.list({
+        part: 'statistics',
+        id: topHitIds.join(','),
+      });
+      quotaUsed += 1;
+      for (const v of (vidResp.data.items || [])) {
+        videoViewsMap.set(v.id, parseInt(v.statistics.viewCount) || 0);
+      }
+    } catch (err) {
+      console.error(`  Error fetching direct-hit video stats: ${err.message}`);
+    }
+  }
+  for (const v of directHitsFiltered) {
+    v.views = videoViewsMap.get(v.videoId) || 0;
+  }
+  directHitsFiltered.sort((a, b) => (b.views || 0) - (a.views || 0));
+
+  const directHits = directHitsFiltered.length;
+  const topVideo = directHitsFiltered[0] || null;
+  const topVideoViews = topVideo ? topVideo.views : 0;
+
   // Remove the candidate's own channel
   competitorChannelIds.delete(candidate.channelId);
 
@@ -62,9 +109,17 @@ async function scanCompetition(youtube, candidate, config) {
     const result = {
       totalCompetitors: 0,
       saturationLevel: 'Wide Open',
+      directHits: 0,
+      directHitLevel: 'Clear',
+      topVideoViews: 0,
+      topVideo: null,
+      verdict: 'GO',
+      verdictReason: 'No direct hits in last 30 days — first mover advantage',
       tiers: { over100k: 0, '10k_100k': 0, '1k_10k': 0, under1k: 0 },
       topCompetitors: [],
+      directHitVideos: [],
       avgAge: 0,
+      windowDays,
       nicheSlug,
       quotaUsed,
       fromCache: false,
@@ -146,12 +201,42 @@ async function scanCompetition(youtube, candidate, config) {
     ? Math.round(channels.reduce((sum, c) => sum + c.ageDays, 0) / channels.length)
     : 0;
 
+  // SOP direct-hit saturation tier
+  let directHitLevel;
+  if (directHits === 0) directHitLevel = 'Clear';
+  else if (directHits <= 2) directHitLevel = 'Low';
+  else if (directHits <= 5) directHitLevel = 'Medium';
+  else directHitLevel = 'High';
+
+  // SOP verdict matrix
+  const verdictInfo = computeVerdict(directHitLevel, topVideoViews);
+
   const result = {
     totalCompetitors: total,
     saturationLevel,
+    directHits,
+    directHitLevel,
+    topVideoViews,
+    topVideo: topVideo ? {
+      title: topVideo.title,
+      channelTitle: topVideo.channelTitle,
+      views: topVideo.views,
+      publishedAt: topVideo.publishedAt,
+      videoId: topVideo.videoId,
+    } : null,
+    verdict: verdictInfo.verdict,
+    verdictReason: verdictInfo.reason,
     tiers,
     topCompetitors,
+    directHitVideos: directHitsFiltered.slice(0, 5).map(v => ({
+      title: v.title,
+      channelTitle: v.channelTitle,
+      views: v.views || 0,
+      publishedAt: v.publishedAt,
+      videoId: v.videoId,
+    })),
     avgAge,
+    windowDays,
     nicheSlug,
     quotaUsed,
     fromCache: false,
@@ -159,6 +244,25 @@ async function scanCompetition(youtube, candidate, config) {
 
   saveCachedCompetition(result, nicheSlug, cacheDir);
   return result;
+}
+
+/**
+ * SOP verdict matrix — combines direct-hit saturation with top-competitor view demand.
+ */
+function computeVerdict(directHitLevel, topVideoViews) {
+  if (directHitLevel === 'Clear') {
+    return { verdict: 'GO', reason: 'No direct hits in last 30 days — first mover advantage' };
+  }
+  if (directHitLevel === 'Low') {
+    if (topVideoViews >= 10000) return { verdict: 'GO', reason: 'Validated demand, low competition' };
+    return { verdict: 'CAUTION', reason: 'Low competition but also low demand' };
+  }
+  if (directHitLevel === 'Medium') {
+    if (topVideoViews >= 50000) return { verdict: 'BEND', reason: 'Demand proven — differentiate the angle' };
+    return { verdict: 'CAUTION', reason: 'Moderate crowding without strong proof of demand' };
+  }
+  // High
+  return { verdict: 'SKIP', reason: 'Too crowded — bend harder or move on' };
 }
 
 /**
@@ -255,6 +359,8 @@ function loadCachedCompetition(nicheSlug, cacheDir, ttlDays) {
     const ageDays = ageMs / 86400000;
 
     if (ageDays > ttlDays) return null;
+    // Invalidate pre-SOP cache entries (missing verdict/directHits fields)
+    if (typeof data.directHits !== 'number' || !data.verdict) return null;
     return data;
   } catch {
     return null;

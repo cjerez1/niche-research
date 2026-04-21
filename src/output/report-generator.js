@@ -136,7 +136,17 @@ function formatCandidate(c, isEscalated, historyTags) {
   // Competition landscape
   if (c.competitionLandscape) {
     const cl = c.competitionLandscape;
-    md += `**Competition Landscape:** ${cl.saturationLevel} (${cl.totalCompetitors} competitors found)\n`;
+    if (cl.verdict) {
+      // SOP verdict supersedes the legacy saturationLevel label — only show SOP line.
+      md += `**Saturation Check (SOP) — Verdict:** ${cl.verdict} — ${cl.verdictReason || ''}\n`;
+      md += `- Direct hits (${cl.windowDays || 30}d): ${cl.directHits} (${cl.directHitLevel})\n`;
+      if (cl.topVideo) {
+        md += `- Top competitor: ${cl.topVideo.title} — ${cl.topVideo.channelTitle} (${formatNumber(cl.topVideo.views)} views)\n`;
+      }
+    } else {
+      // No SOP verdict — fall back to legacy summary line.
+      md += `**Competition Landscape:** ${cl.saturationLevel} (${cl.totalCompetitors} competitors found)\n`;
+    }
     md += `- Tiers: ${cl.tiers.over100k} channels 100K+ | ${cl.tiers['10k_100k']} channels 10K-100K | ${cl.tiers['1k_10k']} channels 1K-10K | ${cl.tiers.under1k} channels <1K\n`;
     if (cl.topCompetitors.length > 0) {
       md += `- Top competitors: ${cl.topCompetitors.map(tc => `${tc.title} (${formatNumber(tc.subscribers)})`).join(', ')}\n`;

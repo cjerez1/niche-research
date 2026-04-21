@@ -1,50 +1,100 @@
 {
-  "totalCompetitors": 86,
+  "totalCompetitors": 91,
   "saturationLevel": "Crowded",
+  "directHits": 98,
+  "directHitLevel": "High",
+  "topVideoViews": 40660,
+  "topVideo": {
+    "title": "Stop Using These Lights on Your Interior Design Projects",
+    "channelTitle": "Delivered Lumens",
+    "views": 40660,
+    "publishedAt": "2026-03-31T21:42:23Z",
+    "videoId": "jdtj-Z0SagE"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
   "tiers": {
-    "over100k": 39,
-    "10k_100k": 21,
-    "1k_10k": 10,
-    "under1k": 16
+    "over100k": 10,
+    "10k_100k": 17,
+    "1k_10k": 20,
+    "under1k": 44
   },
   "topCompetitors": [
     {
-      "title": "Dr. Eric Berg DC",
-      "subscribers": 14600000,
-      "totalViews": 3418484153,
-      "videoCount": 5942,
-      "ageDays": 6355
+      "title": "SAMAA TV",
+      "subscribers": 14200000,
+      "totalViews": 8170015072,
+      "videoCount": 260446,
+      "ageDays": 5424
     },
     {
-      "title": "linguamarina",
-      "subscribers": 8840000,
-      "totalViews": 290717601,
-      "videoCount": 523,
-      "ageDays": 3955
+      "title": "Natural Cures",
+      "subscribers": 3650000,
+      "totalViews": 453466215,
+      "videoCount": 3138,
+      "ageDays": 3573
     },
     {
-      "title": "Fit Tuber",
-      "subscribers": 8210000,
-      "totalViews": 1109247676,
-      "videoCount": 660,
-      "ageDays": 3527
+      "title": "Fit Tak",
+      "subscribers": 2150000,
+      "totalViews": 286732337,
+      "videoCount": 4348,
+      "ageDays": 3169
     },
     {
-      "title": "Gravity Transformation - Fat Loss Experts",
-      "subscribers": 5930000,
-      "totalViews": 1027163342,
-      "videoCount": 615,
-      "ageDays": 5184
+      "title": "Britec09",
+      "subscribers": 899000,
+      "totalViews": 381794045,
+      "videoCount": 4073,
+      "ageDays": 6256
     },
     {
-      "title": "Sketch",
-      "subscribers": 5470000,
-      "totalViews": 2434974119,
-      "videoCount": 2136,
-      "ageDays": 3513
+      "title": "Pixelade",
+      "subscribers": 232000,
+      "totalViews": 85408271,
+      "videoCount": 2200,
+      "ageDays": 5089
     }
   ],
-  "avgAge": 1771,
+  "directHitVideos": [
+    {
+      "title": "Stop Using These Lights on Your Interior Design Projects",
+      "channelTitle": "Delivered Lumens",
+      "views": 40660,
+      "publishedAt": "2026-03-31T21:42:23Z",
+      "videoId": "jdtj-Z0SagE"
+    },
+    {
+      "title": "STOP Using These 10 BMW Features The WRONG Way — You&#39;re Damaging Your Car Without Knowing",
+      "channelTitle": "German Car Secrets",
+      "views": 32055,
+      "publishedAt": "2026-04-10T17:12:27Z",
+      "videoId": "n4QijxMke1k"
+    },
+    {
+      "title": "Stop Taking Fiber: This Flushes YEARS of Stuck Waste in Days",
+      "channelTitle": "Natural Cures",
+      "views": 26831,
+      "publishedAt": "2026-03-31T02:45:01Z",
+      "videoId": "6sbtj5jyqQ0"
+    },
+    {
+      "title": "Take Off, Take Up, Take Over &amp; Overtake (Stop Using Them Wrong!) | English Podcast",
+      "channelTitle": "Business English Desk",
+      "views": 23875,
+      "publishedAt": "2026-04-13T12:31:01Z",
+      "videoId": "e0iY7udEP_8"
+    },
+    {
+      "title": "Stop Using These Sims 4 Mod Tools IMMEDIATELY",
+      "channelTitle": "Pixelade",
+      "views": 19834,
+      "publishedAt": "2026-04-08T20:04:57Z",
+      "videoId": "3SVykwX9UR0"
+    }
+  ],
+  "avgAge": 1118,
+  "windowDays": 30,
   "nicheSlug": "dr-henry-golfinos",
-  "cachedAt": "2026-04-19T09:57:25.896Z"
+  "cachedAt": "2026-04-21T00:18:17.774Z"
 }

@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 28,
+  "saturationLevel": "Moderate",
+  "directHits": 50,
+  "directHitLevel": "High",
+  "topVideoViews": 12800,
+  "topVideo": {
+    "title": "📷 Rare Old Photos — What History Tried to Hide: 30s–70s Hidden Moments",
+    "channelTitle": "History Unseen",
+    "views": 12800,
+    "publishedAt": "2026-04-07T19:00:28Z",
+    "videoId": "c3oFpBlJIoM"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 0,
+    "10k_100k": 0,
+    "1k_10k": 12,
+    "under1k": 16
+  },
+  "topCompetitors": [
+    {
+      "title": "Rare History Vault",
+      "subscribers": 9210,
+      "totalViews": 4047263,
+      "videoCount": 377,
+      "ageDays": 493
+    },
+    {
+      "title": "Stories Behind Icons",
+      "subscribers": 5540,
+      "totalViews": 783614,
+      "videoCount": 201,
+      "ageDays": 727
+    },
+    {
+      "title": "LET'S WATCH HISTORY",
+      "subscribers": 5270,
+      "totalViews": 1988153,
+      "videoCount": 686,
+      "ageDays": 1444
+    },
+    {
+      "title": "Unseen History Photos",
+      "subscribers": 2670,
+      "totalViews": 1245975,
+      "videoCount": 133,
+      "ageDays": 254
+    },
+    {
+      "title": "Living History",
+      "subscribers": 1990,
+      "totalViews": 252150,
+      "videoCount": 49,
+      "ageDays": 170
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "📷 Rare Old Photos — What History Tried to Hide: 30s–70s Hidden Moments",
+      "channelTitle": "History Unseen",
+      "views": 12800,
+      "publishedAt": "2026-04-07T19:00:28Z",
+      "videoId": "c3oFpBlJIoM"
+    },
+    {
+      "title": "I Found the Private Stash of a 1940s Studio Head (Forbidden)",
+      "channelTitle": "Rare History Vault",
+      "views": 2072,
+      "publishedAt": "2026-03-27T20:00:00Z",
+      "videoId": "2ILjx4IAz28"
+    },
+    {
+      "title": "70 Rare Photos of the 1940s–1970s That &quot;Shouldn&#39;t Exist&quot;",
+      "channelTitle": "Rare History Vault",
+      "views": 1291,
+      "publishedAt": "2026-04-04T21:15:02Z",
+      "videoId": "q-5iE8lh-wc"
+    },
+    {
+      "title": "These Rare Historical Photos Shouldn’t Exist",
+      "channelTitle": "LET'S WATCH HISTORY",
+      "views": 630,
+      "publishedAt": "2026-03-29T22:00:19Z",
+      "videoId": "CCDhh7RcJNU"
+    },
+    {
+      "title": "Forbidden Hollywood Archive – 100 Rare Celebrity Photos Studios Tried to Hide",
+      "channelTitle": "Rare Old Photos",
+      "views": 138,
+      "publishedAt": "2026-03-25T13:37:47Z",
+      "videoId": "1jPytw6dFL8"
+    }
+  ],
+  "avgAge": 530,
+  "windowDays": 30,
+  "nicheSlug": "forbidden-photos",
+  "cachedAt": "2026-04-21T00:18:20.605Z"
+}

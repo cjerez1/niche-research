@@ -1,50 +1,100 @@
 {
-  "totalCompetitors": 48,
+  "totalCompetitors": 47,
   "saturationLevel": "Moderate",
+  "directHits": 50,
+  "directHitLevel": "High",
+  "topVideoViews": 54860,
+  "topVideo": {
+    "title": "FRICTION MAXXING: The Ultimate 7 Day Challange 🔥 | Rewirs",
+    "channelTitle": "Rewirs",
+    "views": 54860,
+    "publishedAt": "2026-03-29T07:50:00Z",
+    "videoId": "XTeAM5MNkSw"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
   "tiers": {
-    "over100k": 35,
-    "10k_100k": 10,
-    "1k_10k": 1,
-    "under1k": 2
+    "over100k": 4,
+    "10k_100k": 7,
+    "1k_10k": 9,
+    "under1k": 27
   },
   "topCompetitors": [
     {
-      "title": "TEDx Talks",
-      "subscribers": 44300000,
-      "totalViews": 8877923754,
-      "videoCount": 258616,
-      "ageDays": 6141
+      "title": "Rewirs",
+      "subscribers": 2870000,
+      "totalViews": 291207872,
+      "videoCount": 376,
+      "ageDays": 2810
     },
     {
-      "title": "TED-Ed",
-      "subscribers": 22600000,
-      "totalViews": 4583495855,
-      "videoCount": 2345,
-      "ageDays": 5525
+      "title": "Dr Sweta Adatia",
+      "subscribers": 327000,
+      "totalViews": 15984987,
+      "videoCount": 314,
+      "ageDays": 1631
     },
     {
-      "title": "BBC News",
-      "subscribers": 19600000,
-      "totalViews": 6862541735,
-      "videoCount": 29692,
-      "ageDays": 7314
+      "title": " Inspired by Deep ",
+      "subscribers": 113000,
+      "totalViews": 14028238,
+      "videoCount": 147,
+      "ageDays": 782
     },
     {
-      "title": "SmarterEveryDay",
-      "subscribers": 11800000,
-      "totalViews": 1270044274,
-      "videoCount": 395,
-      "ageDays": 7318
+      "title": "Wisdom Islands ",
+      "subscribers": 111000,
+      "totalViews": 4005451,
+      "videoCount": 88,
+      "ageDays": 700
     },
     {
-      "title": "ExpHub - Prashant Kirad",
-      "subscribers": 11600000,
-      "totalViews": 728171305,
-      "videoCount": 381,
-      "ageDays": 2041
+      "title": "Motivational Tales",
+      "subscribers": 88400,
+      "totalViews": 3783994,
+      "videoCount": 66,
+      "ageDays": 186
     }
   ],
-  "avgAge": 3572,
+  "directHitVideos": [
+    {
+      "title": "FRICTION MAXXING: The Ultimate 7 Day Challange 🔥 | Rewirs",
+      "channelTitle": "Rewirs",
+      "views": 54860,
+      "publishedAt": "2026-03-29T07:50:00Z",
+      "videoId": "XTeAM5MNkSw"
+    },
+    {
+      "title": "1 Verse That Rewires Your Brain in 30 Days",
+      "channelTitle": "Wisdom Islands ",
+      "views": 39944,
+      "publishedAt": "2026-03-25T15:00:09Z",
+      "videoId": "7-ZBqmz2Y6k"
+    },
+    {
+      "title": "3 Night Habits That Quietly Rewire Your Brain For Peak Productivity",
+      "channelTitle": "Ideas To Thrive",
+      "views": 39574,
+      "publishedAt": "2026-03-26T13:01:31Z",
+      "videoId": "mi0GQobn5FY"
+    },
+    {
+      "title": "Rewire Your Brain Power: Strengthen Your Prefrontal Cortex | Control Your Brain!- Dr. Sweta Adatia",
+      "channelTitle": "Dr Sweta Adatia",
+      "views": 39152,
+      "publishedAt": "2026-04-04T13:00:54Z",
+      "videoId": "VYf4p9_-MrI"
+    },
+    {
+      "title": "I Replaced Music With Brahmacharya Music for 30 Days… THIS Happened 🔥",
+      "channelTitle": "Brahmacharya Yatra • 89k views • 21 hours ago\n\n...",
+      "views": 30246,
+      "publishedAt": "2026-04-11T05:46:12Z",
+      "videoId": "36XhNypylmU"
+    }
+  ],
+  "avgAge": 1198,
+  "windowDays": 30,
   "nicheSlug": "think-glitch",
-  "cachedAt": "2026-04-17T10:22:13.686Z"
+  "cachedAt": "2026-04-18T04:41:13.535Z"
 }

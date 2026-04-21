@@ -1,6 +1,89 @@
 # CLAUDE.md — CLAUDIO JEREZ MASTER PROFILE
 _For use in Claude Code. This is the single source of truth._
-_Last updated: April 2026_
+_Last updated: 2026-04-21_
+
+---
+
+## DEPLOYED INFRASTRUCTURE — NICHE SCANNER (READ THIS FIRST)
+
+**Status:** Production. Fully automated. Runs without Claudio's laptop.
+
+### Where it runs
+- **Oracle Cloud Always Free VM**, region `ap-melbourne-1` (Melbourne)
+- Instance: `instance-20260415-1508`, Ubuntu 22.04 x86_64
+- **Public IP:** `168.138.30.13`
+- **User:** `ubuntu`
+- **Cost:** $0/month forever (Oracle Always Free tier)
+- **Project path on VM:** `/home/ubuntu/niche-scanner`
+
+### SSH access (from Claudio's laptop)
+SSH key lives at `C:\Users\claud\.ssh\oracle-vm.key` (NOT in OneDrive — OneDrive breaks SSH key perms). Do NOT copy it back to the niche-scanner folder.
+```powershell
+ssh -i "$env:USERPROFILE\.ssh\oracle-vm.key" ubuntu@168.138.30.13
+```
+
+### Stack on VM
+- Node.js 20 (for scanner code)
+- Claude Code CLI 2.1.116 (for NexLev MCP calls in headless mode via `claude -p`)
+- git (for pulling updates, pushing daily history)
+- NexLev connector auto-synced via OAuth (account-level — no manual config)
+- Linux cron for scheduling (VM timezone is `Australia/Melbourne`)
+
+### Daily flow (runs at 7 PM Melbourne, automatic)
+Wrapper script: `/home/ubuntu/niche-scanner/run-daily.sh`
+Cron entry: `0 19 * * * /home/ubuntu/niche-scanner/run-daily.sh`
+
+Steps the wrapper does:
+1. `git pull origin main` — get any code updates
+2. Call NexLev via `claude -p --dangerously-skip-permissions` (headless) to refresh `niche-research/nexlev-cache/latest.json` + `niche-research/popping-channels/YYYY-MM-DD.json`
+3. `node index.js --nexlev` — run the scanner, generate reports, email Claudio
+4. `git add niche-research/ && git commit && git push` — sync history back to GitHub
+
+Logs saved to `/home/ubuntu/niche-scanner/logs/YYYY-MM-DD.log` on the VM.
+
+### GitHub repo (source of truth)
+- **URL:** https://github.com/cjerez1/niche-research (PUBLIC — flagged as concern for competitive intel leakage)
+- VM pulls/pushes from here daily. Laptop pushes code changes here manually.
+- `.gitignore` excludes: `.env`, `node_modules/`, `*.key`, `*.pem`, `.claude/settings.local.json`
+- Never commit SSH keys or API keys.
+
+### Email delivery
+- Via Resend API (key in `.env` as `RESEND_API_KEY`)
+- Recipient: `c.jerez1965@gmail.com` (from `.env` as `REPORT_EMAIL`)
+- **Gmail clip threshold is ~102KB.** Email is capped to **10 escalated + 20 top cards** to stay under this. Full list of 200+ candidates lives in the dashboard HTML on the VM.
+- Email structure (top to bottom): header stats → legend → POPPING OFF top 10 (compact) → escalated cards → top cards → disappeared table → footer
+
+### Known quirks / bugs fixed
+- **UTF-8 BOM bug:** PowerShell on Windows writes JSON with BOM that breaks `JSON.parse`. Fixed with BOM-stripping in `src/nexlev/discovery.js`. Don't regress.
+- **Email bloat on full-quota runs:** fixed with cap to top 30 cards in `generateEmailHtml`. Don't remove the cap.
+- **Saturation label conflict:** legacy `saturationLevel` was contradicting SOP verdict. `report-generator.js` + `dashboard-generator.js` now show ONLY the SOP verdict (`GO/CAUTION/BEND/SKIP`) + direct-hit tier (`Clear/Low/Medium/High`) when available.
+
+### Scanner architecture (high level)
+- `index.js` — orchestrator
+- `src/scanner/` — discovery + filtering (YouTube API, NexLev merging, competition scanning)
+- `src/scoring/` — opportunity scorer (weighted criteria — see Priority 1 below)
+- `src/bending/` — niche-bend generator (calls Claude API via `ANTHROPIC_API_KEY`)
+- `src/output/` — dashboard, email, markdown report, popping-section rendering
+- `src/nexlev/` — NexLev cache loader + normalizer
+- `config/config.js` — all tuning knobs (filters, weights, thresholds)
+
+### How to make a change (workflow)
+1. Edit code locally (laptop)
+2. Test locally: `node index.js --nexlev`
+3. `git add`, commit, `git push origin main`
+4. VM picks it up on next 7 PM run automatically (or SSH in and run `~/niche-scanner/run-daily.sh` to test immediately)
+
+### Scheduled task (legacy — disabled)
+- `daily-niche-scan-popping` in claude.ai scheduled tasks is DISABLED
+- Kept for reference. Do not re-enable — would cause double-runs when Claudio's laptop is on.
+
+### If the daily email stops arriving — debug order
+1. SSH to VM → check `/home/ubuntu/niche-scanner/logs/YYYY-MM-DD.log`
+2. Verify Oracle VM is still running (https://cloud.oracle.com → Compute → Instances)
+3. Verify `claude login` is still authenticated: `ssh ubuntu@168.138.30.13 "claude --version"`
+4. Check YouTube API quota reset hasn't been blocked (Google Cloud Console)
+5. Check Resend API isn't rate-limited or key expired
+6. Verify cron is still scheduled: `crontab -l` on VM
 
 ---
 
@@ -51,8 +134,8 @@ Melbourne-based entrepreneur, age 60. Former roofing company owner (20 years) an
 
 ## TOP TWO PRIORITIES (April 2026)
 
-### PRIORITY 1: Niche Detection Automation
-Build a daily scanner that finds breakout niche opportunities before competitors. This is the highest-leverage automation in the entire business.
+### PRIORITY 1: Niche Detection Automation — ✅ DEPLOYED (2026-04-21)
+Daily scanner runs on Oracle VM at 7 PM Melbourne. Emails Claudio top 20 opportunities + top 10 popping-off longform channels + niche-bend suggestions. See **DEPLOYED INFRASTRUCTURE** section at top of this file for operational details.
 
 **Scanner criteria:**
 - Channels under 30 days old
@@ -80,6 +163,19 @@ Build a daily scanner that finds breakout niche opportunities before competitors
 | Competition density (how many similar channels?) | x2 |
 | Ease of production (faceless feasibility) | x1 |
 | Series potential (can this become 3+ videos?) | x1 |
+
+**Saturation Check SOP (added 2026-04-21):**
+Every scored candidate is checked against recent YouTube videos on the same angle. Output:
+- **Direct-hit count (30d):** unique videos on same angle uploaded in last 30 days
+- **Tier:** Clear (0) · Low (1-2) · Medium (3-5) · High (6+)
+- **Verdict:** `GO` (open lane) · `CAUTION` (low demand) · `BEND` (differentiate angle) · `SKIP` (too crowded)
+- Verdict logic lives in `src/scanner/competition-scanner.js` → `computeVerdict()`
+- **Score vs Verdict can disagree** — Score rates the CHANNEL's quality; Verdict rates room in the MARKET. A great channel (80/100) in a SKIP market means "lane full — bend the angle or skip." Legend at top of email + dashboard explains this.
+
+**Email card cap (added 2026-04-21):**
+- Email: top 10 escalated + top 20 by score (prevents Gmail 102KB clip on full-quota runs of 200+ candidates)
+- Dashboard HTML: full list, no cap
+- Do not remove the cap in `generateEmailHtml()` — email becomes unreadable.
 
 ### PRIORITY 2: Fast Channel Acquisition & Trust Testing
 Stop hunting for aged channels with 300K+ impressions. They barely exist anymore.

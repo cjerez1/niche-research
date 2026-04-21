@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 9,
+  "saturationLevel": "Emerging",
+  "directHits": 13,
+  "directHitLevel": "High",
+  "topVideoViews": 11261,
+  "topVideo": {
+    "title": "2 Australian Towns are STUCK in the 60&#39;s - CHEAP property",
+    "channelTitle": "Aussie Living Explained",
+    "views": 11261,
+    "publishedAt": "2026-04-03T02:45:08Z",
+    "videoId": "phmVTlyxXvI"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 0,
+    "10k_100k": 1,
+    "1k_10k": 1,
+    "under1k": 7
+  },
+  "topCompetitors": [
+    {
+      "title": "Oz Camper",
+      "subscribers": 11800,
+      "totalViews": 430620,
+      "videoCount": 54,
+      "ageDays": 3459
+    },
+    {
+      "title": "Traveling Kangaroo",
+      "subscribers": 1680,
+      "totalViews": 574304,
+      "videoCount": 1126,
+      "ageDays": 972
+    },
+    {
+      "title": "Jasy's View",
+      "subscribers": 956,
+      "totalViews": 474244,
+      "videoCount": 1433,
+      "ageDays": 903
+    },
+    {
+      "title": "Australian Know It All",
+      "subscribers": 306,
+      "totalViews": 669798,
+      "videoCount": 81,
+      "ageDays": 457
+    },
+    {
+      "title": "Aussie Living Explained",
+      "subscribers": 183,
+      "totalViews": 23393,
+      "videoCount": 14,
+      "ageDays": 56
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "2 Australian Towns are STUCK in the 60&#39;s - CHEAP property",
+      "channelTitle": "Aussie Living Explained",
+      "views": 11261,
+      "publishedAt": "2026-04-03T02:45:08Z",
+      "videoId": "phmVTlyxXvI"
+    },
+    {
+      "title": "Every Australian SPECIAL Operations Force Explained",
+      "channelTitle": "Australian Know It All",
+      "views": 5275,
+      "publishedAt": "2026-04-12T06:58:16Z",
+      "videoId": "VhLR1x-ehRc"
+    },
+    {
+      "title": "2 Australian Towns That STILL Feel Like they Are STUCK in the 60&#39;s (2026)",
+      "channelTitle": "Aussie Living Explained",
+      "views": 2352,
+      "publishedAt": "2026-03-28T09:41:00Z",
+      "videoId": "DuAsJDRQSvQ"
+    },
+    {
+      "title": "10 Hidden Australian Towns Where You Can Retire on the Age Pension Alone",
+      "channelTitle": "Discover Australian Cities",
+      "views": 1603,
+      "publishedAt": "2026-04-04T09:04:41Z",
+      "videoId": "MmjWfqZdSvc"
+    },
+    {
+      "title": "12 Forgotten Australian Towns Stuck in the 1960s",
+      "channelTitle": "Curious Australia",
+      "views": 601,
+      "publishedAt": "2026-03-26T00:00:48Z",
+      "videoId": "m2M4MA00hfk"
+    }
+  ],
+  "avgAge": 688,
+  "windowDays": 30,
+  "nicheSlug": "australia-knows",
+  "cachedAt": "2026-04-21T09:26:18.259Z"
+}

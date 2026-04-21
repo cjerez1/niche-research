@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 10,
+  "saturationLevel": "Emerging",
+  "directHits": 10,
+  "directHitLevel": "High",
+  "topVideoViews": 41151,
+  "topVideo": {
+    "title": "How this app saved me from infinite scrolling",
+    "channelTitle": "Reysu",
+    "views": 41151,
+    "publishedAt": "2026-04-11T14:30:00Z",
+    "videoId": "aghRgs7KoyI"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 1,
+    "10k_100k": 1,
+    "1k_10k": 2,
+    "under1k": 6
+  },
+  "topCompetitors": [
+    {
+      "title": "Reysu",
+      "subscribers": 238000,
+      "totalViews": 24866570,
+      "videoCount": 146,
+      "ageDays": 1336
+    },
+    {
+      "title": "Minty",
+      "subscribers": 10500,
+      "totalViews": 1247109,
+      "videoCount": 279,
+      "ageDays": 2855
+    },
+    {
+      "title": "Upthink",
+      "subscribers": 7900,
+      "totalViews": 569707,
+      "videoCount": 16,
+      "ageDays": 90
+    },
+    {
+      "title": "Break The Brick",
+      "subscribers": 2310,
+      "totalViews": 148584,
+      "videoCount": 24,
+      "ageDays": 1160
+    },
+    {
+      "title": "The art of:",
+      "subscribers": 281,
+      "totalViews": 22862,
+      "videoCount": 5,
+      "ageDays": 365
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "How this app saved me from infinite scrolling",
+      "channelTitle": "Reysu",
+      "views": 41151,
+      "publishedAt": "2026-04-11T14:30:00Z",
+      "videoId": "aghRgs7KoyI"
+    },
+    {
+      "title": "A system to save you from infinite scrolling",
+      "channelTitle": "Upthink",
+      "views": 5786,
+      "publishedAt": "2026-04-05T13:15:01Z",
+      "videoId": "CsjHU1PrH4s"
+    },
+    {
+      "title": "This Guy Saved His Loot After 5000 Delves… Insane Reward | Doomscrolling #13",
+      "channelTitle": "Minty",
+      "views": 1139,
+      "publishedAt": "2026-04-19T15:45:04Z",
+      "videoId": "pnu67LWdXvE"
+    },
+    {
+      "title": "How a Cheap Camcorder Saved Me From Scrolling",
+      "channelTitle": "Break The Brick",
+      "views": 171,
+      "publishedAt": "2026-04-01T17:00:02Z",
+      "videoId": "09ow2b-4DDw"
+    },
+    {
+      "title": "How my Default Space kept me scrolling (and how to fix it)",
+      "channelTitle": "The art of:",
+      "views": 147,
+      "publishedAt": "2026-04-05T16:33:55Z",
+      "videoId": "Nd2qN6imVGg"
+    }
+  ],
+  "avgAge": 907,
+  "windowDays": 30,
+  "nicheSlug": "qwack",
+  "cachedAt": "2026-04-21T09:26:16.160Z"
+}

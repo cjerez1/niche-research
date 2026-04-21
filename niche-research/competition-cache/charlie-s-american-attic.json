@@ -1,0 +1,72 @@
+{
+  "totalCompetitors": 3,
+  "saturationLevel": "Emerging",
+  "directHits": 3,
+  "directHitLevel": "Medium",
+  "topVideoViews": 15827,
+  "topVideo": {
+    "title": "10 Unspoken Rules Wealthy Women Follow at Dinner",
+    "channelTitle": " Return to Elegance | with Elisa",
+    "views": 15827,
+    "publishedAt": "2026-04-01T21:43:05Z",
+    "videoId": "ivePtcrMUYo"
+  },
+  "verdict": "CAUTION",
+  "verdictReason": "Moderate crowding without strong proof of demand",
+  "tiers": {
+    "over100k": 0,
+    "10k_100k": 1,
+    "1k_10k": 0,
+    "under1k": 2
+  },
+  "topCompetitors": [
+    {
+      "title": " Return to Elegance | with Elisa",
+      "subscribers": 45800,
+      "totalViews": 2617277,
+      "videoCount": 189,
+      "ageDays": 1195
+    },
+    {
+      "title": "Depth Theory",
+      "subscribers": 689,
+      "totalViews": 91655,
+      "videoCount": 135,
+      "ageDays": 159
+    },
+    {
+      "title": "The Frugal Value",
+      "subscribers": 223,
+      "totalViews": 8524,
+      "videoCount": 10,
+      "ageDays": 87
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "10 Unspoken Rules Wealthy Women Follow at Dinner",
+      "channelTitle": " Return to Elegance | with Elisa",
+      "views": 15827,
+      "publishedAt": "2026-04-01T21:43:05Z",
+      "videoId": "ivePtcrMUYo"
+    },
+    {
+      "title": "The Hidden Rules Amish Women Must Follow | Inside Amish Life &amp; Unspoken Traditions",
+      "channelTitle": "The Frugal Value",
+      "views": 171,
+      "publishedAt": "2026-04-05T19:14:37Z",
+      "videoId": "X__vc_GukgM"
+    },
+    {
+      "title": "The Unspoken Rule Avoidant Men Follow When Choosing a Life Partner (Most Women Miss This)",
+      "channelTitle": "Depth Theory",
+      "views": 123,
+      "publishedAt": "2026-03-31T11:00:00Z",
+      "videoId": "_LWxvWDuBu4"
+    }
+  ],
+  "avgAge": 480,
+  "windowDays": 30,
+  "nicheSlug": "charlie-s-american-attic",
+  "cachedAt": "2026-04-21T09:26:20.306Z"
+}

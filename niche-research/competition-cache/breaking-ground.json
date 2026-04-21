@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 16,
+  "saturationLevel": "Moderate",
+  "directHits": 16,
+  "directHitLevel": "High",
+  "topVideoViews": 103534,
+  "topVideo": {
+    "title": "The Battle to Rebuild One of America&#39;s Most Dangerous Highway Bridges",
+    "channelTitle": "MegaBuilds",
+    "views": 103534,
+    "publishedAt": "2026-03-29T15:36:06Z",
+    "videoId": "fd_JC_xwKJw"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 1,
+    "10k_100k": 3,
+    "1k_10k": 1,
+    "under1k": 11
+  },
+  "topCompetitors": [
+    {
+      "title": "Collector Car Feed",
+      "subscribers": 147000,
+      "totalViews": 32240867,
+      "videoCount": 715,
+      "ageDays": 2055
+    },
+    {
+      "title": "MegaBuilds",
+      "subscribers": 99500,
+      "totalViews": 29194114,
+      "videoCount": 259,
+      "ageDays": 925
+    },
+    {
+      "title": "Online Private Teacher",
+      "subscribers": 84300,
+      "totalViews": 90796,
+      "videoCount": 70,
+      "ageDays": 1184
+    },
+    {
+      "title": "Beyond the Map ",
+      "subscribers": 12100,
+      "totalViews": 4083188,
+      "videoCount": 113,
+      "ageDays": 522
+    },
+    {
+      "title": "MadeFor",
+      "subscribers": 7420,
+      "totalViews": 683571,
+      "videoCount": 30,
+      "ageDays": 3776
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "The Battle to Rebuild One of America&#39;s Most Dangerous Highway Bridges",
+      "channelTitle": "MegaBuilds",
+      "views": 103534,
+      "publishedAt": "2026-03-29T15:36:06Z",
+      "videoId": "fd_JC_xwKJw"
+    },
+    {
+      "title": "Extreme Heat Survival: Inside America&#39;s Most Dangerous Desert Communities",
+      "channelTitle": "Beyond the Map ",
+      "views": 85469,
+      "publishedAt": "2026-03-26T16:07:48Z",
+      "videoId": "KtVgNi2GuNs"
+    },
+    {
+      "title": "Hunting America&#39;s Most Dangerous Car on Facebook Marketplace",
+      "channelTitle": "Collector Car Feed",
+      "views": 24017,
+      "publishedAt": "2026-04-01T16:12:02Z",
+      "videoId": "KzJmoNYWL9M"
+    },
+    {
+      "title": "The Terrible Engineering Behind America’s Most Dangerous Bridge",
+      "channelTitle": "MadeFor",
+      "views": 1128,
+      "publishedAt": "2026-03-22T19:00:14Z",
+      "videoId": "DllFdvadkno"
+    },
+    {
+      "title": "Vehicles, Views &amp; Curves: The Perfect Drive 3/21/26",
+      "channelTitle": "Dragon Slayers, Railfanning and MORE!!!!!!",
+      "views": 888,
+      "publishedAt": "2026-03-24T19:51:52Z",
+      "videoId": "YlOu932BWQE"
+    }
+  ],
+  "avgAge": 1082,
+  "windowDays": 30,
+  "nicheSlug": "breaking-ground",
+  "cachedAt": "2026-04-21T09:26:36.493Z"
+}

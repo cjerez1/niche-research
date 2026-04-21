@@ -1,0 +1,86 @@
+{
+  "totalCompetitors": 4,
+  "saturationLevel": "Emerging",
+  "directHits": 4,
+  "directHitLevel": "Medium",
+  "topVideoViews": 460,
+  "topVideo": {
+    "title": "1969 Dodge Charger Daytona: The Muscle Car NASCAR Had to Ban",
+    "channelTitle": "Torque Society",
+    "views": 460,
+    "publishedAt": "2026-04-03T18:00:08Z",
+    "videoId": "eB1dShIy4gw"
+  },
+  "verdict": "CAUTION",
+  "verdictReason": "Moderate crowding without strong proof of demand",
+  "tiers": {
+    "over100k": 0,
+    "10k_100k": 0,
+    "1k_10k": 0,
+    "under1k": 4
+  },
+  "topCompetitors": [
+    {
+      "title": "Torque Society",
+      "subscribers": 49,
+      "totalViews": 12497,
+      "videoCount": 20,
+      "ageDays": 54
+    },
+    {
+      "title": "Motex Garage",
+      "subscribers": 26,
+      "totalViews": 7054,
+      "videoCount": 14,
+      "ageDays": 109
+    },
+    {
+      "title": "Old America with Albert",
+      "subscribers": 15,
+      "totalViews": 3625,
+      "videoCount": 6,
+      "ageDays": 36
+    },
+    {
+      "title": "World Classic Cars",
+      "subscribers": 9,
+      "totalViews": 1878,
+      "videoCount": 14,
+      "ageDays": 39
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "1969 Dodge Charger Daytona: The Muscle Car NASCAR Had to Ban",
+      "channelTitle": "Torque Society",
+      "views": 460,
+      "publishedAt": "2026-04-03T18:00:08Z",
+      "videoId": "eB1dShIy4gw"
+    },
+    {
+      "title": "10 American Muscle Cars So Dangerous They Were BANNED #BannedCars #MuscleCarHistory #AmericanMuscle",
+      "channelTitle": "Old America with Albert",
+      "views": 378,
+      "publishedAt": "2026-04-09T22:54:22Z",
+      "videoId": "5O5wAwcUhVE"
+    },
+    {
+      "title": "The Car NASCAR Banned and Hollywood Couldn&#39;t Resist: The 1969 Dodge Charger Story",
+      "channelTitle": "World Classic Cars",
+      "views": 318,
+      "publishedAt": "2026-03-29T12:58:16Z",
+      "videoId": "o3ywuFFT__Q"
+    },
+    {
+      "title": "They Found a Banned NASCAR Car Rotting in a Texas Barn — It Sold for $900,000",
+      "channelTitle": "Motex Garage",
+      "views": 120,
+      "publishedAt": "2026-03-27T23:00:03Z",
+      "videoId": "3LbZzFUhFgI"
+    }
+  ],
+  "avgAge": 60,
+  "windowDays": 30,
+  "nicheSlug": "engine-archives",
+  "cachedAt": "2026-04-21T09:26:11.928Z"
+}

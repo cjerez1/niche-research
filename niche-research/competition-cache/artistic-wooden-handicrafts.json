@@ -1,0 +1,22 @@
+{
+  "totalCompetitors": 0,
+  "saturationLevel": "Wide Open",
+  "directHits": 0,
+  "directHitLevel": "Clear",
+  "topVideoViews": 0,
+  "topVideo": null,
+  "verdict": "GO",
+  "verdictReason": "No direct hits in last 30 days — first mover advantage",
+  "tiers": {
+    "over100k": 0,
+    "10k_100k": 0,
+    "1k_10k": 0,
+    "under1k": 0
+  },
+  "topCompetitors": [],
+  "directHitVideos": [],
+  "avgAge": 0,
+  "windowDays": 30,
+  "nicheSlug": "artistic-wooden-handicrafts",
+  "cachedAt": "2026-04-21T09:46:19.107Z"
+}

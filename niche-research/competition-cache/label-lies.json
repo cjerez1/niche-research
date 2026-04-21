@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 6,
+  "saturationLevel": "Emerging",
+  "directHits": 8,
+  "directHitLevel": "High",
+  "topVideoViews": 133171,
+  "topVideo": {
+    "title": "8 Luxury Dress Shoe Brands To NEVER Buy! (And The Few You Should!)",
+    "channelTitle": "The Sneaker Audit",
+    "views": 133171,
+    "publishedAt": "2026-03-24T21:02:32Z",
+    "videoId": "Qi8ObR6eVxc"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 0,
+    "10k_100k": 0,
+    "1k_10k": 1,
+    "under1k": 5
+  },
+  "topCompetitors": [
+    {
+      "title": "The Sneaker Audit",
+      "subscribers": 3450,
+      "totalViews": 1062705,
+      "videoCount": 19,
+      "ageDays": 42
+    },
+    {
+      "title": "Brand Inspection By AHS",
+      "subscribers": 622,
+      "totalViews": 833,
+      "videoCount": 7,
+      "ageDays": 115
+    },
+    {
+      "title": "Marcus Sneaker Breakdown",
+      "subscribers": 190,
+      "totalViews": 25191,
+      "videoCount": 17,
+      "ageDays": 6412
+    },
+    {
+      "title": "Aussie Market Watch",
+      "subscribers": 127,
+      "totalViews": 23092,
+      "videoCount": 5,
+      "ageDays": 207
+    },
+    {
+      "title": "ghemzone2006",
+      "subscribers": 6,
+      "totalViews": 1985,
+      "videoCount": 6,
+      "ageDays": 5939
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "8 Luxury Dress Shoe Brands To NEVER Buy! (And The Few You Should!)",
+      "channelTitle": "The Sneaker Audit",
+      "views": 133171,
+      "publishedAt": "2026-03-24T21:02:32Z",
+      "videoId": "Qi8ObR6eVxc"
+    },
+    {
+      "title": "5 Boot Brands ROBBING You Blind And 5 That Are Worth The Money",
+      "channelTitle": "The Sneaker Audit",
+      "views": 76276,
+      "publishedAt": "2026-04-02T23:01:14Z",
+      "videoId": "3_VN9SND0YM"
+    },
+    {
+      "title": "5 Luxury Dress Shoe Brands ROBBING You Blind (And 5 That Are Worth the Money)",
+      "channelTitle": "The Sneaker Audit",
+      "views": 4326,
+      "publishedAt": "2026-04-17T20:01:16Z",
+      "videoId": "fJFbxSeFhE0"
+    },
+    {
+      "title": "5 Luxury Shoe Brands ROBBING You Blind (and 5 That Are Worth The Money)",
+      "channelTitle": "ghemzone2006",
+      "views": 266,
+      "publishedAt": "2026-04-07T00:39:30Z",
+      "videoId": "N8UWx5E9118"
+    },
+    {
+      "title": "5 Australian Men’s Shoe Brands ROBBING You Blind And 5 Actually Worth Buying",
+      "channelTitle": "Aussie Market Watch",
+      "views": 153,
+      "publishedAt": "2026-04-20T17:28:20Z",
+      "videoId": "MHfY3mdJGNw"
+    }
+  ],
+  "avgAge": 2324,
+  "windowDays": 30,
+  "nicheSlug": "label-lies",
+  "cachedAt": "2026-04-21T09:26:28.930Z"
+}

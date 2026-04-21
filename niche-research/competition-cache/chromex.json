@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 17,
+  "saturationLevel": "Moderate",
+  "directHits": 24,
+  "directHitLevel": "High",
+  "topVideoViews": 560,
+  "topVideo": {
+    "title": "Amazing Facts That Will Blow Your Mind | 9 Minutes of General Knowledge 2026",
+    "channelTitle": "CF Networks",
+    "views": 560,
+    "publishedAt": "2026-04-10T10:01:20Z",
+    "videoId": "kK-JPjWIJqs"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 1,
+    "10k_100k": 0,
+    "1k_10k": 1,
+    "under1k": 15
+  },
+  "topCompetitors": [
+    {
+      "title": "CF Networks",
+      "subscribers": 108000,
+      "totalViews": 48962479,
+      "videoCount": 245,
+      "ageDays": 241
+    },
+    {
+      "title": "The Space Connoisseur",
+      "subscribers": 1190,
+      "totalViews": 812984,
+      "videoCount": 224,
+      "ageDays": 5600
+    },
+    {
+      "title": "Astronaut Triloki Varshney",
+      "subscribers": 741,
+      "totalViews": 1531187,
+      "videoCount": 280,
+      "ageDays": 2371
+    },
+    {
+      "title": "The Fact Walks",
+      "subscribers": 23,
+      "totalViews": 11807,
+      "videoCount": 39,
+      "ageDays": 34
+    },
+    {
+      "title": "Science Mind",
+      "subscribers": 22,
+      "totalViews": 1,
+      "videoCount": 1,
+      "ageDays": 1069
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "Amazing Facts That Will Blow Your Mind | 9 Minutes of General Knowledge 2026",
+      "channelTitle": "CF Networks",
+      "views": 560,
+      "publishedAt": "2026-04-10T10:01:20Z",
+      "videoId": "kK-JPjWIJqs"
+    },
+    {
+      "title": "17 Space Facts That Will Blow Your Mind | Universe Explained in under 20 Minutes",
+      "channelTitle": "The Space Connoisseur",
+      "views": 173,
+      "publishedAt": "2026-03-28T13:51:05Z",
+      "videoId": "Jr_AYSB76qw"
+    },
+    {
+      "title": "WATCH THIS Before You Try Anything (6 Minutes)",
+      "channelTitle": "Veritas Brief",
+      "views": 86,
+      "publishedAt": "2026-04-13T12:56:04Z",
+      "videoId": "9ZtsUWqOzTo"
+    },
+    {
+      "title": "Space&#39;s Invisible Killer Will Destroy Your DNA in Minutes ☢️😱",
+      "channelTitle": "Astronaut Triloki Varshney",
+      "views": 37,
+      "publishedAt": "2026-04-06T11:43:33Z",
+      "videoId": "Jm1sVbOvCgE"
+    },
+    {
+      "title": "The Richest City in the World Disappeared in 6 Minutes. Interesting Facts, Amazing Facts. Resilience",
+      "channelTitle": "Unknown Secrets",
+      "views": 27,
+      "publishedAt": "2026-03-29T03:00:06Z",
+      "videoId": "rMB81o37nEw"
+    }
+  ],
+  "avgAge": 771,
+  "windowDays": 30,
+  "nicheSlug": "chromex",
+  "cachedAt": "2026-04-21T09:26:14.073Z"
+}

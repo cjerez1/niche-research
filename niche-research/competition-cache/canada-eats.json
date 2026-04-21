@@ -1,0 +1,44 @@
+{
+  "totalCompetitors": 1,
+  "saturationLevel": "Emerging",
+  "directHits": 1,
+  "directHitLevel": "Low",
+  "topVideoViews": 47,
+  "topVideo": {
+    "title": "8 Packaged Bread Brands in Canada To NEVER Buy!",
+    "channelTitle": "Food Truth Canada",
+    "views": 47,
+    "publishedAt": "2026-03-24T12:01:49Z",
+    "videoId": "wy-XmfzAxS0"
+  },
+  "verdict": "CAUTION",
+  "verdictReason": "Low competition but also low demand",
+  "tiers": {
+    "over100k": 0,
+    "10k_100k": 0,
+    "1k_10k": 0,
+    "under1k": 1
+  },
+  "topCompetitors": [
+    {
+      "title": "Food Truth Canada",
+      "subscribers": 12,
+      "totalViews": 1270,
+      "videoCount": 11,
+      "ageDays": 86
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "8 Packaged Bread Brands in Canada To NEVER Buy!",
+      "channelTitle": "Food Truth Canada",
+      "views": 47,
+      "publishedAt": "2026-03-24T12:01:49Z",
+      "videoId": "wy-XmfzAxS0"
+    }
+  ],
+  "avgAge": 86,
+  "windowDays": 30,
+  "nicheSlug": "canada-eats",
+  "cachedAt": "2026-04-21T09:26:26.441Z"
+}

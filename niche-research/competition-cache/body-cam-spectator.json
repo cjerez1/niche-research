@@ -1,0 +1,79 @@
+{
+  "totalCompetitors": 3,
+  "saturationLevel": "Emerging",
+  "directHits": 4,
+  "directHitLevel": "Medium",
+  "topVideoViews": 143111,
+  "topVideo": {
+    "title": "Cops Surprise Teen Mid-Bank Fraud Attempt",
+    "channelTitle": "NYDETECTIVE",
+    "views": 143111,
+    "publishedAt": "2026-04-08T19:11:13Z",
+    "videoId": "-fIF-KkOOO8"
+  },
+  "verdict": "BEND",
+  "verdictReason": "Demand proven — differentiate the angle",
+  "tiers": {
+    "over100k": 1,
+    "10k_100k": 0,
+    "1k_10k": 1,
+    "under1k": 1
+  },
+  "topCompetitors": [
+    {
+      "title": "NYDETECTIVE",
+      "subscribers": 190000,
+      "totalViews": 103032661,
+      "videoCount": 378,
+      "ageDays": 3252
+    },
+    {
+      "title": "Officer Hansen",
+      "subscribers": 8200,
+      "totalViews": 2478333,
+      "videoCount": 43,
+      "ageDays": 771
+    },
+    {
+      "title": "Bodycam Duty",
+      "subscribers": 6,
+      "totalViews": 395,
+      "videoCount": 27,
+      "ageDays": 103
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "Cops Surprise Teen Mid-Bank Fraud Attempt",
+      "channelTitle": "NYDETECTIVE",
+      "views": 143111,
+      "publishedAt": "2026-04-08T19:11:13Z",
+      "videoId": "-fIF-KkOOO8"
+    },
+    {
+      "title": "Police Surprise Woman at Bank Trying to Cash $7,000 Fake Check",
+      "channelTitle": "NYDETECTIVE",
+      "views": 66937,
+      "publishedAt": "2026-04-16T18:45:38Z",
+      "videoId": "FXOaFgfXr3M"
+    },
+    {
+      "title": "Cop Surprises Woman During Her Bank Scam",
+      "channelTitle": "Officer Hansen",
+      "views": 5529,
+      "publishedAt": "2026-03-30T16:15:00Z",
+      "videoId": "-EITnuMlnIc"
+    },
+    {
+      "title": "Police Surprise Fraudulent Lady At The Bank - After A Fraud Check Scheme Backfires",
+      "channelTitle": "Bodycam Duty",
+      "views": 17,
+      "publishedAt": "2026-03-27T21:55:23Z",
+      "videoId": "IqSejmnuQ-s"
+    }
+  ],
+  "avgAge": 1375,
+  "windowDays": 30,
+  "nicheSlug": "body-cam-spectator",
+  "cachedAt": "2026-04-21T09:26:38.552Z"
+}

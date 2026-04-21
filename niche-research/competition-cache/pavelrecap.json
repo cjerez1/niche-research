@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 5,
+  "saturationLevel": "Emerging",
+  "directHits": 5,
+  "directHitLevel": "Medium",
+  "topVideoViews": 2803,
+  "topVideo": {
+    "title": "Loser Finds a Pill That Gives Him an IQ of 986+",
+    "channelTitle": "Youtube Movie Recaps",
+    "views": 2803,
+    "publishedAt": "2026-04-03T03:07:40Z",
+    "videoId": "-N5gPJCl3kI"
+  },
+  "verdict": "CAUTION",
+  "verdictReason": "Moderate crowding without strong proof of demand",
+  "tiers": {
+    "over100k": 0,
+    "10k_100k": 2,
+    "1k_10k": 1,
+    "under1k": 2
+  },
+  "topCompetitors": [
+    {
+      "title": "Youtube Movie Recaps",
+      "subscribers": 38200,
+      "totalViews": 2299354,
+      "videoCount": 106,
+      "ageDays": 3502
+    },
+    {
+      "title": "Movie Addiction",
+      "subscribers": 11900,
+      "totalViews": 2418881,
+      "videoCount": 59,
+      "ageDays": 2961
+    },
+    {
+      "title": "GREAT ANIMATION RECAPS",
+      "subscribers": 1000,
+      "totalViews": 268292,
+      "videoCount": 310,
+      "ageDays": 363
+    },
+    {
+      "title": "MOVIE MATRIX ",
+      "subscribers": 379,
+      "totalViews": 145350,
+      "videoCount": 82,
+      "ageDays": 987
+    },
+    {
+      "title": "Matian Recap",
+      "subscribers": 0,
+      "totalViews": 1,
+      "videoCount": 1,
+      "ageDays": 8
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "Loser Finds a Pill That Gives Him an IQ of 986+",
+      "channelTitle": "Youtube Movie Recaps",
+      "views": 2803,
+      "publishedAt": "2026-04-03T03:07:40Z",
+      "videoId": "-N5gPJCl3kI"
+    },
+    {
+      "title": "A LOSER Finds a PILL That Gives Him 900+ IQ and Unlocks 100% of His BRAIN",
+      "channelTitle": "GREAT ANIMATION RECAPS",
+      "views": 1457,
+      "publishedAt": "2026-04-16T01:55:41Z",
+      "videoId": "dhiMVyXOziA"
+    },
+    {
+      "title": "Loser Finds a Pill That Gives Him an IQ of 830",
+      "channelTitle": "Movie Addiction",
+      "views": 137,
+      "publishedAt": "2026-04-15T16:52:31Z",
+      "videoId": "pBHGqzPrn8U"
+    },
+    {
+      "title": "Loser Finds a Pill That Gives Him an IQ of 956+",
+      "channelTitle": "MOVIE MATRIX ",
+      "views": 8,
+      "publishedAt": "2026-04-12T10:00:54Z",
+      "videoId": "bpPjNoknt8M"
+    },
+    {
+      "title": "Loser Finds a Pill That Gives Him an IQ of 956+",
+      "channelTitle": "Matian Recap",
+      "views": 1,
+      "publishedAt": "2026-04-16T22:00:41Z",
+      "videoId": "YFKQwONSbF0"
+    }
+  ],
+  "avgAge": 1564,
+  "windowDays": 30,
+  "nicheSlug": "pavelrecap",
+  "cachedAt": "2026-04-21T09:26:22.280Z"
+}

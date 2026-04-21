@@ -1,0 +1,86 @@
+{
+  "totalCompetitors": 4,
+  "saturationLevel": "Emerging",
+  "directHits": 4,
+  "directHitLevel": "Medium",
+  "topVideoViews": 10768,
+  "topVideo": {
+    "title": "😲Shocking Heights of Senior Hollywood Actors in 2026",
+    "channelTitle": "Match Data",
+    "views": 10768,
+    "publishedAt": "2026-04-14T12:15:10Z",
+    "videoId": "tRRKVKt0IIk"
+  },
+  "verdict": "CAUTION",
+  "verdictReason": "Moderate crowding without strong proof of demand",
+  "tiers": {
+    "over100k": 0,
+    "10k_100k": 1,
+    "1k_10k": 1,
+    "under1k": 2
+  },
+  "topCompetitors": [
+    {
+      "title": "Match Data",
+      "subscribers": 14600,
+      "totalViews": 13604061,
+      "videoCount": 119,
+      "ageDays": 778
+    },
+    {
+      "title": "Data List",
+      "subscribers": 2720,
+      "totalViews": 1080788,
+      "videoCount": 70,
+      "ageDays": 394
+    },
+    {
+      "title": "Valor Data Comparism",
+      "subscribers": 545,
+      "totalViews": 385534,
+      "videoCount": 13,
+      "ageDays": 46
+    },
+    {
+      "title": "Deta Growth ",
+      "subscribers": 251,
+      "totalViews": 82221,
+      "videoCount": 80,
+      "ageDays": 482
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "😲Shocking Heights of Senior Hollywood Actors in 2026",
+      "channelTitle": "Match Data",
+      "views": 10768,
+      "publishedAt": "2026-04-14T12:15:10Z",
+      "videoId": "tRRKVKt0IIk"
+    },
+    {
+      "title": "Shocking Heights Of Hollywood Actors - How Tall Are They Really?",
+      "channelTitle": "Valor Data Comparism",
+      "views": 1290,
+      "publishedAt": "2026-04-11T13:28:40Z",
+      "videoId": "SUEZRAgOJ_g"
+    },
+    {
+      "title": "Top 100 Most Popular Actors by Height (Tallest to Shortest) 😱 Shocking height",
+      "channelTitle": "Deta Growth ",
+      "views": 373,
+      "publishedAt": "2026-04-10T12:31:18Z",
+      "videoId": "ngXhKkbh16U"
+    },
+    {
+      "title": "Shocking Height Of Hollywood Actresses",
+      "channelTitle": "Data List",
+      "views": 91,
+      "publishedAt": "2026-04-01T11:15:56Z",
+      "videoId": "2RnF-Kz7_qw"
+    }
+  ],
+  "avgAge": 425,
+  "windowDays": 30,
+  "nicheSlug": "celebrity-lab",
+  "cachedAt": "2026-04-21T09:26:09.889Z"
+}

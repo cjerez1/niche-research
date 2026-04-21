@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 7,
+  "saturationLevel": "Emerging",
+  "directHits": 7,
+  "directHitLevel": "High",
+  "topVideoViews": 2339,
+  "topVideo": {
+    "title": "When UK Cops REALIZE You Actually Know the Law — Everything Changes!",
+    "channelTitle": "B9 Secrets",
+    "views": 2339,
+    "publishedAt": "2026-04-14T16:00:00Z",
+    "videoId": "31oBCTtkB4Q"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 0,
+    "10k_100k": 0,
+    "1k_10k": 3,
+    "under1k": 4
+  },
+  "topCompetitors": [
+    {
+      "title": "Interesting stories ",
+      "subscribers": 1350,
+      "totalViews": 81259,
+      "videoCount": 70,
+      "ageDays": 178
+    },
+    {
+      "title": "GaMing wiTh Burberry",
+      "subscribers": 1130,
+      "totalViews": 674249,
+      "videoCount": 180,
+      "ageDays": 171
+    },
+    {
+      "title": "B9 Secrets",
+      "subscribers": 1030,
+      "totalViews": 50856,
+      "videoCount": 37,
+      "ageDays": 188
+    },
+    {
+      "title": "Секреты Долголетия",
+      "subscribers": 82,
+      "totalViews": 18076,
+      "videoCount": 26,
+      "ageDays": 53
+    },
+    {
+      "title": "Sahilsgaming",
+      "subscribers": 22,
+      "totalViews": 28348,
+      "videoCount": 101,
+      "ageDays": 93
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "When UK Cops REALIZE You Actually Know the Law — Everything Changes!",
+      "channelTitle": "B9 Secrets",
+      "views": 2339,
+      "publishedAt": "2026-04-14T16:00:00Z",
+      "videoId": "31oBCTtkB4Q"
+    },
+    {
+      "title": "Cops LOSE IT After ID Refusal! The Exact Moment They Realize They’re WRONG | First Amendment Audit",
+      "channelTitle": "Interesting stories ",
+      "views": 300,
+      "publishedAt": "2026-04-02T16:01:13Z",
+      "videoId": "imSo87TNzHo"
+    },
+    {
+      "title": "👉 “Police Chase Gone Wrong 😱🔥 USA Supercar Crash | 3D Driving Class",
+      "channelTitle": "GaMing wiTh Burberry",
+      "views": 219,
+      "publishedAt": "2026-04-04T11:43:32Z",
+      "videoId": "Q7I1d4110vM"
+    },
+    {
+      "title": "When Cops REALIZE They’ve Been CAUGHT — Instant Panic on Camera!",
+      "channelTitle": "Секреты Долголетия",
+      "views": 0,
+      "publishedAt": "2026-04-20T14:15:04Z",
+      "videoId": "dnJmqoWCH_w"
+    },
+    {
+      "title": "Cops Fishing, Not Realizing Theyre Pulling Over a Federal Attorney",
+      "channelTitle": "Vosper Ja",
+      "views": 0,
+      "publishedAt": "2026-04-04T04:17:47Z",
+      "videoId": "y3rsoop1IjM"
+    }
+  ],
+  "avgAge": 127,
+  "windowDays": 30,
+  "nicheSlug": "suspect-vision",
+  "cachedAt": "2026-04-21T09:26:31.057Z"
+}

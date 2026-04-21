@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 5,
+  "saturationLevel": "Emerging",
+  "directHits": 5,
+  "directHitLevel": "Medium",
+  "topVideoViews": 18081,
+  "topVideo": {
+    "title": "Max Verstappen INSANE Nissan Drive SHOCKS F1 Drivers Before Japanese GP!",
+    "channelTitle": "F1 Andrew",
+    "views": 18081,
+    "publishedAt": "2026-03-25T15:03:20Z",
+    "videoId": "43n88t49H8g"
+  },
+  "verdict": "CAUTION",
+  "verdictReason": "Moderate crowding without strong proof of demand",
+  "tiers": {
+    "over100k": 1,
+    "10k_100k": 1,
+    "1k_10k": 3,
+    "under1k": 0
+  },
+  "topCompetitors": [
+    {
+      "title": "Point F1",
+      "subscribers": 167000,
+      "totalViews": 55172902,
+      "videoCount": 3753,
+      "ageDays": 4710
+    },
+    {
+      "title": "F1 Andrew",
+      "subscribers": 25500,
+      "totalViews": 1774389,
+      "videoCount": 850,
+      "ageDays": 2253
+    },
+    {
+      "title": "TechnoFact ID",
+      "subscribers": 3630,
+      "totalViews": 2790019,
+      "videoCount": 48,
+      "ageDays": 215
+    },
+    {
+      "title": "F1Orange Army",
+      "subscribers": 1850,
+      "totalViews": 640674,
+      "videoCount": 225,
+      "ageDays": 239
+    },
+    {
+      "title": "Frenzy Formula One",
+      "subscribers": 1070,
+      "totalViews": 2003382,
+      "videoCount": 412,
+      "ageDays": 246
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "Max Verstappen INSANE Nissan Drive SHOCKS F1 Drivers Before Japanese GP!",
+      "channelTitle": "F1 Andrew",
+      "views": 18081,
+      "publishedAt": "2026-03-25T15:03:20Z",
+      "videoId": "43n88t49H8g"
+    },
+    {
+      "title": "ASA DA MERCEDES GERA MAIS RECLAMAÇÃO | VERSTAPPEN PILOTA NISSAN Z | ALONSO É DUVIDA GP JAPÃO ",
+      "channelTitle": "Point F1",
+      "views": 7612,
+      "publishedAt": "2026-03-25T10:49:00Z",
+      "videoId": "3r_aGdWQUzU"
+    },
+    {
+      "title": "Max Verstappen Pushed a Nissan Z Nismo GT500 in the Rain and It Says Everything",
+      "channelTitle": "F1Orange Army",
+      "views": 7465,
+      "publishedAt": "2026-03-26T12:30:06Z",
+      "videoId": "uQldbRMLTZc"
+    },
+    {
+      "title": "MAX VERSTAPPEN BAWA MOBIL NISSAN Z NISMO GT500 DI FUJI SPEEDWAY?",
+      "channelTitle": "TechnoFact ID",
+      "views": 442,
+      "publishedAt": "2026-03-28T12:24:24Z",
+      "videoId": "5s1s9wmoVW0"
+    },
+    {
+      "title": "Verstappen UNLEASHES PURE CHAOS at Fuji in Nissan Z Nismo GT500",
+      "channelTitle": "Frenzy Formula One",
+      "views": 50,
+      "publishedAt": "2026-03-26T20:27:58Z",
+      "videoId": "NLYk-KXuGWA"
+    }
+  ],
+  "avgAge": 1533,
+  "windowDays": 30,
+  "nicheSlug": "racescope",
+  "cachedAt": "2026-04-21T09:26:24.418Z"
+}

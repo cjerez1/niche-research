@@ -1,0 +1,44 @@
+{
+  "totalCompetitors": 1,
+  "saturationLevel": "Emerging",
+  "directHits": 1,
+  "directHitLevel": "Low",
+  "topVideoViews": 938,
+  "topVideo": {
+    "title": "FOLLIE - Solo Level Cap Void Cascade Level 9999 - NO GUNS NEEDED - Ink Rain | Warframe",
+    "channelTitle": "Ransackt",
+    "views": 938,
+    "publishedAt": "2026-03-28T19:11:35Z",
+    "videoId": "jyLPW7B2nWE"
+  },
+  "verdict": "CAUTION",
+  "verdictReason": "Low competition but also low demand",
+  "tiers": {
+    "over100k": 0,
+    "10k_100k": 0,
+    "1k_10k": 0,
+    "under1k": 1
+  },
+  "topCompetitors": [
+    {
+      "title": "Ransackt",
+      "subscribers": 349,
+      "totalViews": 87306,
+      "videoCount": 51,
+      "ageDays": 1773
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "FOLLIE - Solo Level Cap Void Cascade Level 9999 - NO GUNS NEEDED - Ink Rain | Warframe",
+      "channelTitle": "Ransackt",
+      "views": 938,
+      "publishedAt": "2026-03-28T19:11:35Z",
+      "videoId": "jyLPW7B2nWE"
+    }
+  ],
+  "avgAge": 1773,
+  "windowDays": 30,
+  "nicheSlug": "tennokyle",
+  "cachedAt": "2026-04-21T09:26:34.449Z"
+}

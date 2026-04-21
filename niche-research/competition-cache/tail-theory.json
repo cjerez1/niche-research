@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 43,
+  "saturationLevel": "Moderate",
+  "directHits": 43,
+  "directHitLevel": "High",
+  "topVideoViews": 6762,
+  "topVideo": {
+    "title": "10 Scientific Ways To Know If Your Dog Loves You (STOP Missing These)",
+    "channelTitle": "Canine Mind",
+    "views": 6762,
+    "publishedAt": "2026-03-27T19:45:00Z",
+    "videoId": "C4_3pUgneYw"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 1,
+    "10k_100k": 4,
+    "1k_10k": 4,
+    "under1k": 34
+  },
+  "topCompetitors": [
+    {
+      "title": "Beagle Care",
+      "subscribers": 124000,
+      "totalViews": 22766364,
+      "videoCount": 408,
+      "ageDays": 2143
+    },
+    {
+      "title": "Canine Mind",
+      "subscribers": 70500,
+      "totalViews": 4244579,
+      "videoCount": 37,
+      "ageDays": 48
+    },
+    {
+      "title": "Midnight Oracle",
+      "subscribers": 43700,
+      "totalViews": 2651348,
+      "videoCount": 95,
+      "ageDays": 182
+    },
+    {
+      "title": "The Dog Soul",
+      "subscribers": 29600,
+      "totalViews": 2671975,
+      "videoCount": 145,
+      "ageDays": 221
+    },
+    {
+      "title": "Dog In The Pool Podcast",
+      "subscribers": 14000,
+      "totalViews": 940465,
+      "videoCount": 124,
+      "ageDays": 208
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "10 Scientific Ways To Know If Your Dog Loves You (STOP Missing These)",
+      "channelTitle": "Canine Mind",
+      "views": 6762,
+      "publishedAt": "2026-03-27T19:45:00Z",
+      "videoId": "C4_3pUgneYw"
+    },
+    {
+      "title": "Dog Psychology | How Dogs Can Recognize a Bad Person (INCREDIBLE Dog Abilities)",
+      "channelTitle": "Lucky Psychology",
+      "views": 1283,
+      "publishedAt": "2026-04-09T12:52:38Z",
+      "videoId": "TJneYci-4Rk"
+    },
+    {
+      "title": "How Dogs Can Recognize a Bad Person (Backed by Science)",
+      "channelTitle": "Dog Secrets Daily",
+      "views": 333,
+      "publishedAt": "2026-04-16T14:07:08Z",
+      "videoId": "l2oSRwRL0Vc"
+    },
+    {
+      "title": "Dog Psychology | 10 Scientific Ways To Know If Your Dog Loves You (STOP Missing These)",
+      "channelTitle": "The Dog Soul",
+      "views": 297,
+      "publishedAt": "2026-04-11T13:20:00Z",
+      "videoId": "SkArJPghf_E"
+    },
+    {
+      "title": "Psychology of Dogs When You&#39;re Sad (How They Know)",
+      "channelTitle": "Pupvado",
+      "views": 156,
+      "publishedAt": "2026-04-06T14:01:00Z",
+      "videoId": "XGoW7yPGxL4"
+    }
+  ],
+  "avgAge": 588,
+  "windowDays": 30,
+  "nicheSlug": "tail-theory",
+  "cachedAt": "2026-04-21T09:26:41.745Z"
+}

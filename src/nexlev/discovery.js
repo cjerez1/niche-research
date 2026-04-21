@@ -12,7 +12,10 @@ function loadNexlevCache(cacheDir) {
     return null;
   }
 
-  const raw = JSON.parse(fs.readFileSync(cachePath, 'utf-8'));
+  // Strip UTF-8 BOM if present (happens when files are written by PowerShell on Windows)
+  let content = fs.readFileSync(cachePath, 'utf-8');
+  if (content.charCodeAt(0) === 0xFEFF) content = content.slice(1);
+  const raw = JSON.parse(content);
   const cacheAge = (Date.now() - new Date(raw.date).getTime()) / (1000 * 60 * 60);
 
   if (cacheAge > 24) {

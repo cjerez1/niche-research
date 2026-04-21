@@ -526,10 +526,20 @@ function writeDashboard(html, outputDir) {
  */
 function generateEmailHtml(approved, rejected, metadata) {
   const date = metadata.date.toISOString().split('T')[0];
-  const escalated = approved.filter(c => c.escalate?.escalate);
-  const top = approved.filter(c => c.score.totalScore >= 40);
+  const allEscalated = approved.filter(c => c.escalate?.escalate);
+  const allTop = approved.filter(c => c.score.totalScore >= 40);
   const opportunities60 = approved.filter(c => c.score.totalScore >= 60);
   const disappeared = metadata.disappeared || [];
+
+  // EMAIL CAP: keep well below Gmail's 102KB clip threshold.
+  // Each full card is ~3-5KB. Cap to 10 escalated + 20 top = ~120KB max,
+  // then rely on header + legend + popping being at the TOP so nothing critical gets clipped.
+  const ESCALATED_CAP = 10;
+  const TOP_CAP = 20;
+  const escalated = allEscalated.slice(0, ESCALATED_CAP).sort((a, b) => b.score.totalScore - a.score.totalScore);
+  const top = allTop.slice().sort((a, b) => b.score.totalScore - a.score.totalScore).slice(0, TOP_CAP);
+  const escalatedTrimmed = Math.max(0, allEscalated.length - ESCALATED_CAP);
+  const topTrimmed = Math.max(0, allTop.length - TOP_CAP);
 
   // Email version: simplified, no JS, inline styles where needed
   let html = `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>${getCSS()}</style></head><body>`;
@@ -542,14 +552,20 @@ function generateEmailHtml(approved, rejected, metadata) {
   html += `</div></header>`;
 
   if (escalated.length > 0) {
-    html += `<section class="section"><h2 class="section-title escalated-title">ESCALATED</h2><div class="card-grid">`;
+    html += `<section class="section"><h2 class="section-title escalated-title">ESCALATED${escalatedTrimmed > 0 ? ` — top ${ESCALATED_CAP} of ${allEscalated.length}` : ''}</h2><div class="card-grid">`;
     html += escalated.map(c => renderCard(c, true)).join('');
+    if (escalatedTrimmed > 0) {
+      html += `<p class="empty">+${escalatedTrimmed} more escalated opportunities — see full dashboard for all.</p>`;
+    }
     html += `</div></section>`;
   }
 
-  html += `<section class="section"><h2 class="section-title">TOP OPPORTUNITIES</h2><div class="card-grid">`;
+  html += `<section class="section"><h2 class="section-title">TOP OPPORTUNITIES${topTrimmed > 0 ? ` — top ${TOP_CAP} of ${allTop.length}` : ''}</h2><div class="card-grid">`;
   if (top.length > 0) {
     html += top.map(c => renderCard(c, false)).join('');
+    if (topTrimmed > 0) {
+      html += `<p class="empty">+${topTrimmed} more opportunities scored 40+ — see full dashboard: <code>niche-research/dashboard/index.html</code></p>`;
+    }
   } else {
     html += '<p class="empty">No opportunities scoring 40+ found today.</p>';
   }

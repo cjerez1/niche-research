@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-21",
+  "lastUpdated": "2026-04-22",
   "channels": {
     "UClXLMgQJAxWrKJC8tMQaKbg": {
       "channelTitle": "The DNA Archive",
@@ -175,6 +175,12 @@
           "score": 76,
           "subscribers": 2680,
           "avgViews": 69660
+        },
+        {
+          "date": "2026-04-22",
+          "score": 76,
+          "subscribers": 2910,
+          "avgViews": 81119
         }
       ]
     },
@@ -210,6 +216,12 @@
           "score": 72,
           "subscribers": 9630,
           "avgViews": 104441
+        },
+        {
+          "date": "2026-04-22",
+          "score": 72,
+          "subscribers": 9970,
+          "avgViews": 110617
         }
       ]
     },
@@ -239,6 +251,12 @@
           "score": 71,
           "subscribers": 1270,
           "avgViews": 53431
+        },
+        {
+          "date": "2026-04-22",
+          "score": 71,
+          "subscribers": 1310,
+          "avgViews": 52116
         }
       ]
     },
@@ -330,6 +348,12 @@
           "score": 67,
           "subscribers": 1850,
           "avgViews": 1979
+        },
+        {
+          "date": "2026-04-22",
+          "score": 67,
+          "subscribers": 1870,
+          "avgViews": 2020
         }
       ]
     },
@@ -584,6 +608,12 @@
           "score": 61,
           "subscribers": 19,
           "avgViews": 711
+        },
+        {
+          "date": "2026-04-22",
+          "score": 61,
+          "subscribers": 19,
+          "avgViews": 705
         }
       ]
     },
@@ -1261,6 +1291,12 @@
           "score": 71,
           "subscribers": 2840,
           "avgViews": 32163
+        },
+        {
+          "date": "2026-04-22",
+          "score": 71,
+          "subscribers": 2860,
+          "avgViews": 32835
         }
       ]
     },
@@ -1278,6 +1314,12 @@
           "score": 65,
           "subscribers": 345,
           "avgViews": 11536
+        },
+        {
+          "date": "2026-04-22",
+          "score": 66,
+          "subscribers": 376,
+          "avgViews": 12066
         }
       ]
     },
@@ -1300,6 +1342,12 @@
           "score": 73,
           "subscribers": 227,
           "avgViews": 813
+        },
+        {
+          "date": "2026-04-22",
+          "score": 73,
+          "subscribers": 250,
+          "avgViews": 876
         }
       ]
     },
@@ -1322,6 +1370,12 @@
           "score": 58,
           "subscribers": 348,
           "avgViews": 1821
+        },
+        {
+          "date": "2026-04-22",
+          "score": 58,
+          "subscribers": 368,
+          "avgViews": 1959
         }
       ]
     },
@@ -3566,6 +3620,17 @@
           "score": 44,
           "subscribers": 1750,
           "avgViews": 4142.29
+        }
+      ]
+    },
+    "UCqgSRJZFZ2sev876QtPgvqw": {
+      "channelTitle": "Makers DIY",
+      "snapshots": [
+        {
+          "date": "2026-04-22",
+          "score": 57,
+          "subscribers": 638,
+          "avgViews": 13469
         }
       ]
     }

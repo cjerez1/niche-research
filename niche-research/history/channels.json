@@ -1380,6 +1380,12 @@
           "score": 66,
           "subscribers": 403,
           "avgViews": 13599
+        },
+        {
+          "date": "2026-04-24",
+          "score": 66,
+          "subscribers": 425,
+          "avgViews": 14709
         }
       ]
     },
@@ -1391,6 +1397,12 @@
           "score": 62,
           "subscribers": 1430,
           "avgViews": 934
+        },
+        {
+          "date": "2026-04-24",
+          "score": 59,
+          "subscribers": 3740,
+          "avgViews": 2768
         }
       ]
     },
@@ -3725,6 +3737,28 @@
           "score": 70,
           "subscribers": 76,
           "avgViews": 1387
+        }
+      ]
+    },
+    "UC2-Z52Eeq65njMWpUzh12zg": {
+      "channelTitle": "Forgotten Image Secrets",
+      "snapshots": [
+        {
+          "date": "2026-04-24",
+          "score": 75,
+          "subscribers": 245,
+          "avgViews": 1375
+        }
+      ]
+    },
+    "UCdQ4tyZdpq3p2N5K4hTtFXQ": {
+      "channelTitle": "BioHealth Nexus",
+      "snapshots": [
+        {
+          "date": "2026-04-24",
+          "score": 68,
+          "subscribers": 4390,
+          "avgViews": 9441
         }
       ]
     }

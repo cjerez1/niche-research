@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 47,
+  "saturationLevel": "Moderate",
+  "directHits": 53,
+  "directHitLevel": "High",
+  "topVideoViews": 340948,
+  "topVideo": {
+    "title": "Don&#39;t Drink Plain Water Again After 60 — THIS 1 Trick Boosts Blood Flow Fast | Senior Health Tips",
+    "channelTitle": "Bio Bites",
+    "views": 340948,
+    "publishedAt": "2026-04-06T00:00:09Z",
+    "videoId": "DcCqjglDRKo"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 6,
+    "10k_100k": 14,
+    "1k_10k": 18,
+    "under1k": 9
+  },
+  "topCompetitors": [
+    {
+      "title": "डॉक्टर ईशा",
+      "subscribers": 238000,
+      "totalViews": 7997634,
+      "videoCount": 67,
+      "ageDays": 626
+    },
+    {
+      "title": "Dr Rohini Patil",
+      "subscribers": 217000,
+      "totalViews": 61622305,
+      "videoCount": 865,
+      "ageDays": 4668
+    },
+    {
+      "title": "Dr. Zara Khan",
+      "subscribers": 117000,
+      "totalViews": 9492331,
+      "videoCount": 61,
+      "ageDays": 129
+    },
+    {
+      "title": "Seniors Hub",
+      "subscribers": 108000,
+      "totalViews": 8579371,
+      "videoCount": 118,
+      "ageDays": 3703
+    },
+    {
+      "title": "Dra. Camila Herrera",
+      "subscribers": 101000,
+      "totalViews": 7331915,
+      "videoCount": 158,
+      "ageDays": 267
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "Don&#39;t Drink Plain Water Again After 60 — THIS 1 Trick Boosts Blood Flow Fast | Senior Health Tips",
+      "channelTitle": "Bio Bites",
+      "views": 340948,
+      "publishedAt": "2026-04-06T00:00:09Z",
+      "videoId": "DcCqjglDRKo"
+    },
+    {
+      "title": "Don&#39;t Drink Plain Water Again After 60 — THIS 1 Trick Boosts Blood Flow Fast | Senior Health Tips",
+      "channelTitle": "Seniors Circle",
+      "views": 339835,
+      "publishedAt": "2026-04-02T03:17:25Z",
+      "videoId": "sa9NTtBWrNw"
+    },
+    {
+      "title": "Don&#39;t Drink Plain Water Again After 60 — THIS 1 Trick Boosts Blood Flow Fast",
+      "channelTitle": "Elevate Health Hub",
+      "views": 104463,
+      "publishedAt": "2026-04-12T19:22:38Z",
+      "videoId": "nz4iiTy8v30"
+    },
+    {
+      "title": "Don’t Drink Water Like This After 60 😳 Try THIS Trick for Better Blood Flow!",
+      "channelTitle": "Dr Jweria batool",
+      "views": 103027,
+      "publishedAt": "2026-04-14T14:14:59Z",
+      "videoId": "CgArUkbxsAU"
+    },
+    {
+      "title": "Don&#39;t Drink Plain Water Again After 60 — THIS 1 Trick Boosts Blood Flow Fast | Fitnexa",
+      "channelTitle": "Fitnexa",
+      "views": 94357,
+      "publishedAt": "2026-04-19T13:00:04Z",
+      "videoId": "2-fFgqWkOkc"
+    }
+  ],
+  "avgAge": 598,
+  "windowDays": 30,
+  "nicheSlug": "biohealth-nexus",
+  "cachedAt": "2026-04-24T19:01:54.684Z"
+}

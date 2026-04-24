@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-23",
+  "lastUpdated": "2026-04-24",
   "channels": {
     "UClXLMgQJAxWrKJC8tMQaKbg": {
       "channelTitle": "The DNA Archive",
@@ -187,6 +187,12 @@
           "score": 74,
           "subscribers": 3050,
           "avgViews": 81575
+        },
+        {
+          "date": "2026-04-24",
+          "score": 74,
+          "subscribers": 3180,
+          "avgViews": 87711
         }
       ]
     },
@@ -372,6 +378,12 @@
           "score": 67,
           "subscribers": 1890,
           "avgViews": 2119
+        },
+        {
+          "date": "2026-04-24",
+          "score": 67,
+          "subscribers": 1930,
+          "avgViews": 2203
         }
       ]
     },
@@ -635,6 +647,12 @@
         },
         {
           "date": "2026-04-23",
+          "score": 61,
+          "subscribers": 19,
+          "avgViews": 705
+        },
+        {
+          "date": "2026-04-24",
           "score": 61,
           "subscribers": 19,
           "avgViews": 705
@@ -1327,6 +1345,12 @@
           "score": 70,
           "subscribers": 2880,
           "avgViews": 29860
+        },
+        {
+          "date": "2026-04-24",
+          "score": 70,
+          "subscribers": 2900,
+          "avgViews": 30080
         }
       ]
     },
@@ -1390,6 +1414,12 @@
           "score": 71,
           "subscribers": 260,
           "avgViews": 892
+        },
+        {
+          "date": "2026-04-24",
+          "score": 71,
+          "subscribers": 295,
+          "avgViews": 940
         }
       ]
     },
@@ -3673,6 +3703,28 @@
           "score": 57,
           "subscribers": 638,
           "avgViews": 13469
+        }
+      ]
+    },
+    "UCJoFhRdDOofCJnIrgtXZCBA": {
+      "channelTitle": "Old & Now",
+      "snapshots": [
+        {
+          "date": "2026-04-24",
+          "score": 71,
+          "subscribers": 224,
+          "avgViews": 1116
+        }
+      ]
+    },
+    "UCndi-mbNmiiMBqYoxRd6fGQ": {
+      "channelTitle": "THE CLASSIC VAULT",
+      "snapshots": [
+        {
+          "date": "2026-04-24",
+          "score": 70,
+          "subscribers": 76,
+          "avgViews": 1387
         }
       ]
     }

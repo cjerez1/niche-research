@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 21,
+  "saturationLevel": "Moderate",
+  "directHits": 23,
+  "directHitLevel": "High",
+  "topVideoViews": 2246,
+  "topVideo": {
+    "title": "At 66, Ruth Langsford Reveals Why She Divorced Eamonn Holmes",
+    "channelTitle": "Untold Icon",
+    "views": 2246,
+    "publishedAt": "2026-04-17T19:46:50Z",
+    "videoId": "R64pzac40gE"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 1,
+    "10k_100k": 2,
+    "1k_10k": 12,
+    "under1k": 6
+  },
+  "topCompetitors": [
+    {
+      "title": "Late Night with Seth Meyers",
+      "subscribers": 5260000,
+      "totalViews": 4064362700,
+      "videoCount": 6723,
+      "ageDays": 4731
+    },
+    {
+      "title": "The TimeLens",
+      "subscribers": 27900,
+      "totalViews": 31635264,
+      "videoCount": 156,
+      "ageDays": 384
+    },
+    {
+      "title": "Mzansi Truth",
+      "subscribers": 15300,
+      "totalViews": 10223,
+      "videoCount": 28,
+      "ageDays": 350
+    },
+    {
+      "title": "Cast 2 Time",
+      "subscribers": 4900,
+      "totalViews": 1484314,
+      "videoCount": 325,
+      "ageDays": 388
+    },
+    {
+      "title": "Celebrity Breaking News",
+      "subscribers": 3270,
+      "totalViews": 613706,
+      "videoCount": 834,
+      "ageDays": 1279
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "At 66, Ruth Langsford Reveals Why She Divorced Eamonn Holmes",
+      "channelTitle": "Untold Icon",
+      "views": 2246,
+      "publishedAt": "2026-04-17T19:46:50Z",
+      "videoId": "R64pzac40gE"
+    },
+    {
+      "title": "At 66, Ruth Langsford Reveals Why She Divorced Eamonn Holmes",
+      "channelTitle": "Behind The Frame",
+      "views": 2169,
+      "publishedAt": "2026-04-16T19:00:05Z",
+      "videoId": "aotjE5J0vdE"
+    },
+    {
+      "title": "At 66, Ruth Langsford Reveals Why She Divorced Eamonn Holmes",
+      "channelTitle": "The Untold Stories",
+      "views": 565,
+      "publishedAt": "2026-04-20T19:00:57Z",
+      "videoId": "xxC2IrzMimI"
+    },
+    {
+      "title": "At 66, Ruth Langsford Reveals Why She Divorced Eamonn Holmes",
+      "channelTitle": "Prestige Buzz",
+      "views": 536,
+      "publishedAt": "2026-04-13T00:25:22Z",
+      "videoId": "SlhSrxHQTT0"
+    },
+    {
+      "title": "At 66, Eamonn Holmes Reveals Painful Truth About Ruth Langsford Breakup",
+      "channelTitle": "Hollywood secret6",
+      "views": 514,
+      "publishedAt": "2026-04-11T19:02:00Z",
+      "videoId": "N54wetTZhn8"
+    }
+  ],
+  "avgAge": 827,
+  "windowDays": 30,
+  "nicheSlug": "the-classic-vault",
+  "cachedAt": "2026-04-24T10:25:28.561Z"
+}

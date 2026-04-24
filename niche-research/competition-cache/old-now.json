@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 5,
+  "saturationLevel": "Emerging",
+  "directHits": 5,
+  "directHitLevel": "Medium",
+  "topVideoViews": 54480,
+  "topVideo": {
+    "title": "4 Prayers That Force Every Dark Spirit to Leave Your House",
+    "channelTitle": "360Bible",
+    "views": 54480,
+    "publishedAt": "2026-04-03T17:45:01Z",
+    "videoId": "75OYBXflhTQ"
+  },
+  "verdict": "BEND",
+  "verdictReason": "Demand proven — differentiate the angle",
+  "tiers": {
+    "over100k": 0,
+    "10k_100k": 1,
+    "1k_10k": 0,
+    "under1k": 4
+  },
+  "topCompetitors": [
+    {
+      "title": "360Bible",
+      "subscribers": 10000,
+      "totalViews": 532906,
+      "videoCount": 43,
+      "ageDays": 138
+    },
+    {
+      "title": "Secret History Archive",
+      "subscribers": 343,
+      "totalViews": 67811,
+      "videoCount": 45,
+      "ageDays": 55
+    },
+    {
+      "title": "Called Glorious",
+      "subscribers": 217,
+      "totalViews": 25343,
+      "videoCount": 92,
+      "ageDays": 116
+    },
+    {
+      "title": "Daily Kingdom Word",
+      "subscribers": 97,
+      "totalViews": 5551,
+      "videoCount": 115,
+      "ageDays": 905
+    },
+    {
+      "title": "Tartaria Hub",
+      "subscribers": 32,
+      "totalViews": 1613,
+      "videoCount": 11,
+      "ageDays": 24
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "4 Prayers That Force Every Dark Spirit to Leave Your House",
+      "channelTitle": "360Bible",
+      "views": 54480,
+      "publishedAt": "2026-04-03T17:45:01Z",
+      "videoId": "75OYBXflhTQ"
+    },
+    {
+      "title": "Every House Before 1870 Had a &quot;Spirit Room&quot;  This Is What They Replaced It With",
+      "channelTitle": "Secret History Archive",
+      "views": 773,
+      "publishedAt": "2026-04-13T16:01:00Z",
+      "videoId": "TAaWBgOxAX0"
+    },
+    {
+      "title": "Spiritual Warfare Prayer: Cleanse and Consecrate Every Room of Your Home",
+      "channelTitle": "Daily Kingdom Word",
+      "views": 138,
+      "publishedAt": "2026-04-05T09:30:00Z",
+      "videoId": "vypAcKX0Sns"
+    },
+    {
+      "title": "Holy Spirit in my Home",
+      "channelTitle": "Called Glorious",
+      "views": 110,
+      "publishedAt": "2026-04-06T15:00:01Z",
+      "videoId": "03OqjfJe2k4"
+    },
+    {
+      "title": "What They Found on Rothschild Island — Antarctica in 1908 Shocked the World",
+      "channelTitle": "Tartaria Hub",
+      "views": 53,
+      "publishedAt": "2026-04-19T16:12:03Z",
+      "videoId": "IE3ll2dSirU"
+    }
+  ],
+  "avgAge": 248,
+  "windowDays": 30,
+  "nicheSlug": "old-now",
+  "cachedAt": "2026-04-24T10:25:27.346Z"
+}

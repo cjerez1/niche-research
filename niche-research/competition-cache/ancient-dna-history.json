@@ -1,100 +1,100 @@
 {
-  "totalCompetitors": 31,
+  "totalCompetitors": 29,
   "saturationLevel": "Moderate",
-  "directHits": 50,
+  "directHits": 49,
   "directHitLevel": "High",
-  "topVideoViews": 471803,
+  "topVideoViews": 658406,
   "topVideo": {
     "title": "King Richard III&#39;s DNA Reveals a Shocking Truth That Rewrites 500 Years of History",
     "channelTitle": "First Humans ",
-    "views": 471803,
+    "views": 658406,
     "publishedAt": "2026-03-28T19:47:12Z",
     "videoId": "qsnmKUfTPm4"
   },
   "verdict": "SKIP",
   "verdictReason": "Too crowded — bend harder or move on",
   "tiers": {
-    "over100k": 1,
+    "over100k": 0,
     "10k_100k": 3,
-    "1k_10k": 9,
-    "under1k": 18
+    "1k_10k": 11,
+    "under1k": 15
   },
   "topCompetitors": [
     {
-      "title": "The History Hub",
-      "subscribers": 192000,
-      "totalViews": 17254441,
-      "videoCount": 232,
-      "ageDays": 981
-    },
-    {
       "title": "Evo Inception",
-      "subscribers": 91700,
-      "totalViews": 18525214,
-      "videoCount": 390,
-      "ageDays": 960
+      "subscribers": 92700,
+      "totalViews": 19047957,
+      "videoCount": 391,
+      "ageDays": 967
     },
     {
-      "title": "Hidden History",
-      "subscribers": 20100,
-      "totalViews": 3156989,
-      "videoCount": 1528,
-      "ageDays": 4540
+      "title": "Human Discovery ",
+      "subscribers": 27200,
+      "totalViews": 2709608,
+      "videoCount": 45,
+      "ageDays": 1356
     },
     {
       "title": "First Humans ",
-      "subscribers": 18500,
-      "totalViews": 2851824,
+      "subscribers": 23500,
+      "totalViews": 4713569,
       "videoCount": 31,
-      "ageDays": 328
+      "ageDays": 335
+    },
+    {
+      "title": "Crownline Origins",
+      "subscribers": 9700,
+      "totalViews": 822137,
+      "videoCount": 43,
+      "ageDays": 3553
     },
     {
       "title": "Genetics Frontier",
-      "subscribers": 7200,
-      "totalViews": 785641,
-      "videoCount": 244,
-      "ageDays": 971
+      "subscribers": 7220,
+      "totalViews": 791894,
+      "videoCount": 247,
+      "ageDays": 978
     }
   ],
   "directHitVideos": [
     {
       "title": "King Richard III&#39;s DNA Reveals a Shocking Truth That Rewrites 500 Years of History",
       "channelTitle": "First Humans ",
-      "views": 471803,
+      "views": 658406,
       "publishedAt": "2026-03-28T19:47:12Z",
       "videoId": "qsnmKUfTPm4"
     },
     {
+      "title": "Scientists Reveal Shocking Genetic Origin of Dutch DNA",
+      "channelTitle": "Human Discovery ",
+      "views": 112077,
+      "publishedAt": "2026-04-15T14:49:42Z",
+      "videoId": "1ywR7nuod2U"
+    },
+    {
       "title": "DNA From a 9,000-Year-Old Baby Changes Everything About Native American Origins!",
       "channelTitle": "The Helix Report",
-      "views": 57925,
+      "views": 61792,
       "publishedAt": "2026-04-03T19:45:02Z",
       "videoId": "XKOiCLR1bgI"
     },
     {
-      "title": "Poland&#39;s DNA Bombshell: 80% Population Replacement Explained",
-      "channelTitle": "The History Hub",
-      "views": 57845,
-      "publishedAt": "2026-03-21T18:00:33Z",
-      "videoId": "YBjU8FjMMd0"
+      "title": "What Jewish DNA Just Revealed Shocked the Entire World",
+      "channelTitle": "The DNA Archive",
+      "views": 49979,
+      "publishedAt": "2026-04-03T18:45:06Z",
+      "videoId": "cZZhW2g1SQY"
     },
     {
       "title": "Ancient DNA Found in Britain That Doesn&#39;t Match Any Known Population",
       "channelTitle": "Crownline Origins",
-      "views": 40315,
+      "views": 40712,
       "publishedAt": "2026-03-26T10:17:48Z",
       "videoId": "6fkvFVsomLg"
-    },
-    {
-      "title": "What Jewish DNA Just Revealed Shocked the Entire World",
-      "channelTitle": "The DNA Archive",
-      "views": 37677,
-      "publishedAt": "2026-04-03T18:45:06Z",
-      "videoId": "cZZhW2g1SQY"
     }
   ],
-  "avgAge": 735,
+  "avgAge": 950,
   "windowDays": 30,
   "nicheSlug": "ancient-dna-history",
-  "cachedAt": "2026-04-18T04:41:17.869Z"
+  "cachedAt": "2026-04-25T09:58:48.620Z"
 }

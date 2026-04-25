@@ -1,100 +1,100 @@
 {
-  "totalCompetitors": 47,
+  "totalCompetitors": 46,
   "saturationLevel": "Moderate",
   "directHits": 50,
   "directHitLevel": "High",
-  "topVideoViews": 54860,
+  "topVideoViews": 56772,
   "topVideo": {
-    "title": "FRICTION MAXXING: The Ultimate 7 Day Challange 🔥 | Rewirs",
+    "title": "How Modern Comfort Is Destroying Young Men",
     "channelTitle": "Rewirs",
-    "views": 54860,
+    "views": 56772,
     "publishedAt": "2026-03-29T07:50:00Z",
     "videoId": "XTeAM5MNkSw"
   },
   "verdict": "SKIP",
   "verdictReason": "Too crowded — bend harder or move on",
   "tiers": {
-    "over100k": 4,
+    "over100k": 6,
     "10k_100k": 7,
-    "1k_10k": 9,
-    "under1k": 27
+    "1k_10k": 7,
+    "under1k": 26
   },
   "topCompetitors": [
     {
       "title": "Rewirs",
-      "subscribers": 2870000,
-      "totalViews": 291207872,
-      "videoCount": 376,
-      "ageDays": 2810
+      "subscribers": 2880000,
+      "totalViews": 291770892,
+      "videoCount": 378,
+      "ageDays": 2817
     },
     {
       "title": "Dr Sweta Adatia",
-      "subscribers": 327000,
-      "totalViews": 15984987,
-      "videoCount": 314,
-      "ageDays": 1631
+      "subscribers": 329000,
+      "totalViews": 16135629,
+      "videoCount": 321,
+      "ageDays": 1638
+    },
+    {
+      "title": "Greek Primordial ",
+      "subscribers": 147000,
+      "totalViews": 43954885,
+      "videoCount": 659,
+      "ageDays": 737
     },
     {
       "title": " Inspired by Deep ",
       "subscribers": 113000,
-      "totalViews": 14028238,
+      "totalViews": 14131215,
       "videoCount": 147,
-      "ageDays": 782
+      "ageDays": 790
     },
     {
       "title": "Wisdom Islands ",
-      "subscribers": 111000,
-      "totalViews": 4005451,
-      "videoCount": 88,
-      "ageDays": 700
-    },
-    {
-      "title": "Motivational Tales",
-      "subscribers": 88400,
-      "totalViews": 3783994,
-      "videoCount": 66,
-      "ageDays": 186
+      "subscribers": 112000,
+      "totalViews": 4088502,
+      "videoCount": 92,
+      "ageDays": 707
     }
   ],
   "directHitVideos": [
     {
-      "title": "FRICTION MAXXING: The Ultimate 7 Day Challange 🔥 | Rewirs",
+      "title": "How Modern Comfort Is Destroying Young Men",
       "channelTitle": "Rewirs",
-      "views": 54860,
+      "views": 56772,
       "publishedAt": "2026-03-29T07:50:00Z",
       "videoId": "XTeAM5MNkSw"
     },
     {
-      "title": "1 Verse That Rewires Your Brain in 30 Days",
-      "channelTitle": "Wisdom Islands ",
-      "views": 39944,
-      "publishedAt": "2026-03-25T15:00:09Z",
-      "videoId": "7-ZBqmz2Y6k"
-    },
-    {
-      "title": "3 Night Habits That Quietly Rewire Your Brain For Peak Productivity",
-      "channelTitle": "Ideas To Thrive",
-      "views": 39574,
-      "publishedAt": "2026-03-26T13:01:31Z",
-      "videoId": "mi0GQobn5FY"
+      "title": "I Replaced Music With Brahmacharya Music for 30 Days… THIS Happened 🔥",
+      "channelTitle": "Brahmacharya Yatra • 89k views • 21 hours ago\n\n...",
+      "views": 45502,
+      "publishedAt": "2026-04-11T05:46:12Z",
+      "videoId": "36XhNypylmU"
     },
     {
       "title": "Rewire Your Brain Power: Strengthen Your Prefrontal Cortex | Control Your Brain!- Dr. Sweta Adatia",
       "channelTitle": "Dr Sweta Adatia",
-      "views": 39152,
+      "views": 42362,
       "publishedAt": "2026-04-04T13:00:54Z",
       "videoId": "VYf4p9_-MrI"
     },
     {
-      "title": "I Replaced Music With Brahmacharya Music for 30 Days… THIS Happened 🔥",
-      "channelTitle": "Brahmacharya Yatra • 89k views • 21 hours ago\n\n...",
-      "views": 30246,
-      "publishedAt": "2026-04-11T05:46:12Z",
-      "videoId": "36XhNypylmU"
+      "title": "3 Night Habits That Quietly Rewire Your Brain For Peak Productivity",
+      "channelTitle": "Ideas To Thrive",
+      "views": 39961,
+      "publishedAt": "2026-03-26T13:01:31Z",
+      "videoId": "mi0GQobn5FY"
+    },
+    {
+      "title": "3 Habits That Rewire Your Brain for Happiness (Backed by Neuroscience)",
+      "channelTitle": "it's that simple ",
+      "views": 28414,
+      "publishedAt": "2026-04-08T15:46:22Z",
+      "videoId": "5Rv6AHCZsEw"
     }
   ],
-  "avgAge": 1198,
+  "avgAge": 967,
   "windowDays": 30,
   "nicheSlug": "think-glitch",
-  "cachedAt": "2026-04-18T04:41:13.535Z"
+  "cachedAt": "2026-04-25T09:58:49.906Z"
 }

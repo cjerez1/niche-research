@@ -1,51 +1,79 @@
 {
-  "totalCompetitors": 1,
+  "totalCompetitors": 3,
   "saturationLevel": "Emerging",
-  "directHits": 2,
-  "directHitLevel": "Low",
-  "topVideoViews": 21,
+  "directHits": 4,
+  "directHitLevel": "Medium",
+  "topVideoViews": 56,
   "topVideo": {
-    "title": "The Global Civilization That Was Erased 12,000 Years Ago",
+    "title": "7 Megalithic Sites That Are Physically Impossible to Construct",
     "channelTitle": "Ancient Mystery Lab",
-    "views": 21,
-    "publishedAt": "2026-04-08T15:01:12Z",
-    "videoId": "djTDV4wBrSE"
+    "views": 56,
+    "publishedAt": "2026-04-09T22:00:11Z",
+    "videoId": "4575wcvFSX4"
   },
   "verdict": "CAUTION",
-  "verdictReason": "Low competition but also low demand",
+  "verdictReason": "Moderate crowding without strong proof of demand",
   "tiers": {
     "over100k": 0,
     "10k_100k": 0,
     "1k_10k": 0,
-    "under1k": 1
+    "under1k": 3
   },
   "topCompetitors": [
     {
+      "title": "Archaic Void",
+      "subscribers": 221,
+      "totalViews": 202,
+      "videoCount": 5,
+      "ageDays": 189
+    },
+    {
+      "title": "Buried Chronology",
+      "subscribers": 51,
+      "totalViews": 22218,
+      "videoCount": 6,
+      "ageDays": 134
+    },
+    {
       "title": "Ancient Mystery Lab",
-      "subscribers": 1,
-      "totalViews": 64,
-      "videoCount": 18,
-      "ageDays": 22
+      "subscribers": 3,
+      "totalViews": 733,
+      "videoCount": 21,
+      "ageDays": 29
     }
   ],
   "directHitVideos": [
     {
+      "title": "7 Megalithic Sites That Are Physically Impossible to Construct",
+      "channelTitle": "Ancient Mystery Lab",
+      "views": 56,
+      "publishedAt": "2026-04-09T22:00:11Z",
+      "videoId": "4575wcvFSX4"
+    },
+    {
       "title": "The Global Civilization That Was Erased 12,000 Years Ago",
       "channelTitle": "Ancient Mystery Lab",
-      "views": 21,
+      "views": 34,
       "publishedAt": "2026-04-08T15:01:12Z",
       "videoId": "djTDV4wBrSE"
     },
     {
-      "title": "7 Megalithic Sites That Are Physically Impossible to Construct",
-      "channelTitle": "Ancient Mystery Lab",
-      "views": 2,
-      "publishedAt": "2026-04-09T22:00:11Z",
-      "videoId": "4575wcvFSX4"
+      "title": "7 Impossible Megaliths Modern Technology Still Can&#39;t Replicate",
+      "channelTitle": "Archaic Void",
+      "views": 0,
+      "publishedAt": "2026-04-24T19:45:33Z",
+      "videoId": "oPAi3JQDuWw"
+    },
+    {
+      "title": "13 Ancient Megalithic Walls That Are Physically IMPOSSIBLE to Construct",
+      "channelTitle": "Buried Chronology",
+      "views": 0,
+      "publishedAt": "2026-04-22T04:00:29Z",
+      "videoId": "YJYVddvllY0"
     }
   ],
-  "avgAge": 22,
+  "avgAge": 117,
   "windowDays": 30,
   "nicheSlug": "the-lustre-archive",
-  "cachedAt": "2026-04-18T04:41:11.275Z"
+  "cachedAt": "2026-04-25T09:58:45.767Z"
 }

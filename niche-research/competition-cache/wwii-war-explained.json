@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 47,
+  "saturationLevel": "Moderate",
+  "directHits": 54,
+  "directHitLevel": "High",
+  "topVideoViews": 16409,
+  "topVideo": {
+    "title": "Every MAJOR BATTLE on the European Front of World War II Explained",
+    "channelTitle": "WW2 Horizon",
+    "views": 16409,
+    "publishedAt": "2026-04-03T15:00:38Z",
+    "videoId": "MXlEms4uXEs"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 1,
+    "10k_100k": 1,
+    "1k_10k": 8,
+    "under1k": 37
+  },
+  "topCompetitors": [
+    {
+      "title": "Star Fun Tv",
+      "subscribers": 230000,
+      "totalViews": 83070615,
+      "videoCount": 410,
+      "ageDays": 2525
+    },
+    {
+      "title": "Ships of War - The Battleship History Channel",
+      "subscribers": 11000,
+      "totalViews": 2025960,
+      "videoCount": 242,
+      "ageDays": 1086
+    },
+    {
+      "title": "WW2 Horizon",
+      "subscribers": 6670,
+      "totalViews": 1036152,
+      "videoCount": 42,
+      "ageDays": 1854
+    },
+    {
+      "title": "Monster Media ",
+      "subscribers": 6090,
+      "totalViews": 2034769,
+      "videoCount": 524,
+      "ageDays": 565
+    },
+    {
+      "title": "Pashto Hollywood ",
+      "subscribers": 5880,
+      "totalViews": 61001,
+      "videoCount": 175,
+      "ageDays": 2552
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "Every MAJOR BATTLE on the European Front of World War II Explained",
+      "channelTitle": "WW2 Horizon",
+      "views": 16409,
+      "publishedAt": "2026-04-03T15:00:38Z",
+      "videoId": "MXlEms4uXEs"
+    },
+    {
+      "title": "Japan&#39;s Biggest Mistake in World War II Explained in 13 Minutes",
+      "channelTitle": "WW2 Human Stories",
+      "views": 9011,
+      "publishedAt": "2026-03-30T21:34:34Z",
+      "videoId": "ct4jCFP-fnw"
+    },
+    {
+      "title": "Every MAJOR Amphibious ASSAULT in World War II Explained in 18 Minutes",
+      "channelTitle": "WW2 Horizon",
+      "views": 8662,
+      "publishedAt": "2026-04-11T15:00:18Z",
+      "videoId": "5YgM1WebBcc"
+    },
+    {
+      "title": "The 10 BLOODIEST Battles of World War II Explained",
+      "channelTitle": "WW2 Horizon",
+      "views": 3828,
+      "publishedAt": "2026-04-17T16:00:56Z",
+      "videoId": "SDHkCyQjIhY"
+    },
+    {
+      "title": "All Types of US Main Battle Tanks in World War II Explained",
+      "channelTitle": "WW2 Horizon",
+      "views": 1765,
+      "publishedAt": "2026-04-13T15:01:19Z",
+      "videoId": "jolEoY9hVj0"
+    }
+  ],
+  "avgAge": 492,
+  "windowDays": 30,
+  "nicheSlug": "wwii-war-explained",
+  "cachedAt": "2026-04-25T09:58:44.507Z"
+}

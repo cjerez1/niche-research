@@ -1,22 +1,100 @@
 {
-  "totalCompetitors": 0,
-  "saturationLevel": "Wide Open",
-  "directHits": 0,
-  "directHitLevel": "Clear",
-  "topVideoViews": 0,
-  "topVideo": null,
-  "verdict": "GO",
-  "verdictReason": "No direct hits in last 30 days — first mover advantage",
-  "tiers": {
-    "over100k": 0,
-    "10k_100k": 0,
-    "1k_10k": 0,
-    "under1k": 0
+  "totalCompetitors": 9,
+  "saturationLevel": "Emerging",
+  "directHits": 9,
+  "directHitLevel": "High",
+  "topVideoViews": 1715666,
+  "topVideo": {
+    "title": "Artemis II: Everything You Need To Know!",
+    "channelTitle": "Everyday Astronaut",
+    "views": 1715666,
+    "publishedAt": "2026-03-30T13:00:00Z",
+    "videoId": "o593JmtLyMU"
   },
-  "topCompetitors": [],
-  "directHitVideos": [],
-  "avgAge": 0,
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 1,
+    "10k_100k": 1,
+    "1k_10k": 3,
+    "under1k": 4
+  },
+  "topCompetitors": [
+    {
+      "title": "Everyday Astronaut",
+      "subscribers": 1950000,
+      "totalViews": 370987304,
+      "videoCount": 525,
+      "ageDays": 4536
+    },
+    {
+      "title": "Scientia Plus",
+      "subscribers": 75600,
+      "totalViews": 23171389,
+      "videoCount": 459,
+      "ageDays": 2138
+    },
+    {
+      "title": "Talent Arena",
+      "subscribers": 8000,
+      "totalViews": 2408503,
+      "videoCount": 40,
+      "ageDays": 342
+    },
+    {
+      "title": "True Crime: Her Stories",
+      "subscribers": 1320,
+      "totalViews": 139274,
+      "videoCount": 8,
+      "ageDays": 25
+    },
+    {
+      "title": "Meo Giggles",
+      "subscribers": 1000,
+      "totalViews": 427649,
+      "videoCount": 49,
+      "ageDays": 336
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "Artemis II: Everything You Need To Know!",
+      "channelTitle": "Everyday Astronaut",
+      "views": 1715666,
+      "publishedAt": "2026-03-30T13:00:00Z",
+      "videoId": "o593JmtLyMU"
+    },
+    {
+      "title": "Everything That Happens During 10-day Artemis II Moon Journey",
+      "channelTitle": "Scientia Plus",
+      "views": 571147,
+      "publishedAt": "2026-03-30T16:58:57Z",
+      "videoId": "X0jKOY-3x2g"
+    },
+    {
+      "title": "He Came Home Alive… But Never Really Came Back | US Special Forces Emotional Audition AGT 2026",
+      "channelTitle": "Talent Arena",
+      "views": 5509,
+      "publishedAt": "2026-03-31T14:00:00Z",
+      "videoId": "vavn8B_-icw"
+    },
+    {
+      "title": "29YO Denisha Delancy Went on Vacation and Tragically Returned Home In a Casket",
+      "channelTitle": "True Crime: Her Stories",
+      "views": 935,
+      "publishedAt": "2026-04-15T20:59:00Z",
+      "videoId": "dLw6HUor08Q"
+    },
+    {
+      "title": "🐾 Ginger Kitten Shocked as Mama Cat Returns Home Alive 😳❤️",
+      "channelTitle": "Meo Giggles",
+      "views": 344,
+      "publishedAt": "2026-03-30T14:15:06Z",
+      "videoId": "PzG5XAY4aBI"
+    }
+  ],
+  "avgAge": 896,
   "windowDays": 30,
   "nicheSlug": "astro-insight-documentaries",
-  "cachedAt": "2026-04-18T04:41:18.743Z"
+  "cachedAt": "2026-04-25T09:58:47.152Z"
 }

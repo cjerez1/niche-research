@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-24",
+  "lastUpdated": "2026-04-25",
   "channels": {
     "UClXLMgQJAxWrKJC8tMQaKbg": {
       "channelTitle": "The DNA Archive",
@@ -193,6 +193,12 @@
           "score": 74,
           "subscribers": 3180,
           "avgViews": 87711
+        },
+        {
+          "date": "2026-04-25",
+          "score": 74,
+          "subscribers": 3520,
+          "avgViews": 95483
         }
       ]
     },
@@ -384,6 +390,12 @@
           "score": 67,
           "subscribers": 1930,
           "avgViews": 2203
+        },
+        {
+          "date": "2026-04-25",
+          "score": 64,
+          "subscribers": 1960,
+          "avgViews": 1690
         }
       ]
     },
@@ -656,6 +668,12 @@
           "score": 61,
           "subscribers": 19,
           "avgViews": 705
+        },
+        {
+          "date": "2026-04-25",
+          "score": 61,
+          "subscribers": 19,
+          "avgViews": 655
         }
       ]
     },
@@ -1351,6 +1369,12 @@
           "score": 70,
           "subscribers": 2900,
           "avgViews": 30080
+        },
+        {
+          "date": "2026-04-25",
+          "score": 70,
+          "subscribers": 2910,
+          "avgViews": 30289
         }
       ]
     },
@@ -1386,6 +1410,12 @@
           "score": 66,
           "subscribers": 425,
           "avgViews": 14709
+        },
+        {
+          "date": "2026-04-25",
+          "score": 66,
+          "subscribers": 436,
+          "avgViews": 15166
         }
       ]
     },
@@ -1432,6 +1462,12 @@
           "score": 71,
           "subscribers": 295,
           "avgViews": 940
+        },
+        {
+          "date": "2026-04-25",
+          "score": 71,
+          "subscribers": 314,
+          "avgViews": 947
         }
       ]
     },
@@ -3726,6 +3762,12 @@
           "score": 71,
           "subscribers": 224,
           "avgViews": 1116
+        },
+        {
+          "date": "2026-04-25",
+          "score": 75,
+          "subscribers": 267,
+          "avgViews": 1359
         }
       ]
     },
@@ -3748,6 +3790,12 @@
           "score": 75,
           "subscribers": 245,
           "avgViews": 1375
+        },
+        {
+          "date": "2026-04-25",
+          "score": 75,
+          "subscribers": 275,
+          "avgViews": 1513
         }
       ]
     },
@@ -3759,6 +3807,17 @@
           "score": 68,
           "subscribers": 4390,
           "avgViews": 9441
+        }
+      ]
+    },
+    "UCb0XKfkx9s5UqlenmfjwkUA": {
+      "channelTitle": "WWII War Explained",
+      "snapshots": [
+        {
+          "date": "2026-04-25",
+          "score": 85,
+          "subscribers": 2040,
+          "avgViews": 13486
         }
       ]
     }

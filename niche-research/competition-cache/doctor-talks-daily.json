@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 57,
+  "saturationLevel": "Crowded",
+  "directHits": 59,
+  "directHitLevel": "High",
+  "topVideoViews": 244888,
+  "topVideo": {
+    "title": "He died in his sleep because of this! I beg you stop doing it! It leads to heart attacks and strokes",
+    "channelTitle": "Evidence Health",
+    "views": 244888,
+    "publishedAt": "2026-04-18T12:00:34Z",
+    "videoId": "HsbB8v7LByw"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 0,
+    "10k_100k": 9,
+    "1k_10k": 14,
+    "under1k": 34
+  },
+  "topCompetitors": [
+    {
+      "title": "Dr. Emily Carter",
+      "subscribers": 51400,
+      "totalViews": 4088923,
+      "videoCount": 343,
+      "ageDays": 1404
+    },
+    {
+      "title": "Smart Aging",
+      "subscribers": 39100,
+      "totalViews": 1134591,
+      "videoCount": 40,
+      "ageDays": 48
+    },
+    {
+      "title": "Bio Bites",
+      "subscribers": 25500,
+      "totalViews": 1244955,
+      "videoCount": 112,
+      "ageDays": 92
+    },
+    {
+      "title": "Dr. Robert Walker | Senior Health ",
+      "subscribers": 22400,
+      "totalViews": 621540,
+      "videoCount": 46,
+      "ageDays": 145
+    },
+    {
+      "title": "Natural Health Lab",
+      "subscribers": 21900,
+      "totalViews": 1427897,
+      "videoCount": 34,
+      "ageDays": 38
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "He died in his sleep because of this! I beg you stop doing it! It leads to heart attacks and strokes",
+      "channelTitle": "Evidence Health",
+      "views": 244888,
+      "publishedAt": "2026-04-18T12:00:34Z",
+      "videoId": "HsbB8v7LByw"
+    },
+    {
+      "title": "He died in his sleep because of this! I beg you stop doing it! It leads to heart attacks and strokes",
+      "channelTitle": "PrimeLife Health",
+      "views": 4313,
+      "publishedAt": "2026-04-22T15:34:22Z",
+      "videoId": "5dUHk4T30Pc"
+    },
+    {
+      "title": "He died in his sleep because of this! I beg you stop doing it! It leads to heart attacks and strokes",
+      "channelTitle": "Smart Aging",
+      "views": 1920,
+      "publishedAt": "2026-04-25T21:00:14Z",
+      "videoId": "GEz9T-Hs2KM"
+    },
+    {
+      "title": "He died in his sleep because of this! I beg you stop doing it! It leads to heart attacks and strokes",
+      "channelTitle": "Bio FoodCure.",
+      "views": 1393,
+      "publishedAt": "2026-04-21T14:13:59Z",
+      "videoId": "0aWGRQRLtMs"
+    },
+    {
+      "title": "He Died in His Sleep… Doctors Warn: Stop This Habit Before It’s Too Late",
+      "channelTitle": "Dr Bianca",
+      "views": 631,
+      "publishedAt": "2026-04-07T22:00:47Z",
+      "videoId": "5mq5DdUi1Vg"
+    }
+  ],
+  "avgAge": 213,
+  "windowDays": 30,
+  "nicheSlug": "doctor-talks-daily",
+  "cachedAt": "2026-04-26T09:59:09.831Z"
+}

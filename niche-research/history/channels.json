@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-25",
+  "lastUpdated": "2026-04-26",
   "channels": {
     "UClXLMgQJAxWrKJC8tMQaKbg": {
       "channelTitle": "The DNA Archive",
@@ -199,6 +199,12 @@
           "score": 74,
           "subscribers": 3520,
           "avgViews": 95483
+        },
+        {
+          "date": "2026-04-26",
+          "score": 74,
+          "subscribers": 3800,
+          "avgViews": 101991
         }
       ]
     },
@@ -396,6 +402,12 @@
           "score": 64,
           "subscribers": 1960,
           "avgViews": 1690
+        },
+        {
+          "date": "2026-04-26",
+          "score": 64,
+          "subscribers": 2000,
+          "avgViews": 1787
         }
       ]
     },
@@ -674,6 +686,12 @@
           "score": 61,
           "subscribers": 19,
           "avgViews": 655
+        },
+        {
+          "date": "2026-04-26",
+          "score": 61,
+          "subscribers": 19,
+          "avgViews": 624
         }
       ]
     },
@@ -1375,6 +1393,12 @@
           "score": 70,
           "subscribers": 2910,
           "avgViews": 30289
+        },
+        {
+          "date": "2026-04-26",
+          "score": 70,
+          "subscribers": 2920,
+          "avgViews": 30531
         }
       ]
     },
@@ -1416,6 +1440,12 @@
           "score": 66,
           "subscribers": 436,
           "avgViews": 15166
+        },
+        {
+          "date": "2026-04-26",
+          "score": 63,
+          "subscribers": 441,
+          "avgViews": 15534
         }
       ]
     },
@@ -1468,6 +1498,12 @@
           "score": 71,
           "subscribers": 314,
           "avgViews": 947
+        },
+        {
+          "date": "2026-04-26",
+          "score": 71,
+          "subscribers": 323,
+          "avgViews": 939
         }
       ]
     },
@@ -1502,6 +1538,12 @@
           "score": 59,
           "subscribers": 455,
           "avgViews": 1951
+        },
+        {
+          "date": "2026-04-26",
+          "score": 59,
+          "subscribers": 468,
+          "avgViews": 2069
         }
       ]
     },
@@ -3774,6 +3816,12 @@
           "score": 75,
           "subscribers": 267,
           "avgViews": 1359
+        },
+        {
+          "date": "2026-04-26",
+          "score": 75,
+          "subscribers": 301,
+          "avgViews": 1594
         }
       ]
     },
@@ -3802,6 +3850,12 @@
           "score": 75,
           "subscribers": 275,
           "avgViews": 1513
+        },
+        {
+          "date": "2026-04-26",
+          "score": 75,
+          "subscribers": 285,
+          "avgViews": 1539
         }
       ]
     },
@@ -3824,6 +3878,34 @@
           "score": 85,
           "subscribers": 2040,
           "avgViews": 13486
+        },
+        {
+          "date": "2026-04-26",
+          "score": 85,
+          "subscribers": 2230,
+          "avgViews": 14494
+        }
+      ]
+    },
+    "UC7P8aAYEvnOiQn83-2FID_Q": {
+      "channelTitle": "DOCTOR TALKS DAILY",
+      "snapshots": [
+        {
+          "date": "2026-04-26",
+          "score": 61,
+          "subscribers": 6080,
+          "avgViews": 20958
+        }
+      ]
+    },
+    "UCAW0RdlmBJB8GZC6uVv7fUQ": {
+      "channelTitle": "The Story Of Things",
+      "snapshots": [
+        {
+          "date": "2026-04-26",
+          "score": 56,
+          "subscribers": 3350,
+          "avgViews": 36986
         }
       ]
     }

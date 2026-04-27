@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 92,
+  "saturationLevel": "Crowded",
+  "directHits": 110,
+  "directHitLevel": "High",
+  "topVideoViews": 79262,
+  "topVideo": {
+    "title": "Bury a Stick: The Forgotten 300-Year-Old Trick That Destroys Pests Without Chemicals",
+    "channelTitle": "Survival Garden",
+    "views": 79262,
+    "publishedAt": "2026-04-05T08:54:00Z",
+    "videoId": "MsjuRdcvnVI"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 12,
+    "10k_100k": 14,
+    "1k_10k": 22,
+    "under1k": 44
+  },
+  "topCompetitors": [
+    {
+      "title": "Vindooly",
+      "subscribers": 9310000,
+      "totalViews": 7926140398,
+      "videoCount": 1713,
+      "ageDays": 6010
+    },
+    {
+      "title": "Ider Alves - DIY Moda Fashion ",
+      "subscribers": 3610000,
+      "totalViews": 955219615,
+      "videoCount": 1537,
+      "ageDays": 4600
+    },
+    {
+      "title": "Refúgio Green",
+      "subscribers": 1160000,
+      "totalViews": 221781868,
+      "videoCount": 407,
+      "ageDays": 2265
+    },
+    {
+      "title": "Green plants",
+      "subscribers": 1140000,
+      "totalViews": 158128427,
+      "videoCount": 589,
+      "ageDays": 3440
+    },
+    {
+      "title": "Codezzy",
+      "subscribers": 478000,
+      "totalViews": 95266526,
+      "videoCount": 2823,
+      "ageDays": 2179
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "Bury a Stick: The Forgotten 300-Year-Old Trick That Destroys Pests Without Chemicals",
+      "channelTitle": "Survival Garden",
+      "views": 79262,
+      "publishedAt": "2026-04-05T08:54:00Z",
+      "videoId": "MsjuRdcvnVI"
+    },
+    {
+      "title": "Before Humans Existed… Earth Was Covered in GIANT Plants 😳 (Lost World Revealed)",
+      "channelTitle": "Flora Chronica",
+      "views": 146,
+      "publishedAt": "2026-04-14T18:07:41Z",
+      "videoId": "jz8L2Gtn3Io"
+    },
+    {
+      "title": "Forgotten Gardens of Deep Time | Lost Prehistoric Plants That Shaped Earth",
+      "channelTitle": "RealSnap Stories",
+      "views": 142,
+      "publishedAt": "2026-04-16T16:36:32Z",
+      "videoId": "l5nQuvXCltQ"
+    },
+    {
+      "title": "7 FORGOTTEN PLANTS Worth More Than GOLD (Grow Them Now!)",
+      "channelTitle": "Slow Garden Life",
+      "views": 40,
+      "publishedAt": "2026-03-29T16:00:01Z",
+      "videoId": "aOtkGwvtgbg"
+    },
+    {
+      "title": "The Lost Plants That Made Southeast Asian Warriors Impossible to Kill",
+      "channelTitle": "Bakás ng Panahon",
+      "views": 17,
+      "publishedAt": "2026-04-10T04:00:01Z",
+      "videoId": "-pZdTOdz_t4"
+    }
+  ],
+  "avgAge": 1308,
+  "windowDays": 30,
+  "nicheSlug": "forgotten-plants",
+  "cachedAt": "2026-04-27T10:09:45.660Z"
+}

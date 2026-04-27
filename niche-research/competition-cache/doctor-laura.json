@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 51,
+  "saturationLevel": "Crowded",
+  "directHits": 51,
+  "directHitLevel": "High",
+  "topVideoViews": 61142,
+  "topVideo": {
+    "title": "SENIORS: Do THIS to Drain Swollen Ankles Fast (Stop Taking Water Pills)",
+    "channelTitle": "Noah Grant Senior's Health Care Tips",
+    "views": 61142,
+    "publishedAt": "2026-04-13T15:40:26Z",
+    "videoId": "PPg1uBbyj7A"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 2,
+    "10k_100k": 4,
+    "1k_10k": 8,
+    "under1k": 37
+  },
+  "topCompetitors": [
+    {
+      "title": "MarioLAB",
+      "subscribers": 912000,
+      "totalViews": 253718582,
+      "videoCount": 3833,
+      "ageDays": 5292
+    },
+    {
+      "title": "TopHealthTips",
+      "subscribers": 268000,
+      "totalViews": 17206423,
+      "videoCount": 128,
+      "ageDays": 324
+    },
+    {
+      "title": "Sandra Serrati Research",
+      "subscribers": 58900,
+      "totalViews": 6741999,
+      "videoCount": 529,
+      "ageDays": 166
+    },
+    {
+      "title": "Dr. Emily Carter",
+      "subscribers": 51700,
+      "totalViews": 4115954,
+      "videoCount": 344,
+      "ageDays": 1405
+    },
+    {
+      "title": "Noah Grant Senior's Health Care Tips",
+      "subscribers": 22800,
+      "totalViews": 847871,
+      "videoCount": 94,
+      "ageDays": 168
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "SENIORS: Do THIS to Drain Swollen Ankles Fast (Stop Taking Water Pills)",
+      "channelTitle": "Noah Grant Senior's Health Care Tips",
+      "views": 61142,
+      "publishedAt": "2026-04-13T15:40:26Z",
+      "videoId": "PPg1uBbyj7A"
+    },
+    {
+      "title": "Swollen Feet? Poor Leg Circulation? 3 Fast Exercises That Help + 1 Simple Test",
+      "channelTitle": "TopHealthTips",
+      "views": 47116,
+      "publishedAt": "2026-04-09T11:04:55Z",
+      "videoId": "N5NZrrm0fKk"
+    },
+    {
+      "title": "The #1 VITAMIN to ELIMINATE Swollen Feet After 50",
+      "channelTitle": "MarioLAB",
+      "views": 36982,
+      "publishedAt": "2026-04-21T16:00:06Z",
+      "videoId": "9jxXwVaGdXA"
+    },
+    {
+      "title": "Swollen Feet After 60? Do This 30-Second Test First — Then Try These 3 Drinks",
+      "channelTitle": "Sandra Serrati Research",
+      "views": 2590,
+      "publishedAt": "2026-04-12T15:20:00Z",
+      "videoId": "RxYnrM-SV3c"
+    },
+    {
+      "title": "Swollen Feet? Vitamin #1 That Will Help Really Fast  After 60! | Senior Health Tips",
+      "channelTitle": "Dr. Emily Carter",
+      "views": 874,
+      "publishedAt": "2026-04-13T12:00:31Z",
+      "videoId": "BemstVAg9gk"
+    }
+  ],
+  "avgAge": 1016,
+  "windowDays": 30,
+  "nicheSlug": "doctor-laura",
+  "cachedAt": "2026-04-27T10:09:48.146Z"
+}

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-26",
+  "lastUpdated": "2026-04-27",
   "channels": {
     "UClXLMgQJAxWrKJC8tMQaKbg": {
       "channelTitle": "The DNA Archive",
@@ -408,6 +408,12 @@
           "score": 64,
           "subscribers": 2000,
           "avgViews": 1787
+        },
+        {
+          "date": "2026-04-27",
+          "score": 64,
+          "subscribers": 2020,
+          "avgViews": 1748
         }
       ]
     },
@@ -3856,6 +3862,12 @@
           "score": 75,
           "subscribers": 285,
           "avgViews": 1539
+        },
+        {
+          "date": "2026-04-27",
+          "score": 73,
+          "subscribers": 294,
+          "avgViews": 1525
         }
       ]
     },
@@ -3917,6 +3929,50 @@
           "score": 59,
           "subscribers": 73,
           "avgViews": 456
+        }
+      ]
+    },
+    "UCR0gxnf7pnm30xz8XsJkXJw": {
+      "channelTitle": "Forgotten Plants",
+      "snapshots": [
+        {
+          "date": "2026-04-27",
+          "score": 66,
+          "subscribers": 3950,
+          "avgViews": 3858
+        }
+      ]
+    },
+    "UCBLbqhYNAve3LmpThhB4OXA": {
+      "channelTitle": "Doctor Laura",
+      "snapshots": [
+        {
+          "date": "2026-04-27",
+          "score": 65,
+          "subscribers": 9990,
+          "avgViews": 16829
+        }
+      ]
+    },
+    "UCCTk4mzpRtZlb5rVdMLyqpA": {
+      "channelTitle": "Mandell's Health Clinic",
+      "snapshots": [
+        {
+          "date": "2026-04-27",
+          "score": 53,
+          "subscribers": 5590,
+          "avgViews": 12534
+        }
+      ]
+    },
+    "UCggo3oHqpYMIB2TSo3IkiFA": {
+      "channelTitle": "Natural Healing Lab",
+      "snapshots": [
+        {
+          "date": "2026-04-27",
+          "score": 52,
+          "subscribers": 7160,
+          "avgViews": 9661
         }
       ]
     }

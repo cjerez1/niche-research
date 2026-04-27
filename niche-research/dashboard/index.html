@@ -3,166 +3,539 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Niche Scanner — 2026-04-26</title>
+<title>Niche Scanner — 27 Apr 2026</title>
 <style>
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
+:root {
+  --bg: #FAF8F3;
+  --ink: #1A1A1A;
+  --ink-soft: #555;
+  --ink-faint: #999;
+  --line: #E5E2DA;
+  --accent: #D4F542;
+  --card: #FFFFFF;
+  --pill-bg: #F0EDE5;
+  --good: #4A9D5C;
+  --warn: #E8A33D;
+  --bend: #7B5EA7;
+  --bad: #C44A3D;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-  background: #0a0a14;
-  color: #d0d0d8;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 14px;
   line-height: 1.5;
-  padding: 0;
+}
+.container { max-width: 1320px; margin: 0 auto; padding: 48px 32px 80px; }
+
+/* HEADER */
+.doc-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 24px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 32px;
+}
+.doc-header h1 {
+  font-family: 'Tiempos Headline', 'Canela', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.doc-header h1 em {
+  font-style: italic;
+  background: var(--accent);
+  padding: 0 8px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.doc-meta {
+  text-align: right;
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+.doc-meta strong { color: var(--ink); font-weight: 600; }
+
+/* RIBBON */
+.ribbon {
+  display: flex;
+  gap: 32px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.ribbon-stat { display: flex; flex-direction: column; }
+.ribbon-num {
+  font-family: 'Tiempos Headline', Georgia, serif;
+  font-size: 24px;
+  line-height: 1;
+}
+.ribbon-lbl {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 4px;
 }
 
-.header {
-  background: linear-gradient(135deg, #0f1029 0%, #1a1040 100%);
-  padding: 24px 20px;
-  border-bottom: 2px solid #00d4ff33;
+/* FILTER BAR */
+.filter-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 24px;
+  margin-left: -32px;
+  padding-left: 32px;
+  margin-right: -32px;
+  padding-right: 32px;
 }
-.header-title { display: flex; align-items: baseline; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
-.header-title h1 { font-size: 22px; color: #00d4ff; letter-spacing: 2px; font-weight: 700; }
-.header-date { color: #888; font-size: 14px; }
-.header-stats { display: flex; gap: 12px; flex-wrap: wrap; }
-.stat-box { background: #12122a; border: 1px solid #222244; border-radius: 8px; padding: 10px 16px; text-align: center; min-width: 80px; }
-.stat-box.highlight { border-color: #00d4ff55; background: #0a1a30; }
-.stat-num { font-size: 22px; font-weight: 700; color: #fff; }
-.stat-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+.fb-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 6px 0;
+}
+.fb-label {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  min-width: 60px;
+}
+.fb-search {
+  flex: 1;
+  min-width: 240px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--card);
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--ink);
+}
+.fb-search:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+.fb-select {
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--card);
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--ink);
+  cursor: pointer;
+}
+.fb-reset {
+  padding: 8px 14px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.fb-reset:hover { background: var(--ink-soft); border-color: var(--ink-soft); }
+.fb-toggle {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.fb-toggle:hover { border-color: var(--ink); }
+.fb-toggle.on { background: var(--accent); border-color: var(--ink); }
+.filter-bar.collapsed .fb-collapsible { display: none; }
 
-.section { padding: 20px; }
-.section-title { font-size: 16px; font-weight: 700; letter-spacing: 1px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #222; }
-.escalated-title { color: #ff4444; }
-.signals-title { color: #ffd93d; }
-.disappeared-title { color: #888; }
-.rejected-title { color: #666; cursor: pointer; list-style: none; }
+.vchip, .tchip {
+  border: 1px solid var(--line);
+  background: var(--pill-bg);
+  color: var(--ink-soft);
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.vchip:hover, .tchip:hover { border-color: var(--ink); }
+.vchip.on { background: var(--accent); color: var(--ink); border-color: var(--ink); font-weight: 600; }
+.tchip.on { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.tchip em { font-style: normal; opacity: 0.6; margin-left: 4px; font-size: 10px; }
 
-.controls { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
-.sort-btn { background: #1a1a2e; border: 1px solid #333; color: #aaa; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 13px; }
-.sort-btn.active { border-color: #00d4ff; color: #00d4ff; }
-.sort-btn:hover { border-color: #00d4ff88; }
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 180px;
+  flex: 1;
+}
+.slider label {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  display: flex;
+  justify-content: space-between;
+}
+.slider output { color: var(--ink); font-weight: 600; }
+.slider input[type=range] {
+  width: 100%;
+  accent-color: var(--ink);
+}
+.fb-status {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  font-style: italic;
+}
 
-.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px; }
-.card { background: #12122a; border: 1px solid #222244; border-radius: 12px; padding: 16px; transition: border-color 0.2s; }
-.card:hover { border-color: #00d4ff44; }
-.card-escalated { border-color: #ff444466; background: #1a0a0a; }
-.card-escalated:hover { border-color: #ff4444; }
+/* SECTION */
+.section { margin-bottom: 64px; }
+.section-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.section-num {
+  font-family: 'Tiempos Headline', Georgia, serif;
+  font-size: 14px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+.section-title {
+  font-family: 'Tiempos Headline', Georgia, serif;
+  font-weight: 400;
+  font-size: 36px;
+  letter-spacing: -0.01em;
+  margin: 0;
+  flex: 1;
+  line-height: 1.1;
+}
+.section-title .accent {
+  background: var(--accent);
+  padding: 0 8px;
+  font-style: italic;
+}
+.section-count {
+  font-size: 12px;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 14px;
+  flex-shrink: 0;
+  background: var(--card);
+}
+.section-desc {
+  color: var(--ink-soft);
+  max-width: 760px;
+  margin: 0 0 16px;
+}
+.section-desc strong { color: var(--ink); }
 
-.card-header { margin-bottom: 12px; }
-.card-title-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
-.card-name { color: #ffd93d; font-size: 16px; font-weight: 600; text-decoration: none; line-height: 1.3; }
-.card-name:hover { color: #ffe566; text-decoration: underline; }
-.card-tier { font-size: 12px; color: #888; margin-top: 4px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-.score-badge { font-size: 20px; font-weight: 800; padding: 4px 10px; border-radius: 8px; min-width: 44px; text-align: center; line-height: 1; }
-.score-green { background: #00cc6622; color: #00cc66; border: 1px solid #00cc6644; }
-.score-amber { background: #ff990022; color: #ff9900; border: 1px solid #ff990044; }
-.score-grey { background: #66666622; color: #999; border: 1px solid #66666644; }
+.filter-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.chip {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: var(--pill-bg);
+  color: var(--ink-soft);
+}
+.chip.active { background: var(--accent); color: var(--ink); font-weight: 600; }
 
-.tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-.tag-new { background: #00cc66; color: #000; }
-.tag-trending-up { background: #00d4ff; color: #000; }
-.tag-returning { background: #9966ff; color: #fff; }
+/* SUMMARY */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 40px;
+}
+.summary-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 20px 24px;
+  border-radius: 4px;
+}
+.summary-card .label {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 8px;
+}
+.summary-card .value {
+  font-family: 'Tiempos Headline', Georgia, serif;
+  font-size: 40px;
+  line-height: 1.0;
+  color: var(--ink);
+}
+.summary-card .value.accent {
+  background: linear-gradient(180deg, transparent 60%, var(--accent) 60%);
+  display: inline;
+  padding: 0 4px;
+}
+.summary-card .caption {
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-top: 8px;
+}
 
-.trend { font-weight: 700; }
-.trend-up { color: #00cc66; }
-.trend-steady { color: #888; }
-.trend-down { color: #ff4444; }
+/* CARDS */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.channel-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.channel-card:hover { border-color: var(--ink); }
+.channel-card.is-escalated { border-color: var(--bad); border-width: 1px; box-shadow: 0 0 0 1px var(--bad) inset; }
+.channel-card.is-ready { border-color: var(--good); box-shadow: 0 0 0 2px var(--good) inset; background: linear-gradient(180deg, rgba(74,157,92,0.04), var(--card) 40px); }
+.section.is-ready-section .section-title .accent { background: var(--good); color: #fff; }
+.handoff-btn {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--good);
+  color: #fff;
+  border: 1px solid var(--good);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.handoff-btn:hover { background: #3d8a4f; }
+.handoff-btn.copied { background: var(--ink); border-color: var(--ink); }
+.channel-card.hidden { display: none; }
 
-.escalate-reasons { margin-top: 8px; }
-.escalate-reason { font-size: 12px; color: #ff9900; padding: 2px 0; }
+.ch-head {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+.ch-logo {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--pill-bg);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.ch-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ch-id { min-width: 0; }
+.ch-name { font-weight: 600; font-size: 14px; line-height: 1.2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ch-name a { color: var(--ink); text-decoration: none; }
+.ch-name a:hover { text-decoration: underline; }
+.ch-handle { font-size: 11px; color: var(--ink-faint); margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.age-pill {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--pill-bg);
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: var(--ink-soft);
+  flex-shrink: 0;
+}
 
-.card-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
-.metric { text-align: center; background: #0a0a1a; border-radius: 6px; padding: 8px 4px; }
-.metric-val { display: block; font-size: 16px; font-weight: 700; color: #fff; }
-.metric-lbl { display: block; font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
+.pill-row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.score-pill {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+.score-high { background: rgba(74,157,92,0.15); color: var(--good); }
+.score-mid { background: rgba(232,163,61,0.15); color: var(--warn); }
+.score-low { background: var(--pill-bg); color: var(--ink-soft); }
+.tier-text { font-size: 11px; color: var(--ink-soft); font-style: italic; }
+.esc-pill {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--bad);
+  color: #fff;
+}
+.verdict-pill {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.v-go { background: rgba(74,157,92,0.18); color: var(--good); }
+.v-caution { background: rgba(232,163,61,0.18); color: var(--warn); }
+.v-bend { background: rgba(123,94,167,0.18); color: var(--bend); }
+.v-skip { background: rgba(196,74,61,0.18); color: var(--bad); }
 
-.card-data-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
-.data-chip { font-size: 11px; padding: 3px 8px; border-radius: 4px; background: #1a1a30; border: 1px solid #333; color: #aaa; }
-.revenue-chip { border-color: #00cc6644; color: #00cc66; background: #00cc6611; }
-.outlier-chip { border-color: #ff990044; color: #ff9900; background: #ff990011; }
-.monetized-chip { border-color: #00cc6644; color: #00cc66; }
-.not-monetized-chip { border-color: #ff444444; color: #ff6666; }
-.faceless-chip { border-color: #00d4ff44; color: #00d4ff; }
-.faceless-maybe-chip { border-color: #ffd93d44; color: #ffd93d; }
-.faceless-unknown-chip { border-color: #44444444; color: #666; }
-.quality-chip { text-transform: capitalize; }
-.quality-high { border-color: #00cc6644; color: #00cc66; }
-.quality-mid { border-color: #ffd93d44; color: #ffd93d; }
-.quality-low { border-color: #ff444444; color: #ff6666; }
-.cat-chip { border-color: #9966ff33; color: #9966ff; }
+.stat-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.stat-row-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+.stat .stat-label { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+.stat .stat-value { font-family: 'Tiempos Headline', Georgia, serif; font-size: 22px; line-height: 1.1; margin-top: 4px; }
+.stat .stat-value.sm { font-size: 16px; }
+.stat .stat-caption { font-size: 10px; color: var(--ink-faint); margin-top: 4px; }
 
-.card-competition { margin: 8px 0; padding: 8px; background: #0a0a1a; border-radius: 6px; }
-.comp-row { display: flex; align-items: center; gap: 8px; }
-.comp-detail { font-size: 12px; color: #888; }
-.comp-names { font-size: 11px; color: #666; margin-top: 4px; }
-.badge { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
-.sat-emerging { background: #00cc6622; color: #00cc66; }
-.sat-moderate { background: #ffd93d22; color: #ffd93d; }
-.sat-crowded { background: #ff990022; color: #ff9900; }
-.sat-saturated { background: #ff444422; color: #ff4444; }
-.verdict-go { background: #00cc6644; color: #00ff99; }
-.verdict-caution { background: #ffd93d44; color: #ffe066; }
-.verdict-bend { background: #ff990044; color: #ffb347; }
-.verdict-skip { background: #ff444444; color: #ff6b6b; }
+.tag-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag { font-size: 10px; padding: 3px 8px; background: var(--pill-bg); border-radius: 3px; color: var(--ink-soft); }
 
-.card-score-breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 10px 0; }
-.score-bar { display: flex; align-items: center; gap: 6px; font-size: 11px; }
-.bar-label { width: 36px; color: #888; text-align: right; }
-.bar-track { flex: 1; height: 6px; background: #1a1a2e; border-radius: 3px; overflow: hidden; }
-.bar-fill { height: 100%; background: linear-gradient(90deg, #00d4ff, #00cc66); border-radius: 3px; }
-.bar-val { width: 36px; color: #666; font-size: 10px; }
+.top-perf { padding: 12px 0; border-top: 1px solid var(--line); }
+.top-perf .tp-label { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; }
+.tp-row { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.tp-title {
+  font-size: 12px;
+  line-height: 1.3;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.tp-views { font-size: 12px; font-weight: 600; flex-shrink: 0; }
 
-.card-videos { margin-top: 10px; }
-.videos-label { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-.video-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; padding: 3px 0; font-size: 12px; border-bottom: 1px solid #1a1a2e; }
-.video-title { color: #aaa; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.video-views { color: #00d4ff; font-weight: 600; white-space: nowrap; }
+.verdict-reason {
+  font-size: 11px;
+  color: var(--ink-soft);
+  font-style: italic;
+  padding: 8px 10px;
+  background: var(--pill-bg);
+  border-radius: 4px;
+  line-height: 1.4;
+}
+.esc-reason {
+  font-size: 11px;
+  color: var(--bad);
+  padding: 2px 0;
+}
 
-.bends-section { margin-top: 12px; }
-.bends-toggle { font-size: 13px; color: #00d4ff; cursor: pointer; padding: 6px 0; list-style: none; }
-.bends-toggle::-webkit-details-marker { display: none; }
-.bends-toggle::before { content: '▶ '; font-size: 10px; }
-details[open] .bends-toggle::before { content: '▼ '; }
-.bends-content { margin-top: 8px; display: flex; flex-direction: column; gap: 8px; }
-.bend-card { background: #0a0a1a; border: 1px solid #222; border-radius: 8px; padding: 10px; }
-.bend-header { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 4px; }
-.bend-header strong { color: #ffd93d; font-size: 13px; }
-.bend-type { font-size: 10px; color: #666; background: #1a1a2e; padding: 2px 6px; border-radius: 3px; }
-.bend-target { font-size: 12px; color: #00d4ff; margin-bottom: 4px; }
-.bend-why { font-size: 12px; color: #888; margin-bottom: 6px; line-height: 1.4; }
-.bend-titles { margin-bottom: 4px; }
-.bend-title { font-size: 12px; color: #ccc; padding: 2px 0; }
-.bend-channel { font-size: 11px; color: #9966ff; margin-top: 4px; }
-.bend-confidence { font-size: 11px; color: #888; }
-.bend-meta { display: flex; gap: 12px; font-size: 11px; color: #666; margin-top: 4px; }
+.sub-niche {
+  background: var(--pill-bg);
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-size: 11px;
+  border: 1px solid var(--line);
+}
+.sub-niche summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.sub-niche summary::-webkit-details-marker { display: none; }
+.sub-niche summary::before { content: '▶ '; font-size: 9px; color: var(--ink-faint); }
+.sub-niche[open] summary::before { content: '▼ '; }
+.sn-label { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+.sub-niche summary strong { color: var(--ink); font-size: 12px; }
+.sn-body { margin-top: 8px; display: flex; flex-direction: column; gap: 8px; }
+.sn-card { padding: 8px; background: var(--card); border-radius: 4px; border: 1px solid var(--line); }
+.sn-target { font-weight: 600; color: var(--ink); font-size: 11px; margin-bottom: 4px; }
+.sn-why { color: var(--ink-soft); font-size: 11px; line-height: 1.4; margin-bottom: 4px; }
+.sn-title { color: var(--ink); font-size: 11px; font-style: italic; padding: 2px 0; }
 
-.rebranded-warning { font-size: 12px; color: #ff9900; margin-top: 8px; }
+.moni-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+.moni-label { font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-right: 4px; }
+.moni-chip {
+  font-size: 10px;
+  padding: 3px 7px;
+  border-radius: 3px;
+  cursor: help;
+  border: 1px solid var(--line);
+}
+.moni-affiliate { background: rgba(74,157,92,0.10); color: var(--good); border-color: rgba(74,157,92,0.30); }
+.moni-sponsorship { background: rgba(123,94,167,0.10); color: var(--bend); border-color: rgba(123,94,167,0.30); }
+.moni-product { background: rgba(232,163,61,0.12); color: var(--warn); border-color: rgba(232,163,61,0.30); }
+.moni-leadgen { background: var(--pill-bg); color: var(--ink); }
 
-.signal-row { display: flex; align-items: center; gap: 12px; padding: 8px 12px; background: #12122a; border-radius: 8px; margin-bottom: 6px; }
-.signal-score { font-size: 16px; font-weight: 700; color: #666; min-width: 30px; text-align: center; }
-.signal-name { color: #ffd93d; text-decoration: none; font-weight: 500; }
-.signal-name:hover { text-decoration: underline; }
-.signal-meta { font-size: 12px; color: #666; }
+.ch-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 8px; border-top: 1px solid var(--line); margin-top: auto; }
+.quality { font-size: 11px; color: var(--ink-soft); display: flex; align-items: center; gap: 6px; }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--warn); }
+.dot.high { background: var(--good); }
+.dot.low { background: var(--bad); }
+.open-btn {
+  font-size: 11px;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background 0.1s;
+}
+.open-btn:hover { background: var(--accent); border-color: var(--ink); }
 
-.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.data-table th { text-align: left; padding: 8px 12px; background: #1a1a2e; color: #00d4ff; font-weight: 600; border-bottom: 1px solid #333; }
-.data-table td { padding: 6px 12px; border-bottom: 1px solid #1a1a2e; }
+/* DATA TABLE */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; background: var(--card); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+.data-table th { text-align: left; padding: 10px 14px; background: var(--pill-bg); color: var(--ink); font-weight: 600; border-bottom: 1px solid var(--line); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
+.data-table td { padding: 8px 14px; border-bottom: 1px solid var(--line); }
+.data-table tr:last-child td { border-bottom: none; }
 
-.footer { text-align: center; padding: 24px; color: #444; font-size: 12px; }
-.empty { color: #666; padding: 20px; text-align: center; }
+/* FOOTER */
+.footer { text-align: center; padding: 32px 0; color: var(--ink-faint); font-size: 11px; letter-spacing: 0.04em; border-top: 1px solid var(--line); margin-top: 64px; }
 
-@media (max-width: 640px) {
-  .header { padding: 16px 12px; }
-  .header-title h1 { font-size: 18px; }
-  .header-stats { gap: 6px; }
-  .stat-box { min-width: 60px; padding: 8px 10px; }
-  .stat-num { font-size: 18px; }
-  .section { padding: 12px; }
-  .card-grid { grid-template-columns: 1fr; gap: 12px; }
-  .card-metrics { grid-template-columns: repeat(2, 1fr); }
-  .card-score-breakdown { grid-template-columns: 1fr; }
-  .signal-row { flex-wrap: wrap; }
-  .signal-meta { width: 100%; }
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .cards-grid { grid-template-columns: repeat(3, 1fr); }
+  .summary-grid { grid-template-columns: repeat(2, 1fr); }
+  .doc-header h1 { font-size: 48px; }
+}
+@media (max-width: 820px) {
+  .container { padding: 24px 16px 60px; }
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .doc-header { grid-template-columns: 1fr; gap: 16px; }
+  .doc-meta { text-align: left; }
+  .doc-header h1 { font-size: 36px; }
+  .section-title { font-size: 26px; }
+  .filter-bar { margin-left: -16px; padding-left: 16px; margin-right: -16px; padding-right: 16px; }
+}
+@media (max-width: 520px) {
+  .cards-grid { grid-template-columns: 1fr; }
+  .summary-grid { grid-template-columns: 1fr 1fr; }
+  .stat-row-3 { grid-template-columns: 1fr; gap: 8px; }
 }
 
 </style>
@@ -205,36 +578,16 @@ details[open] .bends-toggle::before { content: '▼ '; }
 .legend-grid span { color: #bbb; }
 </style></head>
 <body>
+<div class="container">
 
-<!-- HEADER -->
-<header class="header">
-  <div class="header-title">
-    <h1>NICHE SCANNER</h1>
-    <span class="header-date">Sunday 26 April 2026</span>
-  </div>
-  <div class="header-stats">
-    <div class="stat-box">
-      <div class="stat-num">892</div>
-      <div class="stat-label">Scanned</div>
+  <header class="doc-header">
+    <h1>Under three months,<br><em>real velocity.</em></h1>
+    <div class="doc-meta">
+      Prepared for <strong>Claudio Jerez</strong><br>
+      Power Media Holdings B.V.<br>
+      Report · 27 Apr 2026
     </div>
-    <div class="stat-box">
-      <div class="stat-num">12</div>
-      <div class="stat-label">Opportunities</div>
-    </div>
-    <div class="stat-box highlight">
-      <div class="stat-num">10</div>
-      <div class="stat-label">Score 60+</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num">2</div>
-      <div class="stat-label">Escalated</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num">~2535</div>
-      <div class="stat-label">API Quota</div>
-    </div>
-  </div>
-</header>
+  </header>
     <section class="legend-block">
       <h3>KEY — what each label means</h3>
       <div class="legend-grid">
@@ -248,1838 +601,979 @@ details[open] .bends-toggle::before { content: '▼ '; }
     </section>
   
 
-
-<!-- ESCALATED -->
-<section class="section">
-  <h2 class="section-title escalated-title">ESCALATED — IMMEDIATE ATTENTION</h2>
-  <div class="card-grid">
-    
-    <div class="card card-escalated" data-score="74" data-revenue="0" data-views="105315" data-age="27">
-      <div class="card-header">
-        <div class="card-title-row">
-          <a href="https://www.youtube.com/channel/UC4iQOLK1wuqp-KQvMm5YYbA" target="_blank" class="card-name">History of Battlefields</a>
-          <div class="score-badge score-amber">74/100</div>
-        </div>
-        <div class="card-tier">Strong opportunity  <span class="trend trend-down">↓</span></div>
-        <div class="escalate-reasons"><div class="escalate-reason">⚡ 7 videos over 50K views on a 27-day-old channel</div></div>
-      </div>
-
-      <div class="card-metrics">
-        <div class="metric">
-          <span class="metric-val">3.9K</span>
-          <span class="metric-lbl">Subs</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">27d</span>
-          <span class="metric-lbl">Age</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">105.3K</span>
-          <span class="metric-lbl">Avg Views</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">3.6/wk</span>
-          <span class="metric-lbl">Uploads</span>
-        </div>
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip">RPM: $8-$15</span>
-        
-        
-        
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip faceless-maybe-chip">Likely Faceless</span>
-        
-        
-      </div>
-
-      <div class="card-competition">
-      <div class="comp-row">
-        <span class="badge verdict-skip">SKIP</span>
-        
-        <span class="comp-detail">29 direct hits (30d · High)</span>
-        
-      </div>
-      <div class="comp-names">Top: Top 3 Military Motorcycles – Steel Warhorses of the Battlefield — War path (1.1K views)</div>
-      <div class="comp-names">Too crowded — bend harder or move on</div>
-      <div class="comp-names">Army History (9.4K) · H-Criminal Records  (6.9K) · Era Epics (1.5K)</div>
-    </div>
-
-      <div class="card-score-breakdown">
-        <div class="score-bar"><span class="bar-label">Click</span><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div><span class="bar-val">9/15</span></div>
-        <div class="score-bar"><span class="bar-label">Watch</span><div class="bar-track"><div class="bar-fill" style="width:86.66666666666667%"></div></div><span class="bar-val">13/15</span></div>
-        <div class="score-bar"><span class="bar-label">RPM</span><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div><span class="bar-val">6/10</span></div>
-        <div class="score-bar"><span class="bar-label">Comp</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">10/10</span></div>
-      </div>
-
-      
-      <div class="card-videos">
-        <div class="videos-label">Top Videos</div>
-        <div class="video-row"><span class="video-title">The HORRORS of Ayatollah Khomeini’s Execution Methods *WARNING REAL FOOTAGE</span><span class="video-views">405.0K</span></div><div class="video-row"><span class="video-title">The BRUTAL Last Moments of Irma Grese *Warning HARD TO STOMACH*</span><span class="video-views">303.8K</span></div><div class="video-row"><span class="video-title">The Last End of Nazi Leaders’ Wives After WW2</span><span class="video-views">226.8K</span></div>
-      </div>
-      
-
-      
-      <details class="bends-section">
-        <summary class="bends-toggle">Niche Bends (3)</summary>
-        <div class="bends-content">
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Military + Geopolitics</strong>
-                <span class="bend-type">hybrid</span>
-              </div>
-              <div class="bend-target">→ geopolitical analysis / defense</div>
-              <div class="bend-why">Forbidden knowledge trigger from 'real footage' bent into classified military intel creates same must-see urgency with geopolitical stakes.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"China's Secret Nuclear Submarine Base Finally PHOTOGRAPHED"</div><div class="bend-title">"The Real Reason NATO Won't Show You Ukraine's Casualty Numbers"</div><div class="bend-title">"Russia's Dead Hand System: The Doomsday Machine Still Running"</div>
-              </div>
-              <div class="bend-channel">Target: Crisis Alert</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $8-$15</span>
-                <span>Competition: Medium</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Educational → Outrage</strong>
-                <span class="bend-type">emotional reframe</span>
-              </div>
-              <div class="bend-target">→ same niche, outrage framing</div>
-              <div class="bend-why">Same forbidden historical content reframed through outrage lens amplifies the 'hard to stomach' emotional hook that drove original viral success.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"They Died for THIS? The Shocking Truth About D-Day's Real Objective"</div><div class="bend-title">"The Vatican's Secret WW2 Files Will Make You SICK"</div><div class="bend-title">"How Churchill Let 3 Million Indians Starve *DOCUMENTS INSIDE*"</div>
-              </div>
-              <div class="bend-channel">Target: Dark Atlas</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: Same RPM, 2-3x clicks</span>
-                <span>Competition: Medium</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>US Format → UK Market</strong>
-                <span class="bend-type">geographic</span>
-              </div>
-              <div class="bend-target">→ UK audience</div>
-              <div class="bend-why">UK's fascination with true crime royalty meets forbidden knowledge trigger, creating irresistible curiosity gap for British audience.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"The Kray Twins' Final Hours: What Scotland Yard Never Told You"</div><div class="bend-title">"Princess Diana's Bodyguard Breaks 27-Year Silence *BBC BANNED THIS*"</div><div class="bend-title">"The Real Jack the Ripper Files MI5 Keeps Hidden"</div>
-              </div>
-              <div class="bend-channel">Target: Aussie Exposed</div>
-              <div class="bend-confidence">Confidence: medium</div>
-              <div class="bend-meta">
-                <span>RPM: $12-$22 (UK market)</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-        </div>
-      </details>
-    
-
-      
-    </div>
-  
-
-    <div class="card card-escalated" data-score="63" data-revenue="0" data-views="15646" data-age="16">
-      <div class="card-header">
-        <div class="card-title-row">
-          <a href="https://www.youtube.com/channel/UCAe548DDzY2wqPPyGk-6--g" target="_blank" class="card-name">Astro Insight Documentaries</a>
-          <div class="score-badge score-amber">63/100</div>
-        </div>
-        <div class="card-tier">Strong opportunity  <span class="trend trend-down">↓</span></div>
-        <div class="escalate-reasons"><div class="escalate-reason">⚡ Niche cluster detected: 3 channels in &quot;artemis/moon/nasa&quot; niche</div></div>
-      </div>
-
-      <div class="card-metrics">
-        <div class="metric">
-          <span class="metric-val">444</span>
-          <span class="metric-lbl">Subs</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">16d</span>
-          <span class="metric-lbl">Age</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">15.6K</span>
-          <span class="metric-lbl">Avg Views</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">4.8/wk</span>
-          <span class="metric-lbl">Uploads</span>
-        </div>
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip">RPM: $8-$15</span>
-        
-        
-        
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip faceless-maybe-chip">Likely Faceless</span>
-        
-        
-      </div>
-
-      <div class="card-competition">
-      <div class="comp-row">
-        <span class="badge verdict-skip">SKIP</span>
-        
-        <span class="comp-detail">9 direct hits (30d · High)</span>
-        
-      </div>
-      <div class="comp-names">Top: Artemis II: Everything You Need To Know! — Everyday Astronaut (1.7M views)</div>
-      <div class="comp-names">Too crowded — bend harder or move on</div>
-      <div class="comp-names">Everyday Astronaut (1.9M) · Scientia Plus (75.6K) · Talent Arena (8.0K)</div>
-    </div>
-
-      <div class="card-score-breakdown">
-        <div class="score-bar"><span class="bar-label">Click</span><div class="bar-track"><div class="bar-fill" style="width:33.33333333333333%"></div></div><span class="bar-val">5/15</span></div>
-        <div class="score-bar"><span class="bar-label">Watch</span><div class="bar-track"><div class="bar-fill" style="width:86.66666666666667%"></div></div><span class="bar-val">13/15</span></div>
-        <div class="score-bar"><span class="bar-label">RPM</span><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div><span class="bar-val">6/10</span></div>
-        <div class="score-bar"><span class="bar-label">Comp</span><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div><span class="bar-val">8/10</span></div>
-      </div>
-
-      
-      <div class="card-videos">
-        <div class="videos-label">Top Videos</div>
-        <div class="video-row"><span class="video-title">They Came Home Alive… But Something Isn’t Right | Artemis II</span><span class="video-views">96.1K</span></div><div class="video-row"><span class="video-title">Everything The Artemis II Crew Reported That Contradicts What Apollo Found</span><span class="video-views">31.3K</span></div><div class="video-row"><span class="video-title">Artemis II Crew Saw That Apollo Astronauts Were Never Allowed to Reveal</span><span class="video-views">13.0K</span></div>
-      </div>
-      
-
-      
-      <details class="bends-section">
-        <summary class="bends-toggle">Niche Bends (3)</summary>
-        <div class="bends-content">
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Science + Horror</strong>
-                <span class="bend-type">hybrid</span>
-              </div>
-              <div class="bend-target">→ science horror / cosmic dread</div>
-              <div class="bend-why">Leverages the 'something isn't right' and 'never allowed to reveal' triggers that drove 96K+ views, but applies them to tangible Earth mysteries that feel more immediate and threatening than distant space anomalies.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"Scientists Recorded Something in Earth's Core That Shouldn't Exist"</div><div class="bend-title">"Why Geologists Stopped Drilling After Finding This 12km Deep"</div><div class="bend-title">"The Recording From Inside Yellowstone That Park Rangers Don't Talk About"</div>
-              </div>
-              <div class="bend-channel">Target: Dark Atlas</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $5-$10</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Documentary → Home/DIY</strong>
-                <span class="bend-type">format transfer</span>
-              </div>
-              <div class="bend-target">→ home improvement / DIY</div>
-              <div class="bend-why">Takes the 'contradicts what was found' and 'not fully public yet' conspiracy-adjacent hooks and grounds them in relatable home ownership fears where viewers have skin in the game.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"Why Contractors Never Show You What's Behind This Wall"</div><div class="bend-title">"I Opened My Attic and Found Why The Previous Owner Left So Fast"</div><div class="bend-title">"What Home Inspectors Actually Write vs What They Tell You"</div>
-              </div>
-              <div class="bend-channel">Target: The $1 Fix</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $8-$15</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Educational → Fear/Urgency</strong>
-                <span class="bend-type">emotional reframe</span>
-              </div>
-              <div class="bend-target">→ same niche, urgency framing</div>
-              <div class="bend-why">Transforms the existing 'what they captured isn't fully public' angle into time-sensitive breaking news format, creating FOMO that passive documentaries can't match.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"NASA Just Deleted This Artemis III Landing Site (Here's What They Found)"</div><div class="bend-title">"Emergency Meeting Called After Artemis Crew Briefing Leaked"</div><div class="bend-title">"Why Artemis IV Got Postponed Again (The Real Reason)"</div>
-              </div>
-              <div class="bend-channel">Target: Voidscape</div>
-              <div class="bend-confidence">Confidence: medium</div>
-              <div class="bend-meta">
-                <span>RPM: Same RPM, higher CTR</span>
-                <span>Competition: Medium</span>
-              </div>
-            </div>
-          
-        </div>
-      </details>
-    
-
-      <div class="rebranded-warning">⚠ Possibly rebranded channel</div>
-    </div>
-  
+  <div class="ribbon">
+    <div class="ribbon-stat"><span class="ribbon-num">6</span><span class="ribbon-lbl">approved</span></div>
+    <div class="ribbon-stat"><span class="ribbon-num">0</span><span class="ribbon-lbl">escalated</span></div>
+    <div class="ribbon-stat"><span class="ribbon-num">4</span><span class="ribbon-lbl">score 60+</span></div>
+    <div class="ribbon-stat"><span class="ribbon-num">989</span><span class="ribbon-lbl">scanned</span></div>
+    <div class="ribbon-stat"><span class="ribbon-num">~3954</span><span class="ribbon-lbl">api quota</span></div>
   </div>
-</section>
 
+  <!-- FILTER BAR -->
+  <div class="filter-bar collapsed" id="filterBar">
+    <div class="fb-row fb-row-1">
+      <input type="search" id="f-search" class="fb-search" placeholder="Search channel, handle, tag…" autocomplete="off">
+      <select id="f-sort" class="fb-select">
+        <option value="score">Sort: Score</option>
+        <option value="revenue">Sort: Monthly $</option>
+        <option value="views">Sort: Avg views</option>
+        <option value="age">Sort: Newest</option>
+        <option value="outlier">Sort: Outlier ×</option>
+      </select>
+      <select id="f-country" class="fb-select">
+        <option value="all">Country: All</option>
+        <option value="US">US</option><option value="unknown">unknown</option>
+      </select>
+      <select id="f-faceless" class="fb-select">
+        <option value="all">Faceless: All</option>
+        <option value="yes">Faceless: Yes</option>
+        <option value="no">Faceless: No</option>
+      </select>
+      <button class="fb-toggle" id="f-more">More filters ▾</button>
+      <button class="fb-reset" id="f-reset">Reset</button>
+    </div>
 
-<!-- TOP OPPORTUNITIES -->
-<section class="section">
-  <h2 class="section-title">TOP OPPORTUNITIES</h2>
-  <div class="controls">
-    <button class="sort-btn active" data-sort="score">Score ▼</button>
-    <button class="sort-btn" data-sort="revenue">Revenue ▼</button>
-    <button class="sort-btn" data-sort="views">Views ▼</button>
-    <button class="sort-btn" data-sort="age">Newest ▼</button>
+    <div class="fb-row fb-row-2">
+      <span class="fb-label">Verdict</span>
+      <button class="vchip" data-verdict="GO">GO</button>
+      <button class="vchip" data-verdict="CAUTION">CAUTION</button>
+      <button class="vchip" data-verdict="BEND">BEND</button>
+      <button class="vchip" data-verdict="SKIP">SKIP</button>
+      <button class="vchip" data-verdict="NONE">No verdict</button>
+    </div>
+
+    
+
+    <div class="fb-row fb-row-4 fb-collapsible">
+      <div class="slider">
+        <label>Score min <output id="o-score">0</output></label>
+        <input type="range" id="f-score" min="0" max="100" step="5" value="0">
+      </div>
+      <div class="slider">
+        <label>Age max <output id="o-age">∞</output></label>
+        <input type="range" id="f-age" min="7" max="7500" step="1" value="7500">
+      </div>
+      <div class="slider">
+        <label>Subs max <output id="o-subs">∞</output></label>
+        <input type="range" id="f-subs" min="0" max="5000000" step="1000" value="5000000">
+      </div>
+      <div class="slider">
+        <label>Avg views min <output id="o-views">5k</output></label>
+        <input type="range" id="f-views" min="0" max="500000" step="500" value="5000">
+      </div>
+      <div class="slider">
+        <label>RPM min <output id="o-rpm">$0</output></label>
+        <input type="range" id="f-rpm" min="0" max="15" step="0.5" value="0">
+      </div>
+      <div class="slider">
+        <label>Monthly $ min <output id="o-rev">$0</output></label>
+        <input type="range" id="f-rev" min="0" max="50000" step="500" value="0">
+      </div>
+    </div>
+
+    <div class="fb-row fb-row-5">
+      <span class="fb-status" id="f-status">Showing all 6 of 6 channels</span>
+    </div>
   </div>
-  <div class="card-grid" id="opportunities">
-    
-    <div class="card " data-score="85" data-revenue="0" data-views="14721" data-age="14">
-      <div class="card-header">
-        <div class="card-title-row">
-          <a href="https://www.youtube.com/channel/UCb0XKfkx9s5UqlenmfjwkUA" target="_blank" class="card-name">WWII War Explained</a>
-          <div class="score-badge score-green">85/100</div>
-        </div>
-        <div class="card-tier">Launch candidate  </div>
-        
-      </div>
 
-      <div class="card-metrics">
-        <div class="metric">
-          <span class="metric-val">2.3K</span>
-          <span class="metric-lbl">Subs</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">14d</span>
-          <span class="metric-lbl">Age</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">14.7K</span>
-          <span class="metric-lbl">Avg Views</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">11/wk</span>
-          <span class="metric-lbl">Uploads</span>
-        </div>
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip">RPM: $8-$15</span>
-        
-        
-        
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip faceless-maybe-chip">Likely Faceless</span>
-        
-        
-      </div>
-
-      <div class="card-competition">
-      <div class="comp-row">
-        <span class="badge verdict-skip">SKIP</span>
-        
-        <span class="comp-detail">54 direct hits (30d · High)</span>
-        
-      </div>
-      <div class="comp-names">Top: Every MAJOR BATTLE on the European Front of World War II Explained — WW2 Horizon (16.4K views)</div>
-      <div class="comp-names">Too crowded — bend harder or move on</div>
-      <div class="comp-names">Star Fun Tv (230.0K) · Ships of War - The Battleship History Channel (11.0K) · WW2 Horizon (6.7K)</div>
+  <!-- LIVE SUMMARY (recomputes as filters change) -->
+  <div class="summary-grid">
+    <div class="summary-card">
+      <div class="label">Channels qualifying</div>
+      <div class="value" id="sm-count">6</div>
+      <div class="caption">passed all filters</div>
     </div>
-
-      <div class="card-score-breakdown">
-        <div class="score-bar"><span class="bar-label">Click</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">15/15</span></div>
-        <div class="score-bar"><span class="bar-label">Watch</span><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div><span class="bar-val">12/15</span></div>
-        <div class="score-bar"><span class="bar-label">RPM</span><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div><span class="bar-val">6/10</span></div>
-        <div class="score-bar"><span class="bar-label">Comp</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">10/10</span></div>
-      </div>
-
-      
-      <div class="card-videos">
-        <div class="videos-label">Top Videos</div>
-        <div class="video-row"><span class="video-title">What REALLY Happened to America’s PT Boats After WW2</span><span class="video-views">277.9K</span></div><div class="video-row"><span class="video-title">What Happened to Britain’s Motor Torpedo Boats After WW2</span><span class="video-views">18.4K</span></div><div class="video-row"><span class="video-title">What Happened to America’s C-47 Transport Aircraft After WW2</span><span class="video-views">8.2K</span></div>
-      </div>
-      
-
-      
-      <details class="bends-section">
-        <summary class="bends-toggle">Niche Bends (3)</summary>
-        <div class="bends-content">
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Documentary → Home/DIY</strong>
-                <span class="bend-type">format transfer</span>
-              </div>
-              <div class="bend-target">→ home improvement / DIY</div>
-              <div class="bend-why">Uses the 'What Really Happened' mystery framework that drove 277K views, but applies it to architectural history where homeowners crave forbidden knowledge about their own houses.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"What Really Happened to Victorian Houses After the 1906 Earthquake"</div><div class="bend-title">"The Strange Fate of America's Kit Homes After the Great Depression"</div><div class="bend-title">"Why Thousands of 1950s Ranch Houses Vanished from Suburbs"</div>
-              </div>
-              <div class="bend-channel">Target: The $1 Fix</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $8-$15</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Educational → Outrage</strong>
-                <span class="bend-type">emotional reframe</span>
-              </div>
-              <div class="bend-target">→ same niche, outrage framing</div>
-              <div class="bend-why">Transforms neutral historical curiosity into outrage by implying deliberate concealment, matching the 'REALLY' emphasis that signals hidden truth in top performer.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"The Shameful Truth About America's Abandoned PT Boats"</div><div class="bend-title">"Why Britain BURIED Evidence of Their Torpedo Boat Failures"</div><div class="bend-title">"The U-Boat Cover-Up That Germany Still Denies"</div>
-              </div>
-              <div class="bend-channel">Target: Crisis Alert</div>
-              <div class="bend-confidence">Confidence: medium</div>
-              <div class="bend-meta">
-                <span>RPM: Same RPM, 2-3x clicks</span>
-                <span>Competition: Medium</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Military + Geopolitics</strong>
-                <span class="bend-type">hybrid</span>
-              </div>
-              <div class="bend-target">→ geopolitical analysis / defense</div>
-              <div class="bend-why">Combines the transformation arc of 'what happened after' with urgent geopolitical implications, creating immediate relevance from historical precedent.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"China's Torpedo Boat Fleet Is 10X Bigger Than You Think"</div><div class="bend-title">"Why Russia Just Reactivated Its Soviet-Era Attack Boats"</div><div class="bend-title">"The Submarine Arms Race Nobody's Talking About"</div>
-              </div>
-              <div class="bend-channel">Target: Crisis Alert</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $8-$15</span>
-                <span>Competition: Medium</span>
-              </div>
-            </div>
-          
-        </div>
-      </details>
-    
-
-      
+    <div class="summary-card">
+      <div class="label">Combined monthly revenue</div>
+      <div class="value accent" id="sm-rev">$0</div>
+      <div class="caption">est. across cohort</div>
     </div>
-  
-
-    <div class="card " data-score="75" data-revenue="0" data-views="1661" data-age="27">
-      <div class="card-header">
-        <div class="card-title-row">
-          <a href="https://www.youtube.com/channel/UCJoFhRdDOofCJnIrgtXZCBA" target="_blank" class="card-name">Old &amp; Now</a>
-          <div class="score-badge score-amber">75/100</div>
-        </div>
-        <div class="card-tier">Strong opportunity  <span class="trend trend-down">↓</span></div>
-        
-      </div>
-
-      <div class="card-metrics">
-        <div class="metric">
-          <span class="metric-val">313</span>
-          <span class="metric-lbl">Subs</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">27d</span>
-          <span class="metric-lbl">Age</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">1.7K</span>
-          <span class="metric-lbl">Avg Views</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">4.1/wk</span>
-          <span class="metric-lbl">Uploads</span>
-        </div>
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip">RPM: $15-$30</span>
-        
-        
-        
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip faceless-maybe-chip">Likely Faceless</span>
-        
-        
-      </div>
-
-      <div class="card-competition">
-      <div class="comp-row">
-        <span class="badge verdict-bend">BEND</span>
-        
-        <span class="comp-detail">5 direct hits (30d · Medium)</span>
-        
-      </div>
-      <div class="comp-names">Top: 4 Prayers That Force Every Dark Spirit to Leave Your House — 360Bible (54.5K views)</div>
-      <div class="comp-names">Demand proven — differentiate the angle</div>
-      <div class="comp-names">360Bible (10.0K) · Secret History Archive (343) · Called Glorious (217)</div>
+    <div class="summary-card">
+      <div class="label">Combined monthly views</div>
+      <div class="value" id="sm-views">1.4M</div>
+      <div class="caption">aggregate</div>
     </div>
-
-      <div class="card-score-breakdown">
-        <div class="score-bar"><span class="bar-label">Click</span><div class="bar-track"><div class="bar-fill" style="width:53.333333333333336%"></div></div><span class="bar-val">8/15</span></div>
-        <div class="score-bar"><span class="bar-label">Watch</span><div class="bar-track"><div class="bar-fill" style="width:86.66666666666667%"></div></div><span class="bar-val">13/15</span></div>
-        <div class="score-bar"><span class="bar-label">RPM</span><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div><span class="bar-val">9/10</span></div>
-        <div class="score-bar"><span class="bar-label">Comp</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">10/10</span></div>
-      </div>
-
-      
-      <div class="card-videos">
-        <div class="videos-label">Top Videos</div>
-        <div class="video-row"><span class="video-title">Shocking Discovery on Rothschild Island Antarctica in 1908</span><span class="video-views">18.4K</span></div><div class="video-row"><span class="video-title">Free Electricity Existed Until 1917 — Who Ordered It To Stop</span><span class="video-views">2.9K</span></div><div class="video-row"><span class="video-title">Every House Before 1870 Had a &quot;Spirit Room&quot; — They Removed It and Nobody Knows Why</span><span class="video-views">2.1K</span></div>
-      </div>
-      
-
-      
-      <details class="bends-section">
-        <summary class="bends-toggle">Niche Bends (3)</summary>
-        <div class="bends-content">
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>History → Prepper/Survivalist</strong>
-                <span class="bend-type">audience cross</span>
-              </div>
-              <div class="bend-target">→ survival / prepper</div>
-              <div class="bend-why">Leverages the 'forbidden knowledge' and 'disappearance' triggers from the original channel - things that existed but were removed/hidden - reframed for preppers who crave lost survival wisdom.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"Lost Colonial Survival Methods That Kept 90% Alive Through Winter"</div><div class="bend-title">"The 1816 Food Storage System They Don't Want You Using"</div><div class="bend-title">"Why Mountain Folk Stopped Building Root Cellars After 1920"</div>
-              </div>
-              <div class="bend-channel">Target: The $1 Fix</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $8-$15</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Exposé → Food Safety</strong>
-                <span class="bend-type">format transfer</span>
-              </div>
-              <div class="bend-target">→ food safety / health</div>
-              <div class="bend-why">Takes the 'shocking discovery' and 'they removed it' triggers and applies them to food safety - creates immediate outrage about everyday items people trust.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"Your Olive Oil Is 73% Fake - Lab Tests Prove It"</div><div class="bend-title">"Why McDonald's Fries Tasted Better Until 1990"</div><div class="bend-title">"The Real Reason They Changed Baby Formula in 1972"</div>
-              </div>
-              <div class="bend-channel">Target: Food Flip</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $15-$30</span>
-                <span>Competition: Medium</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>History + Conspiracy-Adjacent</strong>
-                <span class="bend-type">hybrid</span>
-              </div>
-              <div class="bend-target">→ alternative history</div>
-              <div class="bend-why">Combines the 'massive bones in coal' scale shock with mysterious discoveries underground - perfect for alternative history fans seeking forbidden archaeological knowledge.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"The 300-Mile Underground Tunnel System Under America"</div><div class="bend-title">"Ancient Star Maps Found in Coal Mines Go Back 50,000 Years"</div><div class="bend-title">"What Miners Found 2 Miles Down Changed Everything"</div>
-              </div>
-              <div class="bend-channel">Target: Dark Atlas</div>
-              <div class="bend-confidence">Confidence: medium</div>
-              <div class="bend-meta">
-                <span>RPM: $5-$12</span>
-                <span>Competition: Medium</span>
-              </div>
-            </div>
-          
-        </div>
-      </details>
-    
-
-      
+    <div class="summary-card">
+      <div class="label">Median channel age</div>
+      <div class="value" id="sm-age">24d</div>
+      <div class="caption">since creation</div>
     </div>
-  
-
-    <div class="card " data-score="74" data-revenue="0" data-views="105315" data-age="27">
-      <div class="card-header">
-        <div class="card-title-row">
-          <a href="https://www.youtube.com/channel/UC4iQOLK1wuqp-KQvMm5YYbA" target="_blank" class="card-name">History of Battlefields</a>
-          <div class="score-badge score-amber">74/100</div>
-        </div>
-        <div class="card-tier">Strong opportunity  <span class="trend trend-down">↓</span></div>
-        
-      </div>
-
-      <div class="card-metrics">
-        <div class="metric">
-          <span class="metric-val">3.9K</span>
-          <span class="metric-lbl">Subs</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">27d</span>
-          <span class="metric-lbl">Age</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">105.3K</span>
-          <span class="metric-lbl">Avg Views</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">3.6/wk</span>
-          <span class="metric-lbl">Uploads</span>
-        </div>
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip">RPM: $8-$15</span>
-        
-        
-        
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip faceless-maybe-chip">Likely Faceless</span>
-        
-        
-      </div>
-
-      <div class="card-competition">
-      <div class="comp-row">
-        <span class="badge verdict-skip">SKIP</span>
-        
-        <span class="comp-detail">29 direct hits (30d · High)</span>
-        
-      </div>
-      <div class="comp-names">Top: Top 3 Military Motorcycles – Steel Warhorses of the Battlefield — War path (1.1K views)</div>
-      <div class="comp-names">Too crowded — bend harder or move on</div>
-      <div class="comp-names">Army History (9.4K) · H-Criminal Records  (6.9K) · Era Epics (1.5K)</div>
-    </div>
-
-      <div class="card-score-breakdown">
-        <div class="score-bar"><span class="bar-label">Click</span><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div><span class="bar-val">9/15</span></div>
-        <div class="score-bar"><span class="bar-label">Watch</span><div class="bar-track"><div class="bar-fill" style="width:86.66666666666667%"></div></div><span class="bar-val">13/15</span></div>
-        <div class="score-bar"><span class="bar-label">RPM</span><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div><span class="bar-val">6/10</span></div>
-        <div class="score-bar"><span class="bar-label">Comp</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">10/10</span></div>
-      </div>
-
-      
-      <div class="card-videos">
-        <div class="videos-label">Top Videos</div>
-        <div class="video-row"><span class="video-title">The HORRORS of Ayatollah Khomeini’s Execution Methods *WARNING REAL FOOTAGE</span><span class="video-views">405.0K</span></div><div class="video-row"><span class="video-title">The BRUTAL Last Moments of Irma Grese *Warning HARD TO STOMACH*</span><span class="video-views">303.8K</span></div><div class="video-row"><span class="video-title">The Last End of Nazi Leaders’ Wives After WW2</span><span class="video-views">226.8K</span></div>
-      </div>
-      
-
-      
-      <details class="bends-section">
-        <summary class="bends-toggle">Niche Bends (3)</summary>
-        <div class="bends-content">
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Military + Geopolitics</strong>
-                <span class="bend-type">hybrid</span>
-              </div>
-              <div class="bend-target">→ geopolitical analysis / defense</div>
-              <div class="bend-why">Forbidden knowledge trigger from 'real footage' bent into classified military intel creates same must-see urgency with geopolitical stakes.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"China's Secret Nuclear Submarine Base Finally PHOTOGRAPHED"</div><div class="bend-title">"The Real Reason NATO Won't Show You Ukraine's Casualty Numbers"</div><div class="bend-title">"Russia's Dead Hand System: The Doomsday Machine Still Running"</div>
-              </div>
-              <div class="bend-channel">Target: Crisis Alert</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $8-$15</span>
-                <span>Competition: Medium</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Educational → Outrage</strong>
-                <span class="bend-type">emotional reframe</span>
-              </div>
-              <div class="bend-target">→ same niche, outrage framing</div>
-              <div class="bend-why">Same forbidden historical content reframed through outrage lens amplifies the 'hard to stomach' emotional hook that drove original viral success.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"They Died for THIS? The Shocking Truth About D-Day's Real Objective"</div><div class="bend-title">"The Vatican's Secret WW2 Files Will Make You SICK"</div><div class="bend-title">"How Churchill Let 3 Million Indians Starve *DOCUMENTS INSIDE*"</div>
-              </div>
-              <div class="bend-channel">Target: Dark Atlas</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: Same RPM, 2-3x clicks</span>
-                <span>Competition: Medium</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>US Format → UK Market</strong>
-                <span class="bend-type">geographic</span>
-              </div>
-              <div class="bend-target">→ UK audience</div>
-              <div class="bend-why">UK's fascination with true crime royalty meets forbidden knowledge trigger, creating irresistible curiosity gap for British audience.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"The Kray Twins' Final Hours: What Scotland Yard Never Told You"</div><div class="bend-title">"Princess Diana's Bodyguard Breaks 27-Year Silence *BBC BANNED THIS*"</div><div class="bend-title">"The Real Jack the Ripper Files MI5 Keeps Hidden"</div>
-              </div>
-              <div class="bend-channel">Target: Aussie Exposed</div>
-              <div class="bend-confidence">Confidence: medium</div>
-              <div class="bend-meta">
-                <span>RPM: $12-$22 (UK market)</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-        </div>
-      </details>
-    
-
-      
-    </div>
-  
-
-    <div class="card " data-score="73" data-revenue="0" data-views="1456" data-age="15">
-      <div class="card-header">
-        <div class="card-title-row">
-          <a href="https://www.youtube.com/channel/UC2-Z52Eeq65njMWpUzh12zg" target="_blank" class="card-name">Forgotten Image Secrets</a>
-          <div class="score-badge score-amber">73/100</div>
-        </div>
-        <div class="card-tier">Strong opportunity  <span class="trend trend-down">↓</span></div>
-        
-      </div>
-
-      <div class="card-metrics">
-        <div class="metric">
-          <span class="metric-val">290</span>
-          <span class="metric-lbl">Subs</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">15d</span>
-          <span class="metric-lbl">Age</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">1.5K</span>
-          <span class="metric-lbl">Avg Views</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">14.5/wk</span>
-          <span class="metric-lbl">Uploads</span>
-        </div>
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip">RPM: $8-$15</span>
-        
-        
-        
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip faceless-maybe-chip">Likely Faceless</span>
-        
-        
-      </div>
-
-      <div class="card-competition">
-      <div class="comp-row">
-        <span class="badge verdict-skip">SKIP</span>
-        
-        <span class="comp-detail">14 direct hits (30d · High)</span>
-        <span class="comp-detail">11 channels in niche</span>
-      </div>
-      <div class="comp-names">Top: Something very weird is happening on Tinder — Christophe (1.6M views)</div>
-      <div class="comp-names">Too crowded — bend harder or move on</div>
-      <div class="comp-names">Christophe (337.0K) · Dark Slavery Stories (1.1K) · Liturgy of Fear (165)</div>
-    </div>
-
-      <div class="card-score-breakdown">
-        <div class="score-bar"><span class="bar-label">Click</span><div class="bar-track"><div class="bar-fill" style="width:53.333333333333336%"></div></div><span class="bar-val">8/15</span></div>
-        <div class="score-bar"><span class="bar-label">Watch</span><div class="bar-track"><div class="bar-fill" style="width:86.66666666666667%"></div></div><span class="bar-val">13/15</span></div>
-        <div class="score-bar"><span class="bar-label">RPM</span><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div><span class="bar-val">6/10</span></div>
-        <div class="score-bar"><span class="bar-label">Comp</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">10/10</span></div>
-      </div>
-
-      
-      <div class="card-videos">
-        <div class="videos-label">Top Videos</div>
-        <div class="video-row"><span class="video-title">This 1914 Photo Looks Normal — Until You Notice What the Mother Is Hiding</span><span class="video-views">11.5K</span></div><div class="video-row"><span class="video-title">A Baby in 1896 Holds a Toy — But Look Closely at His Fingers</span><span class="video-views">7.6K</span></div><div class="video-row"><span class="video-title">It was just a portrait of a mother and her daughters — but look more closely at their hands.</span><span class="video-views">6.3K</span></div>
-      </div>
-      
-
-      
-      <details class="bends-section">
-        <summary class="bends-toggle">Niche Bends (3)</summary>
-        <div class="bends-content">
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Exposé → Food Safety</strong>
-                <span class="bend-type">format transfer</span>
-              </div>
-              <div class="bend-target">→ food safety / health</div>
-              <div class="bend-why">Uses the same 'normal photo with hidden detail' curiosity gap that drives clicks, but applied to food safety creates urgency and fear that compounds engagement.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"The FDA Banned This Photo in 1987 — Look at What's Growing on the Chicken"</div><div class="bend-title">"This 2019 Lab Report Was Buried — Until Someone Zoomed In on the Meat Sample"</div><div class="bend-title">"A Normal Grocery Store Photo — But Notice What's Happening to the Vegetables"</div>
-              </div>
-              <div class="bend-channel">Target: Food Flip</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $15-$30</span>
-                <span>Competition: Medium</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>History + Conspiracy-Adjacent</strong>
-                <span class="bend-type">hybrid</span>
-              </div>
-              <div class="bend-target">→ alternative history</div>
-              <div class="bend-why">Uses the same 'normal photo with hidden detail' curiosity gap that drives clicks, but applied to food safety creates urgency and fear that compounds engagement.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"The FDA Banned This Photo in 1987 — Look at What's Growing on the Chicken"</div><div class="bend-title">"This 2019 Lab Report Was Buried — Until Someone Zoomed In on the Meat Sample"</div><div class="bend-title">"A Normal Grocery Store Photo — But Notice What's Happening to the Vegetables"</div>
-              </div>
-              <div class="bend-channel">Target: Food Flip</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $5-$12</span>
-                <span>Competition: Medium</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>DNA vs. History (Confrontational)</strong>
-                <span class="bend-type">emotional reframe</span>
-              </div>
-              <div class="bend-target">→ same niche, confrontational framing</div>
-              <div class="bend-why">Leverages the same 'hidden in plain sight' mystery trigger but adds conspiracy-adjacent tension by implying official history is wrong or hiding something.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"This 1492 Map Shows Antarctica — 300 Years Before It Was Discovered"</div><div class="bend-title">"A Medieval Painting Contains Modern Technology — Historians Can't Explain It"</div><div class="bend-title">"The Vatican Locked Away This 1655 Document — Now We Know Why"</div>
-              </div>
-              <div class="bend-channel">Target: Dark Atlas</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: Same RPM, 2-3x clicks</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-        </div>
-      </details>
-    
-
-      
-    </div>
-  
-
-    <div class="card " data-score="71" data-revenue="0" data-views="914" data-age="24">
-      <div class="card-header">
-        <div class="card-title-row">
-          <a href="https://www.youtube.com/channel/UCT22GCZ9UmUPBDapLuUS4SA" target="_blank" class="card-name">Dr. Henry Golfinos</a>
-          <div class="score-badge score-amber">71/100</div>
-        </div>
-        <div class="card-tier">Strong opportunity  <span class="trend trend-steady">→</span></div>
-        
-      </div>
-
-      <div class="card-metrics">
-        <div class="metric">
-          <span class="metric-val">324</span>
-          <span class="metric-lbl">Subs</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">24d</span>
-          <span class="metric-lbl">Age</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">914</span>
-          <span class="metric-lbl">Avg Views</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">7.3/wk</span>
-          <span class="metric-lbl">Uploads</span>
-        </div>
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip">RPM: $15-$30</span>
-        
-        
-        
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip faceless-maybe-chip">Likely Faceless</span>
-        
-        
-      </div>
-
-      <div class="card-competition">
-      <div class="comp-row">
-        <span class="badge verdict-skip">SKIP</span>
-        
-        <span class="comp-detail">98 direct hits (30d · High)</span>
-        
-      </div>
-      <div class="comp-names">Top: Stop Using These Lights on Your Interior Design Projects — Delivered Lumens (40.7K views)</div>
-      <div class="comp-names">Too crowded — bend harder or move on</div>
-      <div class="comp-names">SAMAA TV (14.2M) · Natural Cures (3.6M) · Fit Tak (2.1M)</div>
-    </div>
-
-      <div class="card-score-breakdown">
-        <div class="score-bar"><span class="bar-label">Click</span><div class="bar-track"><div class="bar-fill" style="width:46.666666666666664%"></div></div><span class="bar-val">7/15</span></div>
-        <div class="score-bar"><span class="bar-label">Watch</span><div class="bar-track"><div class="bar-fill" style="width:73.33333333333333%"></div></div><span class="bar-val">11/15</span></div>
-        <div class="score-bar"><span class="bar-label">RPM</span><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div><span class="bar-val">9/10</span></div>
-        <div class="score-bar"><span class="bar-label">Comp</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">10/10</span></div>
-      </div>
-
-      
-      <div class="card-videos">
-        <div class="videos-label">Top Videos</div>
-        <div class="video-row"><span class="video-title">Over 60? STOP Taking These 4 Vitamins (Doctors Are Finally Warning You)</span><span class="video-views">8.9K</span></div><div class="video-row"><span class="video-title">Doctor Warning: 5 Common Foods That Become DANGEROUS When Reheated After 60</span><span class="video-views">2.2K</span></div><div class="video-row"><span class="video-title">Seniors: 3 Vegetables That Keep Your Brain SHARP (Slow Aging by 11 YEARS)</span><span class="video-views">1.7K</span></div>
-      </div>
-      
-
-      
-      <details class="bends-section">
-        <summary class="bends-toggle">Niche Bends (3)</summary>
-        <div class="bends-content">
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Exposé → Food Safety</strong>
-                <span class="bend-type">format transfer</span>
-              </div>
-              <div class="bend-target">→ food safety / health</div>
-              <div class="bend-why">Uses the same 'forbidden knowledge' trigger where medical authorities warn against common items, creating immediate fear that viewers' daily habits are dangerous.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"The 7 Supermarket Foods That Destroy Your Gut (Banned in Europe)"</div><div class="bend-title">"Why Doctors Never Eat These 5 'Healthy' Foods After Dark"</div><div class="bend-title">"Food Scientists Admit: 3 Kitchen Staples Are Slowly Poisoning You"</div>
-              </div>
-              <div class="bend-channel">Target: Food Flip</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $15-$30</span>
-                <span>Competition: Medium</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Science → Parents/Family</strong>
-                <span class="bend-type">audience cross</span>
-              </div>
-              <div class="bend-target">→ parenting / family health</div>
-              <div class="bend-why">Transfers the age-specific fear trigger to parental anxiety about children's health, using countdown format and identity targeting that drove the original channel's success.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"5 Snacks Making Your Kids Tired at School (Teachers Notice)"</div><div class="bend-title">"Parents: Stop Giving These 3 Vitamins Together (Dangerous Mix)"</div><div class="bend-title">"The Morning Routine That's Aging Your Child's Brain by 7 Years"</div>
-              </div>
-              <div class="bend-channel">Target: Food Flip</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $15-$25</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Health + Finance</strong>
-                <span class="bend-type">hybrid</span>
-              </div>
-              <div class="bend-target">→ health economics / medical costs</div>
-              <div class="bend-why">Combines health warnings with financial outrage, using the conspiracy-adjacent trigger of hidden industry motives that viewers suspect but rarely see confirmed.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"Why Your Doctor Gets $400 Every Time You Take These 5 Pills"</div><div class="bend-title">"The $3 Vitamin That Works Better Than $300 Prescriptions"</div><div class="bend-title">"Insurance Companies Hate This: 4 Foods That Replace Expensive Meds"</div>
-              </div>
-              <div class="bend-channel">Target: Aussie Exposed</div>
-              <div class="bend-confidence">Confidence: medium</div>
-              <div class="bend-meta">
-                <span>RPM: $20-$35</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-        </div>
-      </details>
-    
-
-      
-    </div>
-  
-
-    <div class="card " data-score="70" data-revenue="0" data-views="30620" data-age="29">
-      <div class="card-header">
-        <div class="card-title-row">
-          <a href="https://www.youtube.com/channel/UCbvoU14rQ3EJmA6JpEYG3mQ" target="_blank" class="card-name">The Lustre Archive</a>
-          <div class="score-badge score-amber">70/100</div>
-        </div>
-        <div class="card-tier">Strong opportunity  <span class="trend trend-down">↓</span></div>
-        
-      </div>
-
-      <div class="card-metrics">
-        <div class="metric">
-          <span class="metric-val">2.9K</span>
-          <span class="metric-lbl">Subs</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">29d</span>
-          <span class="metric-lbl">Age</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">30.6K</span>
-          <span class="metric-lbl">Avg Views</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">2.4/wk</span>
-          <span class="metric-lbl">Uploads</span>
-        </div>
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip">RPM: $8-$15</span>
-        
-        
-        
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip faceless-maybe-chip">Likely Faceless</span>
-        
-        
-      </div>
-
-      <div class="card-competition">
-      <div class="comp-row">
-        <span class="badge verdict-caution">CAUTION</span>
-        
-        <span class="comp-detail">4 direct hits (30d · Medium)</span>
-        <span class="comp-detail">3 channels in niche</span>
-      </div>
-      <div class="comp-names">Top: 7 Megalithic Sites That Are Physically Impossible to Construct — Ancient Mystery Lab (56 views)</div>
-      <div class="comp-names">Moderate crowding without strong proof of demand</div>
-      <div class="comp-names">Archaic Void (221) · Buried Chronology (51) · Ancient Mystery Lab (3)</div>
-    </div>
-
-      <div class="card-score-breakdown">
-        <div class="score-bar"><span class="bar-label">Click</span><div class="bar-track"><div class="bar-fill" style="width:46.666666666666664%"></div></div><span class="bar-val">7/15</span></div>
-        <div class="score-bar"><span class="bar-label">Watch</span><div class="bar-track"><div class="bar-fill" style="width:86.66666666666667%"></div></div><span class="bar-val">13/15</span></div>
-        <div class="score-bar"><span class="bar-label">RPM</span><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div><span class="bar-val">6/10</span></div>
-        <div class="score-bar"><span class="bar-label">Comp</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">10/10</span></div>
-      </div>
-
-      
-      <div class="card-videos">
-        <div class="videos-label">Top Videos</div>
-        <div class="video-row"><span class="video-title">The Global Civilization That Was Erased 12,000 Years Ago</span><span class="video-views">286.0K</span></div><div class="video-row"><span class="video-title">7 Megalithic Sites That Are Physically Impossible to Construct</span><span class="video-views">12.1K</span></div><div class="video-row"><span class="video-title">9 Ancient Maps That Show Lands That Never Existed</span><span class="video-views">3.1K</span></div>
-      </div>
-      
-
-      
-      <details class="bends-section">
-        <summary class="bends-toggle">Niche Bends (3)</summary>
-        <div class="bends-content">
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>History → Prepper/Survivalist</strong>
-                <span class="bend-type">audience cross</span>
-              </div>
-              <div class="bend-target">→ survival / prepper</div>
-              <div class="bend-why">Uses forbidden knowledge trigger by positioning survival info as 'lost' or 'vanished' - creates urgency that this knowledge might disappear again.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"7 Lost Survival Methods That Vanished After WW1"</div><div class="bend-title">"Ancient Food Storage Techniques That Could Save Your Life"</div><div class="bend-title">"The 3,000 Year Old Bunker System Nobody Talks About"</div>
-              </div>
-              <div class="bend-channel">Target: Crisis Alert</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $8-$15</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>History + Conspiracy-Adjacent</strong>
-                <span class="bend-type">hybrid</span>
-              </div>
-              <div class="bend-target">→ alternative history</div>
-              <div class="bend-why">Combines superlative claims ('shouldn't exist') with mystery elements to create conspiracy-adjacent content without crossing into pure conspiracy.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"The Underground Cities Built Before The Last Ice Age"</div><div class="bend-title">"9 Historical Events That Happened Twice But Nobody Noticed"</div><div class="bend-title">"Ancient Structures That Shouldn't Exist According to Physics"</div>
-              </div>
-              <div class="bend-channel">Target: Dark Atlas</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $5-$12</span>
-                <span>Competition: Medium</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Documentary → Home/DIY</strong>
-                <span class="bend-type">format transfer</span>
-              </div>
-              <div class="bend-target">→ home improvement / DIY</div>
-              <div class="bend-why">Scale shock trigger comparing centuries-old methods to modern failures creates instant credibility and curiosity about transformation potential.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"This 200 Year Old House Foundation Technique Beats Modern Methods"</div><div class="bend-title">"Why Medieval Builders Never Had Mold Problems"</div><div class="bend-title">"The Lost Art of Making Walls That Last 500 Years"</div>
-              </div>
-              <div class="bend-channel">Target: The $1 Fix</div>
-              <div class="bend-confidence">Confidence: medium</div>
-              <div class="bend-meta">
-                <span>RPM: $8-$15</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-        </div>
-      </details>
-    
-
-      
-    </div>
-  
-
-    <div class="card " data-score="65" data-revenue="0" data-views="22052" data-age="27">
-      <div class="card-header">
-        <div class="card-title-row">
-          <a href="https://www.youtube.com/channel/UC7P8aAYEvnOiQn83-2FID_Q" target="_blank" class="card-name">DOCTOR TALKS DAILY</a>
-          <div class="score-badge score-amber">65/100</div>
-        </div>
-        <div class="card-tier">Strong opportunity  </div>
-        
-      </div>
-
-      <div class="card-metrics">
-        <div class="metric">
-          <span class="metric-val">6.3K</span>
-          <span class="metric-lbl">Subs</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">27d</span>
-          <span class="metric-lbl">Age</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">22.1K</span>
-          <span class="metric-lbl">Avg Views</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">3.1/wk</span>
-          <span class="metric-lbl">Uploads</span>
-        </div>
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip">RPM: $15-$30</span>
-        
-        
-        
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip faceless-maybe-chip">Likely Faceless</span>
-        
-        
-      </div>
-
-      <div class="card-competition">
-      <div class="comp-row">
-        <span class="badge verdict-skip">SKIP</span>
-        
-        <span class="comp-detail">59 direct hits (30d · High)</span>
-        
-      </div>
-      <div class="comp-names">Top: He died in his sleep because of this! I beg you stop doing it! It leads to heart attacks and strokes — Evidence Health (244.9K views)</div>
-      <div class="comp-names">Too crowded — bend harder or move on</div>
-      <div class="comp-names">Dr. Emily Carter (51.4K) · Smart Aging (39.1K) · Bio Bites (25.5K)</div>
-    </div>
-
-      <div class="card-score-breakdown">
-        <div class="score-bar"><span class="bar-label">Click</span><div class="bar-track"><div class="bar-fill" style="width:33.33333333333333%"></div></div><span class="bar-val">5/15</span></div>
-        <div class="score-bar"><span class="bar-label">Watch</span><div class="bar-track"><div class="bar-fill" style="width:66.66666666666666%"></div></div><span class="bar-val">10/15</span></div>
-        <div class="score-bar"><span class="bar-label">RPM</span><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div><span class="bar-val">9/10</span></div>
-        <div class="score-bar"><span class="bar-label">Comp</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">10/10</span></div>
-      </div>
-
-      
-      <div class="card-videos">
-        <div class="videos-label">Top Videos</div>
-        <div class="video-row"><span class="video-title">He died in his sleep because of this! I beg you stop doing it! It leads to heart attacks and strokes</span><span class="video-views">246.1K</span></div><div class="video-row"><span class="video-title">Surgeon SHOCKED: THIS Traditional Food Outperforms Meat by 3,000,000x After 75</span><span class="video-views">8.9K</span></div><div class="video-row"><span class="video-title">Doctor's warning: These 5 Reheated Foods Increase the Risk of Pancreatic Cancer</span><span class="video-views">2.7K</span></div>
-      </div>
-      
-
-      
-      <details class="bends-section">
-        <summary class="bends-toggle">Niche Bends (3)</summary>
-        <div class="bends-content">
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Health + Finance</strong>
-                <span class="bend-type">hybrid</span>
-              </div>
-              <div class="bend-target">→ health economics / medical costs</div>
-              <div class="bend-why">Combines immediate health fear trigger with shocking financial scale numbers, creating dual urgency that makes viewers click to protect both health AND wealth.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"Why Doctors REFUSE These 5 Common Procedures - The $847,000 Secret"</div><div class="bend-title">"Medicare Won't Cover THIS After 65 - Doctor Explains the Financial Trap"</div><div class="bend-title">"The $3.2 Million Disease Nobody Warns You About Until It's Too Late"</div>
-              </div>
-              <div class="bend-channel">Target: The $1 Fix</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $20-$35</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Exposé → Food Safety</strong>
-                <span class="bend-type">format transfer</span>
-              </div>
-              <div class="bend-target">→ food safety / health</div>
-              <div class="bend-why">Uses same fear-based forbidden knowledge pattern but shifts from medical warnings to food industry secrets, tapping into daily consumption anxiety.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"Food Scientists Quit After Discovering THIS in Your Breakfast Cereal"</div><div class="bend-title">"Why Japan Banned This American Food Additive We Eat Daily"</div><div class="bend-title">"Former FDA Inspector: These 5 Foods Are Destroying Your Gut"</div>
-              </div>
-              <div class="bend-channel">Target: Food Flip</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $15-$30</span>
-                <span>Competition: Medium</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>US Format → Australian Market</strong>
-                <span class="bend-type">geographic</span>
-              </div>
-              <div class="bend-target">→ Australian audience</div>
-              <div class="bend-why">Localizes the fear trigger with Australian-specific references (Panadol, TGA, Medicare) while maintaining the forbidden knowledge angle that drives urgency.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"Australian Doctors Warning: Stop Taking Panadol Like THIS Immediately"</div><div class="bend-title">"Woolworths Shopper Dies After Eating THIS - TGA Finally Speaks Out"</div><div class="bend-title">"Medicare Changes Nobody's Talking About - Seniors Need to Know"</div>
-              </div>
-              <div class="bend-channel">Target: Aussie Exposed</div>
-              <div class="bend-confidence">Confidence: medium</div>
-              <div class="bend-meta">
-                <span>RPM: $10-$20 (AU market)</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-        </div>
-      </details>
-    
-
-      
-    </div>
-  
-
-    <div class="card " data-score="64" data-revenue="0" data-views="1676" data-age="27">
-      <div class="card-header">
-        <div class="card-title-row">
-          <a href="https://www.youtube.com/channel/UCihPT0YR-EQWbFv8iZWh2ag" target="_blank" class="card-name">Ancient DNA History</a>
-          <div class="score-badge score-amber">64/100</div>
-        </div>
-        <div class="card-tier">Strong opportunity  <span class="trend trend-steady">→</span></div>
-        
-      </div>
-
-      <div class="card-metrics">
-        <div class="metric">
-          <span class="metric-val">2.0K</span>
-          <span class="metric-lbl">Subs</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">27d</span>
-          <span class="metric-lbl">Age</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">1.7K</span>
-          <span class="metric-lbl">Avg Views</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">13/wk</span>
-          <span class="metric-lbl">Uploads</span>
-        </div>
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip">RPM: $8-$15</span>
-        
-        
-        
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip faceless-maybe-chip">Likely Faceless</span>
-        
-        
-      </div>
-
-      <div class="card-competition">
-      <div class="comp-row">
-        <span class="badge verdict-skip">SKIP</span>
-        
-        <span class="comp-detail">49 direct hits (30d · High)</span>
-        <span class="comp-detail">29 channels in niche</span>
-      </div>
-      <div class="comp-names">Top: King Richard III&amp;#39;s DNA Reveals a Shocking Truth That Rewrites 500 Years of History — First Humans  (658.4K views)</div>
-      <div class="comp-names">Too crowded — bend harder or move on</div>
-      <div class="comp-names">Evo Inception (92.7K) · Human Discovery  (27.2K) · First Humans  (23.5K)</div>
-    </div>
-
-      <div class="card-score-breakdown">
-        <div class="score-bar"><span class="bar-label">Click</span><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div><span class="bar-val">9/15</span></div>
-        <div class="score-bar"><span class="bar-label">Watch</span><div class="bar-track"><div class="bar-fill" style="width:53.333333333333336%"></div></div><span class="bar-val">8/15</span></div>
-        <div class="score-bar"><span class="bar-label">RPM</span><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div><span class="bar-val">6/10</span></div>
-        <div class="score-bar"><span class="bar-label">Comp</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">10/10</span></div>
-      </div>
-
-      
-      <div class="card-videos">
-        <div class="videos-label">Top Videos</div>
-        <div class="video-row"><span class="video-title">Mary Todd Lincoln Wasn't Crazy. Here's What DNA Says.</span><span class="video-views">18.8K</span></div><div class="video-row"><span class="video-title">What DNA Revealed About Prince Philip’s True Lineage</span><span class="video-views">8.9K</span></div><div class="video-row"><span class="video-title">What DNA Revealed About Alexander Hamilton's True Origins Is EXTREMELY Interesting</span><span class="video-views">6.5K</span></div>
-      </div>
-      
-
-      
-      <details class="bends-section">
-        <summary class="bends-toggle">Niche Bends (3)</summary>
-        <div class="bends-content">
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>History + Conspiracy-Adjacent</strong>
-                <span class="bend-type">hybrid</span>
-              </div>
-              <div class="bend-target">→ alternative history</div>
-              <div class="bend-why">Leverages authority contradiction trigger by positioning new evidence against established historical narratives, creating instant curiosity about what historians got wrong.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"The Vatican Archives Just Confirmed What We Suspected About Galileo"</div><div class="bend-title">"What Medieval Bones Tell Us About the Black Death Changes Everything"</div><div class="bend-title">"The Real Reason Egyptian Mummies Were Buried With Gold Wasn't Religious"</div>
-              </div>
-              <div class="bend-channel">Target: Dark Atlas</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $5-$12</span>
-                <span>Competition: Medium</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Science → Parents/Family</strong>
-                <span class="bend-type">audience cross</span>
-              </div>
-              <div class="bend-target">→ parenting / family health</div>
-              <div class="bend-why">Leverages authority contradiction trigger by positioning new evidence against established historical narratives, creating instant curiosity about what historians got wrong.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"The Vatican Archives Just Confirmed What We Suspected About Galileo"</div><div class="bend-title">"What Medieval Bones Tell Us About the Black Death Changes Everything"</div><div class="bend-title">"The Real Reason Egyptian Mummies Were Buried With Gold Wasn't Religious"</div>
-              </div>
-              <div class="bend-channel">Target: Dark Atlas</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $15-$25</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Documentary → Home/DIY</strong>
-                <span class="bend-type">format transfer</span>
-              </div>
-              <div class="bend-target">→ home improvement / DIY</div>
-              <div class="bend-why">Transforms identity revelation trigger into parental concern about their children's health and safety, creating compulsive clicking from protective instinct.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"Your Child's Blood Type Might Not Match Yours. Here's Why"</div><div class="bend-title">"What Pediatricians Found in Baby Formula Will Change How You Shop"</div><div class="bend-title">"The Hidden Ingredient in Kids' Vitamins Nobody Talks About"</div>
-              </div>
-              <div class="bend-channel">Target: Food Flip</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $8-$15</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-        </div>
-      </details>
-    
-
-      
-    </div>
-  
-
-    <div class="card " data-score="63" data-revenue="0" data-views="15646" data-age="16">
-      <div class="card-header">
-        <div class="card-title-row">
-          <a href="https://www.youtube.com/channel/UCAe548DDzY2wqPPyGk-6--g" target="_blank" class="card-name">Astro Insight Documentaries</a>
-          <div class="score-badge score-amber">63/100</div>
-        </div>
-        <div class="card-tier">Strong opportunity  <span class="trend trend-down">↓</span></div>
-        
-      </div>
-
-      <div class="card-metrics">
-        <div class="metric">
-          <span class="metric-val">444</span>
-          <span class="metric-lbl">Subs</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">16d</span>
-          <span class="metric-lbl">Age</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">15.6K</span>
-          <span class="metric-lbl">Avg Views</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">4.8/wk</span>
-          <span class="metric-lbl">Uploads</span>
-        </div>
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip">RPM: $8-$15</span>
-        
-        
-        
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip faceless-maybe-chip">Likely Faceless</span>
-        
-        
-      </div>
-
-      <div class="card-competition">
-      <div class="comp-row">
-        <span class="badge verdict-skip">SKIP</span>
-        
-        <span class="comp-detail">9 direct hits (30d · High)</span>
-        
-      </div>
-      <div class="comp-names">Top: Artemis II: Everything You Need To Know! — Everyday Astronaut (1.7M views)</div>
-      <div class="comp-names">Too crowded — bend harder or move on</div>
-      <div class="comp-names">Everyday Astronaut (1.9M) · Scientia Plus (75.6K) · Talent Arena (8.0K)</div>
-    </div>
-
-      <div class="card-score-breakdown">
-        <div class="score-bar"><span class="bar-label">Click</span><div class="bar-track"><div class="bar-fill" style="width:33.33333333333333%"></div></div><span class="bar-val">5/15</span></div>
-        <div class="score-bar"><span class="bar-label">Watch</span><div class="bar-track"><div class="bar-fill" style="width:86.66666666666667%"></div></div><span class="bar-val">13/15</span></div>
-        <div class="score-bar"><span class="bar-label">RPM</span><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div><span class="bar-val">6/10</span></div>
-        <div class="score-bar"><span class="bar-label">Comp</span><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div><span class="bar-val">8/10</span></div>
-      </div>
-
-      
-      <div class="card-videos">
-        <div class="videos-label">Top Videos</div>
-        <div class="video-row"><span class="video-title">They Came Home Alive… But Something Isn’t Right | Artemis II</span><span class="video-views">96.1K</span></div><div class="video-row"><span class="video-title">Everything The Artemis II Crew Reported That Contradicts What Apollo Found</span><span class="video-views">31.3K</span></div><div class="video-row"><span class="video-title">Artemis II Crew Saw That Apollo Astronauts Were Never Allowed to Reveal</span><span class="video-views">13.0K</span></div>
-      </div>
-      
-
-      
-      <details class="bends-section">
-        <summary class="bends-toggle">Niche Bends (3)</summary>
-        <div class="bends-content">
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Science + Horror</strong>
-                <span class="bend-type">hybrid</span>
-              </div>
-              <div class="bend-target">→ science horror / cosmic dread</div>
-              <div class="bend-why">Leverages the 'something isn't right' and 'never allowed to reveal' triggers that drove 96K+ views, but applies them to tangible Earth mysteries that feel more immediate and threatening than distant space anomalies.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"Scientists Recorded Something in Earth's Core That Shouldn't Exist"</div><div class="bend-title">"Why Geologists Stopped Drilling After Finding This 12km Deep"</div><div class="bend-title">"The Recording From Inside Yellowstone That Park Rangers Don't Talk About"</div>
-              </div>
-              <div class="bend-channel">Target: Dark Atlas</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $5-$10</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Documentary → Home/DIY</strong>
-                <span class="bend-type">format transfer</span>
-              </div>
-              <div class="bend-target">→ home improvement / DIY</div>
-              <div class="bend-why">Takes the 'contradicts what was found' and 'not fully public yet' conspiracy-adjacent hooks and grounds them in relatable home ownership fears where viewers have skin in the game.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"Why Contractors Never Show You What's Behind This Wall"</div><div class="bend-title">"I Opened My Attic and Found Why The Previous Owner Left So Fast"</div><div class="bend-title">"What Home Inspectors Actually Write vs What They Tell You"</div>
-              </div>
-              <div class="bend-channel">Target: The $1 Fix</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $8-$15</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Educational → Fear/Urgency</strong>
-                <span class="bend-type">emotional reframe</span>
-              </div>
-              <div class="bend-target">→ same niche, urgency framing</div>
-              <div class="bend-why">Transforms the existing 'what they captured isn't fully public' angle into time-sensitive breaking news format, creating FOMO that passive documentaries can't match.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"NASA Just Deleted This Artemis III Landing Site (Here's What They Found)"</div><div class="bend-title">"Emergency Meeting Called After Artemis Crew Briefing Leaked"</div><div class="bend-title">"Why Artemis IV Got Postponed Again (The Real Reason)"</div>
-              </div>
-              <div class="bend-channel">Target: Voidscape</div>
-              <div class="bend-confidence">Confidence: medium</div>
-              <div class="bend-meta">
-                <span>RPM: Same RPM, higher CTR</span>
-                <span>Competition: Medium</span>
-              </div>
-            </div>
-          
-        </div>
-      </details>
-    
-
-      <div class="rebranded-warning">⚠ Possibly rebranded channel</div>
-    </div>
-  
-
-    <div class="card " data-score="61" data-revenue="0" data-views="624" data-age="24">
-      <div class="card-header">
-        <div class="card-title-row">
-          <a href="https://www.youtube.com/channel/UCl4K_oxVjMYZCg-_rBhnQ5g" target="_blank" class="card-name">Think Glitch</a>
-          <div class="score-badge score-amber">61/100</div>
-        </div>
-        <div class="card-tier">Strong opportunity  <span class="trend trend-steady">→</span></div>
-        
-      </div>
-
-      <div class="card-metrics">
-        <div class="metric">
-          <span class="metric-val">19</span>
-          <span class="metric-lbl">Subs</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">24d</span>
-          <span class="metric-lbl">Age</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">624</span>
-          <span class="metric-lbl">Avg Views</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">4.4/wk</span>
-          <span class="metric-lbl">Uploads</span>
-        </div>
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip">RPM: $15-$30</span>
-        
-        
-        
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip faceless-maybe-chip">Likely Faceless</span>
-        
-        
-      </div>
-
-      <div class="card-competition">
-      <div class="comp-row">
-        <span class="badge verdict-skip">SKIP</span>
-        
-        <span class="comp-detail">50 direct hits (30d · High)</span>
-        
-      </div>
-      <div class="comp-names">Top: How Modern Comfort Is Destroying Young Men — Rewirs (56.8K views)</div>
-      <div class="comp-names">Too crowded — bend harder or move on</div>
-      <div class="comp-names">Rewirs (2.9M) · Dr Sweta Adatia (329.0K) · Greek Primordial  (147.0K)</div>
-    </div>
-
-      <div class="card-score-breakdown">
-        <div class="score-bar"><span class="bar-label">Click</span><div class="bar-track"><div class="bar-fill" style="width:53.333333333333336%"></div></div><span class="bar-val">8/15</span></div>
-        <div class="score-bar"><span class="bar-label">Watch</span><div class="bar-track"><div class="bar-fill" style="width:40%"></div></div><span class="bar-val">6/15</span></div>
-        <div class="score-bar"><span class="bar-label">RPM</span><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div><span class="bar-val">9/10</span></div>
-        <div class="score-bar"><span class="bar-label">Comp</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">10/10</span></div>
-      </div>
-
-      
-      <div class="card-videos">
-        <div class="videos-label">Top Videos</div>
-        <div class="video-row"><span class="video-title">Get Rejected? Do THIS Instead #psychology #shorts</span><span class="video-views">2.6K</span></div><div class="video-row"><span class="video-title">Rewire Your Brain in 7 Days (Try This) 🧠🔥 #shorts#psychology</span><span class="video-views">1.8K</span></div><div class="video-row"><span class="video-title">Why You Believe Wrong Information#shorts #psychology</span><span class="video-views">1.5K</span></div>
-      </div>
-      
-
-      
-      <details class="bends-section">
-        <summary class="bends-toggle">Niche Bends (3)</summary>
-        <div class="bends-content">
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Science → Parents/Family</strong>
-                <span class="bend-type">audience cross</span>
-              </div>
-              <div class="bend-target">→ parenting / family health</div>
-              <div class="bend-why">Takes Think Glitch's transformation trigger ('Rewire Your Brain in 7 Days') and applies it to parenting anxieties about child development milestones.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"Why Smart Parents Never Say 'Good Job' to Their Kids"</div><div class="bend-title">"The 7-Second Trick That Stops Any Tantrum (Psychologists Hate This)"</div><div class="bend-title">"Your Child's Brain Changes Forever at Age 8 (What Parents Miss)"</div>
-              </div>
-              <div class="bend-channel">Target: Food Flip</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: $15-$25</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>DNA vs. History (Confrontational)</strong>
-                <span class="bend-type">emotional reframe</span>
-              </div>
-              <div class="bend-target">→ same niche, confrontational framing</div>
-              <div class="bend-why">Takes Think Glitch's transformation trigger ('Rewire Your Brain in 7 Days') and applies it to parenting anxieties about child development milestones.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"Why Smart Parents Never Say 'Good Job' to Their Kids"</div><div class="bend-title">"The 7-Second Trick That Stops Any Tantrum (Psychologists Hate This)"</div><div class="bend-title">"Your Child's Brain Changes Forever at Age 8 (What Parents Miss)"</div>
-              </div>
-              <div class="bend-channel">Target: Food Flip</div>
-              <div class="bend-confidence">Confidence: high</div>
-              <div class="bend-meta">
-                <span>RPM: Same RPM, 2-3x clicks</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-            <div class="bend-card">
-              <div class="bend-header">
-                <strong>Documentary → Home/DIY</strong>
-                <span class="bend-type">format transfer</span>
-              </div>
-              <div class="bend-target">→ home improvement / DIY</div>
-              <div class="bend-why">Leverages Think Glitch's 'Why You Believe Wrong Information' trigger but flips it to challenge institutional knowledge with genetic evidence.</div>
-              <div class="bend-titles">
-                <div class="bend-title">"Your DNA Says You're Not Who History Claims"</div><div class="bend-title">"Scientists Found Egyptian DNA in Australia (History Books Are Wrong)"</div><div class="bend-title">"The Blood Type That Shouldn't Exist According to Evolution"</div>
-              </div>
-              <div class="bend-channel">Target: Dark Atlas</div>
-              <div class="bend-confidence">Confidence: medium</div>
-              <div class="bend-meta">
-                <span>RPM: $8-$15</span>
-                <span>Competition: Low</span>
-              </div>
-            </div>
-          
-        </div>
-      </details>
-    
-
-      
-    </div>
-  
-
-    <div class="card " data-score="59" data-revenue="0" data-views="456" data-age="28">
-      <div class="card-header">
-        <div class="card-title-row">
-          <a href="https://www.youtube.com/channel/UCRcH9o4fGopm3U70SSMYUSw" target="_blank" class="card-name">The Seeker's Archive</a>
-          <div class="score-badge score-grey">59/100</div>
-        </div>
-        <div class="card-tier">Monitor <span class="tag tag-new">NEW</span> </div>
-        
-      </div>
-
-      <div class="card-metrics">
-        <div class="metric">
-          <span class="metric-val">73</span>
-          <span class="metric-lbl">Subs</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">28d</span>
-          <span class="metric-lbl">Age</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">456</span>
-          <span class="metric-lbl">Avg Views</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">12.5/wk</span>
-          <span class="metric-lbl">Uploads</span>
-        </div>
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip">RPM: $8-$15</span>
-        
-        
-        
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip faceless-maybe-chip">Likely Faceless</span>
-        
-        
-      </div>
-
-      
-
-      <div class="card-score-breakdown">
-        <div class="score-bar"><span class="bar-label">Click</span><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div><span class="bar-val">9/15</span></div>
-        <div class="score-bar"><span class="bar-label">Watch</span><div class="bar-track"><div class="bar-fill" style="width:40%"></div></div><span class="bar-val">6/15</span></div>
-        <div class="score-bar"><span class="bar-label">RPM</span><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div><span class="bar-val">6/10</span></div>
-        <div class="score-bar"><span class="bar-label">Comp</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">10/10</span></div>
-      </div>
-
-      
-      <div class="card-videos">
-        <div class="videos-label">Top Videos</div>
-        <div class="video-row"><span class="video-title">Achilles and Hector: Troy’s Greatest Clash</span><span class="video-views">1.3K</span></div><div class="video-row"><span class="video-title">Why Britain Needed King Arthur</span><span class="video-views">1.1K</span></div><div class="video-row"><span class="video-title">Helen of Troy and the Real Cause of the Trojan War</span><span class="video-views">1.1K</span></div>
-      </div>
-      
-
-      
-
-      
-    </div>
-  
-
-    <div class="card " data-score="59" data-revenue="0" data-views="2139" data-age="26">
-      <div class="card-header">
-        <div class="card-title-row">
-          <a href="https://www.youtube.com/channel/UCASb-UiFkQJ7h0DegcPtVxw" target="_blank" class="card-name">firstza startail</a>
-          <div class="score-badge score-grey">59/100</div>
-        </div>
-        <div class="card-tier">Monitor  <span class="trend trend-steady">→</span></div>
-        
-      </div>
-
-      <div class="card-metrics">
-        <div class="metric">
-          <span class="metric-val">491</span>
-          <span class="metric-lbl">Subs</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">26d</span>
-          <span class="metric-lbl">Age</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">2.1K</span>
-          <span class="metric-lbl">Avg Views</span>
-        </div>
-        <div class="metric">
-          <span class="metric-val">3/wk</span>
-          <span class="metric-lbl">Uploads</span>
-        </div>
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip">RPM: $8-$15</span>
-        
-        
-        
-      </div>
-
-      <div class="card-data-row">
-        <span class="data-chip faceless-maybe-chip">Likely Faceless</span>
-        
-        
-      </div>
-
-      
-
-      <div class="card-score-breakdown">
-        <div class="score-bar"><span class="bar-label">Click</span><div class="bar-track"><div class="bar-fill" style="width:40%"></div></div><span class="bar-val">6/15</span></div>
-        <div class="score-bar"><span class="bar-label">Watch</span><div class="bar-track"><div class="bar-fill" style="width:66.66666666666666%"></div></div><span class="bar-val">10/15</span></div>
-        <div class="score-bar"><span class="bar-label">RPM</span><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div><span class="bar-val">6/10</span></div>
-        <div class="score-bar"><span class="bar-label">Comp</span><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div><span class="bar-val">8/10</span></div>
-      </div>
-
-      
-      <div class="card-videos">
-        <div class="videos-label">Top Videos</div>
-        <div class="video-row"><span class="video-title">Scientists Discovered Something Inside the Moon</span><span class="video-views">12.4K</span></div><div class="video-row"><span class="video-title">Scientists have just discovered something strange beneath Antarctica</span><span class="video-views">2.8K</span></div><div class="video-row"><span class="video-title">The Trajectory Artemis II Can Never Change</span><span class="video-views">1.8K</span></div>
-      </div>
-      
-
-      
-
-      
-    </div>
-  
   </div>
-</section>
 
+  
+  <section class="section" data-section="01">
+    <div class="section-title-row">
+      <span class="section-num">§ 01</span>
+      <h2 class="section-title">Frontier under <span class="accent">30 days</span></h2>
+      <span class="section-count" data-section-count="01">6 channels</span>
+    </div>
+    <p class="section-desc">Channels under 30 days old already showing real signals — first-mover lane. These are the urgent clone candidates.</p>
+    <div class="filter-strip">
+      <span class="chip active">AGE ≤ 30 DAYS</span><span class="chip active">SCORE ≥ 25</span><span class="chip active">EARLY MOMENTUM</span>
+    </div>
+    <div class="cards-grid">
+      
+  <article class="channel-card"
+    data-score="73"
+    data-revenue="0"
+    data-views-monthly="82960"
+    data-views-avg="1525"
+    data-rpm="0"
+    data-age="16"
+    data-subs="294"
+    data-outlier="23.24"
+    data-faceless="yes"
+    data-country="US"
+    data-verdict="SKIP"
+    data-tags=""
+    data-search="forgotten image secrets  ">
+    <div class="ch-head">
+      <div class="ch-logo"></div>
+      <div class="ch-id">
+        <div class="ch-name"><a href="https://www.youtube.com/channel/UC2-Z52Eeq65njMWpUzh12zg" target="_blank">Forgotten Image Secrets</a></div>
+        <div class="ch-handle">— · started 11 Apr 2026</div>
+      </div>
+      <span class="age-pill">16d</span>
+    </div>
 
+    <div class="pill-row"><span class="verdict-pill v-skip">SKIP</span><span class="score-pill score-high">73/100</span></div>
 
+    <div class="stat-row-3">
+      <div class="stat">
+        <div class="stat-label">Monthly $</div>
+        <div class="stat-value">—</div>
+        <div class="stat-caption">revenue</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Monthly views</div>
+        <div class="stat-value">83k</div>
+        <div class="stat-caption">last 30 days</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">RPM total</div>
+        <div class="stat-value">—</div>
+        <div class="stat-caption">inferred</div>
+      </div>
+    </div>
 
-<!-- DISAPPEARED -->
-<section class="section">
-  <h2 class="section-title disappeared-title">DISAPPEARED CHANNELS</h2>
-  <table class="data-table">
-    <thead><tr><th>Channel</th><th>Last Score</th><th>Last Subs</th><th>Last Seen</th></tr></thead>
-    <tbody>
-      <tr><td>Dr Aiden Core | Senior Health </td><td>59/100</td><td>3.7K</td><td>2026-04-24</td></tr>
-<tr><td>THE CLASSIC VAULT</td><td>70/100</td><td>76</td><td>2026-04-24</td></tr>
-<tr><td>BioHealth Nexus</td><td>68/100</td><td>4.4K</td><td>2026-04-24</td></tr>
-<tr><td>The Story Of Things</td><td>56/100</td><td>3.4K</td><td>2026-04-26</td></tr>
-    </tbody>
-  </table>
-</section>
+    <div class="stat-row-2x2">
+      <div class="stat">
+        <div class="stat-label">Avg views/video</div>
+        <div class="stat-value sm">1.5K</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Avg length</div>
+        <div class="stat-value sm">16m 35s</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Subscribers</div>
+        <div class="stat-value sm">294</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Uploads/week</div>
+        <div class="stat-value sm">13.6</div>
+      </div>
+    </div>
 
+    
 
+    <div class="top-perf">
+      <div class="tp-label">Top performer</div>
+      <div class="tp-row">
+        <span class="tp-title">This 1914 Photo Looks Normal — Until You Notice What the Mother Is Hiding</span>
+        <span class="tp-views">11.7K</span>
+      </div>
+    </div>
 
-<!-- REJECTED -->
-<section class="section">
-  <details>
-    <summary class="section-title rejected-title">REJECTED TODAY (7)</summary>
+    <div class="verdict-reason">Too crowded — bend harder or move on</div>
+    
+
+    <details class="sub-niche">
+      <summary><span class="sn-label">Recommended sub-niche</span> <strong>food safety / health</strong></summary>
+      <div class="sn-body">
+        <div class="sn-card">
+          <div class="sn-target">food safety / health</div>
+          <div class="sn-why">Uses the same 'looks normal until' curiosity gap that drove 11k views on the 1914 photo, but applies it to everyday food items Australians trust, creating immediate relevance and forbidden knowledge tension.</div>
+          <div class="sn-title">"This Popular Australian Bread Looks Normal - Until You Read The Fine Print"</div><div class="sn-title">"A Woolworths Shopper Filmed Something Strange in the Meat Section at 3am"</div>
+        </div><div class="sn-card">
+          <div class="sn-target">alternative history</div>
+          <div class="sn-why">Leverages the same mystery/revelation structure as 'no one could unravel until now' but applies it to Australian history contradictions, adding conspiracy-adjacent tension without crossing into pure conspiracy.</div>
+          <div class="sn-title">"Aboriginal Oral History Described This Landmass 7,000 Years Before Science Found It"</div><div class="sn-title">"Why Did Every Explorer's Map Show This Australian Mountain - That Doesn't Exist?"</div>
+        </div><div class="sn-card">
+          <div class="sn-target">same niche, confrontational framing</div>
+          <div class="sn-why">Takes the 'hidden in plain sight' trigger from the mother/daughters hands video and amplifies it with authority contradiction - when DNA evidence challenges official records, it creates identity-threatening tension that drives massive engagement.</div>
+          <div class="sn-title">"DNA Tests Prove Half of Australia's Convict Records Are Wrong"</div><div class="sn-title">"Scientists Just Found Evidence That Rewrites the Entire Stolen Generation Timeline"</div>
+        </div>
+      </div>
+    </details>
+
+    <div class="moni-row">
+      <span class="moni-label">Monetization</span>
+      <span class="moni-chip moni-affiliate" title="Glucosamine, MSM, turmeric, collagen via Amazon Associates / ShareASale">Joint/mobility supplements</span><span class="moni-chip moni-affiliate" title="Knee braces, walking aids, heated massagers, TENS units">Mobility aids</span><span class="moni-chip moni-product" title="Lead magnet → email list → 12-week mobility program">$27–47 mobility ebook/program</span><span class="moni-chip moni-leadgen" title="Weekly health tips PDF — recurring revenue if subscriptions added">Health newsletter</span>
+    </div>
+
+    
+
+    <div class="ch-foot">
+      <span class="quality"><span class="dot mid"></span>Quality: mid · Outlier 23.24×</span>
+      <a class="open-btn" href="https://www.youtube.com/channel/UC2-Z52Eeq65njMWpUzh12zg" target="_blank">Open ↗</a>
+    </div>
+  </article>
+
+  <article class="channel-card"
+    data-score="66"
+    data-revenue="0"
+    data-views-monthly="186727.19999999998"
+    data-views-avg="3858"
+    data-rpm="0"
+    data-age="22"
+    data-subs="3950"
+    data-outlier="344.19"
+    data-faceless="yes"
+    data-country="US"
+    data-verdict="SKIP"
+    data-tags=""
+    data-search="forgotten plants  ">
+    <div class="ch-head">
+      <div class="ch-logo"></div>
+      <div class="ch-id">
+        <div class="ch-name"><a href="https://www.youtube.com/channel/UCR0gxnf7pnm30xz8XsJkXJw" target="_blank">Forgotten Plants</a></div>
+        <div class="ch-handle">— · started 5 Apr 2026</div>
+      </div>
+      <span class="age-pill">22d</span>
+    </div>
+
+    <div class="pill-row"><span class="verdict-pill v-skip">SKIP</span><span class="score-pill score-high">66/100</span></div>
+
+    <div class="stat-row-3">
+      <div class="stat">
+        <div class="stat-label">Monthly $</div>
+        <div class="stat-value">—</div>
+        <div class="stat-caption">revenue</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Monthly views</div>
+        <div class="stat-value">187k</div>
+        <div class="stat-caption">last 30 days</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">RPM total</div>
+        <div class="stat-value">—</div>
+        <div class="stat-caption">inferred</div>
+      </div>
+    </div>
+
+    <div class="stat-row-2x2">
+      <div class="stat">
+        <div class="stat-label">Avg views/video</div>
+        <div class="stat-value sm">3.9K</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Avg length</div>
+        <div class="stat-value sm">16m 10s</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Subscribers</div>
+        <div class="stat-value sm">4.0K</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Uploads/week</div>
+        <div class="stat-value sm">12.1</div>
+      </div>
+    </div>
+
+    
+
+    <div class="top-perf">
+      <div class="tp-label">Top performer</div>
+      <div class="tp-row">
+        <span class="tp-title">10 Plants With MORE Protein Than Meat (Grow Once, Eat Forever)</span>
+        <span class="tp-views">87.8K</span>
+      </div>
+    </div>
+
+    <div class="verdict-reason">Too crowded — bend harder or move on</div>
+    
+
+    <details class="sub-niche">
+      <summary><span class="sn-label">Recommended sub-niche</span> <strong>food safety / health</strong></summary>
+      <div class="sn-body">
+        <div class="sn-card">
+          <div class="sn-target">food safety / health</div>
+          <div class="sn-why">Taps into the transformation trigger of 'grow once, eat forever' but applies it to extending grocery lifespans - viewers click to transform their shopping habits and save money.</div>
+          <div class="sn-title">"The $47 Groceries That Last 6 Months (Food Scientists Hate This)"</div><div class="sn-title">"Why Australian Supermarkets Don't Want You Freezing These 12 Foods"</div>
+        </div><div class="sn-card">
+          <div class="sn-target">parenting / family health</div>
+          <div class="sn-why">Leverages the same health transformation trigger but frames it through parental fear and protective instincts - parents compulsively click anything that could affect their children's development.</div>
+          <div class="sn-title">"What Happens to Kids Who Never Play in Dirt (10-Year Study Results)"</div><div class="sn-title">"The Backyard Plants That Boost Children's Immune Systems by 40%"</div>
+        </div><div class="sn-card">
+          <div class="sn-target">science horror / cosmic dread</div>
+          <div class="sn-why">Takes the 'forbidden knowledge' aspect of medicinal/powerful plants and amplifies it with horror framing - viewers can't resist clicking to know what terrified experts.</div>
+          <div class="sn-title">"The Plant That Made Scientists Lock Down an Entire Lab"</div><div class="sn-title">"What NASA Found Growing on the ISS Terrified Mission Control"</div>
+        </div>
+      </div>
+    </details>
+
+    <div class="moni-row">
+      <span class="moni-label">Monetization</span>
+      <span class="moni-chip moni-affiliate" title="Amazon books, replica artifacts">Books / collectibles</span><span class="moni-chip moni-sponsorship" title="History Hit, Curiosity Stream, Magellan TV">History sponsorship</span><span class="moni-chip moni-product" title="&quot;Forgotten history&quot; PDF compilations $9–19">Timeline ebook</span>
+    </div>
+
+    
+
+    <div class="ch-foot">
+      <span class="quality"><span class="dot mid"></span>Quality: mid · Outlier 344.19×</span>
+      <a class="open-btn" href="https://www.youtube.com/channel/UCR0gxnf7pnm30xz8XsJkXJw" target="_blank">Open ↗</a>
+    </div>
+  </article>
+
+  <article class="channel-card"
+    data-score="65"
+    data-revenue="0"
+    data-views-monthly="471212"
+    data-views-avg="16829"
+    data-rpm="0"
+    data-age="26"
+    data-subs="9990"
+    data-outlier="153.01"
+    data-faceless="yes"
+    data-country="US"
+    data-verdict="SKIP"
+    data-tags=""
+    data-search="doctor laura  ">
+    <div class="ch-head">
+      <div class="ch-logo"></div>
+      <div class="ch-id">
+        <div class="ch-name"><a href="https://www.youtube.com/channel/UCBLbqhYNAve3LmpThhB4OXA" target="_blank">Doctor Laura</a></div>
+        <div class="ch-handle">— · started 1 Apr 2026</div>
+      </div>
+      <span class="age-pill">26d</span>
+    </div>
+
+    <div class="pill-row"><span class="verdict-pill v-skip">SKIP</span><span class="score-pill score-high">65/100</span></div>
+
+    <div class="stat-row-3">
+      <div class="stat">
+        <div class="stat-label">Monthly $</div>
+        <div class="stat-value">—</div>
+        <div class="stat-caption">revenue</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Monthly views</div>
+        <div class="stat-value">471k</div>
+        <div class="stat-caption">last 30 days</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">RPM total</div>
+        <div class="stat-value">—</div>
+        <div class="stat-caption">inferred</div>
+      </div>
+    </div>
+
+    <div class="stat-row-2x2">
+      <div class="stat">
+        <div class="stat-label">Avg views/video</div>
+        <div class="stat-value sm">16.8K</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Avg length</div>
+        <div class="stat-value sm">20m 25s</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Subscribers</div>
+        <div class="stat-value sm">10.0K</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Uploads/week</div>
+        <div class="stat-value sm">7.0</div>
+      </div>
+    </div>
+
+    
+
+    <div class="top-perf">
+      <div class="tp-label">Top performer</div>
+      <div class="tp-row">
+        <span class="tp-title">SWOLLEN ANKLES AFTER 60 ARE NOT YOUR HEART — It's Your Lymph, and This 5-Minute Habit Drains Them</span>
+        <span class="tp-views">262.1K</span>
+      </div>
+    </div>
+
+    <div class="verdict-reason">Too crowded — bend harder or move on</div>
+    
+
+    <details class="sub-niche">
+      <summary><span class="sn-label">Recommended sub-niche</span> <strong>food safety / health</strong></summary>
+      <div class="sn-body">
+        <div class="sn-card">
+          <div class="sn-target">food safety / health</div>
+          <div class="sn-why">Leverages the 'not what it seems' conspiracy-adjacent angle from Doctor Laura's videos, but applied to everyday foods people trust.</div>
+          <div class="sn-title">"What McDonald's Doesn't Want You to Know About Their Fries"</div><div class="sn-title">"The $2 Grocery Store Trick That Makes Any Meat Last 3x Longer"</div>
+        </div><div class="sn-card">
+          <div class="sn-target">health economics / medical costs</div>
+          <div class="sn-why">Combines Doctor Laura's medical authority contradiction with financial scale shock - people click when they realize they're being overcharged for health.</div>
+          <div class="sn-title">"Why Your $200 Prescription Costs $3 to Make"</div><div class="sn-title">"The Real Reason Surgery Costs 10x More in America"</div>
+        </div><div class="sn-card">
+          <div class="sn-target">parenting / family health</div>
+          <div class="sn-why">Uses Doctor Laura's age-specific identity targeting ('after 60') but for parents - creates urgent fear about children's development with promise of simple solution.</div>
+          <div class="sn-title">"Your Child's Screen Time Is Rewiring Their Brain"</div><div class="sn-title">"Why Smart Kids Can't Focus Anymore (And How to Fix It)"</div>
+        </div>
+      </div>
+    </details>
+
+    <div class="moni-row">
+      <span class="moni-label">Monetization</span>
+      <span class="moni-chip moni-affiliate" title="High-RPM tier: vitamins, supplements, health foods">Supplements</span><span class="moni-chip moni-sponsorship" title="BetterHelp, Athletic Greens, Ritual, Seed">Health brand sponsorship</span><span class="moni-chip moni-product" title="PDF meal plans, $19–47, scale via email list">Meal/diet plan</span>
+    </div>
+
+    
+
+    <div class="ch-foot">
+      <span class="quality"><span class="dot mid"></span>Quality: mid · Outlier 153.01×</span>
+      <a class="open-btn" href="https://www.youtube.com/channel/UCBLbqhYNAve3LmpThhB4OXA" target="_blank">Open ↗</a>
+    </div>
+  </article>
+
+  <article class="channel-card"
+    data-score="64"
+    data-revenue="0"
+    data-views-monthly="87400"
+    data-views-avg="1748"
+    data-rpm="0"
+    data-age="28"
+    data-subs="2020"
+    data-outlier="21.95"
+    data-faceless="yes"
+    data-country="unknown"
+    data-verdict="SKIP"
+    data-tags=""
+    data-search="ancient dna history  ">
+    <div class="ch-head">
+      <div class="ch-logo"></div>
+      <div class="ch-id">
+        <div class="ch-name"><a href="https://www.youtube.com/channel/UCihPT0YR-EQWbFv8iZWh2ag" target="_blank">Ancient DNA History</a></div>
+        <div class="ch-handle">— · started 30 Mar 2026</div>
+      </div>
+      <span class="age-pill">28d</span>
+    </div>
+
+    <div class="pill-row"><span class="verdict-pill v-skip">SKIP</span><span class="score-pill score-high">64/100</span></div>
+
+    <div class="stat-row-3">
+      <div class="stat">
+        <div class="stat-label">Monthly $</div>
+        <div class="stat-value">—</div>
+        <div class="stat-caption">revenue</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Monthly views</div>
+        <div class="stat-value">87k</div>
+        <div class="stat-caption">last 30 days</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">RPM total</div>
+        <div class="stat-value">—</div>
+        <div class="stat-caption">inferred</div>
+      </div>
+    </div>
+
+    <div class="stat-row-2x2">
+      <div class="stat">
+        <div class="stat-label">Avg views/video</div>
+        <div class="stat-value sm">1.7K</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Avg length</div>
+        <div class="stat-value sm">23m 18s</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Subscribers</div>
+        <div class="stat-value sm">2.0K</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Uploads/week</div>
+        <div class="stat-value sm">12.5</div>
+      </div>
+    </div>
+
+    
+
+    <div class="top-perf">
+      <div class="tp-label">Top performer</div>
+      <div class="tp-row">
+        <span class="tp-title">Mary Todd Lincoln Wasn't Crazy. Here's What DNA Says.</span>
+        <span class="tp-views">18.9K</span>
+      </div>
+    </div>
+
+    <div class="verdict-reason">Too crowded — bend harder or move on</div>
+    
+
+    <details class="sub-niche">
+      <summary><span class="sn-label">Recommended sub-niche</span> <strong>alternative history</strong></summary>
+      <div class="sn-body">
+        <div class="sn-card">
+          <div class="sn-target">alternative history</div>
+          <div class="sn-why">Leverages the same 'established history is wrong' trigger that made the DNA videos viral, but applies it to mainstream historical mysteries everyone already wonders about.</div>
+          <div class="sn-title">"The Pyramid Builders Left DNA Evidence That Changes Everything"</div><div class="sn-title">"What Archaeologists Found in King Tut's Tomb Wasn't Egyptian"</div>
+        </div><div class="sn-card">
+          <div class="sn-target">parenting / family health</div>
+          <div class="sn-why">Parents click compulsively when experts might be wrong about their child's safety - same contradiction trigger but aimed at protective instincts.</div>
+          <div class="sn-title">"Your Pediatrician Is Wrong About These 3 Sleep Training Methods"</div><div class="sn-title">"What Baby Food Companies Hide About Iron Deficiency Shocked Me"</div>
+        </div><div class="sn-card">
+          <div class="sn-target">home improvement / DIY</div>
+          <div class="sn-why">Positions viewer as getting insider knowledge that contradicts mainstream advice - same DNA-proves-experts-wrong framework applied to home improvement.</div>
+          <div class="sn-title">"This 1950s Insulation Trick Beats Modern Methods Every Time"</div><div class="sn-title">"Why Master Plumbers Never Use The Parts Home Depot Recommends"</div>
+        </div>
+      </div>
+    </details>
+
+    <div class="moni-row">
+      <span class="moni-label">Monetization</span>
+      <span class="moni-chip moni-affiliate" title="Amazon books, replica artifacts">Books / collectibles</span><span class="moni-chip moni-sponsorship" title="History Hit, Curiosity Stream, Magellan TV">History sponsorship</span><span class="moni-chip moni-product" title="&quot;Forgotten history&quot; PDF compilations $9–19">Timeline ebook</span>
+    </div>
+
+    
+
+    <div class="ch-foot">
+      <span class="quality"><span class="dot mid"></span>Quality: mid · Outlier 21.95×</span>
+      <a class="open-btn" href="https://www.youtube.com/channel/UCihPT0YR-EQWbFv8iZWh2ag" target="_blank">Open ↗</a>
+    </div>
+  </article>
+
+  <article class="channel-card"
+    data-score="53"
+    data-revenue="0"
+    data-views-monthly="350952"
+    data-views-avg="12534"
+    data-rpm="0"
+    data-age="25"
+    data-subs="5590"
+    data-outlier="122.09"
+    data-faceless="yes"
+    data-country="US"
+    data-verdict="NONE"
+    data-tags=""
+    data-search="mandell's health clinic  ">
+    <div class="ch-head">
+      <div class="ch-logo"></div>
+      <div class="ch-id">
+        <div class="ch-name"><a href="https://www.youtube.com/channel/UCCTk4mzpRtZlb5rVdMLyqpA" target="_blank">Mandell's Health Clinic</a></div>
+        <div class="ch-handle">— · started 2 Apr 2026</div>
+      </div>
+      <span class="age-pill">25d</span>
+    </div>
+
+    <div class="pill-row"><span class="score-pill score-mid">53/100</span><span class="tier-text">Monitor</span></div>
+
+    <div class="stat-row-3">
+      <div class="stat">
+        <div class="stat-label">Monthly $</div>
+        <div class="stat-value">—</div>
+        <div class="stat-caption">revenue</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Monthly views</div>
+        <div class="stat-value">351k</div>
+        <div class="stat-caption">last 30 days</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">RPM total</div>
+        <div class="stat-value">—</div>
+        <div class="stat-caption">inferred</div>
+      </div>
+    </div>
+
+    <div class="stat-row-2x2">
+      <div class="stat">
+        <div class="stat-label">Avg views/video</div>
+        <div class="stat-value sm">12.5K</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Avg length</div>
+        <div class="stat-value sm">25m 3s</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Subscribers</div>
+        <div class="stat-value sm">5.6K</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Uploads/week</div>
+        <div class="stat-value sm">7.0</div>
+      </div>
+    </div>
+
+    
+
+    <div class="top-perf">
+      <div class="tp-label">Top performer</div>
+      <div class="tp-row">
+        <span class="tp-title">Over 60 This 1 Exercise Can Change Your Life!</span>
+        <span class="tp-views">132.7K</span>
+      </div>
+    </div>
+
+    
+    
+
+    
+
+    <div class="moni-row">
+      <span class="moni-label">Monetization</span>
+      <span class="moni-chip moni-affiliate" title="High-RPM tier: vitamins, supplements, health foods">Supplements</span><span class="moni-chip moni-sponsorship" title="BetterHelp, Athletic Greens, Ritual, Seed">Health brand sponsorship</span><span class="moni-chip moni-product" title="PDF meal plans, $19–47, scale via email list">Meal/diet plan</span>
+    </div>
+
+    
+
+    <div class="ch-foot">
+      <span class="quality"><span class="dot mid"></span>Quality: mid · Outlier 122.09×</span>
+      <a class="open-btn" href="https://www.youtube.com/channel/UCCTk4mzpRtZlb5rVdMLyqpA" target="_blank">Open ↗</a>
+    </div>
+  </article>
+
+  <article class="channel-card"
+    data-score="52"
+    data-revenue="0"
+    data-views-monthly="235728.4"
+    data-views-avg="9661"
+    data-rpm="0"
+    data-age="23"
+    data-subs="7160"
+    data-outlier="207.47"
+    data-faceless="yes"
+    data-country="US"
+    data-verdict="NONE"
+    data-tags=""
+    data-search="natural healing lab  ">
+    <div class="ch-head">
+      <div class="ch-logo"></div>
+      <div class="ch-id">
+        <div class="ch-name"><a href="https://www.youtube.com/channel/UCggo3oHqpYMIB2TSo3IkiFA" target="_blank">Natural Healing Lab</a></div>
+        <div class="ch-handle">— · started 4 Apr 2026</div>
+      </div>
+      <span class="age-pill">23d</span>
+    </div>
+
+    <div class="pill-row"><span class="score-pill score-mid">52/100</span><span class="tier-text">Monitor</span></div>
+
+    <div class="stat-row-3">
+      <div class="stat">
+        <div class="stat-label">Monthly $</div>
+        <div class="stat-value">—</div>
+        <div class="stat-caption">revenue</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Monthly views</div>
+        <div class="stat-value">236k</div>
+        <div class="stat-caption">last 30 days</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">RPM total</div>
+        <div class="stat-value">—</div>
+        <div class="stat-caption">inferred</div>
+      </div>
+    </div>
+
+    <div class="stat-row-2x2">
+      <div class="stat">
+        <div class="stat-label">Avg views/video</div>
+        <div class="stat-value sm">9.7K</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Avg length</div>
+        <div class="stat-value sm">21m 29s</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Subscribers</div>
+        <div class="stat-value sm">7.2K</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Uploads/week</div>
+        <div class="stat-value sm">6.1</div>
+      </div>
+    </div>
+
+    
+
+    <div class="top-perf">
+      <div class="tp-label">Top performer</div>
+      <div class="tp-row">
+        <span class="tp-title">Your Legs Weaken First! Eat These 6 Foods to Strengthen Them FAST | Dr. Alan Mandell</span>
+        <span class="tp-views">152.1K</span>
+      </div>
+    </div>
+
+    
+    
+
+    
+
+    
+
+    
+
+    <div class="ch-foot">
+      <span class="quality"><span class="dot mid"></span>Quality: mid · Outlier 207.47×</span>
+      <a class="open-btn" href="https://www.youtube.com/channel/UCggo3oHqpYMIB2TSo3IkiFA" target="_blank">Open ↗</a>
+    </div>
+  </article>
+    </div>
+  </section>
+  
+  <section class="section" data-section="disappeared">
+    <div class="section-title-row">
+      <span class="section-num">§ 02</span>
+      <h2 class="section-title">Disappeared <span class="accent">channels</span></h2>
+      <span class="section-count">11 channels</span>
+    </div>
+    <p class="section-desc">Channels previously tracked that have stopped uploading or fallen out of qualifying metrics.</p>
     <table class="data-table">
-      <thead><tr><th>Channel</th><th>Reason</th></tr></thead>
+      <thead><tr><th>Channel</th><th>Last score</th><th>Last subs</th><th>Last seen</th></tr></thead>
       <tbody>
-        <tr><td>Snyder Reacts</td><td>Channel does not appear to be faceless format</td></tr>
-<tr><td>Golden Family</td><td>Channel does not appear to be faceless format</td></tr>
-<tr><td>Creedlow</td><td>Channel does not appear to be faceless format</td></tr>
-<tr><td>Ironic Toons</td><td>Channel does not appear to be faceless format</td></tr>
-<tr><td>KreativaHome</td><td>Channel does not appear to be faceless format</td></tr>
-<tr><td>Modren Royal empire</td><td>Channel does not appear to be faceless format</td></tr>
-<tr><td>The Cosmic Rush</td><td>Channel does not appear to be faceless format</td></tr>
+        <tr><td>History of Battlefields</td><td>74/100</td><td>3.8K</td><td>2026-04-26</td></tr><tr><td>Think Glitch</td><td>61/100</td><td>19</td><td>2026-04-26</td></tr><tr><td>The Lustre Archive</td><td>70/100</td><td>2.9K</td><td>2026-04-26</td></tr><tr><td>Astro Insight Documentaries</td><td>63/100</td><td>441</td><td>2026-04-26</td></tr><tr><td>Dr. Henry Golfinos</td><td>71/100</td><td>323</td><td>2026-04-26</td></tr><tr><td>firstza startail</td><td>59/100</td><td>468</td><td>2026-04-26</td></tr><tr><td>Old &amp; Now</td><td>75/100</td><td>301</td><td>2026-04-26</td></tr><tr><td>WWII War Explained</td><td>85/100</td><td>2.2K</td><td>2026-04-26</td></tr><tr><td>DOCTOR TALKS DAILY</td><td>61/100</td><td>6.1K</td><td>2026-04-26</td></tr><tr><td>The Story Of Things</td><td>56/100</td><td>3.4K</td><td>2026-04-26</td></tr><tr><td>The Seeker's Archive</td><td>59/100</td><td>73</td><td>2026-04-26</td></tr>
       </tbody>
     </table>
-  </details>
-</section>
+  </section>
+  
+  <section class="section" data-section="rejected">
+    <details>
+      <summary class="section-title-row" style="cursor:pointer;">
+        <span class="section-num">§ 03</span>
+        <h2 class="section-title">Rejected <span class="accent">today</span></h2>
+        <span class="section-count">1 channels</span>
+      </summary>
+      <p class="section-desc" style="margin-top:16px;">Channels that surfaced today but failed filters. Expand to audit the rejection reasons.</p>
+      <table class="data-table">
+        <thead><tr><th>Channel</th><th>Reason</th></tr></thead>
+        <tbody>
+          <tr><td>Dark Lyrics</td><td>Channel does not appear to be faceless format</td></tr>
+        </tbody>
+      </table>
+    </details>
+  </section>
 
-
-<!-- FOOTER -->
-<footer class="footer">
-  <p>Niche Scanner V2 — 2026-04-26 — Quota: ~2535/10,000</p>
-</footer>
+  <footer class="footer">
+    Niche Scanner · 27 Apr 2026 · Quota ~3954/10,000 · Power Media Holdings B.V.
+  </footer>
+</div>
 
 <script>
+window.__SECTIONS__ = [{"num":"01","count":6}];
 
-document.querySelectorAll('.sort-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-    this.classList.add('active');
-    const key = this.dataset.sort;
-    const grid = document.getElementById('opportunities');
-    if (!grid) return;
-    const cards = Array.from(grid.querySelectorAll('.card'));
-    cards.sort((a, b) => {
-      const aVal = parseFloat(a.dataset[key]) || 0;
-      const bVal = parseFloat(b.dataset[key]) || 0;
-      return key === 'age' ? aVal - bVal : bVal - aVal;
+(function(){
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+  const cards = $$('.channel-card');
+  const totalCount = cards.length;
+
+  const state = {
+    search: '',
+    sort: 'score',
+    country: 'all',
+    faceless: 'all',
+    verdicts: new Set(),
+    tags: new Set(),
+    scoreMin: 0,
+    ageMax: 7500,
+    subsMax: 5000000,
+    viewsMin: 5000,
+    rpmMin: 0,
+    revMin: 0
+  };
+
+  const fmtMoney = (n) => {
+    if (n >= 1e6) return '$' + (n/1e6).toFixed(2) + 'M';
+    if (n >= 1e3) return '$' + (n/1e3).toFixed(1) + 'k';
+    return '$' + Math.round(n);
+  };
+  const fmtViews = (n) => {
+    if (n >= 1e9) return (n/1e9).toFixed(2) + 'B';
+    if (n >= 1e6) return (n/1e6).toFixed(1) + 'M';
+    if (n >= 1e3) return (n/1e3).toFixed(0) + 'k';
+    return String(Math.round(n));
+  };
+  const fmtSubs = (n) => {
+    if (n >= 1e6) return (n/1e6).toFixed(1) + 'M';
+    if (n >= 1e3) return (n/1e3).toFixed(0) + 'k';
+    return String(n);
+  };
+  const median = (arr) => {
+    if (!arr.length) return 0;
+    const s = arr.slice().sort((a,b)=>a-b);
+    const m = Math.floor(s.length/2);
+    return s.length%2 ? s[m] : Math.round((s[m-1]+s[m])/2);
+  };
+
+  function apply() {
+    const q = state.search.trim().toLowerCase();
+    let visible = [];
+    cards.forEach(card => {
+      const score = parseFloat(card.dataset.score) || 0;
+      const rev = parseFloat(card.dataset.revenue) || 0;
+      const monthlyViews = parseFloat(card.dataset.viewsMonthly) || 0;
+      const avgViews = parseFloat(card.dataset.viewsAvg) || 0;
+      const rpm = parseFloat(card.dataset.rpm) || 0;
+      const age = parseFloat(card.dataset.age) || 0;
+      const subs = parseFloat(card.dataset.subs) || 0;
+      const faceless = card.dataset.faceless;
+      const country = card.dataset.country;
+      const verdict = card.dataset.verdict;
+      const tags = card.dataset.tags || '';
+      const search = card.dataset.search || '';
+
+      let show = true;
+      if (q && !search.includes(q)) show = false;
+      if (show && score < state.scoreMin) show = false;
+      if (show && age > state.ageMax) show = false;
+      if (show && subs > state.subsMax) show = false;
+      if (show && avgViews < state.viewsMin) show = false;
+      if (show && rpm < state.rpmMin) show = false;
+      if (show && rev < state.revMin) show = false;
+      if (show && state.faceless !== 'all' && faceless !== state.faceless) show = false;
+      if (show && state.country !== 'all' && country !== state.country) show = false;
+      if (show && state.verdicts.size > 0 && !state.verdicts.has(verdict)) show = false;
+      if (show && state.tags.size > 0) {
+        for (const t of state.tags) {
+          if (!tags.includes(t)) { show = false; break; }
+        }
+      }
+
+      card.classList.toggle('hidden', !show);
+      if (show) visible.push(card);
     });
-    cards.forEach(card => grid.appendChild(card));
+
+    // Sort within each grid
+    const grids = $$('.cards-grid');
+    grids.forEach(grid => {
+      const gridCards = $$('.channel-card', grid).filter(c => !c.classList.contains('hidden'));
+      gridCards.sort((a, b) => {
+        let av, bv;
+        if (state.sort === 'age') {
+          av = parseFloat(a.dataset.age) || 0; bv = parseFloat(b.dataset.age) || 0;
+          return av - bv;
+        }
+        if (state.sort === 'revenue') { av = parseFloat(a.dataset.revenue)||0; bv = parseFloat(b.dataset.revenue)||0; }
+        else if (state.sort === 'views') { av = parseFloat(a.dataset.viewsAvg)||0; bv = parseFloat(b.dataset.viewsAvg)||0; }
+        else if (state.sort === 'outlier') { av = parseFloat(a.dataset.outlier)||0; bv = parseFloat(b.dataset.outlier)||0; }
+        else { av = parseFloat(a.dataset.score)||0; bv = parseFloat(b.dataset.score)||0; }
+        return bv - av;
+      });
+      gridCards.forEach(c => grid.appendChild(c));
+    });
+
+    // Recompute per-section counts
+    $$('section.section').forEach(section => {
+      const num = section.dataset.section;
+      const visibleInSection = $$('.channel-card', section).filter(c => !c.classList.contains('hidden')).length;
+      const totalInSection = $$('.channel-card', section).length;
+      const badge = $('[data-section-count="' + num + '"]', section);
+      if (badge) {
+        badge.textContent = visibleInSection === totalInSection
+          ? totalInSection + ' channels'
+          : visibleInSection + ' / ' + totalInSection + ' channels';
+      }
+      // Hide entire section if 0 visible
+      section.style.display = visibleInSection === 0 && totalInSection > 0 ? 'none' : '';
+    });
+
+    // Recompute summary cards
+    $('#sm-count').textContent = visible.length;
+    const totalRev = visible.reduce((s,c) => s + (parseFloat(c.dataset.revenue)||0), 0);
+    const totalViews = visible.reduce((s,c) => s + (parseFloat(c.dataset.viewsMonthly)||0), 0);
+    const ages = visible.map(c => parseFloat(c.dataset.age)||0).filter(a => a > 0);
+    $('#sm-rev').textContent = totalRev > 0 ? fmtMoney(totalRev) : '$0';
+    $('#sm-views').textContent = totalViews > 0 ? fmtViews(totalViews) : '0';
+    $('#sm-age').textContent = (ages.length ? median(ages) : 0) + 'd';
+
+    // Status line
+    $('#f-status').textContent = 'Showing ' + visible.length + ' of ' + totalCount + ' channels';
+  }
+
+  // Wire controls
+  $('#f-search').addEventListener('input', e => { state.search = e.target.value; apply(); });
+  $('#f-sort').addEventListener('change', e => { state.sort = e.target.value; apply(); });
+  const fc = $('#f-country');
+  if (fc) fc.addEventListener('change', e => { state.country = e.target.value; apply(); });
+  $('#f-faceless').addEventListener('change', e => { state.faceless = e.target.value; apply(); });
+
+  $$('.vchip').forEach(b => b.addEventListener('click', () => {
+    const v = b.dataset.verdict;
+    if (state.verdicts.has(v)) { state.verdicts.delete(v); b.classList.remove('on'); }
+    else { state.verdicts.add(v); b.classList.add('on'); }
+    apply();
+  }));
+  $$('.tchip').forEach(b => b.addEventListener('click', () => {
+    const t = b.dataset.tag;
+    if (state.tags.has(t)) { state.tags.delete(t); b.classList.remove('on'); }
+    else { state.tags.add(t); b.classList.add('on'); }
+    apply();
+  }));
+
+  function bindSlider(id, key, fmt, output) {
+    const el = $('#' + id);
+    el.addEventListener('input', e => {
+      const v = parseFloat(e.target.value);
+      state[key] = v;
+      $('#' + output).textContent = fmt(v);
+      apply();
+    });
+  }
+  bindSlider('f-score', 'scoreMin', v => v, 'o-score');
+  bindSlider('f-age', 'ageMax', v => v >= 7500 ? '∞' : v, 'o-age');
+  bindSlider('f-subs', 'subsMax', v => v >= 5000000 ? '∞' : fmtSubs(v), 'o-subs');
+  bindSlider('f-views', 'viewsMin', v => fmtViews(v), 'o-views');
+  bindSlider('f-rpm', 'rpmMin', v => '$' + v.toFixed(1), 'o-rpm');
+  bindSlider('f-rev', 'revMin', v => fmtMoney(v), 'o-rev');
+
+  $('#f-more').addEventListener('click', () => {
+    const bar = $('#filterBar');
+    bar.classList.toggle('collapsed');
+    const btn = $('#f-more');
+    btn.textContent = bar.classList.contains('collapsed') ? 'More filters ▾' : 'Less filters ▴';
+    btn.classList.toggle('on', !bar.classList.contains('collapsed'));
   });
-});
+
+  $('#f-reset').addEventListener('click', () => {
+    state.search = ''; $('#f-search').value = '';
+    state.sort = 'score'; $('#f-sort').value = 'score';
+    if (fc) { state.country = 'all'; fc.value = 'all'; }
+    state.faceless = 'all'; $('#f-faceless').value = 'all';
+    state.verdicts.clear(); $$('.vchip').forEach(b => b.classList.remove('on'));
+    state.tags.clear(); $$('.tchip').forEach(b => b.classList.remove('on'));
+    state.scoreMin = 0; $('#f-score').value = 0; $('#o-score').textContent = '0';
+    state.ageMax = 7500; $('#f-age').value = 7500; $('#o-age').textContent = '∞';
+    state.subsMax = 5000000; $('#f-subs').value = 5000000; $('#o-subs').textContent = '∞';
+    state.viewsMin = 5000; $('#f-views').value = 5000; $('#o-views').textContent = '5k';
+    state.rpmMin = 0; $('#f-rpm').value = 0; $('#o-rpm').textContent = '$0';
+    state.revMin = 0; $('#f-rev').value = 0; $('#o-rev').textContent = '$0';
+    apply();
+  });
+
+  // Handoff button — copy launch command to clipboard
+  document.querySelectorAll('.handoff-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const cmd = btn.dataset.cmd;
+      const name = btn.dataset.name;
+      try {
+        await navigator.clipboard.writeText(cmd);
+      } catch (err) {
+        // Fallback for file:// where clipboard API may be blocked
+        const ta = document.createElement('textarea');
+        ta.value = cmd;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      const original = btn.textContent;
+      btn.textContent = '✓ Copied — paste in PowerShell';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 3000);
+    });
+  });
+
+  apply();
+})();
 
 </script>
 </body>

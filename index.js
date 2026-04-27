@@ -10,6 +10,7 @@ const { scoreCandidate } = require('./src/scoring/opportunity-scorer');
 const { checkEscalateTriggers, checkRejectTriggers } = require('./src/scoring/auto-triggers');
 const { generateReport, writeReport } = require('./src/output/report-generator');
 const { generateDashboard, writeDashboard, generateEmailHtml } = require('./src/output/dashboard-generator');
+const { writeHandoffPayloads } = require('./src/output/handoff-writer');
 const { loadHistory, compareWithHistory, getDisappeared, saveHistory } = require('./src/tracking/history-tracker');
 const { enhanceWithGrowthData } = require('./src/tracking/growth-analyzer');
 const { generateBends } = require('./src/bending/niche-bender');
@@ -236,6 +237,10 @@ async function main() {
   }
   const dashboardDir = config.output.dashboardDir || path.join(__dirname, 'niche-research', 'dashboard');
   const dashboardPath = writeDashboard(dashboardHtml, dashboardDir);
+
+  // === Write handoff payloads for "ready to launch" channels ===
+  const handoffDir = path.join(__dirname, 'niche-research', 'handoff-queue');
+  writeHandoffPayloads(approved, handoffDir);
 
   // === Save history ===
   saveHistory(approved, history, config.history.dir, config.history.maxDays);

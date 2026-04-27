@@ -6,6 +6,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["serve", "niche-research/dashboard", "-l", "3456"],
       "port": 3456
+    },
+    {
+      "name": "dashboard-test",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "niche-research/dashboard-test", "-l", "3457"],
+      "port": 3457
     }
   ]
 }

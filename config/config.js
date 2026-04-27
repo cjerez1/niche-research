@@ -17,7 +17,7 @@ const config = Object.freeze({
     idealChannelAgeDays: 30,
     maxSubscribers: 10000,
     minVideosWithViews: 3,
-    minViewThreshold: 1000,
+    minViewThreshold: 5000,
     minUploadsPerWeek: 2,
     minTotalVideos: 6,
     maxCandidatesForDeepAnalysis: 100,
@@ -44,7 +44,7 @@ const config = Object.freeze({
   },
 
   quota: {
-    maxSearchQueries: 22,
+    maxSearchQueries: 30,
     dailyLimit: 10000,
     concurrency: 5,
   },

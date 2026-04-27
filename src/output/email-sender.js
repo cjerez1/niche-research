@@ -7,7 +7,7 @@ const { marked } = require('marked');
  * @param {object} config - App config
  * @param {boolean} isHtml - If true, content is already HTML (dashboard format)
  */
-async function sendReportEmail(content, config, isHtml = false) {
+async function sendReportEmail(content, config, isHtml = false, options = {}) {
   if (!config.email.enabled) {
     console.log('Email delivery disabled (no RESEND_API_KEY set)');
     return;
@@ -20,22 +20,27 @@ async function sendReportEmail(content, config, isHtml = false) {
 
   const resend = new Resend(config.email.apiKey);
   const html = isHtml ? content : convertReportToHtml(content);
-  const subject = buildEmailSubject(isHtml ? content : content);
+  const subject = options.subject || buildEmailSubject(content);
+
+  const payload = {
+    from: config.email.from,
+    to: config.email.to,
+    subject,
+    html,
+  };
+  if (options.attachments && options.attachments.length > 0) {
+    payload.attachments = options.attachments;
+  }
 
   try {
-    const { data, error } = await resend.emails.send({
-      from: config.email.from,
-      to: config.email.to,
-      subject,
-      html,
-    });
+    const { data, error } = await resend.emails.send(payload);
 
     if (error) {
       console.error(`Email send error: ${error.message}`);
       return;
     }
 
-    console.log(`Report emailed to ${config.email.to} (ID: ${data.id})`);
+    console.log(`Report emailed to ${config.email.to} (ID: ${data.id})${options.attachments ? ` with ${options.attachments.length} attachment(s)` : ''}`);
   } catch (err) {
     console.error(`Email delivery failed: ${err.message}`);
   }

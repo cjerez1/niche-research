@@ -9,7 +9,7 @@ const { analyzeChannels } = require('./src/scanner/channel-analyzer');
 const { scoreCandidate } = require('./src/scoring/opportunity-scorer');
 const { checkEscalateTriggers, checkRejectTriggers } = require('./src/scoring/auto-triggers');
 const { generateReport, writeReport } = require('./src/output/report-generator');
-const { generateDashboard, writeDashboard, generateEmailHtml } = require('./src/output/dashboard-generator');
+const { generateDashboard, writeDashboard, generateEmailHtml, generateEmailSummary } = require('./src/output/dashboard-generator');
 const { writeHandoffPayloads } = require('./src/output/handoff-writer');
 const { loadHistory, compareWithHistory, getDisappeared, saveHistory } = require('./src/tracking/history-tracker');
 const { enhanceWithGrowthData } = require('./src/tracking/growth-analyzer');
@@ -245,18 +245,17 @@ async function main() {
   // === Save history ===
   saveHistory(approved, history, config.history.dir, config.history.maxDays);
 
-  // === Email delivery (use dashboard HTML) ===
+  // === Email delivery: small editorial summary body + full dashboard as attachment ===
+  // The body stays under ~30KB (zero risk of Gmail clipping) while the recipient gets the
+  // complete filterable dashboard (~600KB) as a clickable HTML attachment that opens in browser.
   try {
-    let emailHtml = generateEmailHtml(approved, rejected, reportMetadata);
-    // Always inject popping CSS + legend. Popping section goes at TOP (after </header>) so it's
-    // above any Gmail [Message clipped] line (~102KB limit).
-    const css = `<style>${popping.extraCss}</style>`;
-    const legend = popping.renderLegend();
-    emailHtml = emailHtml.replace('</head>', `${css}</head>`);
-    const compactPopping = poppingData ? popping.renderHtmlCompact(poppingData) : '';
-    emailHtml = emailHtml.replace('</header>', `</header>${compactPopping}${legend}`);
-    console.log(`Email HTML size: ${emailHtml.length.toLocaleString()} bytes (Gmail clip threshold ~102,400)`);
-    await sendReportEmail(emailHtml, config, true);
+    const summaryHtml = generateEmailSummary(approved, rejected, reportMetadata);
+    const dashboardBuffer = require('fs').readFileSync(dashboardPath);
+    const filename = `niche-scanner-${reportMetadata.date.toISOString().split('T')[0]}.html`;
+    console.log(`Email summary size: ${summaryHtml.length.toLocaleString()} bytes; attachment: ${dashboardBuffer.length.toLocaleString()} bytes`);
+    await sendReportEmail(summaryHtml, config, true, {
+      attachments: [{ filename, content: dashboardBuffer }]
+    });
   } catch (err) {
     console.error(`Email failed (non-fatal): ${err.message}`);
   }

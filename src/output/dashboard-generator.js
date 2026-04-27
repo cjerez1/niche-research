@@ -1886,4 +1886,134 @@ function formatDateShort(dateStr) {
   return d.toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
 }
 
-module.exports = { generateDashboard, writeDashboard, generateEmailHtml };
+// Editorial email summary — short body that pairs with the full dashboard HTML attachment.
+// Goal: tiny payload (~10-15KB) so Gmail never clips, but visually consistent with the dashboard.
+// All controls/cards live in the attachment; the email body is a "what's in it" preview.
+function generateEmailSummary(approved, rejected, metadata) {
+  const date = metadata.date.toISOString().split('T')[0];
+  const dateShort = formatDateShort(date);
+
+  const ready = approved.filter(isReadyToLaunch);
+  const readyIds = new Set(ready.map(c => c.channelId));
+  const escalated = approved.filter(c => c.escalate?.escalate && !readyIds.has(c.channelId));
+  const top60 = approved.filter(c => !readyIds.has(c.channelId) && !escalated.find(e => e.channelId === c.channelId) && c.score.totalScore >= 60);
+  const top40 = approved.filter(c => c.score.totalScore >= 40);
+
+  const totalRev = approved.reduce((s, c) => s + (c.nexlev?.avgMonthlyRevenue || 0), 0);
+
+  const headline = pickHeadline({
+    escalated: escalated.length,
+    top: top40.length,
+    frontier: approved.filter(c => (c.ageDays || c.nexlev?.daysSinceStart || 999) <= 30 && c.score.totalScore >= 25).length,
+    signals: approved.filter(c => c.score.totalScore >= 20 && c.score.totalScore < 40).length
+  });
+
+  const renderRow = (c) => {
+    const nx = c.nexlev || {};
+    const score = c.score?.totalScore || 0;
+    const verdict = c.competitionLandscape?.verdict || c.verdict?.verdict || '';
+    const ageDays = c.ageDays || nx.daysSinceStart || 0;
+    const channelId = c.channelId || extractChannelId(c.channelUrl || nx.url || '');
+    const url = channelId ? `https://www.youtube.com/channel/${channelId}` : (c.channelUrl || nx.url || '#');
+    const verdictBadge = verdict ? `<span style="font-size:10px;padding:2px 6px;border-radius:3px;background:${verdict==='GO'?'#e6f2e9':verdict==='CAUTION'?'#fbeed8':verdict==='BEND'?'#ebe2f3':'#f3dcd9'};color:${verdict==='GO'?'#4A9D5C':verdict==='CAUTION'?'#E8A33D':verdict==='BEND'?'#7B5EA7':'#C44A3D'};margin-right:6px;font-weight:600;letter-spacing:0.04em;">${verdict}</span>` : '';
+    return `<tr>
+      <td style="padding:10px 12px;border-bottom:1px solid #E5E2DA;">
+        <div style="font-weight:600;font-size:13px;"><a href="${esc(url)}" style="color:#1A1A1A;text-decoration:none;">${esc(c.channelTitle || nx.title || '')}</a></div>
+        <div style="font-size:11px;color:#999;margin-top:2px;">${verdictBadge}${ageDays}d · ${(nx.categories || []).slice(0,2).join(' · ') || 'general'}</div>
+      </td>
+      <td style="padding:10px 12px;border-bottom:1px solid #E5E2DA;text-align:right;font-family:Georgia,serif;font-size:18px;">${score}<span style="font-size:11px;color:#999;font-family:inherit;">/100</span></td>
+      <td style="padding:10px 12px;border-bottom:1px solid #E5E2DA;text-align:right;font-size:12px;color:#555;">${nx.avgMonthlyRevenue ? formatMoney(nx.avgMonthlyRevenue) : '—'}<br><span style="font-size:10px;color:#999;">${(nx.avgMonthlyViews ? formatViewsBig(nx.avgMonthlyViews) : '—')} views/mo</span></td>
+    </tr>`;
+  };
+
+  return `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Niche Scanner — ${dateShort}</title>
+</head>
+<body style="margin:0;padding:0;background:#FAF8F3;font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color:#1A1A1A;">
+<div style="max-width:680px;margin:0 auto;padding:32px 24px;">
+
+  <div style="padding-bottom:24px;border-bottom:1px solid #E5E2DA;margin-bottom:24px;">
+    <h1 style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:36px;line-height:1.05;margin:0 0 12px;letter-spacing:-0.02em;">${headline}</h1>
+    <div style="font-size:11px;color:#555;line-height:1.7;">
+      Prepared for <strong style="color:#1A1A1A;">Claudio Jerez</strong> · Power Media Holdings B.V. · Report · ${dateShort}
+    </div>
+  </div>
+
+  <div style="background:#fff;border:2px solid #D4F542;border-radius:6px;padding:16px 20px;margin-bottom:24px;">
+    <div style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#555;margin-bottom:6px;">📎 Full dashboard attached</div>
+    <div style="font-size:13px;color:#1A1A1A;line-height:1.5;">
+      Open <strong>niche-scanner-${date}.html</strong> in your browser for the complete filterable view —
+      all ${approved.length} approved channels, sub-niche recommendations, monetization stack per channel,
+      verdict/score/age sliders, search, sort, and "→ Copy launch command" buttons for ready-to-launch channels.
+    </div>
+  </div>
+
+  <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
+    <tr>
+      <td style="width:25%;padding:14px 12px;background:#fff;border:1px solid #E5E2DA;text-align:left;">
+        <div style="font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:#999;margin-bottom:6px;">Approved</div>
+        <div style="font-family:Georgia,serif;font-size:30px;line-height:1;">${approved.length}</div>
+      </td>
+      <td style="width:25%;padding:14px 12px;background:#fff;border:1px solid #E5E2DA;border-left:none;text-align:left;">
+        <div style="font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:#999;margin-bottom:6px;">Ready to launch</div>
+        <div style="font-family:Georgia,serif;font-size:30px;line-height:1;color:${ready.length>0?'#4A9D5C':'#1A1A1A'};">${ready.length}</div>
+      </td>
+      <td style="width:25%;padding:14px 12px;background:#fff;border:1px solid #E5E2DA;border-left:none;text-align:left;">
+        <div style="font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:#999;margin-bottom:6px;">Score 60+</div>
+        <div style="font-family:Georgia,serif;font-size:30px;line-height:1;">${top60.length + ready.length}</div>
+      </td>
+      <td style="width:25%;padding:14px 12px;background:#fff;border:1px solid #E5E2DA;border-left:none;text-align:left;">
+        <div style="font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:#999;margin-bottom:6px;">Combined $/mo</div>
+        <div style="font-family:Georgia,serif;font-size:30px;line-height:1;"><span style="background:linear-gradient(180deg,transparent 60%,#D4F542 60%);padding:0 4px;">${formatMoney(totalRev)}</span></div>
+      </td>
+    </tr>
+  </table>
+
+  ${ready.length > 0 ? `
+  <div style="margin-bottom:24px;">
+    <h2 style="font-family:Georgia,serif;font-weight:400;font-size:22px;margin:0 0 8px;">§ 01 Ready to launch <span style="background:#4A9D5C;color:#fff;padding:0 6px;font-style:italic;">send to yt-automation</span></h2>
+    <p style="margin:0 0 12px;color:#555;font-size:12px;">Passed the strict 7-condition checklist. Ready for handoff via <code style="background:#F0EDE5;padding:1px 5px;border-radius:3px;font-size:11px;">node bin/handoff-channel.js &lt;id&gt;</code></p>
+    <table style="width:100%;border-collapse:collapse;background:#fff;border:1px solid #4A9D5C;border-radius:4px;overflow:hidden;">
+      ${ready.slice(0, 8).map(renderRow).join('')}
+    </table>
+  </div>` : ''}
+
+  ${escalated.length > 0 ? `
+  <div style="margin-bottom:24px;">
+    <h2 style="font-family:Georgia,serif;font-weight:400;font-size:22px;margin:0 0 8px;">§ ${ready.length>0?'02':'01'} Escalated <span style="background:#D4F542;padding:0 6px;font-style:italic;">immediate attention</span></h2>
+    <p style="margin:0 0 12px;color:#555;font-size:12px;">Auto-flagged escalation triggers but missing one or more launch conditions.</p>
+    <table style="width:100%;border-collapse:collapse;background:#fff;border:1px solid #E5E2DA;border-radius:4px;overflow:hidden;">
+      ${escalated.slice(0, 8).map(renderRow).join('')}
+    </table>
+  </div>` : ''}
+
+  ${top60.length > 0 ? `
+  <div style="margin-bottom:24px;">
+    <h2 style="font-family:Georgia,serif;font-weight:400;font-size:22px;margin:0 0 8px;">§ ${(ready.length>0?1:0)+(escalated.length>0?1:0)+1 < 10 ? '0'+((ready.length>0?1:0)+(escalated.length>0?1:0)+1) : (ready.length>0?1:0)+(escalated.length>0?1:0)+1} Top 60+ score <span style="background:#D4F542;padding:0 6px;font-style:italic;">replicable now</span></h2>
+    <table style="width:100%;border-collapse:collapse;background:#fff;border:1px solid #E5E2DA;border-radius:4px;overflow:hidden;">
+      ${top60.slice(0, 12).map(renderRow).join('')}
+    </table>
+    ${top60.length > 12 ? `<p style="font-size:11px;color:#999;margin:8px 0 0;font-style:italic;">+${top60.length - 12} more — see full dashboard attachment.</p>` : ''}
+  </div>` : ''}
+
+  <div style="padding:16px;background:#F0EDE5;border-radius:4px;margin-bottom:24px;font-size:12px;color:#555;line-height:1.5;">
+    <strong style="color:#1A1A1A;">Reading guide:</strong>
+    Score = how good the channel is.
+    Verdict (<span style="color:#4A9D5C;font-weight:600;">GO</span>/<span style="color:#E8A33D;font-weight:600;">CAUTION</span>/<span style="color:#7B5EA7;font-weight:600;">BEND</span>/<span style="color:#C44A3D;font-weight:600;">SKIP</span>) = how much room there is in the market.
+    They can disagree — a great channel in a SKIP market means clone the format with a niche bend, not the topic.
+  </div>
+
+  <div style="text-align:center;color:#999;font-size:10px;letter-spacing:0.04em;border-top:1px solid #E5E2DA;padding-top:20px;">
+    Niche Scanner · ${dateShort} · ${metadata.totalChannelsScanned || 0} scanned · ~${metadata.quotaUsed || 0}/10k API quota · Power Media Holdings B.V.
+  </div>
+
+</div>
+</body>
+</html>`;
+}
+
+module.exports = { generateDashboard, writeDashboard, generateEmailHtml, generateEmailSummary };

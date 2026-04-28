@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Niche Scanner — 27 Apr 2026</title>
+<title>Niche Scanner — 28 Apr 2026</title>
 <style>
 
 :root {
@@ -19,6 +19,21 @@
   --warn: #E8A33D;
   --bend: #7B5EA7;
   --bad: #C44A3D;
+  /* Metric tints — slightly desaturated so the design stays editorial */
+  --tint-revenue: #2E7D4F;     /* deep green for $ */
+  --tint-views: #1F6FA8;       /* muted blue for views */
+  --tint-rpm: #6B4A99;         /* purple for RPM */
+  --tint-subs: #B87333;        /* warm amber for subs */
+  --tint-uploads: #4A8E94;     /* teal for cadence */
+  --tint-length: #777;         /* neutral grey for length */
+  --tint-firstup: #8C6E3D;     /* soft brown for time-since */
+  --tint-min: #C44A3D;         /* red when fails the 5K floor */
+  /* Section accents */
+  --sec-ready: #4A9D5C;
+  --sec-escalated: #C44A3D;
+  --sec-frontier: #2A8A8E;
+  --sec-top: #D4F542;
+  --sec-signals: #9B82C7;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
@@ -414,11 +429,66 @@ body {
 .v-skip { background: rgba(196,74,61,0.18); color: var(--bad); }
 
 .stat-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.stat-row-3 > .stat:nth-child(1) .stat-value { color: var(--tint-revenue); }
+.stat-row-3 > .stat:nth-child(2) .stat-value { color: var(--tint-views); }
+.stat-row-3 > .stat:nth-child(3) .stat-value { color: var(--tint-rpm); }
 .stat-row-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+.stat-row-2x3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px 14px; }
 .stat .stat-label { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
 .stat .stat-value { font-family: 'Tiempos Headline', Georgia, serif; font-size: 22px; line-height: 1.1; margin-top: 4px; }
 .stat .stat-value.sm { font-size: 16px; }
 .stat .stat-caption { font-size: 10px; color: var(--ink-faint); margin-top: 4px; }
+.stat-views .stat-value { color: var(--tint-views); }
+.stat-min-views.pass .stat-value { color: var(--tint-revenue); }
+.stat-min-views.fail .stat-value { color: var(--tint-min); }
+.stat-min-views.fail::after {
+  content: '< 5K';
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--tint-min);
+  margin-top: 2px;
+  font-weight: 600;
+}
+.stat-min-views.insufficient .stat-value { color: var(--ink-faint); }
+.stat-min-views.insufficient::after {
+  content: 'sample < 3';
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  margin-top: 2px;
+  font-style: italic;
+}
+.stat-length .stat-value { color: var(--tint-length); }
+.stat-subs .stat-value { color: var(--tint-subs); }
+.stat-uploads .stat-value { color: var(--tint-uploads); }
+.stat-firstup .stat-value { color: var(--tint-firstup); }
+
+/* Per-section accent variants — keyed off semantic type, not number */
+.section[data-section-type="ready"] .section-title .accent { background: var(--sec-ready); color: #fff; }
+.section[data-section-type="escalated"] .section-title .accent { background: var(--sec-escalated); color: #fff; }
+.section[data-section-type="frontier"] .section-title .accent { background: var(--sec-frontier); color: #fff; }
+.section[data-section-type="top"] .section-title .accent { background: var(--sec-top); color: var(--ink); }
+.section[data-section-type="signals"] .section-title .accent { background: var(--sec-signals); color: #fff; }
+.section[data-section="disappeared"] .section-title .accent { background: var(--ink-soft); color: var(--bg); }
+.section[data-section="rejected"] .section-title .accent { background: var(--pill-bg); color: var(--ink-soft); }
+/* Section count pill picks up the section accent at low opacity */
+.section[data-section-type="ready"] .section-count { border-color: var(--sec-ready); color: var(--sec-ready); }
+.section[data-section-type="escalated"] .section-count { border-color: var(--sec-escalated); color: var(--sec-escalated); }
+.section[data-section-type="frontier"] .section-count { border-color: var(--sec-frontier); color: var(--sec-frontier); }
+.section[data-section-type="signals"] .section-count { border-color: var(--sec-signals); color: var(--sec-signals); }
+
+.optimal-pill {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--accent);
+  color: var(--ink);
+  text-transform: uppercase;
+}
 
 .tag-row { display: flex; gap: 6px; flex-wrap: wrap; }
 .tag { font-size: 10px; padding: 3px 8px; background: var(--pill-bg); border-radius: 3px; color: var(--ink-soft); }
@@ -585,7 +655,7 @@ body {
     <div class="doc-meta">
       Prepared for <strong>Claudio Jerez</strong><br>
       Power Media Holdings B.V.<br>
-      Report · 27 Apr 2026
+      Report · 28 Apr 2026
     </div>
   </header>
     <section class="legend-block">
@@ -605,8 +675,8 @@ body {
     <div class="ribbon-stat"><span class="ribbon-num">0</span><span class="ribbon-lbl">approved</span></div>
     <div class="ribbon-stat"><span class="ribbon-num">0</span><span class="ribbon-lbl">escalated</span></div>
     <div class="ribbon-stat"><span class="ribbon-num">0</span><span class="ribbon-lbl">score 60+</span></div>
-    <div class="ribbon-stat"><span class="ribbon-num">869</span><span class="ribbon-lbl">scanned</span></div>
-    <div class="ribbon-stat"><span class="ribbon-num">~2685</span><span class="ribbon-lbl">api quota</span></div>
+    <div class="ribbon-stat"><span class="ribbon-num">990</span><span class="ribbon-lbl">scanned</span></div>
+    <div class="ribbon-stat"><span class="ribbon-num">~3108</span><span class="ribbon-lbl">api quota</span></div>
   </div>
 
   <!-- FILTER BAR -->
@@ -657,6 +727,10 @@ body {
       <div class="slider">
         <label>Avg views min <output id="o-views">5k</output></label>
         <input type="range" id="f-views" min="0" max="500000" step="500" value="5000">
+      </div>
+      <div class="slider">
+        <label>Min views/video ≥ <output id="o-minviews">0</output></label>
+        <input type="range" id="f-minviews" min="0" max="50000" step="500" value="0">
       </div>
       <div class="slider">
         <label>RPM min <output id="o-rpm">$0</output></label>
@@ -714,25 +788,9 @@ body {
     </table>
   </section>
   
-  <section class="section" data-section="rejected">
-    <details>
-      <summary class="section-title-row" style="cursor:pointer;">
-        <span class="section-num">§ 02</span>
-        <h2 class="section-title">Rejected <span class="accent">today</span></h2>
-        <span class="section-count">1 channels</span>
-      </summary>
-      <p class="section-desc" style="margin-top:16px;">Channels that surfaced today but failed filters. Expand to audit the rejection reasons.</p>
-      <table class="data-table">
-        <thead><tr><th>Channel</th><th>Reason</th></tr></thead>
-        <tbody>
-          <tr><td>Dark Lyrics</td><td>Channel does not appear to be faceless format</td></tr>
-        </tbody>
-      </table>
-    </details>
-  </section>
 
   <footer class="footer">
-    Niche Scanner · 27 Apr 2026 · Quota ~2685/10,000 · Power Media Holdings B.V.
+    Niche Scanner · 28 Apr 2026 · Quota ~3108/10,000 · Power Media Holdings B.V.
   </footer>
 </div>
 
@@ -756,6 +814,7 @@ window.__SECTIONS__ = [];
     ageMax: 7500,
     subsMax: 5000000,
     viewsMin: 5000,
+    minViewsMin: 0,
     rpmMin: 0,
     revMin: 0
   };
@@ -791,6 +850,7 @@ window.__SECTIONS__ = [];
       const rev = parseFloat(card.dataset.revenue) || 0;
       const monthlyViews = parseFloat(card.dataset.viewsMonthly) || 0;
       const avgViews = parseFloat(card.dataset.viewsAvg) || 0;
+      const minViewsCard = parseFloat(card.dataset.minViews) || 0;
       const rpm = parseFloat(card.dataset.rpm) || 0;
       const age = parseFloat(card.dataset.age) || 0;
       const subs = parseFloat(card.dataset.subs) || 0;
@@ -806,6 +866,7 @@ window.__SECTIONS__ = [];
       if (show && age > state.ageMax) show = false;
       if (show && subs > state.subsMax) show = false;
       if (show && avgViews < state.viewsMin) show = false;
+      if (show && minViewsCard < state.minViewsMin) show = false;
       if (show && rpm < state.rpmMin) show = false;
       if (show && rev < state.revMin) show = false;
       if (show && state.faceless !== 'all' && faceless !== state.faceless) show = false;
@@ -901,6 +962,7 @@ window.__SECTIONS__ = [];
   bindSlider('f-age', 'ageMax', v => v >= 7500 ? '∞' : v, 'o-age');
   bindSlider('f-subs', 'subsMax', v => v >= 5000000 ? '∞' : fmtSubs(v), 'o-subs');
   bindSlider('f-views', 'viewsMin', v => fmtViews(v), 'o-views');
+  bindSlider('f-minviews', 'minViewsMin', v => fmtViews(v), 'o-minviews');
   bindSlider('f-rpm', 'rpmMin', v => '$' + v.toFixed(1), 'o-rpm');
   bindSlider('f-rev', 'revMin', v => fmtMoney(v), 'o-rev');
 
@@ -923,6 +985,7 @@ window.__SECTIONS__ = [];
     state.ageMax = 7500; $('#f-age').value = 7500; $('#o-age').textContent = '∞';
     state.subsMax = 5000000; $('#f-subs').value = 5000000; $('#o-subs').textContent = '∞';
     state.viewsMin = 5000; $('#f-views').value = 5000; $('#o-views').textContent = '5k';
+    state.minViewsMin = 0; $('#f-minviews').value = 0; $('#o-minviews').textContent = '0';
     state.rpmMin = 0; $('#f-rpm').value = 0; $('#o-rpm').textContent = '$0';
     state.revMin = 0; $('#f-rev').value = 0; $('#o-rev').textContent = '$0';
     apply();

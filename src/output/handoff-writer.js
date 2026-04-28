@@ -35,14 +35,15 @@ function isReadyToLaunch(c) {
   const ageDays = c.ageDays || nx.daysSinceStart || 0;
   const videoCount = c.videoCount || nx.numOfUploads || 0;
   const minV = computeMinViews(c);
+  // Monetization is NOT a gate — early-stage channels often haven't been detected
+  // as monetized yet. Status still propagates into the handoff payload.
   return (
     nx.isFaceless === true &&
     score >= 60 &&
     (verdict === 'GO' || verdict === 'CAUTION') &&
-    nx.isMonetized === true &&
     minV.eligible && minV.value >= 5000 &&
     ageDays > 0 && ageDays <= 60 &&
-    videoCount >= 6
+    videoCount >= 5
   );
 }
 

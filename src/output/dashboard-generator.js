@@ -525,8 +525,8 @@ function generateEditorialDashboard(approved, rejected, metadata) {
     type: 'ready',
     title: 'Ready to launch',
     accent: 'send to yt-automation',
-    description: 'Channels passing the strict launch checklist: faceless · score ≥ 60 · GO/CAUTION verdict · monetized · last 5 uploads all ≥ 5K views (≥ 3 sample required) · age ≤ 60 days from first upload (optimal ≤ 30) · ≥ 6 uploads. Click "Copy launch command" on a card to push it to yt-automation.',
-    chips: ['FACELESS', 'SCORE ≥ 60', 'GO/CAUTION', 'MONETIZED', 'LAST 5 UPLOADS ≥ 5K', 'AGE ≤ 60D', '≥ 6 UPLOADS'],
+    description: 'Channels passing the strict launch checklist: faceless · score ≥ 60 · GO/CAUTION verdict · last 5 uploads all ≥ 5K views (≥ 3 sample required) · age ≤ 60 days from first upload (optimal ≤ 30) · ≥ 5 uploads. Monetization shown as a tag, not a gate — early breakouts often haven\'t been detected yet. Click "Copy launch command" on a card to push it to yt-automation.',
+    chips: ['FACELESS', 'SCORE ≥ 60', 'GO/CAUTION', 'LAST 5 UPLOADS ≥ 5K', 'AGE ≤ 60D', '≥ 5 UPLOADS'],
     cards: ready,
     isEscalated: false,
     isReady: true
@@ -1850,14 +1850,16 @@ function isReadyToLaunch(c) {
   const ageDays = c.ageDays || nx.daysSinceStart || 0;
   const videoCount = c.videoCount || nx.numOfUploads || 0;
   const minV = computeMinViews(c);
+  // Monetization is NOT a gate — early-stage channels (e.g. 5 videos in, going
+  // viral) often haven't been detected as monetized yet. Status still appears
+  // on the card as a chip; we just don't block on it.
   return (
     nx.isFaceless === true &&
     score >= 60 &&
     (verdict === 'GO' || verdict === 'CAUTION') &&
-    nx.isMonetized === true &&
     minV.eligible && minV.value >= 5000 &&
     ageDays > 0 && ageDays <= 60 &&
-    videoCount >= 6
+    videoCount >= 5
   );
 }
 

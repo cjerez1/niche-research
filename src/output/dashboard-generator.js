@@ -522,16 +522,18 @@ function generateEditorialDashboard(approved, rejected, metadata) {
   const sections = [];
   if (ready.length > 0) sections.push({
     num: pad(sections.length + 1),
+    type: 'ready',
     title: 'Ready to launch',
     accent: 'send to yt-automation',
-    description: 'Channels passing the strict launch checklist: faceless · score ≥ 60 · GO/CAUTION verdict · monetized · ≥ 5K avg views · ≥ 30 days old · ≥ 6 uploads. Click "Copy launch command" on a card to push it to yt-automation.',
-    chips: ['FACELESS', 'SCORE ≥ 60', 'GO/CAUTION', 'MONETIZED', '≥ 5K AVG VIEWS', '≥ 30D OLD', '≥ 6 UPLOADS'],
+    description: 'Channels passing the strict launch checklist: faceless · score ≥ 60 · GO/CAUTION verdict · monetized · min video views ≥ 5K · age ≤ 60 days from first upload (optimal ≤ 30) · ≥ 6 uploads. Click "Copy launch command" on a card to push it to yt-automation.',
+    chips: ['FACELESS', 'SCORE ≥ 60', 'GO/CAUTION', 'MONETIZED', 'MIN VIEWS ≥ 5K', 'AGE ≤ 60D', '≥ 6 UPLOADS'],
     cards: ready,
     isEscalated: false,
     isReady: true
   });
   if (escalated.length > 0) sections.push({
     num: pad(sections.length + 1),
+    type: 'escalated',
     title: 'Escalated',
     accent: 'immediate attention',
     description: 'Channels triggering automatic escalation but not yet meeting all launch conditions: viral velocity, revenue threshold breach, or multi-strong outliers in the last 30 days.',
@@ -542,6 +544,7 @@ function generateEditorialDashboard(approved, rejected, metadata) {
   });
   if (frontier.length > 0) sections.push({
     num: pad(sections.length + 1),
+    type: 'frontier',
     title: 'Frontier under',
     accent: '30 days',
     description: 'Channels under 30 days old already showing real signals — first-mover lane. These are the urgent clone candidates.',
@@ -551,6 +554,7 @@ function generateEditorialDashboard(approved, rejected, metadata) {
   });
   if (topMinusFrontier.length > 0) sections.push({
     num: pad(sections.length + 1),
+    type: 'top',
     title: 'Top opportunities',
     accent: 'replicable now',
     description: 'Score 40+ candidates after escalation and frontier removed. Sorted by composite opportunity score.',
@@ -560,6 +564,7 @@ function generateEditorialDashboard(approved, rejected, metadata) {
   });
   if (signals.length > 0) sections.push({
     num: pad(sections.length + 1),
+    type: 'signals',
     title: 'Signals to watch',
     accent: 'next scan',
     description: 'Score 20–39. Not actionable today, but worth a second look on the next scan if signals strengthen.',
@@ -696,6 +701,10 @@ ${getEditorialCSS()}
         <input type="range" id="f-views" min="0" max="500000" step="500" value="5000">
       </div>
       <div class="slider">
+        <label>Min views/video ≥ <output id="o-minviews">0</output></label>
+        <input type="range" id="f-minviews" min="0" max="50000" step="500" value="0">
+      </div>
+      <div class="slider">
         <label>RPM min <output id="o-rpm">$0</output></label>
         <input type="range" id="f-rpm" min="0" max="15" step="0.5" value="0">
       </div>
@@ -755,7 +764,7 @@ ${getEditorialJS()}
 
 function renderEditorialSection(s) {
   return `
-  <section class="section${s.isReady ? ' is-ready-section' : ''}" data-section="${s.num}">
+  <section class="section${s.isReady ? ' is-ready-section' : ''}" data-section="${s.num}" data-section-type="${s.type || ''}">
     <div class="section-title-row">
       <span class="section-num">§ ${s.num}</span>
       <h2 class="section-title">${esc(s.title)} <span class="accent">${esc(s.accent)}</span></h2>
@@ -787,6 +796,8 @@ function renderEditorialCard(c, isEscalated, isReady) {
   const firstUploadDate = ageDays > 0 ? formatDateShort(new Date(Date.now() - ageDays * 86400000).toISOString().split('T')[0]) : '—';
   const monetization = monetizationStack(nx.categories || [], (c.channelTitle || nx.title || ''));
   const subNiches = (c.bends || []).slice(0, 3);
+  const minViews = computeMinViews(c);
+  const optimalAge = isOptimalAge(c);
   const subs = c.subscriberCount || nx.subscribers || 0;
   const monthlyRev = nx.avgMonthlyRevenue || 0;
   const rpm = nx.rpm || 0;
@@ -832,6 +843,8 @@ function renderEditorialCard(c, isEscalated, isReady) {
     data-age="${ageDays}"
     data-subs="${subs}"
     data-outlier="${outlier.toFixed(2)}"
+    data-min-views="${minViews}"
+    data-optimal-age="${optimalAge ? '1' : '0'}"
     data-faceless="${isFaceless}"
     data-country="${esc(country)}"
     data-verdict="${verdict || 'NONE'}"
@@ -846,7 +859,7 @@ function renderEditorialCard(c, isEscalated, isReady) {
       <span class="age-pill">${ageDays}d</span>
     </div>
 
-    ${(escalatePill || verdictPill) ? `<div class="pill-row">${escalatePill}${verdictPill}<span class="score-pill score-${scoreBucket(score)}">${score}/100</span></div>` : `<div class="pill-row"><span class="score-pill score-${scoreBucket(score)}">${score}/100</span><span class="tier-text">${esc(tier)}</span></div>`}
+    <div class="pill-row">${escalatePill}${verdictPill}<span class="score-pill score-${scoreBucket(score)}">${score}/100</span>${optimalAge ? '<span class="optimal-pill">★ OPTIMAL AGE</span>' : ''}${(!escalatePill && !verdictPill && !optimalAge) ? `<span class="tier-text">${esc(tier)}</span>` : ''}</div>
 
     <div class="stat-row-3">
       <div class="stat">
@@ -866,22 +879,30 @@ function renderEditorialCard(c, isEscalated, isReady) {
       </div>
     </div>
 
-    <div class="stat-row-2x2">
-      <div class="stat">
+    <div class="stat-row-2x3">
+      <div class="stat stat-views">
         <div class="stat-label">Avg views/video</div>
         <div class="stat-value sm">${avgViews ? fmtNum(avgViews) : '—'}</div>
       </div>
-      <div class="stat">
+      <div class="stat stat-min-views ${minViews >= 5000 ? 'pass' : 'fail'}">
+        <div class="stat-label">Min views/video</div>
+        <div class="stat-value sm">${minViews ? fmtNum(minViews) : '—'}</div>
+      </div>
+      <div class="stat stat-length">
         <div class="stat-label">Avg length</div>
         <div class="stat-value sm">${avgLength ? formatDuration(avgLength) : '—'}</div>
       </div>
-      <div class="stat">
+      <div class="stat stat-subs">
         <div class="stat-label">Subscribers</div>
         <div class="stat-value sm">${fmtNum(subs)}</div>
       </div>
-      <div class="stat">
+      <div class="stat stat-uploads">
         <div class="stat-label">Uploads/week</div>
         <div class="stat-value sm">${uploadsWeek ? Number(uploadsWeek).toFixed(1) : '—'}</div>
+      </div>
+      <div class="stat stat-firstup">
+        <div class="stat-label">First upload</div>
+        <div class="stat-value sm" style="font-size:13px;">${firstUploadDate}</div>
       </div>
     </div>
 
@@ -938,6 +959,21 @@ function getEditorialCSS() {
   --warn: #E8A33D;
   --bend: #7B5EA7;
   --bad: #C44A3D;
+  /* Metric tints — slightly desaturated so the design stays editorial */
+  --tint-revenue: #2E7D4F;     /* deep green for $ */
+  --tint-views: #1F6FA8;       /* muted blue for views */
+  --tint-rpm: #6B4A99;         /* purple for RPM */
+  --tint-subs: #B87333;        /* warm amber for subs */
+  --tint-uploads: #4A8E94;     /* teal for cadence */
+  --tint-length: #777;         /* neutral grey for length */
+  --tint-firstup: #8C6E3D;     /* soft brown for time-since */
+  --tint-min: #C44A3D;         /* red when fails the 5K floor */
+  /* Section accents */
+  --sec-ready: #4A9D5C;
+  --sec-escalated: #C44A3D;
+  --sec-frontier: #2A8A8E;
+  --sec-top: #D4F542;
+  --sec-signals: #9B82C7;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
@@ -1333,11 +1369,56 @@ body {
 .v-skip { background: rgba(196,74,61,0.18); color: var(--bad); }
 
 .stat-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.stat-row-3 > .stat:nth-child(1) .stat-value { color: var(--tint-revenue); }
+.stat-row-3 > .stat:nth-child(2) .stat-value { color: var(--tint-views); }
+.stat-row-3 > .stat:nth-child(3) .stat-value { color: var(--tint-rpm); }
 .stat-row-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+.stat-row-2x3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px 14px; }
 .stat .stat-label { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
 .stat .stat-value { font-family: 'Tiempos Headline', Georgia, serif; font-size: 22px; line-height: 1.1; margin-top: 4px; }
 .stat .stat-value.sm { font-size: 16px; }
 .stat .stat-caption { font-size: 10px; color: var(--ink-faint); margin-top: 4px; }
+.stat-views .stat-value { color: var(--tint-views); }
+.stat-min-views.pass .stat-value { color: var(--tint-revenue); }
+.stat-min-views.fail .stat-value { color: var(--tint-min); }
+.stat-min-views.fail::after {
+  content: '< 5K';
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--tint-min);
+  margin-top: 2px;
+  font-weight: 600;
+}
+.stat-length .stat-value { color: var(--tint-length); }
+.stat-subs .stat-value { color: var(--tint-subs); }
+.stat-uploads .stat-value { color: var(--tint-uploads); }
+.stat-firstup .stat-value { color: var(--tint-firstup); }
+
+/* Per-section accent variants — keyed off semantic type, not number */
+.section[data-section-type="ready"] .section-title .accent { background: var(--sec-ready); color: #fff; }
+.section[data-section-type="escalated"] .section-title .accent { background: var(--sec-escalated); color: #fff; }
+.section[data-section-type="frontier"] .section-title .accent { background: var(--sec-frontier); color: #fff; }
+.section[data-section-type="top"] .section-title .accent { background: var(--sec-top); color: var(--ink); }
+.section[data-section-type="signals"] .section-title .accent { background: var(--sec-signals); color: #fff; }
+.section[data-section="disappeared"] .section-title .accent { background: var(--ink-soft); color: var(--bg); }
+.section[data-section="rejected"] .section-title .accent { background: var(--pill-bg); color: var(--ink-soft); }
+/* Section count pill picks up the section accent at low opacity */
+.section[data-section-type="ready"] .section-count { border-color: var(--sec-ready); color: var(--sec-ready); }
+.section[data-section-type="escalated"] .section-count { border-color: var(--sec-escalated); color: var(--sec-escalated); }
+.section[data-section-type="frontier"] .section-count { border-color: var(--sec-frontier); color: var(--sec-frontier); }
+.section[data-section-type="signals"] .section-count { border-color: var(--sec-signals); color: var(--sec-signals); }
+
+.optimal-pill {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--accent);
+  color: var(--ink);
+  text-transform: uppercase;
+}
 
 .tag-row { display: flex; gap: 6px; flex-wrap: wrap; }
 .tag { font-size: 10px; padding: 3px 8px; background: var(--pill-bg); border-radius: 3px; color: var(--ink-soft); }
@@ -1478,6 +1559,7 @@ function getEditorialJS() {
     ageMax: 7500,
     subsMax: 5000000,
     viewsMin: 5000,
+    minViewsMin: 0,
     rpmMin: 0,
     revMin: 0
   };
@@ -1513,6 +1595,7 @@ function getEditorialJS() {
       const rev = parseFloat(card.dataset.revenue) || 0;
       const monthlyViews = parseFloat(card.dataset.viewsMonthly) || 0;
       const avgViews = parseFloat(card.dataset.viewsAvg) || 0;
+      const minViewsCard = parseFloat(card.dataset.minViews) || 0;
       const rpm = parseFloat(card.dataset.rpm) || 0;
       const age = parseFloat(card.dataset.age) || 0;
       const subs = parseFloat(card.dataset.subs) || 0;
@@ -1528,6 +1611,7 @@ function getEditorialJS() {
       if (show && age > state.ageMax) show = false;
       if (show && subs > state.subsMax) show = false;
       if (show && avgViews < state.viewsMin) show = false;
+      if (show && minViewsCard < state.minViewsMin) show = false;
       if (show && rpm < state.rpmMin) show = false;
       if (show && rev < state.revMin) show = false;
       if (show && state.faceless !== 'all' && faceless !== state.faceless) show = false;
@@ -1623,6 +1707,7 @@ function getEditorialJS() {
   bindSlider('f-age', 'ageMax', v => v >= 7500 ? '∞' : v, 'o-age');
   bindSlider('f-subs', 'subsMax', v => v >= 5000000 ? '∞' : fmtSubs(v), 'o-subs');
   bindSlider('f-views', 'viewsMin', v => fmtViews(v), 'o-views');
+  bindSlider('f-minviews', 'minViewsMin', v => fmtViews(v), 'o-minviews');
   bindSlider('f-rpm', 'rpmMin', v => '$' + v.toFixed(1), 'o-rpm');
   bindSlider('f-rev', 'revMin', v => fmtMoney(v), 'o-rev');
 
@@ -1645,6 +1730,7 @@ function getEditorialJS() {
     state.ageMax = 7500; $('#f-age').value = 7500; $('#o-age').textContent = '∞';
     state.subsMax = 5000000; $('#f-subs').value = 5000000; $('#o-subs').textContent = '∞';
     state.viewsMin = 5000; $('#f-views').value = 5000; $('#o-views').textContent = '5k';
+    state.minViewsMin = 0; $('#f-minviews').value = 0; $('#o-minviews').textContent = '0';
     state.rpmMin = 0; $('#f-rpm').value = 0; $('#o-rpm').textContent = '$0';
     state.revMin = 0; $('#f-rev').value = 0; $('#o-rev').textContent = '$0';
     apply();
@@ -1735,23 +1821,46 @@ function pad(n) { return String(n).padStart(2, '0'); }
 
 // STRICT launch checklist — all 7 conditions must pass.
 // Sends only the highest-confidence channels into yt-automation.
+//
+// Notes on view threshold:
+//   We require the MINIMUM video view count to be >= 5000, not the average.
+//   This proves no upload tanked. With NexLev's recentVideos (~7 most recent)
+//   that's a meaningful floor across the visible upload window.
+//
+// Notes on age:
+//   Channel must be <= 60 days old (counted from first upload). Younger is
+//   better — the "optimal" tag is rendered separately for <= 30 days.
 function isReadyToLaunch(c) {
   const nx = c.nexlev || {};
-  const m = c.metrics || {};
   const score = c.score?.totalScore || 0;
   const verdict = c.competitionLandscape?.verdict || c.verdict?.verdict || '';
   const ageDays = c.ageDays || nx.daysSinceStart || 0;
-  const avgViews = m.averageViews || nx.avgViewPerVideo || 0;
   const videoCount = c.videoCount || nx.numOfUploads || 0;
+  const minViews = computeMinViews(c);
   return (
     nx.isFaceless === true &&
     score >= 60 &&
     (verdict === 'GO' || verdict === 'CAUTION') &&
     nx.isMonetized === true &&
-    avgViews >= 5000 &&
-    ageDays >= 30 &&
+    minViews >= 5000 &&
+    ageDays > 0 && ageDays <= 60 &&
     videoCount >= 6
   );
+}
+
+function computeMinViews(c) {
+  const nx = c.nexlev || {};
+  const raw = c.videos || nx.lastUploadedVideos || [];
+  const counts = raw.map(v => {
+    const vid = typeof v === 'string' ? (() => { try { return JSON.parse(v); } catch (e) { return {}; } })() : v;
+    return Number(vid.views || vid.video_view_count || 0);
+  }).filter(x => x > 0);
+  return counts.length > 0 ? Math.min(...counts) : 0;
+}
+
+function isOptimalAge(c) {
+  const ageDays = c.ageDays || c.nexlev?.daysSinceStart || 999;
+  return ageDays > 0 && ageDays <= 30;
 }
 
 // Static category → monetization opportunity table.

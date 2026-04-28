@@ -5,21 +5,30 @@
 const fs = require('fs');
 const path = require('path');
 
+function computeMinViews(c) {
+  const nx = c.nexlev || {};
+  const raw = c.videos || nx.lastUploadedVideos || [];
+  const counts = raw.map(v => {
+    const vid = typeof v === 'string' ? (() => { try { return JSON.parse(v); } catch (e) { return {}; } })() : v;
+    return Number(vid.views || vid.video_view_count || 0);
+  }).filter(x => x > 0);
+  return counts.length > 0 ? Math.min(...counts) : 0;
+}
+
 function isReadyToLaunch(c) {
   const nx = c.nexlev || {};
-  const m = c.metrics || {};
   const score = c.score?.totalScore || 0;
   const verdict = c.competitionLandscape?.verdict || c.verdict?.verdict || '';
   const ageDays = c.ageDays || nx.daysSinceStart || 0;
-  const avgViews = m.averageViews || nx.avgViewPerVideo || 0;
   const videoCount = c.videoCount || nx.numOfUploads || 0;
+  const minViews = computeMinViews(c);
   return (
     nx.isFaceless === true &&
     score >= 60 &&
     (verdict === 'GO' || verdict === 'CAUTION') &&
     nx.isMonetized === true &&
-    avgViews >= 5000 &&
-    ageDays >= 30 &&
+    minViews >= 5000 &&
+    ageDays > 0 && ageDays <= 60 &&
     videoCount >= 6
   );
 }

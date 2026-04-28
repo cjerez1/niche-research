@@ -525,8 +525,8 @@ function generateEditorialDashboard(approved, rejected, metadata) {
     type: 'ready',
     title: 'Ready to launch',
     accent: 'send to yt-automation',
-    description: 'Channels passing the strict launch checklist: faceless · score ≥ 60 · GO/CAUTION verdict · monetized · min video views ≥ 5K · age ≤ 60 days from first upload (optimal ≤ 30) · ≥ 6 uploads. Click "Copy launch command" on a card to push it to yt-automation.',
-    chips: ['FACELESS', 'SCORE ≥ 60', 'GO/CAUTION', 'MONETIZED', 'MIN VIEWS ≥ 5K', 'AGE ≤ 60D', '≥ 6 UPLOADS'],
+    description: 'Channels passing the strict launch checklist: faceless · score ≥ 60 · GO/CAUTION verdict · monetized · last 5 uploads all ≥ 5K views (≥ 3 sample required) · age ≤ 60 days from first upload (optimal ≤ 30) · ≥ 6 uploads. Click "Copy launch command" on a card to push it to yt-automation.',
+    chips: ['FACELESS', 'SCORE ≥ 60', 'GO/CAUTION', 'MONETIZED', 'LAST 5 UPLOADS ≥ 5K', 'AGE ≤ 60D', '≥ 6 UPLOADS'],
     cards: ready,
     isEscalated: false,
     isReady: true
@@ -796,7 +796,10 @@ function renderEditorialCard(c, isEscalated, isReady) {
   const firstUploadDate = ageDays > 0 ? formatDateShort(new Date(Date.now() - ageDays * 86400000).toISOString().split('T')[0]) : '—';
   const monetization = monetizationStack(nx.categories || [], (c.channelTitle || nx.title || ''));
   const subNiches = (c.bends || []).slice(0, 3);
-  const minViews = computeMinViews(c);
+  const minV = computeMinViews(c);
+  const minViews = minV.value;
+  const minSampleEligible = minV.eligible;
+  const minSample = minV.sample;
   const optimalAge = isOptimalAge(c);
   const subs = c.subscriberCount || nx.subscribers || 0;
   const monthlyRev = nx.avgMonthlyRevenue || 0;
@@ -884,9 +887,9 @@ function renderEditorialCard(c, isEscalated, isReady) {
         <div class="stat-label">Avg views/video</div>
         <div class="stat-value sm">${avgViews ? fmtNum(avgViews) : '—'}</div>
       </div>
-      <div class="stat stat-min-views ${minViews >= 5000 ? 'pass' : 'fail'}">
-        <div class="stat-label">Min views/video</div>
-        <div class="stat-value sm">${minViews ? fmtNum(minViews) : '—'}</div>
+      <div class="stat stat-min-views ${!minSampleEligible ? 'insufficient' : (minViews >= 5000 ? 'pass' : 'fail')}">
+        <div class="stat-label">Min views (last ${minSample || 0})</div>
+        <div class="stat-value sm">${minSampleEligible ? fmtNum(minViews) : '—'}</div>
       </div>
       <div class="stat stat-length">
         <div class="stat-label">Avg length</div>
@@ -1390,6 +1393,16 @@ body {
   margin-top: 2px;
   font-weight: 600;
 }
+.stat-min-views.insufficient .stat-value { color: var(--ink-faint); }
+.stat-min-views.insufficient::after {
+  content: 'sample < 3';
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  margin-top: 2px;
+  font-style: italic;
+}
 .stat-length .stat-value { color: var(--tint-length); }
 .stat-subs .stat-value { color: var(--tint-subs); }
 .stat-uploads .stat-value { color: var(--tint-uploads); }
@@ -1836,26 +1849,49 @@ function isReadyToLaunch(c) {
   const verdict = c.competitionLandscape?.verdict || c.verdict?.verdict || '';
   const ageDays = c.ageDays || nx.daysSinceStart || 0;
   const videoCount = c.videoCount || nx.numOfUploads || 0;
-  const minViews = computeMinViews(c);
+  const minV = computeMinViews(c);
   return (
     nx.isFaceless === true &&
     score >= 60 &&
     (verdict === 'GO' || verdict === 'CAUTION') &&
     nx.isMonetized === true &&
-    minViews >= 5000 &&
+    minV.eligible && minV.value >= 5000 &&
     ageDays > 0 && ageDays <= 60 &&
     videoCount >= 6
   );
 }
 
+// Policy A with sample-size floor:
+//   "Min view count across the last 5 most-recent uploads, requiring at least
+//    3 valid samples to qualify. Channels with fewer than 3 uploads return 0."
+//
+// Returns { value, sample, eligible }:
+//   value    — Math.min across the (up to) 5 most-recent videos
+//   sample   — how many we actually evaluated (3..5)
+//   eligible — whether the sample is large enough to judge (>= 3)
+const MIN_VIEWS_WINDOW_VIDEOS = 5;
+const MIN_VIEWS_REQUIRED_SAMPLE = 3;
+
 function computeMinViews(c) {
   const nx = c.nexlev || {};
   const raw = c.videos || nx.lastUploadedVideos || [];
-  const counts = raw.map(v => {
+  const parsed = raw.map(v => {
     const vid = typeof v === 'string' ? (() => { try { return JSON.parse(v); } catch (e) { return {}; } })() : v;
-    return Number(vid.views || vid.video_view_count || 0);
-  }).filter(x => x > 0);
-  return counts.length > 0 ? Math.min(...counts) : 0;
+    const views = Number(vid.views || vid.video_view_count || 0);
+    const date = vid.publishedAt || vid.video_upload_date || vid.date || null;
+    const ts = date ? new Date(date).getTime() : 0;
+    return { views, ts };
+  }).filter(v => v.views > 0);
+
+  // Sort newest -> oldest, take top N most recent.
+  parsed.sort((a, b) => b.ts - a.ts);
+  const recent = parsed.slice(0, MIN_VIEWS_WINDOW_VIDEOS);
+
+  if (recent.length < MIN_VIEWS_REQUIRED_SAMPLE) {
+    return { value: 0, sample: recent.length, eligible: false };
+  }
+  const value = Math.min(...recent.map(r => r.views));
+  return { value, sample: recent.length, eligible: true };
 }
 
 function isOptimalAge(c) {

@@ -5,14 +5,27 @@
 const fs = require('fs');
 const path = require('path');
 
+// Policy A with sample-size floor: min view count across the last 5 most-recent
+// uploads, requires at least 3 valid samples to be eligible.
+const MIN_VIEWS_WINDOW_VIDEOS = 5;
+const MIN_VIEWS_REQUIRED_SAMPLE = 3;
+
 function computeMinViews(c) {
   const nx = c.nexlev || {};
   const raw = c.videos || nx.lastUploadedVideos || [];
-  const counts = raw.map(v => {
+  const parsed = raw.map(v => {
     const vid = typeof v === 'string' ? (() => { try { return JSON.parse(v); } catch (e) { return {}; } })() : v;
-    return Number(vid.views || vid.video_view_count || 0);
-  }).filter(x => x > 0);
-  return counts.length > 0 ? Math.min(...counts) : 0;
+    const views = Number(vid.views || vid.video_view_count || 0);
+    const date = vid.publishedAt || vid.video_upload_date || vid.date || null;
+    const ts = date ? new Date(date).getTime() : 0;
+    return { views, ts };
+  }).filter(v => v.views > 0);
+  parsed.sort((a, b) => b.ts - a.ts);
+  const recent = parsed.slice(0, MIN_VIEWS_WINDOW_VIDEOS);
+  if (recent.length < MIN_VIEWS_REQUIRED_SAMPLE) {
+    return { value: 0, sample: recent.length, eligible: false };
+  }
+  return { value: Math.min(...recent.map(r => r.views)), sample: recent.length, eligible: true };
 }
 
 function isReadyToLaunch(c) {
@@ -21,13 +34,13 @@ function isReadyToLaunch(c) {
   const verdict = c.competitionLandscape?.verdict || c.verdict?.verdict || '';
   const ageDays = c.ageDays || nx.daysSinceStart || 0;
   const videoCount = c.videoCount || nx.numOfUploads || 0;
-  const minViews = computeMinViews(c);
+  const minV = computeMinViews(c);
   return (
     nx.isFaceless === true &&
     score >= 60 &&
     (verdict === 'GO' || verdict === 'CAUTION') &&
     nx.isMonetized === true &&
-    minViews >= 5000 &&
+    minV.eligible && minV.value >= 5000 &&
     ageDays > 0 && ageDays <= 60 &&
     videoCount >= 6
   );

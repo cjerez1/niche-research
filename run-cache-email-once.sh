@@ -57,6 +57,14 @@ if [ "$COUNT" -lt 1 ]; then
   exit 1
 fi
 
+echo "[cache-email] validating cached channels are still live before email."
+node scripts/filter-dead-cache-channels.js
+COUNT="$(cache_count)"
+if [ "$COUNT" -lt 1 ]; then
+  echo "[cache-email] live validation removed all candidates; refusing to email."
+  exit 1
+fi
+
 echo "[cache-email] today's cache is ready ($COUNT candidates); sending cache-only report."
 EMAIL_SENT_FLAG="$SENT_FLAG" EMAIL_SENT_VALUE="$TODAY" node index.js --nexlev-only
 STATUS=$?

@@ -33,11 +33,18 @@ git pull origin main || true
 # same-day YouTube run. Manual override is deleting this flag deliberately.
 echo "$TODAY" > "$RAN_FLAG"
 
-echo "[2/3] Running scanner + email once..."
+if [ -f "$HOME/niche-scanner/niche-research/nexlev-cache/latest.json" ]; then
+  echo "[2/4] Validating cached NexLev channels are still live..."
+  node scripts/filter-dead-cache-channels.js || echo "Live validation failed (non-fatal); continuing scan."
+else
+  echo "[2/4] No NexLev cache to validate."
+fi
+
+echo "[3/4] Running scanner + email once..."
 echo "  NexLev refresh retries are handled separately by refresh-nexlev.sh."
 EMAIL_SENT_FLAG="$SENT_FLAG" EMAIL_SENT_VALUE="$TODAY" node index.js --nexlev
 
-echo "[3/3] Committing fresh data to GitHub..."
+echo "[4/4] Committing fresh data to GitHub..."
 git add niche-research/ || true
 if git diff --cached --quiet; then
   echo "No data changes to commit."

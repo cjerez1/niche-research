@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-28",
+  "lastUpdated": "2026-04-29",
   "channels": {
     "UClXLMgQJAxWrKJC8tMQaKbg": {
       "channelTitle": "The DNA Archive",
@@ -414,6 +414,12 @@
           "score": 64,
           "subscribers": 2020,
           "avgViews": 1748
+        },
+        {
+          "date": "2026-04-29",
+          "score": 64,
+          "subscribers": 2080,
+          "avgViews": 2001
         }
       ]
     },
@@ -3868,6 +3874,12 @@
           "score": 73,
           "subscribers": 294,
           "avgViews": 1525
+        },
+        {
+          "date": "2026-04-29",
+          "score": 73,
+          "subscribers": 307,
+          "avgViews": 1435
         }
       ]
     },
@@ -3940,6 +3952,12 @@
           "score": 66,
           "subscribers": 3950,
           "avgViews": 3858
+        },
+        {
+          "date": "2026-04-29",
+          "score": 68,
+          "subscribers": 5090,
+          "avgViews": 5320
         }
       ]
     },
@@ -3962,6 +3980,12 @@
           "score": 53,
           "subscribers": 5590,
           "avgViews": 12534
+        },
+        {
+          "date": "2026-04-29",
+          "score": 63,
+          "subscribers": 7100,
+          "avgViews": 14606
         }
       ]
     },
@@ -3973,6 +3997,17 @@
           "score": 52,
           "subscribers": 7160,
           "avgViews": 9661
+        }
+      ]
+    },
+    "UCmD78Lyfd9H6j8YI5GZniVg": {
+      "channelTitle": "Old Camper Stories USA",
+      "snapshots": [
+        {
+          "date": "2026-04-29",
+          "score": 66,
+          "subscribers": 3490,
+          "avgViews": 13812
         }
       ]
     }

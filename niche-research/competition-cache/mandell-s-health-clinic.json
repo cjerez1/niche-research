@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 13,
+  "saturationLevel": "Emerging",
+  "directHits": 14,
+  "directHitLevel": "High",
+  "topVideoViews": 1553602,
+  "topVideo": {
+    "title": "Men Over 50: Do ONLY These 5 Exercises — Your Testosterone Will SKYROCKET",
+    "channelTitle": "Dr. Helen Carter | Men's Health & Intimacy",
+    "views": 1553602,
+    "publishedAt": "2026-04-14T11:30:04Z",
+    "videoId": "rgN9v16yrf8"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 1,
+    "10k_100k": 4,
+    "1k_10k": 2,
+    "under1k": 6
+  },
+  "topCompetitors": [
+    {
+      "title": "TEDx Talks",
+      "subscribers": 44300000,
+      "totalViews": 8891445821,
+      "videoCount": 259599,
+      "ageDays": 6153
+    },
+    {
+      "title": "Total Health",
+      "subscribers": 84900,
+      "totalViews": 6344506,
+      "videoCount": 180,
+      "ageDays": 663
+    },
+    {
+      "title": "Dr. Helen Carter | Men's Health & Intimacy",
+      "subscribers": 67900,
+      "totalViews": 5073597,
+      "videoCount": 285,
+      "ageDays": 4379
+    },
+    {
+      "title": "Fitness Freedom Athletes",
+      "subscribers": 39900,
+      "totalViews": 3642849,
+      "videoCount": 500,
+      "ageDays": 3067
+    },
+    {
+      "title": "StillMind Atlas",
+      "subscribers": 27400,
+      "totalViews": 7661197,
+      "videoCount": 170,
+      "ageDays": 79
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "Men Over 50: Do ONLY These 5 Exercises — Your Testosterone Will SKYROCKET",
+      "channelTitle": "Dr. Helen Carter | Men's Health & Intimacy",
+      "views": 1553602,
+      "publishedAt": "2026-04-14T11:30:04Z",
+      "videoId": "rgN9v16yrf8"
+    },
+    {
+      "title": "Do These 9 Exercises Every Day — They&#39;ll Change Everything 2",
+      "channelTitle": "StillMind Atlas",
+      "views": 19154,
+      "publishedAt": "2026-03-31T16:35:28Z",
+      "videoId": "VGpp17zTUOc"
+    },
+    {
+      "title": "If You Look OLDER Than You Are, Do These Exercises (Changed Everything)",
+      "channelTitle": "Total Health",
+      "views": 12443,
+      "publishedAt": "2026-03-31T15:15:52Z",
+      "videoId": "3lMq-nb8PQw"
+    },
+    {
+      "title": "7 TRX Exercises That Will CHANGE Your Posture Forever",
+      "channelTitle": "Fitness Freedom Athletes",
+      "views": 4148,
+      "publishedAt": "2026-04-26T14:45:08Z",
+      "videoId": "ybjH8vNkgo8"
+    },
+    {
+      "title": "Change your perspective: how exercise supports cancer treatment | Kylie Moffitt | TEDxWollongong",
+      "channelTitle": "TEDx Talks",
+      "views": 2236,
+      "publishedAt": "2026-04-02T15:27:56Z",
+      "videoId": "P6N2W9UQLRQ"
+    }
+  ],
+  "avgAge": 1396,
+  "windowDays": 30,
+  "nicheSlug": "mandell-s-health-clinic",
+  "cachedAt": "2026-04-29T10:59:35.933Z"
+}

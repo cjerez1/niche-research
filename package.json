@@ -4,7 +4,9 @@
   "description": "Daily YouTube niche opportunity scanner for faceless channel discovery",
   "main": "index.js",
   "scripts": {
-    "scan": "node index.js"
+    "scan": "node index.js",
+    "scan:nexlev": "node index.js --nexlev",
+    "scan:nexlev-only": "node index.js --nexlev-only"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.88.0",

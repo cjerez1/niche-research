@@ -32,11 +32,12 @@ try {
 }
 
 const isNexlevMode = process.argv.includes('--nexlev');
+const isNexlevOnlyMode = process.argv.includes('--nexlev-only') || process.argv.includes('--no-youtube');
 
 async function main() {
   console.log('=== Niche Scanner V2 ===');
   console.log(`Date: ${new Date().toISOString().split('T')[0]}`);
-  console.log(`Mode: ${isNexlevMode ? 'NexLev + YouTube API' : 'YouTube API only'}`);
+  console.log(`Mode: ${isNexlevOnlyMode ? 'NexLev cache only' : (isNexlevMode ? 'NexLev + YouTube API' : 'YouTube API only')}`);
   console.log();
 
   // Init YouTube API client (needed for both modes)
@@ -58,7 +59,7 @@ async function main() {
   let totalScanned = 0;
 
   // === NexLev Discovery ===
-  if (isNexlevMode) {
+  if (isNexlevMode || isNexlevOnlyMode) {
     const nexlevCache = loadNexlevCache(config.nexlev?.cacheDir || path.join(__dirname, 'niche-research', 'nexlev-cache'));
     if (nexlevCache) {
       nexlevCandidates = nexlevCache.candidates.map(normalizeNexlevCandidate).filter(c => c.channelId);
@@ -67,8 +68,12 @@ async function main() {
     }
   }
 
+  if (isNexlevOnlyMode && nexlevCandidates.length === 0) {
+    throw new Error('NexLev-only mode requires a fresh cache with at least one valid channel. Refusing to send an empty report.');
+  }
+
   // === YouTube API Search (primary in api-only mode, supplementary in nexlev mode) ===
-  if (youtube) {
+  if (youtube && !isNexlevOnlyMode) {
     const todayQueries = selectQueriesForToday(searchQueries, config.quota.maxSearchQueries);
     console.log(`\nRunning ${todayQueries.length} YouTube API search queries...`);
 
@@ -170,7 +175,7 @@ async function main() {
   }
 
   // === Competition landscape ===
-  if (config.competition.enabled && youtube) {
+  if (config.competition.enabled && youtube && !isNexlevOnlyMode) {
     const competitionCandidates = approved.filter(c => c.score.totalScore >= config.competition.minScoreForScan);
     if (competitionCandidates.length > 0) {
       console.log(`\nScanning competition for ${competitionCandidates.length} top candidates...`);
@@ -249,20 +254,36 @@ async function main() {
   // The body stays under ~30KB (zero risk of Gmail clipping) while the recipient gets the
   // complete filterable dashboard (~600KB) as a clickable HTML attachment that opens in browser.
   try {
-    const summaryHtml = generateEmailSummary(approved, rejected, reportMetadata);
-    const dashboardBuffer = require('fs').readFileSync(dashboardPath);
-    const filename = `niche-scanner-${reportMetadata.date.toISOString().split('T')[0]}.html`;
-    console.log(`Email summary size: ${summaryHtml.length.toLocaleString()} bytes; attachment: ${dashboardBuffer.length.toLocaleString()} bytes`);
-    await sendReportEmail(summaryHtml, config, true, {
-      attachments: [{ filename, content: dashboardBuffer }]
-    });
+    const fs = require('fs');
+    const emailSentFlag = process.env.EMAIL_SENT_FLAG || '';
+    const emailSentValue = process.env.EMAIL_SENT_VALUE || reportMetadata.date.toISOString().split('T')[0];
+    const alreadySent = emailSentFlag && fs.existsSync(emailSentFlag)
+      && fs.readFileSync(emailSentFlag, 'utf-8').trim() === emailSentValue;
+
+    if (process.env.SKIP_EMAIL === '1') {
+      console.log('Email skipped because SKIP_EMAIL=1');
+    } else if (alreadySent) {
+      console.log(`Email skipped: report already sent for ${emailSentValue}`);
+    } else {
+      const summaryHtml = generateEmailSummary(approved, rejected, reportMetadata);
+      const dashboardBuffer = fs.readFileSync(dashboardPath);
+      const filename = `niche-scanner-${reportMetadata.date.toISOString().split('T')[0]}.html`;
+      console.log(`Email summary size: ${summaryHtml.length.toLocaleString()} bytes; attachment: ${dashboardBuffer.length.toLocaleString()} bytes`);
+      await sendReportEmail(summaryHtml, config, true, {
+        attachments: [{ filename, content: dashboardBuffer }]
+      });
+      if (emailSentFlag) {
+        fs.writeFileSync(emailSentFlag, `${emailSentValue}\n`, 'utf-8');
+        console.log(`Email sent flag written: ${emailSentFlag} = ${emailSentValue}`);
+      }
+    }
   } catch (err) {
     console.error(`Email failed (non-fatal): ${err.message}`);
   }
 
   // === Summary ===
   console.log('\n=== Scan Complete ===');
-  console.log(`Mode: ${isNexlevMode ? 'NexLev + YouTube API' : 'YouTube API only'}`);
+  console.log(`Mode: ${isNexlevOnlyMode ? 'NexLev cache only' : (isNexlevMode ? 'NexLev + YouTube API' : 'YouTube API only')}`);
   console.log(`Channels scanned: ${totalScanned}`);
   console.log(`Approved: ${approved.length}`);
   console.log(`Rejected: ${rejected.length}`);

@@ -31,7 +31,8 @@ function loadNexlevCache(cacheDir) {
  * Convert NexLev candidate format to scanner-compatible format.
  */
 function normalizeNexlevCandidate(nx) {
-  const channelId = extractChannelId(nx.url || '');
+  const channelId = nx.ytChannelId || nx.channelId || nx.channel_id || extractChannelId(nx.url || nx.channelUrl || '');
+  const channelUrl = normalizeChannelUrl(nx.url || nx.channelUrl, channelId);
 
   // Convert NexLev's recentVideos to scanner video format
   const videos = (nx.recentVideos || nx.lastUploadedVideos || []).map(v => {
@@ -49,7 +50,7 @@ function normalizeNexlevCandidate(nx) {
   return {
     channelId: channelId,
     channelTitle: nx.title,
-    channelUrl: nx.url?.startsWith('http') ? nx.url : `https://${nx.url}`,
+    channelUrl,
     subscriberCount: nx.subscribers,
     hiddenSubs: false,
     ageDays: nx.daysSinceStart,
@@ -89,7 +90,7 @@ function normalizeNexlevCandidate(nx) {
       hasShorts: nx.hasShorts,
       daysSinceLastUpload: nx.daysSinceLastUpload,
       recentVideos: nx.lastUploadedVideos || nx.recentVideos,
-      url: nx.url?.startsWith('http') ? nx.url : `https://${nx.url}`,
+      url: channelUrl,
       subscribers: nx.subscribers,
       avgViewPerVideo: nx.avgViewPerVideo,
       daysSinceStart: nx.daysSinceStart,
@@ -154,6 +155,11 @@ function extractChannelId(url) {
   if (!url) return null;
   const match = url.match(/UC[\w-]{22}/);
   return match ? match[0] : null;
+}
+
+function normalizeChannelUrl(url, channelId) {
+  if (url) return url.startsWith('http') ? url : `https://${url}`;
+  return channelId ? `https://www.youtube.com/channel/${channelId}` : '';
 }
 
 function parseDuration(lengthText) {

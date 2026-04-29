@@ -19,7 +19,7 @@ const config = Object.freeze({
     minVideosWithViews: 3,
     minViewThreshold: 5000,
     minUploadsPerWeek: 2,
-    minTotalVideos: 6,
+    minTotalVideos: 5,
     maxCandidatesForDeepAnalysis: 100,
   },
 

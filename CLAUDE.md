@@ -1,5 +1,5 @@
 # CLAUDE.md — CLAUDIO JEREZ MASTER PROFILE
-_For use in Claude Code. This is the single source of truth._
+_Legacy filename. For use in Codex/ChatGPT. This is the single source of truth._
 _Last updated: 2026-04-21_
 
 ---
@@ -24,7 +24,7 @@ ssh -i "$env:USERPROFILE\.ssh\oracle-vm.key" ubuntu@168.138.30.13
 
 ### Stack on VM
 - Node.js 20 (for scanner code)
-- Claude Code CLI 2.1.116 (for NexLev MCP calls in headless mode via `claude -p`)
+- OpenAI Codex CLI (for ChatGPT/NexLev app calls in headless mode via `codex exec`)
 - git (for pulling updates, pushing daily history)
 - NexLev connector auto-synced via OAuth (account-level — no manual config)
 - Linux cron for scheduling (VM timezone is `Australia/Melbourne`)
@@ -35,8 +35,8 @@ Cron entry: `0 19 * * * /home/ubuntu/niche-scanner/run-daily.sh`
 
 Steps the wrapper does:
 1. `git pull origin main` — get any code updates
-2. Call NexLev via `claude -p --dangerously-skip-permissions` (headless) to refresh `niche-research/nexlev-cache/latest.json` + `niche-research/popping-channels/YYYY-MM-DD.json`
-3. `node index.js --nexlev` — run the scanner, generate reports, email Claudio
+2. `refresh-nexlev.sh` runs separately on retry cron and calls the ChatGPT/Codex NexLev app to refresh `niche-research/nexlev-cache/latest.json` + `niche-research/popping-channels/YYYY-MM-DD.json`
+3. `node index.js --nexlev` — run the scanner once daily, generate reports, email Claudio
 4. `git add niche-research/ && git commit && git push` — sync history back to GitHub
 
 Logs saved to `/home/ubuntu/niche-scanner/logs/YYYY-MM-DD.log` on the VM.
@@ -80,7 +80,7 @@ Logs saved to `/home/ubuntu/niche-scanner/logs/YYYY-MM-DD.log` on the VM.
 ### If the daily email stops arriving — debug order
 1. SSH to VM → check `/home/ubuntu/niche-scanner/logs/YYYY-MM-DD.log`
 2. Verify Oracle VM is still running (https://cloud.oracle.com → Compute → Instances)
-3. Verify `claude login` is still authenticated: `ssh ubuntu@168.138.30.13 "claude --version"`
+3. Verify Codex is installed/authenticated and NexLev is connected: `ssh ubuntu@168.138.30.13 "codex --version && ~/niche-scanner/refresh-nexlev.sh"`
 4. Check YouTube API quota reset hasn't been blocked (Google Cloud Console)
 5. Check Resend API isn't rate-limited or key expired
 6. Verify cron is still scheduled: `crontab -l` on VM

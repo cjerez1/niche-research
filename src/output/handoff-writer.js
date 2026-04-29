@@ -30,7 +30,6 @@ function computeMinViews(c) {
 
 function isReadyToLaunch(c) {
   const nx = c.nexlev || {};
-  const score = c.score?.totalScore || 0;
   const verdict = c.competitionLandscape?.verdict || c.verdict?.verdict || '';
   const ageDays = c.ageDays || nx.daysSinceStart || 0;
   const videoCount = c.videoCount || nx.numOfUploads || 0;
@@ -39,7 +38,6 @@ function isReadyToLaunch(c) {
   // as monetized yet. Status still propagates into the handoff payload.
   return (
     nx.isFaceless === true &&
-    score >= 60 &&
     (verdict === 'GO' || verdict === 'CAUTION') &&
     minV.eligible && minV.value >= 5000 &&
     ageDays > 0 && ageDays <= 60 &&

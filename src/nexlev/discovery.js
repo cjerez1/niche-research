@@ -31,8 +31,23 @@ function loadNexlevCache(cacheDir) {
  * Convert NexLev candidate format to scanner-compatible format.
  */
 function normalizeNexlevCandidate(nx) {
+  const stats = nx.stats || {};
   const channelId = nx.ytChannelId || nx.channelId || nx.channel_id || extractChannelId(nx.url || nx.channelUrl || '');
   const channelUrl = normalizeChannelUrl(nx.url || nx.channelUrl, channelId);
+  const subscribers = firstNumber(nx.subscribers, nx.subscriberCount, nx.chTotalSubscriberCount, stats.subscribers);
+  const avgViews = firstNumber(nx.avgViewPerVideo, nx.avgViewsPerVideo, nx.averageViews, stats.avgViewsPerVideo);
+  const medianViews = firstNumber(nx.medianViewPerVideo, nx.medianViewsPerVideo, stats.medianViewsPerVideo);
+  const monthlyViews = firstNumber(nx.avgMonthlyViews, nx.monthlyViews, stats.monthlyViews);
+  const monthlyRevenue = firstNumber(nx.avgMonthlyRevenue, nx.monthlyRevenue, stats.monthlyRevenue);
+  const totalViews = firstNumber(nx.totalViews, nx.totalViewCount, stats.totalViews);
+  const totalVideos = firstNumber(nx.numOfUploads, nx.totalVideos, nx.videoCount, stats.totalVideos);
+  const avgVideoLength = firstNumber(nx.avgVideoLength, nx.avgVideoLengthSec, stats.avgVideoLength);
+  const uploadsPerWeek = firstNumber(nx.uploadsPerWeek, stats.uploadsPerWeek,
+    nx.avgMonthlyUploadFrequency ? +(nx.avgMonthlyUploadFrequency / 4.33).toFixed(1) : null);
+  const firstVideoDate = nx.firstVideoDate || stats.firstVideoDate || nx.channelCreationDate;
+  const ageDays = firstNumber(nx.daysSinceStart, nx.ageDays, daysSince(firstVideoDate));
+  const rpm = normalizeRpm(nx.rpm || stats.rpm);
+  const isMonetized = nx.isMonetized ?? nx.isMonetizationEnabled;
 
   // Convert NexLev's recentVideos to scanner video format
   const videos = (nx.recentVideos || nx.lastUploadedVideos || []).map(v => {
@@ -51,21 +66,21 @@ function normalizeNexlevCandidate(nx) {
     channelId: channelId,
     channelTitle: nx.title,
     channelUrl,
-    subscriberCount: nx.subscribers,
+    subscriberCount: subscribers,
     hiddenSubs: false,
-    ageDays: nx.daysSinceStart,
-    videoCount: nx.numOfUploads,
-    uploadFrequency: nx.uploadsPerWeek || (nx.avgMonthlyUploadFrequency ? (nx.avgMonthlyUploadFrequency / 4.33).toFixed(1) : null),
+    ageDays,
+    videoCount: totalVideos,
+    uploadFrequency: uploadsPerWeek,
     videos: videos,
-    description: '',
+    description: nx.description || '',
     metrics: {
-      averageViews: nx.avgViewPerVideo,
-      medianViews: nx.medianViewPerVideo,
+      averageViews: avgViews,
+      medianViews,
       maxViews: Math.max(...videos.map(v => v.views || 0), 0),
-      viewToSubRatio: nx.subscribers > 0 ? +(nx.avgViewPerVideo / nx.subscribers).toFixed(2) : 0,
-      growthVelocity: nx.subscribers && nx.daysSinceStart ? Math.round(nx.subscribers / nx.daysSinceStart) : 0,
+      viewToSubRatio: subscribers > 0 ? +(avgViews / subscribers).toFixed(2) : 0,
+      growthVelocity: subscribers && ageDays ? Math.round(subscribers / ageDays) : 0,
       outlierCount: 0, // Computed below
-      averageDuration: nx.avgVideoLength || 0,
+      averageDuration: avgVideoLength || 0,
     },
     flags: {
       possiblyFaceless: nx.isFaceless === true,
@@ -75,26 +90,26 @@ function normalizeNexlevCandidate(nx) {
     // NexLev-specific enrichment data
     nexlev: {
       id: nx.id,
-      rpm: nx.rpm,
-      avgMonthlyRevenue: nx.avgMonthlyRevenue,
+      rpm,
+      avgMonthlyRevenue: monthlyRevenue,
       totalRevenue: nx.totalRevenueGenerated,
-      avgMonthlyViews: nx.avgMonthlyViews,
-      totalViews: nx.totalViews,
-      isMonetized: nx.isMonetized,
+      avgMonthlyViews: monthlyViews,
+      totalViews,
+      isMonetized,
       outlierScore: nx.outlierScore,
       quality: nx.quality,
-      categories: nx.categories || [],
-      format: nx.format,
+      categories: normalizeCategories(nx.categories || nx.category || nx.tags),
+      format: normalizeNamedValue(nx.format),
       isFaceless: nx.isFaceless,
       facelessConfidence: nx.facelessConfidence || null,
       hasShorts: nx.hasShorts,
       daysSinceLastUpload: nx.daysSinceLastUpload,
       recentVideos: nx.lastUploadedVideos || nx.recentVideos,
       url: channelUrl,
-      subscribers: nx.subscribers,
-      avgViewPerVideo: nx.avgViewPerVideo,
-      daysSinceStart: nx.daysSinceStart,
-      uploadsPerWeek: nx.uploadsPerWeek || (nx.avgMonthlyUploadFrequency ? +(nx.avgMonthlyUploadFrequency / 4.33).toFixed(1) : null),
+      subscribers,
+      avgViewPerVideo: avgViews,
+      daysSinceStart: ageDays,
+      uploadsPerWeek,
     },
     _source: 'nexlev',
   };
@@ -160,6 +175,39 @@ function extractChannelId(url) {
 function normalizeChannelUrl(url, channelId) {
   if (url) return url.startsWith('http') ? url : `https://${url}`;
   return channelId ? `https://www.youtube.com/channel/${channelId}` : '';
+}
+
+function firstNumber(...values) {
+  for (const value of values) {
+    if (value === null || value === undefined || value === '') continue;
+    const n = Number(value);
+    if (Number.isFinite(n)) return n;
+  }
+  return 0;
+}
+
+function normalizeRpm(value) {
+  if (value && typeof value === 'object') return firstNumber(value.total, value.base);
+  return firstNumber(value);
+}
+
+function normalizeNamedValue(value) {
+  if (!value) return '';
+  if (typeof value === 'object') return value.name || value.title || value.label || '';
+  return String(value);
+}
+
+function normalizeCategories(value) {
+  if (!value) return [];
+  const arr = Array.isArray(value) ? value : [value];
+  return arr.map(normalizeNamedValue).filter(Boolean);
+}
+
+function daysSince(dateStr) {
+  if (!dateStr) return 0;
+  const ts = Date.parse(dateStr);
+  if (!Number.isFinite(ts)) return 0;
+  return Math.max(0, Math.round((Date.now() - ts) / 86400000));
 }
 
 function parseDuration(lengthText) {

@@ -525,8 +525,8 @@ function generateEditorialDashboard(approved, rejected, metadata) {
     type: 'ready',
     title: 'Ready to launch',
     accent: 'send to yt-automation',
-    description: 'Channels passing the strict launch checklist: faceless · score ≥ 60 · GO/CAUTION verdict · last 5 uploads all ≥ 5K views (≥ 3 sample required) · age ≤ 60 days from first upload (optimal ≤ 30) · ≥ 5 uploads. Monetization shown as a tag, not a gate — early breakouts often haven\'t been detected yet. Click "Copy launch command" on a card to push it to yt-automation.',
-    chips: ['FACELESS', 'SCORE ≥ 60', 'GO/CAUTION', 'LAST 5 UPLOADS ≥ 5K', 'AGE ≤ 60D', '≥ 5 UPLOADS'],
+    description: 'Channels passing the strict launch checklist: faceless · GO/CAUTION verdict · last 5 uploads all ≥ 5K views (≥ 3 sample required) · age ≤ 60 days from first upload (optimal ≤ 30) · ≥ 5 uploads. Score is shown for ranking only, not used as a launch gate. Monetization shown as a tag, not a gate — early breakouts often haven\'t been detected yet. Click "Copy launch command" on a card to push it to yt-automation.',
+    chips: ['FACELESS', 'GO/CAUTION', 'LAST 5 UPLOADS ≥ 5K', 'AGE ≤ 60D', '≥ 5 UPLOADS'],
     cards: ready,
     isEscalated: false,
     isReady: true
@@ -1845,7 +1845,6 @@ function pad(n) { return String(n).padStart(2, '0'); }
 //   better — the "optimal" tag is rendered separately for <= 30 days.
 function isReadyToLaunch(c) {
   const nx = c.nexlev || {};
-  const score = c.score?.totalScore || 0;
   const verdict = c.competitionLandscape?.verdict || c.verdict?.verdict || '';
   const ageDays = c.ageDays || nx.daysSinceStart || 0;
   const videoCount = c.videoCount || nx.numOfUploads || 0;
@@ -1855,7 +1854,6 @@ function isReadyToLaunch(c) {
   // on the card as a chip; we just don't block on it.
   return (
     nx.isFaceless === true &&
-    score >= 60 &&
     (verdict === 'GO' || verdict === 'CAUTION') &&
     minV.eligible && minV.value >= 5000 &&
     ageDays > 0 && ageDays <= 60 &&

@@ -68,12 +68,12 @@ Write /home/ubuntu/niche-scanner/niche-research/nexlev-cache/latest.json as vali
 {\"date\":\"$TODAY\",\"timestamp\":\"$NOW\",\"source\":\"nexlev-mcp\",\"candidates\":[...],\"count\":123}
 
 Step 2 - popping longform:
-Find long-form channels with 3-4 uploads, at least 100000 total views, last upload within 21 days, average video length at least 8 minutes, and 500 to 25000 subscribers.
+Find long-form channels with 3-4 uploads, at least 100000 total views, last upload within 21 days, average video length at least 8 minutes, and 0 to 15000 subscribers.
 
 Pick the top 10 by a blend of average views, outlier score, and consistency. Write /home/ubuntu/niche-scanner/niche-research/popping-channels/$TODAY.json with:
 {\"date\":\"$TODAY\",\"criteria\":\"Longform >=8min, 3-4 uploads, 100K+ views, last upload within 3 weeks.\",\"rankedChannels\":[...10 objects...],\"patternSummary\":[...]}
 
-Each ranked channel object should include rank, title, url, niche, uploads, subscribers, totalViews, avgViewPerVideo, avgVideoLengthSec, outlierScore, monthlyRevenueUSD, rpm, daysSinceStart, topVideo, and whyWorking.
+Each ranked channel object must come from a raw NexLev result with a valid YouTube channel ID beginning with UC. Do not invent, infer, or construct example channels. Exclude anything without a verified raw channel ID. Each object should include rank, title, url, niche, uploads, subscribers, totalViews, avgViewPerVideo, avgVideoLengthSec, outlierScore, monthlyRevenueUSD, rpm, daysSinceStart, topVideo, and whyWorking.
 
 Finish by replying only with REFRESH_DONE.
 PROMPT

@@ -1,6 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 
+process.on('unhandledRejection', err => {
+  if (err?.name === 'AbortError') return;
+  console.error(err);
+  process.exit(1);
+});
+
 const home = process.env.HOME || process.env.USERPROFILE;
 const root = path.join(home, 'niche-scanner');
 const credentialsPath = path.join(home, '.codex', '.credentials.json');

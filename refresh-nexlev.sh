@@ -143,6 +143,13 @@ run_codex_refresh() {
   return $?
 }
 
+run_direct_mcp_refresh() {
+  echo "[refresh-nexlev] trying direct NexLev MCP OAuth refresh..."
+  TODAY="$TODAY" NOW="$NOW" node scripts/refresh-nexlev-direct.js
+  verify_fresh_cache
+  return $?
+}
+
 run_claude_refresh() {
   local out="/tmp/nexlev-claude-refresh.log"
   echo "[refresh-nexlev] trying Claude fallback..."
@@ -163,7 +170,7 @@ run_claude_refresh() {
   return $?
 }
 
-run_codex_refresh || run_claude_refresh
+run_direct_mcp_refresh || run_codex_refresh || run_claude_refresh
 
 POST_DATE=""
 if [ -f "$CACHE" ]; then

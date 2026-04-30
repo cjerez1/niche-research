@@ -235,6 +235,10 @@ function getClient() {
   return anthropicClient;
 }
 
+function hasOpenAiKey() {
+  return !!process.env.OPENAI_API_KEY;
+}
+
 /**
  * Generate 2-3 niche bend suggestions for a high-scoring candidate.
  * Uses Claude API for contextually appropriate titles and reasoning.
@@ -248,12 +252,23 @@ async function generateBends(candidate) {
   // Pick top 3 strategies (diversified by type)
   const selected = diversifyBends(matchedStrategies).slice(0, 3);
 
-  // Call Claude to generate titles and refine reasoning
+  // Call Claude to generate titles and refine reasoning. If Claude is down or
+  // rate-limited, use OpenAI before falling back to static strategy text.
   try {
     const enriched = await generateWithClaude(candidate, niche, selected);
     return enriched;
   } catch (err) {
     console.error(`  Claude API failed for bends (${candidate.channelTitle}): ${err.message}`);
+    if (hasOpenAiKey()) {
+      try {
+        const enriched = await generateWithOpenAI(candidate, niche, selected);
+        return enriched;
+      } catch (openAiErr) {
+        console.error(`  OpenAI API failed for bends (${candidate.channelTitle}): ${openAiErr.message}`);
+      }
+    } else {
+      console.error('  OpenAI API fallback unavailable: OPENAI_API_KEY is not set.');
+    }
     // Return strategies with fallback titles
     return selected.map(s => ({
       description: s.name,
@@ -343,7 +358,7 @@ Respond in this exact JSON format (no markdown, no code fences, just raw JSON):
 
   const client = getClient();
   const response = await client.messages.create({
-    model: 'claude-opus-4-20250514',
+    model: process.env.ANTHROPIC_MODEL || 'claude-opus-4-20250514',
     max_tokens: 2048,
     messages: [{ role: 'user', content: prompt }],
   });
@@ -387,6 +402,110 @@ Respond in this exact JSON format (no markdown, no code fences, just raw JSON):
 /**
  * Capitalize a word — handles acronyms (DNA, UK, USA) and normal words.
  */
+async function generateWithOpenAI(candidate, niche, strategies) {
+  const topVideos = [...candidate.videos]
+    .sort((a, b) => b.views - a.views)
+    .slice(0, 5)
+    .map(v => `- "${v.title}" (${v.views.toLocaleString()} views)`)
+    .join('\n');
+
+  const strategySummaries = strategies
+    .map((s, i) => `${i}. ${s.name}: target ${s.targetNiche}. ${s.briefing}`)
+    .join('\n');
+
+  const prompt = `You are MUSE, a niche-bending strategist for Claudio's faceless YouTube automation business.
+
+Analyze this breakout channel and generate niche-bend ideas.
+
+CHANNEL: "${candidate.channelTitle}"
+DETECTED NICHE: ${niche.nicheLabel}
+SUBSCRIBERS: ${candidate.subscriberCount}
+TOP TOPICS: ${niche.topTopics.slice(0, 6).join(', ')}
+
+TOP PERFORMING VIDEOS:
+${topVideos}
+
+STRATEGIES:
+${strategySummaries}
+
+Return raw JSON only. No markdown. Format:
+[
+  {
+    "strategyIndex": 0,
+    "viralTriggers": ["curiosity gap", "forbidden knowledge"],
+    "titles": ["Title 1", "Title 2", "Title 3"],
+    "whyItWorks": "Specific explanation referencing the viral trigger.",
+    "targetChannel": "Dark Atlas",
+    "thumbnailDirection": "One sentence describing the thumbnail concept.",
+    "confidence": "high"
+  }
+]`;
+
+  const response = await fetch('https://api.openai.com/v1/responses', {
+    method: 'POST',
+    headers: {
+      authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: process.env.OPENAI_MODEL || 'gpt-4.1-mini',
+      input: prompt,
+      max_output_tokens: 2048,
+    }),
+  });
+
+  if (!response.ok) {
+    const body = await response.text();
+    throw new Error(`OpenAI HTTP ${response.status}: ${body.slice(0, 300)}`);
+  }
+
+  const data = await response.json();
+  const text = extractOpenAIText(data);
+  if (!text) throw new Error('OpenAI response did not include text output');
+
+  let parsed;
+  try {
+    parsed = JSON.parse(text);
+  } catch {
+    const jsonMatch = text.match(/\[[\s\S]*\]/);
+    if (jsonMatch) {
+      parsed = JSON.parse(jsonMatch[0]);
+    } else {
+      throw new Error('Could not parse OpenAI response as JSON');
+    }
+  }
+
+  return strategies.map((strategy, i) => {
+    const modelResult = parsed.find(p => p.strategyIndex === i) || parsed[i];
+    return {
+      description: strategy.name,
+      type: strategy.type.replace('_', ' '),
+      baseNiche: niche.nicheLabel,
+      targetNiche: strategy.targetNiche,
+      whyItWorks: modelResult?.whyItWorks || strategy.briefing,
+      exampleTitles: modelResult?.titles || ['(No titles generated)'],
+      estimatedCompetition: strategy.competition,
+      rpmEstimate: strategy.rpmEstimate,
+      viralTriggers: modelResult?.viralTriggers || [],
+      targetChannel: modelResult?.targetChannel || null,
+      thumbnailDirection: modelResult?.thumbnailDirection || null,
+      confidence: modelResult?.confidence || null,
+    };
+  });
+}
+
+function extractOpenAIText(data) {
+  if (data.output_text) return data.output_text;
+  const parts = [];
+  for (const item of data.output || []) {
+    for (const content of item.content || []) {
+      if (content.type === 'output_text' && content.text) parts.push(content.text);
+      if (content.type === 'text' && content.text) parts.push(content.text);
+    }
+  }
+  return parts.join('\n');
+}
+
 function capitalizeWord(word) {
   if (ACRONYMS.has(word)) return word.toUpperCase();
   return word.charAt(0).toUpperCase() + word.slice(1);

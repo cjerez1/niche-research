@@ -33,6 +33,18 @@ except Exception:
 PY
 }
 
+cache_is_rollover() {
+  python3 - "$CACHE" <<'PY'
+import json, sys
+try:
+    raw = open(sys.argv[1], "rb").read().decode("utf-8-sig")
+    data = json.loads(raw)
+    print("1" if data.get("rolloverFrom") or data.get("rolledOverFrom") else "0")
+except Exception:
+    print("0")
+PY
+}
+
 if [ -f "$CACHE" ]; then
   CACHE_DATE="$(cache_date)"
   if [ "$CACHE_DATE" = "$TODAY" ] && [ "$FORCE_REFRESH" != "1" ]; then
@@ -83,6 +95,10 @@ verify_fresh_cache() {
   POST_DATE=""
   if [ -f "$CACHE" ]; then
     POST_DATE="$(cache_date)"
+  fi
+  if [ "$(cache_is_rollover)" = "1" ]; then
+    echo "[refresh-nexlev] cache was rolled over from an older day; refusing to treat it as fresh."
+    return 1
   fi
 
   if [ "$FORCE_REFRESH" = "1" ]; then
@@ -152,6 +168,10 @@ if [ -f "$CACHE" ]; then
 fi
 
 if [ "$POST_DATE" = "$TODAY" ]; then
+  if [ "$(cache_is_rollover)" = "1" ]; then
+    echo "[refresh-nexlev] cache is dated $TODAY but is a rollover; not fresh."
+    exit 1
+  fi
   echo "[refresh-nexlev] SUCCESS - cache now dated $TODAY."
   exit 0
 fi

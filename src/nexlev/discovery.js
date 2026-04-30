@@ -16,6 +16,10 @@ function loadNexlevCache(cacheDir) {
   let content = fs.readFileSync(cachePath, 'utf-8');
   if (content.charCodeAt(0) === 0xFEFF) content = content.slice(1);
   const raw = JSON.parse(content);
+  if (raw.rolloverFrom || raw.rolledOverFrom) {
+    console.log(`NexLev cache is a rollover from ${raw.rolloverFrom || raw.rolledOverFrom} — not fresh. Will use YouTube API only.`);
+    return null;
+  }
   const cacheAge = (Date.now() - new Date(raw.date).getTime()) / (1000 * 60 * 60);
 
   if (cacheAge > 24) {

@@ -41,6 +41,18 @@ except Exception:
 PY
 }
 
+cache_rollover() {
+  python3 - "$CACHE" <<'PY'
+import json, sys
+try:
+    raw = open(sys.argv[1], "rb").read().decode("utf-8-sig")
+    data = json.loads(raw)
+    print("1" if data.get("rolloverFrom") or data.get("rolledOverFrom") else "0")
+except Exception:
+    print("0")
+PY
+}
+
 if [ -f "$SENT_FLAG" ] && [ "$(cat "$SENT_FLAG" 2>/dev/null || echo "")" = "$TODAY" ]; then
   echo "[cache-email] already sent a report email today; no-op."
   exit 0
@@ -48,6 +60,11 @@ fi
 
 if [ "$(cache_date)" != "$TODAY" ]; then
   echo "[cache-email] today's NexLev cache is not ready yet; no-op."
+  exit 0
+fi
+
+if [ "$(cache_rollover)" = "1" ]; then
+  echo "[cache-email] today's NexLev cache is a rollover, not fresh NexLev data; refusing to email."
   exit 0
 fi
 

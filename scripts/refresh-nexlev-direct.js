@@ -71,7 +71,17 @@ function score(c) {
 function parseToolResult(result) {
   const text = result?.content?.find(item => item.type === 'text')?.text;
   if (!text) return result;
-  return JSON.parse(text);
+  try {
+    return JSON.parse(text);
+  } catch {
+    const start = text.indexOf('{');
+    const end = text.lastIndexOf('}');
+    if (start >= 0 && end > start) return JSON.parse(text.slice(start, end + 1));
+    const arrayStart = text.indexOf('[');
+    const arrayEnd = text.lastIndexOf(']');
+    if (arrayStart >= 0 && arrayEnd > arrayStart) return JSON.parse(text.slice(arrayStart, arrayEnd + 1));
+    throw new Error(`Could not parse NexLev tool response: ${text.slice(0, 200)}`);
+  }
 }
 
 function extractChannels(data) {

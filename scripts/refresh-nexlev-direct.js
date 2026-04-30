@@ -69,6 +69,7 @@ function score(c) {
 }
 
 function parseToolResult(result) {
+  if (result?.structuredContent) return result.structuredContent;
   const text = result?.content?.find(item => item.type === 'text')?.text;
   if (!text) return result;
   try {
@@ -80,6 +81,7 @@ function parseToolResult(result) {
     const arrayStart = text.indexOf('[');
     const arrayEnd = text.lastIndexOf(']');
     if (arrayStart >= 0 && arrayEnd > arrayStart) return JSON.parse(text.slice(arrayStart, arrayEnd + 1));
+    fs.writeFileSync('/tmp/nexlev-unparsed-result.json', JSON.stringify(result, null, 2), 'utf8');
     throw new Error(`Could not parse NexLev tool response: ${text.slice(0, 200)}`);
   }
 }

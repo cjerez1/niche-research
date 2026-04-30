@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-29",
+  "lastUpdated": "2026-04-30",
   "channels": {
     "UClXLMgQJAxWrKJC8tMQaKbg": {
       "channelTitle": "The DNA Archive",
@@ -420,6 +420,12 @@
           "score": 64,
           "subscribers": 2080,
           "avgViews": 2001
+        },
+        {
+          "date": "2026-04-30",
+          "score": 64,
+          "subscribers": 2120,
+          "avgViews": 2059
         }
       ]
     },
@@ -3880,6 +3886,12 @@
           "score": 73,
           "subscribers": 307,
           "avgViews": 1435
+        },
+        {
+          "date": "2026-04-30",
+          "score": 73,
+          "subscribers": 307,
+          "avgViews": 1462
         }
       ]
     },
@@ -3986,6 +3998,12 @@
           "score": 63,
           "subscribers": 7100,
           "avgViews": 14606
+        },
+        {
+          "date": "2026-04-30",
+          "score": 63,
+          "subscribers": 7430,
+          "avgViews": 15073
         }
       ]
     },
@@ -4008,6 +4026,23 @@
           "score": 66,
           "subscribers": 3490,
           "avgViews": 13812
+        },
+        {
+          "date": "2026-04-30",
+          "score": 66,
+          "subscribers": 3690,
+          "avgViews": 15066
+        }
+      ]
+    },
+    "UCcj_KU4ZN6bx6Ki68hNJWqw": {
+      "channelTitle": "Mark Invests",
+      "snapshots": [
+        {
+          "date": "2026-04-30",
+          "score": 69,
+          "subscribers": 2540,
+          "avgViews": 11976
         }
       ]
     }

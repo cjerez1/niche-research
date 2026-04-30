@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 36,
+  "saturationLevel": "Moderate",
+  "directHits": 36,
+  "directHitLevel": "High",
+  "topVideoViews": 2563,
+  "topVideo": {
+    "title": "401(k) vs Roth IRA in 2026 - The Real Math | Uncle John Financial",
+    "channelTitle": "Uncle John Financial ",
+    "views": 2563,
+    "publishedAt": "2026-04-27T21:30:10Z",
+    "videoId": "nM368Q5QLMo"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 0,
+    "10k_100k": 1,
+    "1k_10k": 1,
+    "under1k": 34
+  },
+  "topCompetitors": [
+    {
+      "title": "Uncle John Financial ",
+      "subscribers": 10600,
+      "totalViews": 901436,
+      "videoCount": 19,
+      "ageDays": 120
+    },
+    {
+      "title": "Capital Money Mindset",
+      "subscribers": 8560,
+      "totalViews": 1632143,
+      "videoCount": 667,
+      "ageDays": 1659
+    },
+    {
+      "title": "One Minute Finance",
+      "subscribers": 979,
+      "totalViews": 56783,
+      "videoCount": 1050,
+      "ageDays": 1781
+    },
+    {
+      "title": "Rick Invests",
+      "subscribers": 319,
+      "totalViews": 34995,
+      "videoCount": 70,
+      "ageDays": 3166
+    },
+    {
+      "title": "HolyShifu",
+      "subscribers": 314,
+      "totalViews": 50626,
+      "videoCount": 42,
+      "ageDays": 4391
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "401(k) vs Roth IRA in 2026 - The Real Math | Uncle John Financial",
+      "channelTitle": "Uncle John Financial ",
+      "views": 2563,
+      "publishedAt": "2026-04-27T21:30:10Z",
+      "videoId": "nM368Q5QLMo"
+    },
+    {
+      "title": "401k vs Roth IRA — The Real Math After Taxes",
+      "channelTitle": "MONEY LOGIC",
+      "views": 976,
+      "publishedAt": "2026-04-28T00:02:45Z",
+      "videoId": "iLCnl48XSpk"
+    },
+    {
+      "title": "401k vs Roth IRA — THE REAL MATH (Which One Will Make You More Money?)",
+      "channelTitle": "Dollar Growth Academy",
+      "views": 711,
+      "publishedAt": "2026-04-26T04:04:02Z",
+      "videoId": "IMGVLUwlHjE"
+    },
+    {
+      "title": "Roth IRA vs 401(k): The Real Math That Changes Everything",
+      "channelTitle": "Grayson Invests ",
+      "views": 532,
+      "publishedAt": "2026-04-27T10:30:12Z",
+      "videoId": "Ll4NeRSrsrM"
+    },
+    {
+      "title": "401k vs Roth IRA — You&#39;re Probably Choosing Wrong (The Real Math)",
+      "channelTitle": "Marcus Builds Wealth",
+      "views": 328,
+      "publishedAt": "2026-04-27T13:38:47Z",
+      "videoId": "qptaNVT-YHY"
+    }
+  ],
+  "avgAge": 925,
+  "windowDays": 30,
+  "nicheSlug": "mark-invests",
+  "cachedAt": "2026-04-30T10:58:36.692Z"
+}

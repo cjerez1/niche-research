@@ -47,11 +47,14 @@ PY
 
 if [ -f "$CACHE" ]; then
   CACHE_DATE="$(cache_date)"
-  if [ "$CACHE_DATE" = "$TODAY" ] && [ "$FORCE_REFRESH" != "1" ]; then
+  CACHE_ROLLOVER="$(cache_is_rollover)"
+  if [ "$CACHE_DATE" = "$TODAY" ] && [ "$CACHE_ROLLOVER" != "1" ] && [ "$FORCE_REFRESH" != "1" ]; then
     echo "[refresh-nexlev] cache is already dated $TODAY; no-op."
     exit 0
   fi
-  if [ "$CACHE_DATE" = "$TODAY" ]; then
+  if [ "$CACHE_DATE" = "$TODAY" ] && [ "$CACHE_ROLLOVER" = "1" ]; then
+    echo "[refresh-nexlev] cache is dated $TODAY but is a rollover; refreshing again."
+  elif [ "$CACHE_DATE" = "$TODAY" ]; then
     echo "[refresh-nexlev] cache is already dated $TODAY, but FORCE_REFRESH=1; refreshing anyway."
   else
   echo "[refresh-nexlev] cache date is '$CACHE_DATE'; refreshing for '$TODAY'."

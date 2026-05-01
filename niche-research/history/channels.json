@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-30",
+  "lastUpdated": "2026-05-01",
   "channels": {
     "UClXLMgQJAxWrKJC8tMQaKbg": {
       "channelTitle": "The DNA Archive",
@@ -426,6 +426,12 @@
           "score": 64,
           "subscribers": 2120,
           "avgViews": 2059
+        },
+        {
+          "date": "2026-05-01",
+          "score": 66,
+          "subscribers": 2140,
+          "avgViews": 2198
         }
       ]
     },
@@ -3892,6 +3898,12 @@
           "score": 73,
           "subscribers": 307,
           "avgViews": 1462
+        },
+        {
+          "date": "2026-05-01",
+          "score": 71,
+          "subscribers": 315,
+          "avgViews": 1405
         }
       ]
     },
@@ -4004,6 +4016,12 @@
           "score": 63,
           "subscribers": 7430,
           "avgViews": 15073
+        },
+        {
+          "date": "2026-05-01",
+          "score": 59,
+          "subscribers": 7640,
+          "avgViews": 15125
         }
       ]
     },
@@ -4032,6 +4050,12 @@
           "score": 66,
           "subscribers": 3690,
           "avgViews": 15066
+        },
+        {
+          "date": "2026-05-01",
+          "score": 66,
+          "subscribers": 3820,
+          "avgViews": 15186
         }
       ]
     },
@@ -4043,6 +4067,17 @@
           "score": 69,
           "subscribers": 2540,
           "avgViews": 11976
+        }
+      ]
+    },
+    "UCFyxBzQ9LWmUrcWX-WbsdDQ": {
+      "channelTitle": "WISDOM OF AGE",
+      "snapshots": [
+        {
+          "date": "2026-05-01",
+          "score": 74,
+          "subscribers": 2250,
+          "avgViews": 5616
         }
       ]
     }

@@ -1,0 +1,100 @@
+{
+  "totalCompetitors": 28,
+  "saturationLevel": "Moderate",
+  "directHits": 31,
+  "directHitLevel": "High",
+  "topVideoViews": 165802,
+  "topVideo": {
+    "title": "6 Things I Cut From My Life After 50",
+    "channelTitle": "Jeff Knuppel | GenXistence",
+    "views": 165802,
+    "publishedAt": "2026-04-10T21:11:05Z",
+    "videoId": "uennW9_XhRE"
+  },
+  "verdict": "SKIP",
+  "verdictReason": "Too crowded — bend harder or move on",
+  "tiers": {
+    "over100k": 4,
+    "10k_100k": 5,
+    "1k_10k": 6,
+    "under1k": 13
+  },
+  "topCompetitors": [
+    {
+      "title": "Daily Humor",
+      "subscribers": 162000,
+      "totalViews": 17566701,
+      "videoCount": 1020,
+      "ageDays": 2464
+    },
+    {
+      "title": "GAMErHyNas",
+      "subscribers": 134000,
+      "totalViews": 45758172,
+      "videoCount": 1721,
+      "ageDays": 4019
+    },
+    {
+      "title": "Expat Adventuring in Asia",
+      "subscribers": 134000,
+      "totalViews": 3381683,
+      "videoCount": 173,
+      "ageDays": 721
+    },
+    {
+      "title": "Nick Maher",
+      "subscribers": 100000,
+      "totalViews": 12004898,
+      "videoCount": 139,
+      "ageDays": 5157
+    },
+    {
+      "title": "Jeff Knuppel | GenXistence",
+      "subscribers": 79100,
+      "totalViews": 4878796,
+      "videoCount": 118,
+      "ageDays": 956
+    }
+  ],
+  "directHitVideos": [
+    {
+      "title": "6 Things I Cut From My Life After 50",
+      "channelTitle": "Jeff Knuppel | GenXistence",
+      "views": 165802,
+      "publishedAt": "2026-04-10T21:11:05Z",
+      "videoId": "uennW9_XhRE"
+    },
+    {
+      "title": "After 60, NEVER Tell People These Things (They’ll Use It Against You)",
+      "channelTitle": "Nick Maher",
+      "views": 119349,
+      "publishedAt": "2026-04-10T16:01:31Z",
+      "videoId": "mIVkWtP2Hfs"
+    },
+    {
+      "title": "After 60, NEVER Give Your Children These 6 Things (They’ll Use It Against You)",
+      "channelTitle": "Nick Maher",
+      "views": 76195,
+      "publishedAt": "2026-04-15T16:01:21Z",
+      "videoId": "hdahw85VNlM"
+    },
+    {
+      "title": "After 60, NEVER Tell Family These Things (They’ll Use It Against You)",
+      "channelTitle": "Nick Maher",
+      "views": 23929,
+      "publishedAt": "2026-04-13T16:01:11Z",
+      "videoId": "jax1LUdemww"
+    },
+    {
+      "title": "15 Things Subaru Dealers Will NEVER Tell You After Purchase (Watch Before It&#39;s Too Late)",
+      "channelTitle": "Everything Subaru",
+      "views": 19515,
+      "publishedAt": "2026-04-11T21:00:50Z",
+      "videoId": "hWhKAhddoFg"
+    }
+  ],
+  "avgAge": 1173,
+  "windowDays": 30,
+  "nicheSlug": "wisdom-of-age",
+  "cachedAt": "2026-05-01T10:25:44.584Z"
+}

@@ -13,6 +13,7 @@ function renderCard(c, isEscalated) {
   const scoreClass = score >= 80 ? 'score-green' : score >= 60 ? 'score-amber' : 'score-grey';
   const tier = c.score.tier;
   const nx = c.nexlev || {};
+  const vq = c.vidiq || {};
   const b = c.score.breakdown;
 
   // Trend indicator
@@ -163,6 +164,9 @@ function renderCard(c, isEscalated) {
         ${nx.rpm ? `<span class="data-chip">RPM: $${nx.rpm.toFixed(2)}</span>` : c.score.rpmEstimate ? `<span class="data-chip">RPM: $${c.score.rpmEstimate[0]}-$${c.score.rpmEstimate[1]}</span>` : ''}
         ${nx.avgMonthlyRevenue ? `<span class="data-chip revenue-chip">$${fmtNum(nx.avgMonthlyRevenue)}/mo</span>` : ''}
         ${nx.outlierScore ? `<span class="data-chip outlier-chip">${nx.outlierScore}x outlier</span>` : ''}
+        ${vq.outlierScore ? `<span class="data-chip outlier-chip">VidIQ ${vq.outlierScore}x</span>` : ''}
+        ${vq.viewsPerHour ? `<span class="data-chip">VPH: ${fmtNum(vq.viewsPerHour)}</span>` : ''}
+        ${vq.claudeVerdict?.verdict ? `<span class="data-chip">Claude: ${esc(vq.claudeVerdict.verdict)}</span>` : ''}
         ${nx.isMonetized === true ? '<span class="data-chip monetized-chip">Monetized</span>' : nx.isMonetized === false ? '<span class="data-chip not-monetized-chip">Not Monetized</span>' : ''}
       </div>
 
@@ -171,7 +175,16 @@ function renderCard(c, isEscalated) {
           c.flags?.possiblyFaceless ? '<span class="data-chip faceless-maybe-chip">Likely Faceless</span>' : '<span class="data-chip faceless-unknown-chip">Faceless: ?</span>'}
         ${nx.quality ? `<span class="data-chip quality-chip quality-${nx.quality}">${nx.quality} quality</span>` : ''}
         ${(nx.categories || []).slice(0, 2).map(cat => `<span class="data-chip cat-chip">${esc(cat)}</span>`).join('')}
+        ${(vq.tags || []).slice(0, 2).map(tag => `<span class="data-chip cat-chip">VidIQ: ${esc(tag)}</span>`).join('')}
       </div>
+
+      ${vq.whyItMatters || vq.claudeVerdict?.reason || vq.claudeVerdict?.nicheBend ? `
+      <div class="card-competition">
+        ${vq.whyItMatters ? `<div class="comp-names">${esc(vq.whyItMatters)}</div>` : ''}
+        ${vq.claudeVerdict?.reason ? `<div class="comp-names">Claude: ${esc(vq.claudeVerdict.reason)}</div>` : ''}
+        ${vq.claudeVerdict?.nicheBend ? `<div class="comp-names">Bend: ${esc(vq.claudeVerdict.nicheBend)}</div>` : ''}
+      </div>
+      ` : ''}
 
       ${compHtml ? `<div class="card-competition">${compHtml}</div>` : ''}
 

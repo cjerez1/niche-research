@@ -79,6 +79,10 @@ const config = Object.freeze({
     cacheDir: path.join(__dirname, '..', 'niche-research', 'nexlev-cache'),
   },
 
+  vidiq: {
+    cacheDir: path.join(__dirname, '..', 'niche-research', 'vidiq-cache'),
+  },
+
   output: {
     dir: path.join(__dirname, '..', 'niche-research', 'daily'),
     dashboardDir: path.join(__dirname, '..', 'niche-research', 'dashboard'),

@@ -41,8 +41,8 @@ else
 fi
 
 echo "[3/4] Running scanner + email once..."
-echo "  NexLev refresh retries are handled separately by refresh-nexlev.sh."
-EMAIL_SENT_FLAG="$SENT_FLAG" EMAIL_SENT_VALUE="$TODAY" node index.js --nexlev
+echo "  NexLev + Claude/VidIQ refresh retries are handled separately by refresh-intelligence.sh."
+EMAIL_SENT_FLAG="$SENT_FLAG" EMAIL_SENT_VALUE="$TODAY" node index.js --nexlev --vidiq
 
 echo "[4/4] Committing fresh data to GitHub..."
 git add niche-research/ || true

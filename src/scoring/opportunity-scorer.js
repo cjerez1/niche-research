@@ -64,6 +64,7 @@ function scoreCandidate(candidate, allCandidates) {
 
   // === NexLev bonus modifiers ===
   const nx = candidate.nexlev;
+  const vq = candidate.vidiq;
   if (nx) {
     // Monetization bonus: already monetized = proven revenue niche
     if (nx.isMonetized === true) totalScore += 3;
@@ -75,6 +76,18 @@ function scoreCandidate(candidate, allCandidates) {
     else if (nx.outlierScore >= 1.5) totalScore += 1;
     // Cap at 100
     totalScore = Math.min(100, totalScore);
+  }
+
+  // VidIQ/Claude bonus modifiers. These are validation signals, not replacements
+  // for the base scoring model.
+  if (vq) {
+    if (vq.outlierScore >= 3) totalScore += 4;
+    else if (vq.outlierScore >= 2) totalScore += 2;
+    if (vq.viewsPerHour >= 1000) totalScore += 2;
+    if (vq.claudeVerdict?.verdict === 'GO') totalScore += 3;
+    else if (vq.claudeVerdict?.verdict === 'BEND') totalScore += 1;
+    else if (vq.claudeVerdict?.verdict === 'SKIP') totalScore -= 8;
+    totalScore = Math.max(0, Math.min(100, totalScore));
   }
 
   let tier;

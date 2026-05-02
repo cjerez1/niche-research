@@ -6,7 +6,8 @@
   "scripts": {
     "scan": "node index.js",
     "scan:nexlev": "node index.js --nexlev",
-    "scan:nexlev-only": "node index.js --nexlev-only"
+    "scan:nexlev-only": "node index.js --nexlev-only",
+    "refresh:vidiq": "node scripts/refresh-vidiq-claude.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.88.0",

@@ -17,6 +17,7 @@ const { generateBends } = require('./src/bending/niche-bender');
 const { sendReportEmail } = require('./src/output/email-sender');
 const { scanCompetition } = require('./src/scanner/competition-scanner');
 const { loadNexlevCache, normalizeNexlevCandidate, mergeWithYouTubeResults } = require('./src/nexlev/discovery');
+const { loadVidiqCache, normalizeVidiqCandidate, mergeCandidates } = require('./src/vidiq/discovery');
 const popping = require('./src/output/popping-section');
 
 // Competitor mining — optional
@@ -33,11 +34,12 @@ try {
 
 const isNexlevMode = process.argv.includes('--nexlev');
 const isNexlevOnlyMode = process.argv.includes('--nexlev-only') || process.argv.includes('--no-youtube');
+const isVidiqMode = process.argv.includes('--vidiq') || process.argv.includes('--nexlev');
 
 async function main() {
   console.log('=== Niche Scanner V2 ===');
   console.log(`Date: ${new Date().toISOString().split('T')[0]}`);
-  console.log(`Mode: ${isNexlevOnlyMode ? 'NexLev cache only' : (isNexlevMode ? 'NexLev + YouTube API' : 'YouTube API only')}`);
+  console.log(`Mode: ${modeLabel()}`);
   console.log();
 
   // Init YouTube API client (needed for both modes)
@@ -54,6 +56,7 @@ async function main() {
   }
 
   let nexlevCandidates = [];
+  let vidiqCandidates = [];
   let ytCandidates = [];
   let totalQuota = 0;
   let totalScanned = 0;
@@ -70,6 +73,16 @@ async function main() {
 
   if (isNexlevOnlyMode && nexlevCandidates.length === 0) {
     throw new Error('NexLev-only mode requires a fresh cache with at least one valid channel. Refusing to send an empty report.');
+  }
+
+  // === Claude + VidIQ Intelligence ===
+  if (isVidiqMode) {
+    const vidiqCache = loadVidiqCache(config.vidiq?.cacheDir || path.join(__dirname, 'niche-research', 'vidiq-cache'));
+    if (vidiqCache) {
+      vidiqCandidates = vidiqCache.rows.map(normalizeVidiqCandidate).filter(Boolean);
+      console.log(`VidIQ/Claude candidates: ${vidiqCandidates.length} channels`);
+      totalScanned += vidiqCandidates.length;
+    }
   }
 
   // === YouTube API Search (primary in api-only mode, supplementary in nexlev mode) ===
@@ -106,15 +119,11 @@ async function main() {
   }
 
   // === Merge NexLev + YouTube API candidates ===
-  let allCandidates;
-  if (nexlevCandidates.length > 0 && ytCandidates.length > 0) {
+  let allCandidates = mergeCandidates(nexlevCandidates, vidiqCandidates, ytCandidates);
+  if (nexlevCandidates.length > 0 && ytCandidates.length > 0 && vidiqCandidates.length === 0) {
     allCandidates = mergeWithYouTubeResults(nexlevCandidates, ytCandidates);
-    console.log(`\nMerged: ${allCandidates.length} unique candidates (${nexlevCandidates.length} NexLev + ${ytCandidates.length} YouTube API)`);
-  } else if (nexlevCandidates.length > 0) {
-    allCandidates = nexlevCandidates;
-  } else {
-    allCandidates = ytCandidates;
   }
+  console.log(`\nMerged: ${allCandidates.length} unique candidates (${nexlevCandidates.length} NexLev + ${vidiqCandidates.length} Claude/VidIQ + ${ytCandidates.length} YouTube API)`);
 
   if (allCandidates.length === 0) {
     console.log('\nNo candidates found. Generating empty report.');
@@ -283,7 +292,7 @@ async function main() {
 
   // === Summary ===
   console.log('\n=== Scan Complete ===');
-  console.log(`Mode: ${isNexlevOnlyMode ? 'NexLev cache only' : (isNexlevMode ? 'NexLev + YouTube API' : 'YouTube API only')}`);
+  console.log(`Mode: ${modeLabel()}`);
   console.log(`Channels scanned: ${totalScanned}`);
   console.log(`Approved: ${approved.length}`);
   console.log(`Rejected: ${rejected.length}`);
@@ -293,6 +302,13 @@ async function main() {
   console.log(`Quota used: ~${totalQuota} / ${config.quota.dailyLimit}`);
   console.log(`Report: ${reportPath}`);
   console.log(`Dashboard: ${dashboardPath}`);
+}
+
+function modeLabel() {
+  if (isNexlevOnlyMode) return isVidiqMode ? 'NexLev + Claude/VidIQ cache only' : 'NexLev cache only';
+  if (isNexlevMode) return 'NexLev + Claude/VidIQ + YouTube API';
+  if (isVidiqMode) return 'Claude/VidIQ + YouTube API';
+  return 'YouTube API only';
 }
 
 main().catch(err => {

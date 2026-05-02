@@ -45,11 +45,17 @@ except Exception:
 PY
 }
 
+refresh_claude_vidiq() {
+  echo "[refresh-nexlev] refreshing Claude + VidIQ intelligence cache..."
+  TODAY="$TODAY" NOW="$NOW" node scripts/refresh-vidiq-claude.js || echo "[refresh-nexlev] Claude/VidIQ refresh failed (non-fatal); scanner will use latest available VidIQ cache."
+}
+
 if [ -f "$CACHE" ]; then
   CACHE_DATE="$(cache_date)"
   CACHE_ROLLOVER="$(cache_is_rollover)"
   if [ "$CACHE_DATE" = "$TODAY" ] && [ "$CACHE_ROLLOVER" != "1" ] && [ "$FORCE_REFRESH" != "1" ]; then
     echo "[refresh-nexlev] cache is already dated $TODAY; no-op."
+    refresh_claude_vidiq
     exit 0
   fi
   if [ "$CACHE_DATE" = "$TODAY" ] && [ "$CACHE_ROLLOVER" = "1" ]; then
@@ -108,6 +114,7 @@ verify_fresh_cache() {
     POST_MTIME="$(stat -c %Y "$CACHE" 2>/dev/null || echo 0)"
     if [ "$POST_DATE" = "$TODAY" ] && [ "$POST_MTIME" -gt "$CACHE_MTIME_BEFORE" ]; then
       echo "[refresh-nexlev] SUCCESS - cache forcibly refreshed for $TODAY."
+      refresh_claude_vidiq
       exit 0
     fi
     echo "[refresh-nexlev] forced refresh did not rewrite cache; found date '$POST_DATE'."
@@ -116,6 +123,7 @@ verify_fresh_cache() {
 
   if [ "$POST_DATE" = "$TODAY" ]; then
     echo "[refresh-nexlev] SUCCESS - cache now dated $TODAY."
+    refresh_claude_vidiq
     exit 0
   fi
 
@@ -183,6 +191,7 @@ if [ "$POST_DATE" = "$TODAY" ]; then
     exit 1
   fi
   echo "[refresh-nexlev] SUCCESS - cache now dated $TODAY."
+  refresh_claude_vidiq
   exit 0
 fi
 

@@ -83,7 +83,7 @@ if [ "$COUNT" -lt 1 ]; then
 fi
 
 echo "[cache-email] today's cache is ready ($COUNT candidates); sending cache-only report."
-EMAIL_SENT_FLAG="$SENT_FLAG" EMAIL_SENT_VALUE="$TODAY" node index.js --nexlev-only
+EMAIL_SENT_FLAG="$SENT_FLAG" EMAIL_SENT_VALUE="$TODAY" node index.js --nexlev-only --vidiq
 STATUS=$?
 if [ "$STATUS" -eq 0 ]; then
   echo "[cache-email] cache-only report run completed for $TODAY."

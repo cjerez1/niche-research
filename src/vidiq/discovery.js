@@ -150,6 +150,7 @@ function flattenRows(value) {
   if (!value) return [];
   if (Array.isArray(value)) return value.flatMap(flattenRows);
   if (typeof value === 'object') {
+    if (isCandidateLike(value)) return [value];
     if (Array.isArray(value.channels)) return value.channels.flatMap(flattenRows);
     if (Array.isArray(value.results)) return value.results.flatMap(flattenRows);
     if (Array.isArray(value.items)) return value.items.flatMap(flattenRows);
@@ -157,6 +158,18 @@ function flattenRows(value) {
     return [value];
   }
   return [];
+}
+
+function isCandidateLike(value) {
+  return Boolean(
+    value.channelId ||
+    value.ytChannelId ||
+    value.channel_id ||
+    value.channelTitle ||
+    value.channelUrl ||
+    value.channel?.channelId ||
+    value.channel?.id
+  );
 }
 
 function normalizeVideos(row) {

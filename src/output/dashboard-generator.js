@@ -807,7 +807,8 @@ function renderEditorialCard(c, isEscalated, isReady) {
   const country = c.country || nx.country || '—';
   const ageDays = c.ageDays || nx.daysSinceStart || 0;
   const firstUploadDate = ageDays > 0 ? formatDateShort(new Date(Date.now() - ageDays * 86400000).toISOString().split('T')[0]) : '—';
-  const monetization = monetizationStack(nx.categories || [], (c.channelTitle || nx.title || ''));
+  const candidateTags = getCandidateTags(c);
+  const monetization = monetizationStack(candidateTags, (c.channelTitle || nx.title || ''));
   const subNiches = (c.bends || []).slice(0, 3);
   const minV = computeMinViews(c);
   const minViews = minV.value;
@@ -826,11 +827,11 @@ function renderEditorialCard(c, isEscalated, isReady) {
   const quality = nx.quality || 'mid';
   const isFaceless = nx.isFaceless === true ? 'yes' : nx.isFaceless === false ? 'no' : (c.flags?.possiblyFaceless ? 'yes' : 'unknown');
 
-  const verdict = c.competitionLandscape?.verdict || c.verdict?.verdict || '';
-  const verdictReason = c.competitionLandscape?.verdictReason || c.verdict?.reason || '';
+  const verdict = candidateVerdict(c);
+  const verdictReason = candidateVerdictReason(c);
 
-  const tags = (nx.categories || []).slice(0, 3);
-  const tagsLower = (nx.categories || []).map(t => t.toLowerCase()).join(' ');
+  const tags = candidateTags.slice(0, 5);
+  const tagsLower = candidateTags.map(t => t.toLowerCase()).join(' ');
 
   // Top performer
   const vids = (c.videos || nx.lastUploadedVideos || []).map(v => ({
@@ -839,7 +840,7 @@ function renderEditorialCard(c, isEscalated, isReady) {
   }));
   const topVid = vids.sort((a, b) => b.views - a.views)[0];
 
-  const searchBlob = `${(c.channelTitle || nx.title || '').toLowerCase()} ${(handle || '').toLowerCase()} ${tagsLower}`;
+  const searchBlob = `${(c.channelTitle || nx.title || '').toLowerCase()} ${(handle || '').toLowerCase()} ${tagsLower} ${(c.vidiq?.whyItMatters || '').toLowerCase()} ${(c.vidiq?.claudeVerdict?.nicheBend || '').toLowerCase()}`;
 
   const verdictPill = verdict ? `<span class="verdict-pill v-${verdict.toLowerCase()}">${verdict}</span>` : '';
   const escalatePill = isEscalated ? `<span class="esc-pill">⚡ ESCALATED</span>` : '';
@@ -932,6 +933,7 @@ function renderEditorialCard(c, isEscalated, isReady) {
       </div>
     </div>` : ''}
 
+    ${c.vidiq?.whyItMatters ? `<div class="verdict-reason"><strong>VidIQ/Claude:</strong> ${esc(c.vidiq.whyItMatters)}</div>` : ''}
     ${verdictReason ? `<div class="verdict-reason">${esc(verdictReason)}</div>` : ''}
     ${escReasons}
 
@@ -1804,16 +1806,110 @@ function pickHeadline({ escalated, top, frontier, signals }) {
 function topTags(cards, limit) {
   const freq = new Map();
   cards.forEach(c => {
-    (c.nexlev?.categories || []).forEach(t => {
+    getCandidateTags(c).forEach(t => {
       const k = String(t).trim();
       if (!k) return;
       freq.set(k, (freq.get(k) || 0) + 1);
     });
   });
+  const priority = new Map([
+    ['health', 0],
+    ['senior', 1],
+    ['food', 2],
+    ['australia', 3],
+    ['finance', 4],
+    ['home', 5],
+    ['science', 6],
+    ['disaster', 7],
+    ['history', 8],
+    ['travel', 9],
+  ]);
   return Array.from(freq.entries())
-    .filter(([, n]) => n >= 2)
-    .sort((a, b) => b[1] - a[1])
+    .sort((a, b) => {
+      const ap = priority.get(a[0].toLowerCase());
+      const bp = priority.get(b[0].toLowerCase());
+      if (ap !== undefined || bp !== undefined) return (ap ?? 999) - (bp ?? 999);
+      return b[1] - a[1];
+    })
     .slice(0, limit);
+}
+
+function candidateVerdict(c) {
+  return c.competitionLandscape?.verdict ||
+    c.verdict?.verdict ||
+    c.vidiq?.claudeVerdict?.verdict ||
+    '';
+}
+
+function candidateVerdictReason(c) {
+  return c.competitionLandscape?.verdictReason ||
+    c.verdict?.reason ||
+    c.vidiq?.claudeVerdict?.reason ||
+    '';
+}
+
+function getCandidateTags(c) {
+  const nx = c.nexlev || {};
+  const vq = c.vidiq || {};
+  const raw = vq.raw || {};
+  const values = [
+    ...(nx.categories || []),
+    ...(vq.tags || []),
+    ...(raw.vidiqSignals?.keywords || []),
+    raw.niche,
+    raw.category,
+    c.niche,
+  ];
+  const text = [
+    c.channelTitle,
+    nx.title,
+    c.description,
+    raw.niche,
+    raw.whyItMatters,
+    raw.claudeVerdict?.reason,
+    raw.claudeVerdict?.nicheBend,
+    ...(c.videos || []).slice(0, 5).map(v => v.title || v.video_title || ''),
+  ].join(' ').toLowerCase();
+
+  const inferred = [
+    [/senior|seniors|elderly|over 50|over 60|retiree|retirement|medicare/, 'senior'],
+    [/health|doctor|medical|nutrition|diabetes|joint|arthritis|blood pressure|heart|dementia|wellness/, 'health'],
+    [/food|diet|grocery|coles|woolworths|nutrition|ingredient|recipe/, 'food'],
+    [/australia|australian|melbourne|sydney|coles|woolworths|medicare|tga/, 'australia'],
+    [/finance|money|wealth|invest|retirement|pension|social security/, 'finance'],
+    [/home|repair|maintenance|diy|plumbing|roof|garden/, 'home'],
+    [/history|ancient|civilization|war|empire|archive/, 'history'],
+    [/science|earth|ocean|volcano|nature|wildlife|space|nasa|telescope|mars/, 'science'],
+    [/disaster|earthquake|flood|storm|extinction|collapse|crisis/, 'disaster'],
+    [/travel|places|abandoned|country|city|homes|destination/, 'travel'],
+  ];
+  inferred.forEach(([re, label]) => {
+    if (re.test(text)) values.push(label);
+  });
+
+  const seen = new Set();
+  return values
+    .flatMap(v => Array.isArray(v) ? v : [v])
+    .map(normalizeTag)
+    .filter(Boolean)
+    .filter(tag => {
+      const key = tag.toLowerCase();
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+}
+
+function normalizeTag(value) {
+  if (!value) return '';
+  if (typeof value === 'object') value = value.name || value.title || value.label || '';
+  const tag = String(value).trim();
+  if (!tag) return '';
+  return tag
+    .replace(/[_-]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .replace(/\b\w/g, ch => ch.toUpperCase())
+    .slice(0, 40);
 }
 
 function uniqueCountries(cards) {
@@ -1858,7 +1954,7 @@ function pad(n) { return String(n).padStart(2, '0'); }
 //   better — the "optimal" tag is rendered separately for <= 30 days.
 function isReadyToLaunch(c) {
   const nx = c.nexlev || {};
-  const verdict = c.competitionLandscape?.verdict || c.verdict?.verdict || '';
+  const verdict = candidateVerdict(c);
   const ageDays = c.ageDays || nx.daysSinceStart || 0;
   const videoCount = c.videoCount || nx.numOfUploads || 0;
   const minV = computeMinViews(c);
@@ -2069,7 +2165,7 @@ function generateEmailSummary(approved, rejected, metadata) {
   const renderRow = (c) => {
     const nx = c.nexlev || {};
     const score = c.score?.totalScore || 0;
-    const verdict = c.competitionLandscape?.verdict || c.verdict?.verdict || '';
+    const verdict = candidateVerdict(c);
     const ageDays = c.ageDays || nx.daysSinceStart || 0;
     const channelId = c.channelId || extractChannelId(c.channelUrl || nx.url || '');
     const url = channelId ? `https://www.youtube.com/channel/${channelId}` : (c.channelUrl || nx.url || '#');
@@ -2077,7 +2173,7 @@ function generateEmailSummary(approved, rejected, metadata) {
     return `<tr>
       <td style="padding:10px 12px;border-bottom:1px solid #E5E2DA;">
         <div style="font-weight:600;font-size:13px;"><a href="${esc(url)}" style="color:#1A1A1A;text-decoration:none;">${esc(c.channelTitle || nx.title || '')}</a></div>
-        <div style="font-size:11px;color:#999;margin-top:2px;">${verdictBadge}${ageDays}d · ${(nx.categories || []).slice(0,2).join(' · ') || 'general'}</div>
+        <div style="font-size:11px;color:#999;margin-top:2px;">${verdictBadge}${ageDays}d · ${getCandidateTags(c).slice(0,2).join(' · ') || 'general'}</div>
       </td>
       <td style="padding:10px 12px;border-bottom:1px solid #E5E2DA;text-align:right;font-family:Georgia,serif;font-size:18px;">${score}<span style="font-size:11px;color:#999;font-family:inherit;">/100</span></td>
       <td style="padding:10px 12px;border-bottom:1px solid #E5E2DA;text-align:right;font-size:12px;color:#555;">${nx.avgMonthlyRevenue ? formatMoney(nx.avgMonthlyRevenue) : '—'}<br><span style="font-size:10px;color:#999;">${(nx.avgMonthlyViews ? formatViewsBig(nx.avgMonthlyViews) : '—')} views/mo</span></td>

@@ -15,6 +15,7 @@ const { writeIntelligenceExport } = require('./src/output/intelligence-export');
 const { loadHistory, compareWithHistory, getDisappeared, saveHistory } = require('./src/tracking/history-tracker');
 const { enhanceWithGrowthData } = require('./src/tracking/growth-analyzer');
 const { generateBends } = require('./src/bending/niche-bender');
+const { generateTestPlan } = require('./src/bending/test-plan-generator');
 const { sendReportEmail } = require('./src/output/email-sender');
 const { scanCompetition } = require('./src/scanner/competition-scanner');
 const { loadNexlevCache, normalizeNexlevCandidate, mergeWithYouTubeResults } = require('./src/nexlev/discovery');
@@ -185,6 +186,23 @@ async function main() {
       }
     }
     if (bendCount > 0) console.log(`\nGenerated ${bendCount} niche bends`);
+  }
+
+  // === Stage-2 Test Plan (Launch tier only — score ≥ 80) ===
+  const launchTier = approved.filter(c => c.score.totalScore >= 80);
+  if (process.env.SKIP_TEST_PLAN === '1') {
+    console.log('\nTest plans skipped because SKIP_TEST_PLAN=1');
+  } else if (launchTier.length > 0) {
+    console.log(`\nGenerating Stage-2 test plans for ${launchTier.length} Launch-tier candidates...`);
+    for (const c of launchTier) {
+      try {
+        c.testPlan = await generateTestPlan(c);
+        process.stdout.write('.');
+      } catch (err) {
+        console.error(`\n  Test plan failed for ${c.channelTitle}: ${err.message}`);
+      }
+    }
+    console.log('');
   }
 
   // === Competition landscape ===

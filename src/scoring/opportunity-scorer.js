@@ -90,6 +90,18 @@ function scoreCandidate(candidate, allCandidates) {
     totalScore = Math.max(0, Math.min(100, totalScore));
   }
 
+  // === Single-spike guard ===
+  // Penalize channels whose signal is one fluke video. ChatGPT prompt rule:
+  // reject if top > 5x median UNLESS multiple outliers prove repeatability.
+  const spike = computeSingleSpikeRisk(candidate);
+  if (spike.singleSpikeRisk) {
+    totalScore = Math.max(0, totalScore - (config.scoring.singleSpike?.penalty ?? 10));
+  }
+
+  // === Estimated monthly views + tier (Gold / Silver / Watchlist / Below) ===
+  const monthlyViews = estimateMonthlyViews(candidate);
+  const viewTier = classifyViewTier(monthlyViews);
+
   let tier;
   if (totalScore >= 80) tier = 'Launch candidate';
   else if (totalScore >= 60) tier = 'Strong opportunity';
@@ -105,7 +117,49 @@ function scoreCandidate(candidate, allCandidates) {
     rpmEstimate = rpmTier ? RPM_TIERS[rpmTier].range : [3, 8];
   }
 
-  return { totalScore, breakdown, tier, rpmEstimate };
+  return {
+    totalScore,
+    breakdown,
+    tier,
+    rpmEstimate,
+    monthlyViews,
+    viewTier,
+    singleSpikeRisk: spike.singleSpikeRisk,
+    singleSpikeRatio: spike.ratio,
+  };
+}
+
+function estimateMonthlyViews(candidate) {
+  const nx = candidate.nexlev || {};
+  if (nx.avgMonthlyViews && nx.avgMonthlyViews > 0) return Math.round(nx.avgMonthlyViews);
+  const avgViews = candidate.metrics?.averageViews || nx.avgViewPerVideo || 0;
+  const perWeek = candidate.uploadFrequency || nx.uploadsPerWeek || 0;
+  if (avgViews > 0 && perWeek > 0) return Math.round(avgViews * perWeek * 4.33);
+  return 0;
+}
+
+function classifyViewTier(monthlyViews) {
+  const tiers = config.scoring.viewTiers || { gold: 1e6, silver: 3e5, watchlist: 1e5 };
+  if (monthlyViews >= tiers.gold) return 'Gold';
+  if (monthlyViews >= tiers.silver) return 'Silver';
+  if (monthlyViews >= tiers.watchlist) return 'Watchlist';
+  return null;
+}
+
+function computeSingleSpikeRisk(candidate) {
+  const cfg = config.scoring.singleSpike || { ratio: 5, minOutliersToWaive: 2, penalty: 10 };
+  const videos = (candidate.videos || []).filter(v => Number(v?.views) > 0);
+  if (videos.length < 5) return { singleSpikeRisk: false, ratio: 0 };
+  const views = videos.map(v => Number(v.views)).sort((a, b) => a - b);
+  const max = views[views.length - 1];
+  const median = views[Math.floor(views.length / 2)];
+  if (median <= 0) return { singleSpikeRisk: false, ratio: 0 };
+  const ratio = max / median;
+  const outlierCount = candidate.nexlev?.outlierScore >= 2
+    ? Math.round(candidate.nexlev.outlierScore)
+    : (candidate.metrics?.outlierCount || 0);
+  const singleSpikeRisk = ratio > cfg.ratio && outlierCount < cfg.minOutliersToWaive;
+  return { singleSpikeRisk, ratio: Math.round(ratio * 10) / 10 };
 }
 
 function scoreClickPotential(candidate) {

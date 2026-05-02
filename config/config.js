@@ -41,6 +41,18 @@ const config = Object.freeze({
       seriesPotential: 5,
     },
     escalateThreshold: 60,
+    // Tier the candidate by estimated monthly views — earlier discovery wins.
+    viewTiers: {
+      gold: 1000000,
+      silver: 300000,
+      watchlist: 100000,
+    },
+    // Penalty when a channel's signal is one fluke video (top > 5x median, <2 outliers).
+    singleSpike: {
+      ratio: 5,
+      minOutliersToWaive: 2,
+      penalty: 10,
+    },
   },
 
   quota: {

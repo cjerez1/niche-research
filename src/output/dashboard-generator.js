@@ -12,9 +12,46 @@ function renderCard(c, isEscalated) {
   const score = c.score.totalScore;
   const scoreClass = score >= 80 ? 'score-green' : score >= 60 ? 'score-amber' : 'score-grey';
   const tier = c.score.tier;
+  const viewTier = c.score.viewTier;
+  const monthlyViews = c.score.monthlyViews;
+  const spikeRisk = c.score.singleSpikeRisk;
+  const spikeRatio = c.score.singleSpikeRatio;
   const nx = c.nexlev || {};
   const vq = c.vidiq || {};
   const b = c.score.breakdown;
+  const tp = c.testPlan;
+
+  const viewTierBadge = viewTier
+    ? `<span class="view-tier view-tier-${viewTier.toLowerCase()}" title="Estimated ${monthlyViews ? monthlyViews.toLocaleString() : '?'} views/mo">${viewTier}</span>`
+    : '';
+  const spikeBadge = spikeRisk
+    ? `<span class="spike-flag" title="Top video is ${spikeRatio}x median with <2 outliers — single-spike risk (-10 score penalty applied)">⚠ Single-spike risk</span>`
+    : '';
+
+  let testPlanHtml = '';
+  if (tp) {
+    const titles = (tp.first6Titles || []).filter(Boolean);
+    const gates = tp.passFailGates || {};
+    testPlanHtml = `
+      <details class="test-plan-section">
+        <summary class="test-plan-toggle">Stage-2 Test Plan${tp.recommendation ? ` · ${esc(tp.recommendation)}` : ''}</summary>
+        <div class="test-plan-content">
+          ${titles.length > 0 ? `<div class="tp-block"><div class="tp-label">First 6 titles</div>${titles.map(t => `<div class="tp-title">"${esc(t)}"</div>`).join('')}</div>` : ''}
+          ${tp.thumbnailDirection ? `<div class="tp-block"><div class="tp-label">Thumbnail</div><div class="tp-text">${esc(tp.thumbnailDirection)}</div></div>` : ''}
+          ${tp.scriptStyle ? `<div class="tp-block"><div class="tp-label">Script style</div><div class="tp-text">${esc(tp.scriptStyle)}</div></div>` : ''}
+          ${tp.expectedCtrAngle ? `<div class="tp-block"><div class="tp-label">CTR angle</div><div class="tp-text">${esc(tp.expectedCtrAngle)}</div></div>` : ''}
+          ${tp.killerRiskIn6Months ? `<div class="tp-block"><div class="tp-label">Killer risk (6mo)</div><div class="tp-text">${esc(tp.killerRiskIn6Months)}</div></div>` : ''}
+          <div class="tp-block">
+            <div class="tp-label">Pass/fail gates</div>
+            ${gates.impressions48h ? `<div class="tp-text">48h impressions: ${esc(gates.impressions48h)}</div>` : ''}
+            ${gates.browseFeaturesPct ? `<div class="tp-text">Browse Features: ${esc(gates.browseFeaturesPct)}</div>` : ''}
+            ${gates.bestVideoViews7d ? `<div class="tp-text">Best video 7d: ${esc(gates.bestVideoViews7d)}</div>` : ''}
+            ${gates.trend ? `<div class="tp-text">Trend: ${esc(gates.trend)}</div>` : ''}
+          </div>
+        </div>
+      </details>
+    `;
+  }
 
   // Trend indicator
   let trend = '';
@@ -137,7 +174,7 @@ function renderCard(c, isEscalated) {
           <a href="${c.channelUrl || nx.url || '#'}" target="_blank" class="card-name">${esc(c.channelTitle || nx.title)}</a>
           <div class="score-badge ${scoreClass}">${score}/100</div>
         </div>
-        <div class="card-tier">${tier} ${tagHtml} ${trend}</div>
+        <div class="card-tier">${tier} ${viewTierBadge} ${spikeBadge} ${tagHtml} ${trend}</div>
         ${escalateHtml}
       </div>
 
@@ -203,6 +240,8 @@ function renderCard(c, isEscalated) {
       ` : ''}
 
       ${bendsHtml}
+
+      ${testPlanHtml}
 
       ${c.flags?.possiblyRebranded ? '<div class="rebranded-warning">⚠ Possibly rebranded channel</div>' : ''}
     </div>
@@ -353,6 +392,24 @@ details[open] .bends-toggle::before { content: '▼ '; }
 .bend-meta { display: flex; gap: 12px; font-size: 11px; color: #666; margin-top: 4px; }
 
 .rebranded-warning { font-size: 12px; color: #ff9900; margin-top: 8px; }
+
+.view-tier { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.view-tier-gold { background: #ffd93d; color: #000; }
+.view-tier-silver { background: #c0c0c0; color: #000; }
+.view-tier-watchlist { background: #66666688; color: #fff; }
+
+.spike-flag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: #ff444433; color: #ff8888; border: 1px solid #ff444466; }
+
+.test-plan-section { margin-top: 12px; }
+.test-plan-toggle { font-size: 13px; color: #00cc66; cursor: pointer; padding: 6px 0; list-style: none; font-weight: 600; }
+.test-plan-toggle::-webkit-details-marker { display: none; }
+.test-plan-toggle::before { content: '▶ '; font-size: 10px; }
+details[open] .test-plan-toggle::before { content: '▼ '; }
+.test-plan-content { margin-top: 8px; background: #0a1a14; border: 1px solid #00cc6633; border-radius: 8px; padding: 10px; }
+.tp-block { margin-bottom: 8px; }
+.tp-label { font-size: 10px; color: #00cc66; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; font-weight: 700; }
+.tp-title { font-size: 12px; color: #ddd; padding: 2px 0; }
+.tp-text { font-size: 12px; color: #aaa; line-height: 1.4; }
 
 .signal-row { display: flex; align-items: center; gap: 12px; padding: 8px 12px; background: #12122a; border-radius: 8px; margin-bottom: 6px; }
 .signal-score { font-size: 16px; font-weight: 700; color: #666; min-width: 30px; text-align: center; }
@@ -845,6 +902,40 @@ function renderEditorialCard(c, isEscalated, isReady) {
   const verdictPill = verdict ? `<span class="verdict-pill v-${verdict.toLowerCase()}">${verdict}</span>` : '';
   const escalatePill = isEscalated ? `<span class="esc-pill">⚡ ESCALATED</span>` : '';
 
+  const viewTier = c.score?.viewTier;
+  const estMonthly = c.score?.monthlyViews;
+  const viewTierPill = viewTier
+    ? `<span class="view-tier-pill vt-${viewTier.toLowerCase()}" title="Estimated ${estMonthly ? estMonthly.toLocaleString() : '?'} views/mo">${viewTier}</span>`
+    : '';
+  const spikePill = c.score?.singleSpikeRisk
+    ? `<span class="spike-pill" title="Top video ${c.score.singleSpikeRatio}× median with <2 outliers — single-spike risk (-10 score)">⚠ Single-spike</span>`
+    : '';
+
+  // Stage-2 test plan block
+  const tp = c.testPlan;
+  let testPlanBlock = '';
+  if (tp) {
+    const titles = (tp.first6Titles || []).filter(Boolean);
+    const gates = tp.passFailGates || {};
+    testPlanBlock = `<details class="test-plan">
+      <summary><span class="tp-summary-label">Stage-2 Test Plan</span>${tp.recommendation ? ` <strong>${esc(tp.recommendation)}</strong>` : ''}</summary>
+      <div class="tp-body">
+        ${titles.length > 0 ? `<div class="tp-block"><div class="tp-block-label">First 6 titles</div>${titles.map(t => `<div class="tp-line">"${esc(t)}"</div>`).join('')}</div>` : ''}
+        ${tp.thumbnailDirection ? `<div class="tp-block"><div class="tp-block-label">Thumbnail</div><div class="tp-line">${esc(tp.thumbnailDirection)}</div></div>` : ''}
+        ${tp.scriptStyle ? `<div class="tp-block"><div class="tp-block-label">Script style</div><div class="tp-line">${esc(tp.scriptStyle)}</div></div>` : ''}
+        ${tp.expectedCtrAngle ? `<div class="tp-block"><div class="tp-block-label">CTR angle</div><div class="tp-line">${esc(tp.expectedCtrAngle)}</div></div>` : ''}
+        ${tp.killerRiskIn6Months ? `<div class="tp-block"><div class="tp-block-label">Killer risk (6mo)</div><div class="tp-line">${esc(tp.killerRiskIn6Months)}</div></div>` : ''}
+        <div class="tp-block">
+          <div class="tp-block-label">Pass/fail gates</div>
+          ${gates.impressions48h ? `<div class="tp-line">48h impressions: ${esc(gates.impressions48h)}</div>` : ''}
+          ${gates.browseFeaturesPct ? `<div class="tp-line">Browse Features: ${esc(gates.browseFeaturesPct)}</div>` : ''}
+          ${gates.bestVideoViews7d ? `<div class="tp-line">Best video 7d: ${esc(gates.bestVideoViews7d)}</div>` : ''}
+          ${gates.trend ? `<div class="tp-line">Trend: ${esc(gates.trend)}</div>` : ''}
+        </div>
+      </div>
+    </details>`;
+  }
+
   // Escalation reasons (compact)
   const escReasons = (isEscalated && c.escalate?.reasons || []).slice(0, 2)
     .map(r => `<div class="esc-reason">⚡ ${esc(r)}</div>`).join('');
@@ -876,7 +967,7 @@ function renderEditorialCard(c, isEscalated, isReady) {
       <span class="age-pill">${ageDays}d</span>
     </div>
 
-    <div class="pill-row">${escalatePill}${verdictPill}<span class="score-pill score-${scoreBucket(score)}">${score}/100</span>${optimalAge ? '<span class="optimal-pill">★ OPTIMAL AGE</span>' : ''}${(!escalatePill && !verdictPill && !optimalAge) ? `<span class="tier-text">${esc(tier)}</span>` : ''}</div>
+    <div class="pill-row">${escalatePill}${verdictPill}<span class="score-pill score-${scoreBucket(score)}">${score}/100</span>${viewTierPill}${spikePill}${optimalAge ? '<span class="optimal-pill">★ OPTIMAL AGE</span>' : ''}${(!escalatePill && !verdictPill && !optimalAge && !viewTierPill && !spikePill) ? `<span class="tier-text">${esc(tier)}</span>` : ''}</div>
 
     <div class="stat-row-3">
       <div class="stat">
@@ -952,6 +1043,8 @@ function renderEditorialCard(c, isEscalated, isReady) {
       <span class="moni-label">Monetization</span>
       ${monetization.map(m => `<span class="moni-chip moni-${m.type}" title="${esc(m.tip)}">${esc(m.label)}</span>`).join('')}
     </div>` : ''}
+
+    ${testPlanBlock}
 
     ${isReady ? `<button class="handoff-btn" data-cmd="${esc(handoffCmd)}" data-channel="${esc(channelId)}" data-name="${esc(c.channelTitle || nx.title || '')}">→ Copy launch command</button>` : ''}
 
@@ -1447,6 +1540,46 @@ body {
   color: var(--ink);
   text-transform: uppercase;
 }
+
+.view-tier-pill {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.view-tier-pill.vt-gold { background: #d4a017; color: #1a1408; }
+.view-tier-pill.vt-silver { background: #b0b0b8; color: #18181d; }
+.view-tier-pill.vt-watchlist { background: #4a4a55; color: #d8d8e0; }
+
+.spike-pill {
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #5a1f1f;
+  color: #ffb3b3;
+  border: 1px solid #8a3838;
+}
+
+.test-plan {
+  margin: 10px 0;
+  padding: 10px;
+  background: rgba(0, 204, 102, 0.05);
+  border: 1px solid rgba(0, 204, 102, 0.25);
+  border-radius: 6px;
+}
+.test-plan summary { cursor: pointer; font-size: 12px; color: #00cc66; list-style: none; }
+.test-plan summary::-webkit-details-marker { display: none; }
+.test-plan summary::before { content: '▶ '; font-size: 9px; }
+.test-plan[open] summary::before { content: '▼ '; }
+.tp-summary-label { font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.test-plan .tp-body { margin-top: 8px; display: flex; flex-direction: column; gap: 8px; }
+.test-plan .tp-block { }
+.test-plan .tp-block-label { font-size: 10px; color: #00cc66; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; font-weight: 700; }
+.test-plan .tp-line { font-size: 12px; color: var(--ink-soft); padding: 1px 0; line-height: 1.4; }
 
 .tag-row { display: flex; gap: 6px; flex-wrap: wrap; }
 .tag { font-size: 10px; padding: 3px 8px; background: var(--pill-bg); border-radius: 3px; color: var(--ink-soft); }

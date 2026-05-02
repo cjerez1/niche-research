@@ -76,9 +76,13 @@ function buildPayload(c) {
     uploadsPerWeek: nx.uploadsPerWeek || c.uploadFrequency || 0,
     score: c.score?.totalScore || 0,
     tier: c.score?.tier || '',
+    viewTier: c.score?.viewTier || null,
+    estimatedMonthlyViews: c.score?.monthlyViews || 0,
+    singleSpikeRisk: !!c.score?.singleSpikeRisk,
     verdict: c.competitionLandscape?.verdict || c.verdict?.verdict || '',
     verdictReason: c.competitionLandscape?.verdictReason || '',
     bends: (c.bends || []).slice(0, 3),
+    testPlan: c.testPlan || null,
     topPerformer: topVid || null,
     sourceScannedAt: new Date().toISOString()
   };

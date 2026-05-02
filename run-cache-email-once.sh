@@ -12,6 +12,7 @@ LOG="$LOG_DIR/cache-email-$TODAY.log"
 exec >> "$LOG" 2>&1
 
 CACHE="$HOME/niche-scanner/niche-research/nexlev-cache/latest.json"
+VIDIQ_CACHE="$HOME/niche-scanner/niche-research/vidiq-cache/latest.json"
 SENT_FLAG="$HOME/niche-scanner/.last-report-email-day"
 
 echo "----------------------------------------------"
@@ -53,6 +54,33 @@ except Exception:
 PY
 }
 
+vidiq_required() {
+  grep -q '^VIDIQ_API_KEY=' "$HOME/niche-scanner/.env" 2>/dev/null
+}
+
+vidiq_cache_date() {
+  python3 - "$VIDIQ_CACHE" <<'PY'
+import json, sys
+try:
+    raw = open(sys.argv[1], "rb").read().decode("utf-8-sig")
+    print(json.loads(raw).get("date", ""))
+except Exception:
+    print("")
+PY
+}
+
+vidiq_cache_count() {
+  python3 - "$VIDIQ_CACHE" <<'PY'
+import json, sys
+try:
+    raw = open(sys.argv[1], "rb").read().decode("utf-8-sig")
+    data = json.loads(raw)
+    print(len(data.get("candidates") or data.get("rows") or []))
+except Exception:
+    print("0")
+PY
+}
+
 if [ -f "$SENT_FLAG" ] && [ "$(cat "$SENT_FLAG" 2>/dev/null || echo "")" = "$TODAY" ]; then
   echo "[cache-email] already sent a report email today; no-op."
   exit 0
@@ -66,6 +94,19 @@ fi
 if [ "$(cache_rollover)" = "1" ]; then
   echo "[cache-email] today's NexLev cache is a rollover, not fresh NexLev data; refusing to email."
   exit 0
+fi
+
+if vidiq_required; then
+  if [ "$(vidiq_cache_date)" != "$TODAY" ]; then
+    echo "[cache-email] VIDIQ_API_KEY is set but today's Claude/VidIQ cache is not ready yet; refusing to send a NexLev-only email."
+    exit 0
+  fi
+  VIDIQ_COUNT="$(vidiq_cache_count)"
+  if [ "$VIDIQ_COUNT" -le 0 ]; then
+    echo "[cache-email] today's Claude/VidIQ cache has no candidates; refusing to send a NexLev-only email."
+    exit 0
+  fi
+  echo "[cache-email] Claude/VidIQ cache ready ($VIDIQ_COUNT candidates)."
 fi
 
 COUNT="$(cache_count)"

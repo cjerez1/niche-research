@@ -47,7 +47,113 @@ PY
 
 refresh_claude_vidiq() {
   echo "[refresh-nexlev] refreshing Claude + VidIQ intelligence cache..."
-  TODAY="$TODAY" NOW="$NOW" node scripts/refresh-vidiq-claude.js || echo "[refresh-nexlev] Claude/VidIQ refresh failed (non-fatal); scanner will use latest available VidIQ cache."
+  TODAY="$TODAY" NOW="$NOW" node scripts/refresh-vidiq-claude.js && return 0
+
+  echo "[refresh-nexlev] Anthropic API Claude/VidIQ refresh failed; trying Claude CLI fallback..."
+  run_claude_vidiq_refresh || echo "[refresh-nexlev] Claude/VidIQ refresh failed (non-fatal); scanner will use latest available VidIQ cache."
+}
+
+vidiq_refresh_prompt() {
+  cat <<PROMPT
+You are Claudio's niche-scanner brain at $NOW UTC.
+
+Use BOTH:
+1. Read /home/ubuntu/niche-scanner/niche-research/nexlev-cache/latest.json as the breakout-channel inventory.
+2. Use the available VidIQ MCP/custom connector tools as the YouTube intelligence layer.
+
+Do not use YouTube Data API. Do not invent channels or stats.
+
+Find and validate the best faceless YouTube opportunities for Claudio:
+- under 60 days content age where possible
+- under 30000 subscribers where possible
+- consistent long-form views, outliers, high Browse/packaging potential
+- simple faceless production
+- priority niches: Australian health/consumer, senior health, food safety, home maintenance, earth science/disasters, space documentary, hidden history, abandoned/lost places, practical finance for older viewers
+
+Write valid UTF-8 JSON to /home/ubuntu/niche-scanner/niche-research/vidiq-cache/latest.json with this exact shape:
+{
+  "date": "$TODAY",
+  "timestamp": "$NOW",
+  "source": "claude-cli-vidiq-mcp",
+  "summary": ["operator finding"],
+  "candidates": [
+    {
+      "channelId": "UC...",
+      "channelTitle": "Channel name",
+      "channelUrl": "https://www.youtube.com/channel/UC...",
+      "niche": "short niche label",
+      "whyItMatters": "commercial reason",
+      "vidiqSignals": {
+        "outlierScore": 0,
+        "viewsPerHour": 0,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising|stable|unknown",
+        "keywords": ["keyword"]
+      },
+      "stats": {
+        "subscribers": 0,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 0,
+        "firstVideoDate": "YYYY-MM-DD"
+      },
+      "videos": [
+        {
+          "videoId": "youtube video id",
+          "title": "video title",
+          "views": 0,
+          "publishedAt": "YYYY-MM-DD",
+          "duration": 0,
+          "outlierScore": 0,
+          "viewsPerHour": 0
+        }
+      ],
+      "claudeVerdict": {
+        "score": 0,
+        "verdict": "GO|CAUTION|BEND|SKIP",
+        "reason": "short reason",
+        "nicheBend": "stronger angle Claudio should test"
+      }
+    }
+  ],
+  "keywords": []
+}
+
+Hard rules:
+- Include only candidates with a real YouTube channel ID beginning with UC.
+- Prefer 30 high-quality candidates over a weak large list.
+- Finish by replying only with REFRESH_DONE.
+PROMPT
+}
+
+run_claude_vidiq_refresh() {
+  local out="/tmp/vidiq-claude-refresh.log"
+  if ! command -v claude >/dev/null 2>&1; then
+    echo "[refresh-nexlev] Claude CLI fallback unavailable: claude CLI not found."
+    return 1
+  fi
+
+  timeout 900 claude -p --dangerously-skip-permissions "$(vidiq_refresh_prompt)" </dev/null >"$out" 2>&1
+  tail -80 "$out"
+
+  if grep -qiE "limit|rate|reset|credit|balance" "$out"; then
+    echo "[refresh-nexlev] Claude CLI fallback is rate/credit-limited; will retry on next cron tick."
+    return 1
+  fi
+
+  python3 - "$HOME/niche-scanner/niche-research/vidiq-cache/latest.json" "$TODAY" <<'PY'
+import json, sys
+path, today = sys.argv[1], sys.argv[2]
+raw = open(path, "rb").read().decode("utf-8-sig")
+data = json.loads(raw)
+count = len(data.get("candidates") or data.get("rows") or [])
+if data.get("date") != today or count < 1:
+    raise SystemExit(1)
+print(f"[refresh-nexlev] Claude CLI VidIQ cache ready: {count} candidates")
+PY
 }
 
 if [ -f "$CACHE" ]; then

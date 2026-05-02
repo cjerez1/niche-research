@@ -47,6 +47,11 @@ PY
 
 refresh_claude_vidiq() {
   echo "[refresh-nexlev] refreshing Claude + VidIQ intelligence cache..."
+  if [ "${VIDIQ_REFRESH_METHOD:-}" = "cli" ]; then
+    run_claude_vidiq_refresh || echo "[refresh-nexlev] Claude/VidIQ refresh failed (non-fatal); scanner will use latest available VidIQ cache."
+    return 0
+  fi
+
   TODAY="$TODAY" NOW="$NOW" node scripts/refresh-vidiq-claude.js && return 0
 
   echo "[refresh-nexlev] Anthropic API Claude/VidIQ refresh failed; trying Claude CLI fallback..."

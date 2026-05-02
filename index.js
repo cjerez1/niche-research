@@ -169,7 +169,10 @@ async function main() {
   // === Niche bending (Claude Opus) ===
   let bendCount = 0;
   const bendCandidates = approved.filter(c => c.score.totalScore >= config.bending.minScore);
-  if (bendCandidates.length > 0) {
+  if (process.env.SKIP_BENDS === '1') {
+    console.log('\nNiche bends skipped because SKIP_BENDS=1');
+    for (const c of bendCandidates) c.bends = c.bends || [];
+  } else if (bendCandidates.length > 0) {
     console.log(`\nGenerating niche bends for ${bendCandidates.length} candidates (Claude Opus)...`);
     for (const c of bendCandidates) {
       try {
@@ -220,6 +223,11 @@ async function main() {
     quotaUsed: totalQuota,
     historyTags,
     disappeared,
+    sourceCounts: {
+      nexlev: nexlevCandidates.length,
+      vidiq: vidiqCandidates.length,
+      youtube: ytCandidates.length,
+    },
   };
 
   // === Load today's "popping off" channels (populated by scheduled task) ===
@@ -284,6 +292,7 @@ async function main() {
       const filename = `niche-scanner-${reportMetadata.date.toISOString().split('T')[0]}.html`;
       console.log(`Email summary size: ${summaryHtml.length.toLocaleString()} bytes; attachment: ${dashboardBuffer.length.toLocaleString()} bytes`);
       await sendReportEmail(summaryHtml, config, true, {
+        subject: buildScannerSubject(approved, reportMetadata),
         attachments: [{ filename, content: dashboardBuffer }]
       });
       if (emailSentFlag) {
@@ -314,6 +323,15 @@ function modeLabel() {
   if (isNexlevMode) return 'NexLev + Claude/VidIQ + YouTube API';
   if (isVidiqMode) return 'Claude/VidIQ + YouTube API';
   return 'YouTube API only';
+}
+
+function buildScannerSubject(approved, metadata) {
+  const date = metadata.date.toLocaleDateString('en-AU', { month: 'short', day: 'numeric' });
+  const score60 = approved.filter(c => c.score?.totalScore >= 60).length;
+  const go = approved.filter(c => c.vidiq?.claudeVerdict?.verdict === 'GO' || c.competitionLandscape?.verdict === 'GO').length;
+  const escalated = approved.filter(c => c.escalate?.escalate).length;
+  const sources = metadata.sourceCounts || {};
+  return `Niche Scanner: ${score60} score 60+ | ${go} GO | ${escalated} escalated (${date}, NX ${sources.nexlev || 0}, VQ ${sources.vidiq || 0})`;
 }
 
 main().catch(err => {

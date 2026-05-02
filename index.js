@@ -11,6 +11,7 @@ const { checkEscalateTriggers, checkRejectTriggers } = require('./src/scoring/au
 const { generateReport, writeReport } = require('./src/output/report-generator');
 const { generateDashboard, writeDashboard, generateEmailHtml, generateEmailSummary } = require('./src/output/dashboard-generator');
 const { writeHandoffPayloads } = require('./src/output/handoff-writer');
+const { writeIntelligenceExport } = require('./src/output/intelligence-export');
 const { loadHistory, compareWithHistory, getDisappeared, saveHistory } = require('./src/tracking/history-tracker');
 const { enhanceWithGrowthData } = require('./src/tracking/growth-analyzer');
 const { generateBends } = require('./src/bending/niche-bender');
@@ -255,6 +256,10 @@ async function main() {
   // === Write handoff payloads for "ready to launch" channels ===
   const handoffDir = path.join(__dirname, 'niche-research', 'handoff-queue');
   writeHandoffPayloads(approved, handoffDir);
+
+  // === Write merged machine-readable intelligence for downstream services ===
+  const intelligenceDir = path.join(__dirname, 'niche-research', 'intelligence');
+  writeIntelligenceExport(approved, rejected, reportMetadata, intelligenceDir);
 
   // === Save history ===
   saveHistory(approved, history, config.history.dir, config.history.maxDays);

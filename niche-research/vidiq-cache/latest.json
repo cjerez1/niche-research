@@ -1,0 +1,1376 @@
+{
+  "date": "2026-05-02",
+  "timestamp": "2026-05-02T07:00:01Z",
+  "source": "claude-cli-vidiq-mcp",
+  "summary": [
+    "Genesis Chamber (hidden history, Sumerian tablets angle) is the single biggest breakout — 45 days old, 20K subs, avg 96K views/video, $7 RPM, fully faceless. One video hit 586K views. Clone the format immediately with an Australian/Pacific angle.",
+    "Forbidden Menu (food safety investigations) grew 464% in 30 days — fastest-growing AU-aligned niche found. Restaurant inspections + ingredient exposés format maps directly onto Claudio's audience.",
+    "Senior health is firing on every angle tested: muscle loss, blood flow, anti-aging foods, sarcopenia. Multiple sub-10K channels getting 20K-100K+ views per video. Sam Turner Seniors Care (3330 subs) had a 97K-view outlier this week.",
+    "Arcana Travel (3430 subs) got 590K views on a single 'World's Most Dangerous Homes' video — extreme/impossible places documentary format is wide open.",
+    "Deep Life Science (1940 subs) pulled 146K views on a Mariana Trench video — earth science documentary lane has almost no competition under 30K subs.",
+    "Retirement finance is premium RPM territory. Retire Early with Dan Wilson (1840 subs) hit 97K views on a 'wealth tiers in retirement' video. Pam Marshall (1480 subs) hit 75K views with a 1037x breakout score on frugal retirement content.",
+    "Australian consumer niche (Aussie Truth, Aussie Inside) is growing steadily but is now the competitive benchmark — not a clean entry. Food safety and label-decoding sub-angles are less saturated.",
+    "Abandoned places compilation format is saturated globally but 'Abandoned [specific country]' still works — biochiao (4210 subs) getting 100K views per video consistently.",
+    "Space documentary for sleep (Bright Side Sleep, 1160 subs, 41K views) is an emerging format with almost no competition — pairs well with Voidscape rebuild.",
+    "Ancient history mystery format (Untold Whys, 4800 subs) is producing consistent 36K-74K view videos — forbidden history angle outperforms straight documentary by 2-3x."
+  ],
+  "candidates": [
+    {
+      "channelId": "UCb0PbQUtdTnh7CiPdOwZ8SQ",
+      "channelTitle": "Genesis Chamber",
+      "channelUrl": "https://www.youtube.com/channel/UCb0PbQUtdTnh7CiPdOwZ8SQ",
+      "niche": "hidden history / ancient civilizations",
+      "whyItMatters": "45-day-old faceless channel already at 20.7K subs, $7,844/month revenue, avg 96K views/video. Sumerian tablets + forbidden archaeology angle. Top video 586K views. $7 RPM. Best launch blueprint Claudio has seen all year.",
+      "vidiqSignals": {
+        "outlierScore": 4.93,
+        "viewsPerHour": 0,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["sumerian tablets", "ancient civilization secrets", "hidden history", "forbidden archaeology", "lost civilizations"]
+      },
+      "stats": {
+        "subscribers": 20700,
+        "averageViews": 96451,
+        "medianViews": 50060,
+        "totalVideos": 17,
+        "uploadsPerWeek": 4,
+        "avgVideoLengthSec": 1242,
+        "firstVideoDate": "2026-03-18"
+      },
+      "videos": [
+        {
+          "videoId": "cFj6OVsNmXI",
+          "title": "The Sumerian Tablet That Describes a Place Inside the Earth — And the Entrance Location It Gives",
+          "views": 586564,
+          "publishedAt": "2026-04-25",
+          "duration": 1525,
+          "outlierScore": 0,
+          "viewsPerHour": 0
+        },
+        {
+          "videoId": "UTVpZrBbcUg",
+          "title": "The Sumerian Tablet That Describes a Second Moon — And the Night It Disappeared",
+          "views": 248258,
+          "publishedAt": "2026-04-27",
+          "duration": 1611,
+          "outlierScore": 0,
+          "viewsPerHour": 0
+        },
+        {
+          "videoId": "QLyV00cVuU0",
+          "title": "The Sumerian King Whose Bones Don't Match Any Known Species",
+          "views": 239296,
+          "publishedAt": "2026-04-17",
+          "duration": 1276,
+          "outlierScore": 0,
+          "viewsPerHour": 0
+        },
+        {
+          "videoId": "MITWV7BS_ak",
+          "title": "A 5,000-Year-Old Sumerian Tablet That Predicts the Next Extinction",
+          "views": 105022,
+          "publishedAt": "2026-04-27",
+          "duration": 1501,
+          "outlierScore": 0,
+          "viewsPerHour": 0
+        },
+        {
+          "videoId": "3PW4gbyTz_Q",
+          "title": "The Lost Tablet of Enki Finally Translated — It Describes Exactly How Humans Were Made",
+          "views": 96440,
+          "publishedAt": "2026-04-22",
+          "duration": 1397,
+          "outlierScore": 0,
+          "viewsPerHour": 0
+        }
+      ],
+      "claudeVerdict": {
+        "score": 92,
+        "verdict": "GO",
+        "reason": "Best performance-per-day-of-existence of any channel in today's scan. $7 RPM, fully faceless, 4x/week cadence, every video is >20K views and top ones are 200K-586K. Lane is not crowded at 20K subs — only a handful of channels doing this angle well.",
+        "nicheBend": "Clone the exact Sumerian/hidden history format but angle into Pacific and Australian pre-history — 'The Aboriginal Tablet That Predicts the Next Disaster,' 'Lost Civilizations of Ancient Australia,' 'The Pacific Map That Shouldn't Exist.' Same curiosity hook, zero AU competition."
+      }
+    },
+    {
+      "channelId": "UCIq8BZAg2ioYOSZVLRC21HQ",
+      "channelTitle": "Forbidden Menu",
+      "channelUrl": "https://www.youtube.com/channel/UCIq8BZAg2ioYOSZVLRC21HQ",
+      "niche": "food safety investigations",
+      "whyItMatters": "464% subscriber growth in 30 days. 10.5K subs, 757K total views, 31 videos. Investigates restaurant safety violations, hidden ingredients, FDA records. Maps perfectly onto Claudio's Food Flip + Aussie Exposed audience — could launch an Australian version immediately.",
+      "vidiqSignals": {
+        "outlierScore": 0,
+        "viewsPerHour": 0,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["food safety violations", "restaurant inspection fails", "hidden food ingredients", "dangerous food brands", "what's really in your food"]
+      },
+      "stats": {
+        "subscribers": 10500,
+        "averageViews": 24437,
+        "medianViews": 0,
+        "totalVideos": 31,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 0,
+        "firstVideoDate": ""
+      },
+      "videos": [],
+      "claudeVerdict": {
+        "score": 88,
+        "verdict": "GO",
+        "reason": "464% sub growth is exceptional. Food safety investigations are high-alarm, high-click content. AU version of this lane is almost empty — Claudio already owns the Aussie food/health audience. Direct extension play.",
+        "nicheBend": "Aussie Food Exposed — restaurant inspection database deep-dives for Australian chains (Woolworths, Coles suppliers, Maccas AU), plus 'What Woolies Doesn't Want You to Know' supermarket investigations. Angle: protecting your family, not just reviewing products."
+      }
+    },
+    {
+      "channelId": "UCUciwZ0NoHPr8TK5HHqVxRw",
+      "channelTitle": "Arcana Travel",
+      "channelUrl": "https://www.youtube.com/channel/UCUciwZ0NoHPr8TK5HHqVxRw",
+      "niche": "extreme places / dangerous homes documentary",
+      "whyItMatters": "3430 subs, got 590K views on a single 'World's Most Dangerous Homes' video and 151K on a rock formations video. Impossible/extreme places format is exploding. Fully faceless stock-footage documentary. 4K cinematic production. Under 30K subs, extraordinary outlier.",
+      "vidiqSignals": {
+        "outlierScore": 319,
+        "viewsPerHour": 3193,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["most dangerous homes", "impossible places", "extreme places on earth", "dangerous locations", "unbelievable places"]
+      },
+      "stats": {
+        "subscribers": 3430,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 4258,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "Eq_02TD9c9s",
+          "title": "Impossible Places | World's Most Dangerous Homes on Planet Earth | 4K Documentary",
+          "views": 590863,
+          "publishedAt": "2026-04-19",
+          "duration": 4258,
+          "outlierScore": 319,
+          "viewsPerHour": 3193
+        }
+      ],
+      "claudeVerdict": {
+        "score": 82,
+        "verdict": "GO",
+        "reason": "590K views from 3430 subs is a 172x view-to-sub ratio — one of the highest in today's scan. The extreme places format pairs faceless stock footage with curiosity-driven hooks. Very low production complexity once the format is locked in.",
+        "nicheBend": "Australia's Most Extreme and Dangerous Places — underground homes at Coober Pedy, crocodile-infested rivers people still live beside, remote outback homesteads, extreme flood plains. High AU search intent + global curiosity about Australia's wildness."
+      }
+    },
+    {
+      "channelId": "UCTG0JOtBWfwqpW7KxyPh4jw",
+      "channelTitle": "Sam Turner Seniors Care",
+      "channelUrl": "https://www.youtube.com/channel/UCTG0JOtBWfwqpW7KxyPh4jw",
+      "niche": "senior health / muscle loss / anti-aging",
+      "whyItMatters": "3330 subs, hit 97K views this week on a muscle-rebuilding foods video — 1073x breakout score. Another muscle loss video at 1157 views, another at 1233 views. New channel, still finding its stride but top video is massive proof of demand.",
+      "vidiqSignals": {
+        "outlierScore": 1073,
+        "viewsPerHour": 83,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["seniors over 60 muscle loss", "sarcopenia diet", "rebuild muscle after 60", "doctors shocked cheap food seniors", "senior health foods"]
+      },
+      "stats": {
+        "subscribers": 3330,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 1506,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "u4vGMXhly5U",
+          "title": "Doctors Shocked: This Cheap Food Rebuilds MUSCLE After 70 | Senior Health Tips",
+          "views": 97539,
+          "publishedAt": "2026-04-13",
+          "duration": 1641,
+          "outlierScore": 1073,
+          "viewsPerHour": 83
+        },
+        {
+          "videoId": "zvW0jJAInMs",
+          "title": "Seniors Over 60, Eat This Every Day To Fight SARCOPENIA Naturally | Senior Health Tips",
+          "views": 1157,
+          "publishedAt": "2026-04-16",
+          "duration": 1579,
+          "outlierScore": 14,
+          "viewsPerHour": 0
+        },
+        {
+          "videoId": "9e_kbekFDVc",
+          "title": "Seniors Over 60, These 3 Foods Restore Walking Strength Fast | Senior Health Tips",
+          "views": 1233,
+          "publishedAt": "2026-04-17",
+          "duration": 1299,
+          "outlierScore": 5,
+          "viewsPerHour": 1
+        }
+      ],
+      "claudeVerdict": {
+        "score": 84,
+        "verdict": "GO",
+        "reason": "97K views from a 3330-sub channel on a muscle-rebuilding video is extremely rare. Proves the senior health + specific food/solution formula is working at scale. The 1073x breakout means this video is outperforming everything else on the channel by a country mile — one viral template to reverse-engineer.",
+        "nicheBend": "Australian Senior Muscle Health — adapt the same formula with Australian-available foods, reference the TGA (not FDA), and mention supermarkets like Woolies and Coles. Hook: 'Doctors in Australia Are Shocked by This $3 Woolies Food That Rebuilds Muscle After 60.'"
+      }
+    },
+    {
+      "channelId": "UC5h9QmNkvepjrbsOkNRZ8QQ",
+      "channelTitle": "Senior Health Mentor",
+      "channelUrl": "https://www.youtube.com/channel/UC5h9QmNkvepjrbsOkNRZ8QQ",
+      "niche": "senior health / dangerous foods over 60",
+      "whyItMatters": "6210 subs. Three recent videos each hitting 10K-46K views: seafood killing seniors (46K), meat killing seniors (34K), seafood stroke risk (10K). Consistently strong formula. 'X Common Foods Are Killing People Over 60' is a proven click machine.",
+      "vidiqSignals": {
+        "outlierScore": 112,
+        "viewsPerHour": 27,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "stable",
+        "keywords": ["foods killing seniors over 60", "dangerous foods for elderly", "senior health food warnings", "what not to eat after 60", "stroke risk foods seniors"]
+      },
+      "stats": {
+        "subscribers": 6210,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 1440,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "mlLR3X5HQrE",
+          "title": "Seniors, These 4 Common Seafoods Are Killing People Over 60",
+          "views": 46736,
+          "publishedAt": "2026-04-07",
+          "duration": 1459,
+          "outlierScore": 47,
+          "viewsPerHour": 26
+        },
+        {
+          "videoId": "t-e0lQfgvkI",
+          "title": "Seniors, These 4 Common Meats Are Killing People Over 60",
+          "views": 34075,
+          "publishedAt": "2026-04-03",
+          "duration": 1409,
+          "outlierScore": 112,
+          "viewsPerHour": 17
+        },
+        {
+          "videoId": "HeJrP6eiRHQ",
+          "title": "Over 60? This Popular SEAFOOD is Causing STROKE Risk In Seniors",
+          "views": 10858,
+          "publishedAt": "2026-04-20",
+          "duration": 1453,
+          "outlierScore": 6,
+          "viewsPerHour": 45
+        }
+      ],
+      "claudeVerdict": {
+        "score": 81,
+        "verdict": "GO",
+        "reason": "Consistent 10K-46K per video. The 'X foods killing people over 60' formula is a proven click driver and watch-time holder — high alarm, high relevance for the 45-70 AU demographic Claudio already owns.",
+        "nicheBend": "Australians Over 60: 4 Seafoods From Woolies That Are Dangerous After 60 — localize the formula with AU-specific products and reference the FSANZ food safety body. Alarm + local relevance = click magnet for Claudio's existing audience."
+      }
+    },
+    {
+      "channelId": "UCeR-3EgcthqGwQcR9VjRfow",
+      "channelTitle": "Deep Life Science",
+      "channelUrl": "https://www.youtube.com/channel/UCeR-3EgcthqGwQcR9VjRfow",
+      "niche": "ocean / earth science documentary",
+      "whyItMatters": "1940 subs. Hit 146K views on a Mariana Trench video — 108x breakout, 2286 VPH. Very new channel. Earth/ocean science documentary lane is almost empty under 30K subs. Direct match for Dark Atlas / Voidscape concepts.",
+      "vidiqSignals": {
+        "outlierScore": 108,
+        "viewsPerHour": 2286,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["mariana trench", "deep sea mysteries", "ocean science documentary", "deep sea exploration", "earth's deepest secrets"]
+      },
+      "stats": {
+        "subscribers": 1940,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 3616,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "snCdE24T-8w",
+          "title": "The Mariana Trench: Unlocking the Deepest Mystery on Earth",
+          "views": 146982,
+          "publishedAt": "2026-05-01",
+          "duration": 3616,
+          "outlierScore": 108,
+          "viewsPerHour": 2286
+        }
+      ],
+      "claudeVerdict": {
+        "score": 80,
+        "verdict": "GO",
+        "reason": "146K views from a 1940-sub channel is a 75x ratio. Earth science curiosity content (ocean, space, geology) is a clean lane for Claudio's Dark Atlas or Voidscape rebuild. Very low saturation under 30K subs.",
+        "nicheBend": "Dark Atlas: Australia's Deep Earth Mysteries — Great Barrier Reef deep zones, Bass Strait anomalies, ancient sea levels that drowned entire civilizations, the underwater shelf Australia's indigenous people once walked. Science + mystery + Australian angle."
+      }
+    },
+    {
+      "channelId": "UCcjvU3djBwZERa6B0xSPgGQ",
+      "channelTitle": "Retire Early with Dan Wilson",
+      "channelUrl": "https://www.youtube.com/channel/UCcjvU3djBwZERa6B0xSPgGQ",
+      "niche": "retirement finance / wealth planning",
+      "whyItMatters": "1840 subs. Two videos this week: 'Wealth Tiers in Retirement' hit 97K views (31x breakout, 895 VPH) and 'Average Retirement Income by Age 65' hit 30K views. Retirement wealth comparison content is a premium RPM niche with an older audience — exactly Claudio's demographic.",
+      "vidiqSignals": {
+        "outlierScore": 31,
+        "viewsPerHour": 895,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["retirement wealth tiers", "wealth ranking at retirement", "retirement income by age", "how much money to retire", "retirement planning tips"]
+      },
+      "stats": {
+        "subscribers": 1840,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 930,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "E9YmtNGyUu4",
+          "title": "The 6 Wealth Tiers in Retirement (Where Do You Rank?)",
+          "views": 97830,
+          "publishedAt": "2026-05-01",
+          "duration": 1013,
+          "outlierScore": 31,
+          "viewsPerHour": 895
+        },
+        {
+          "videoId": "cLuM1yfwmp4",
+          "title": "Average Retirement Income by Age 65 - The Real Number You Should Care About",
+          "views": 30515,
+          "publishedAt": "2026-04-20",
+          "duration": 847,
+          "outlierScore": 13,
+          "viewsPerHour": 5
+        }
+      ],
+      "claudeVerdict": {
+        "score": 78,
+        "verdict": "GO",
+        "reason": "97K views from 1840 subs is 53x view-to-sub ratio. Retirement wealth comparison content triggers massive anxiety + curiosity in 55+ demographic. Premium CPM ($15-25+). Fully script-driven, stock footage, no face required.",
+        "nicheBend": "Australian Retirement Reality — 'The 6 Superannuation Tiers: Where Do Australians Really Stand?', 'What the Average Aussie Actually Has in Super at 65', 'Age Pension Traps Every Australian Must Know.' Direct AU localization of exact same format."
+      }
+    },
+    {
+      "channelId": "UCvPey0HyusZmc-j3Vo3s5mw",
+      "channelTitle": "Pam Marshall | Retired and Smiling",
+      "channelUrl": "https://www.youtube.com/channel/UCvPey0HyusZmc-j3Vo3s5mw",
+      "niche": "frugal living in retirement",
+      "whyItMatters": "1480 subs, hit 75K views on 'Frugal Living in Retirement' — a 1037x breakout score. Extreme outlier for a tiny channel. The 'no savings, what to do' retirement anxiety hook is clearly a Browse traffic magnet.",
+      "vidiqSignals": {
+        "outlierScore": 1037,
+        "viewsPerHour": 76,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["frugal living retirement", "no savings retirement", "retirement on a budget", "making money after retirement", "retirement income ideas"]
+      },
+      "stats": {
+        "subscribers": 1480,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 665,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "oWB4poZtePk",
+          "title": "Frugal Living in Retirement (No Savings? Here's What to Do!)",
+          "views": 75248,
+          "publishedAt": "2026-04-09",
+          "duration": 665,
+          "outlierScore": 1037,
+          "viewsPerHour": 76
+        }
+      ],
+      "claudeVerdict": {
+        "score": 76,
+        "verdict": "GO",
+        "reason": "1037x breakout is the highest video-level outlier score in today's scan. The anxiety hook ('no savings') plus practical survival framing is a Browse magnet for the 60+ cohort. Short-form length (11 min) makes it very producible.",
+        "nicheBend": "Australian Retirement Survival — 'No Super at 65? Here's Exactly What You Can Do,' 'Centrelink Payments Most Australians Don't Claim,' 'How to Live Well on $1,200/Fortnight in Australia.' AU-specific numbers make it feel personal and urgent."
+      }
+    },
+    {
+      "channelId": "UC4XXogRpeOf0mFxMr4UHrEQ",
+      "channelTitle": "Untold Whys",
+      "channelUrl": "https://www.youtube.com/channel/UC4XXogRpeOf0mFxMr4UHrEQ",
+      "niche": "forbidden history / dark historical secrets",
+      "whyItMatters": "4800 subs. Consistent 36K-74K views per video. Three outlier videos this month: '10 Forbidden Ancient Experiments' (74K, 8x), '10 Ancient Weapons History Forgot' (64K, 17x), '10 Catastrophic Events That Erased Civilizations' (36K, 8x). The 'history tried to erase' angle reliably triggers curiosity-click.",
+      "vidiqSignals": {
+        "outlierScore": 17,
+        "viewsPerHour": 220,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "stable",
+        "keywords": ["forbidden history", "ancient experiments history erased", "ancient weapons history forgot", "civilizations erased", "dark history facts"]
+      },
+      "stats": {
+        "subscribers": 4800,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 2547,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "Rzkgqaukujk",
+          "title": "10 Forbidden Ancient Experiments History Tried to Erase",
+          "views": 74260,
+          "publishedAt": "2026-04-28",
+          "duration": 2212,
+          "outlierScore": 8,
+          "viewsPerHour": 220
+        },
+        {
+          "videoId": "cav7J6QmK2I",
+          "title": "10 Ancient Weapons So Deadly History Chose to Forget Them",
+          "views": 64791,
+          "publishedAt": "2026-04-05",
+          "duration": 2427,
+          "outlierScore": 17,
+          "viewsPerHour": 2
+        },
+        {
+          "videoId": "XHiJeX9j84I",
+          "title": "10 Catastrophic Events That Erased Entire Civilizations From History",
+          "views": 36233,
+          "publishedAt": "2026-04-23",
+          "duration": 3003,
+          "outlierScore": 8,
+          "viewsPerHour": 53
+        }
+      ],
+      "claudeVerdict": {
+        "score": 79,
+        "verdict": "GO",
+        "reason": "Proven template: '10 [Thing] That [Authority Figure] Tried to Erase/Forget.' Consistent 36K-74K view range across multiple topics. Simple list format with stock footage. Good RPM potential (history + mystery = $5-8 RPM). Under 5K subs means this lane is still early.",
+        "nicheBend": "Apply the exact '10 Things History Erased' formula to Australian-specific history: '10 Aboriginal Discoveries That European Settlers Tried to Erase,' '10 Australian Crimes History Buried,' '10 Convict Stories They Don't Teach in School.' Local hook + global format."
+      }
+    },
+    {
+      "channelId": "UCCyZgasCxCxhrEe9T10ivrg",
+      "channelTitle": "Dr. James Cross | Senior Health Advice",
+      "channelUrl": "https://www.youtube.com/channel/UCCyZgasCxCxhrEe9T10ivrg",
+      "niche": "senior health / foods for strength after 60",
+      "whyItMatters": "4830 subs. Video 'Powerful Fruits That Keep Your Legs Strong After 60' hit 19K views with a 135x breakout this week. Strong leg/mobility content is consistently outperforming in the senior health space.",
+      "vidiqSignals": {
+        "outlierScore": 135,
+        "viewsPerHour": 75,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["strong legs after 60", "fruits for senior leg strength", "mobility foods seniors", "walking strength after 60", "senior anti-aging foods"]
+      },
+      "stats": {
+        "subscribers": 4830,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 1731,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "0XwDyM3eJ70",
+          "title": "5 Powerful Fruits That Keep Your Legs Strong After 60 Most Seniors Ignore",
+          "views": 19707,
+          "publishedAt": "2026-05-01",
+          "duration": 1731,
+          "outlierScore": 135,
+          "viewsPerHour": 75
+        }
+      ],
+      "claudeVerdict": {
+        "score": 75,
+        "verdict": "GO",
+        "reason": "135x breakout on a brand-new video is strong. Mobility and leg-strength content for seniors is a specific sub-niche with very high watch time — personal relevance keeps people watching the full 30 minutes. High RPM ($8-12) due to pharma/supplement advertiser overlap.",
+        "nicheBend": "5 Fruits Available at Woolies That Keep Aussie Seniors Walking Strong — localize with Australian-specific produce availability, reference the GP system, and mention falls prevention (major AU health concern for over-65 demographic). Hook: 'Physio Reveals What to Eat After 60 to Avoid Hip Surgery.'"
+      }
+    },
+    {
+      "channelId": "UCJ3Zw7DAuhPQz8XHDlijnsA",
+      "channelTitle": "Senior Secrets",
+      "channelUrl": "https://www.youtube.com/channel/UCJ3Zw7DAuhPQz8XHDlijnsA",
+      "niche": "senior health / exercise and cancer prevention",
+      "whyItMatters": "707 subs but two strong outlier videos: 'Oncologist Reveals Simple Daily Habit That Prevents Cancer After 60' (17K views, 110x breakout) and exercise better than walking video (1479 views). Very new channel — catch it early.",
+      "vidiqSignals": {
+        "outlierScore": 110,
+        "viewsPerHour": 0,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["cancer prevention after 60", "oncologist advice seniors", "daily habit prevents cancer", "exercise better than walking seniors", "senior health secrets"]
+      },
+      "stats": {
+        "subscribers": 707,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 1506,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "N_KHk6jftWs",
+          "title": "Oncologist Reveals: THIS Simple Daily Habit That Prevents Cancer After 60 | Senior Health",
+          "views": 17681,
+          "publishedAt": "2026-04-15",
+          "duration": 1564,
+          "outlierScore": 110,
+          "viewsPerHour": 0
+        },
+        {
+          "videoId": "gUDH-Y5ehKE",
+          "title": "Over 60? THIS 1 Exercise Is Better Than Walking — Surgeon Approved!",
+          "views": 1479,
+          "publishedAt": "2026-04-17",
+          "duration": 1449,
+          "outlierScore": 9,
+          "viewsPerHour": 0
+        }
+      ],
+      "claudeVerdict": {
+        "score": 72,
+        "verdict": "GO",
+        "reason": "The 'Oncologist Reveals' credibility hook is proven and 110x outlier on a 707-sub channel is exceptional. Cancer prevention after 60 is one of the highest-anxiety topics for Claudio's target audience. Very early stage — monitor this format.",
+        "nicheBend": "Australian Cancer Council Reveals: The 1 Daily Habit That Cuts Cancer Risk After 60 — use AU health authority references (Cancer Council, CSIRO) and AU-specific stats. The credibility hook multiplies with a recognized local institution name-dropped in thumbnail and title."
+      }
+    },
+    {
+      "channelId": "UCe92S2ualLUyivaO3afQu6w",
+      "channelTitle": "Unexplained History",
+      "channelUrl": "https://www.youtube.com/channel/UCe92S2ualLUyivaO3afQu6w",
+      "niche": "ancient mysteries / unexplained archaeology",
+      "whyItMatters": "4980 subs. '25 Ancient Mysteries We Still Can't Explain' got a 38x breakout this week. 'History Is Hiding Something' got 25x breakout. Consistent ancient mystery content performing above channel average. Well-framed packaging.",
+      "vidiqSignals": {
+        "outlierScore": 38,
+        "viewsPerHour": 0,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "stable",
+        "keywords": ["ancient mysteries unexplained", "history is hiding something", "unexplained ancient sites", "ancient engineering mysteries", "megalithic structures mystery"]
+      },
+      "stats": {
+        "subscribers": 4980,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 1790,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "VHL-6ia5mJs",
+          "title": "25 Ancient Mysteries We Still Can't Explain",
+          "views": 4615,
+          "publishedAt": "2026-05-01",
+          "duration": 2134,
+          "outlierScore": 38,
+          "viewsPerHour": 0
+        },
+        {
+          "videoId": "1JzFB1ppumM",
+          "title": "History Is Hiding Something… 7 Ancient Mysteries That Challenge Everything",
+          "views": 1671,
+          "publishedAt": "2026-04-01",
+          "duration": 447,
+          "outlierScore": 25,
+          "viewsPerHour": 0
+        }
+      ],
+      "claudeVerdict": {
+        "score": 71,
+        "verdict": "GO",
+        "reason": "Consistent above-average performance on ancient mystery content. The 'history is hiding something' framing is extremely clickable. Pairs well with Dark Atlas concept. Moderate RPM ($5-8) but high watch time due to curiosity retention.",
+        "nicheBend": "7 Australian Ancient Mysteries That Challenge Everything We Know — the Gympie Pyramid, ancient Hindu temples possibly found in Queensland, Bradshaw rock art that predate current Aboriginal history, underwater ruins off Perth. Rich local content that global channels haven't touched."
+      }
+    },
+    {
+      "channelId": "UCMQfVQWaTJyiLZwv_DdV7XQ",
+      "channelTitle": "Aussie Truth",
+      "channelUrl": "https://www.youtube.com/channel/UCMQfVQWaTJyiLZwv_DdV7XQ",
+      "niche": "Australian consumer advocacy / scam exposés",
+      "whyItMatters": "9280 subs, AU-based, faceless, 97 videos, 1.1M total views. Growing at 8% per month. Exposes Australian companies, supermarket scams, toxic food, dodgy mechanics. Direct competitive intelligence for Claudio's Food Flip and Aussie Exposed channels.",
+      "vidiqSignals": {
+        "outlierScore": 0,
+        "viewsPerHour": 0,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "stable",
+        "keywords": ["aussie scams", "australian companies ripping you off", "supermarket scams australia", "toxic food australia", "consumer advocacy australia"]
+      },
+      "stats": {
+        "subscribers": 9280,
+        "averageViews": 11497,
+        "medianViews": 0,
+        "totalVideos": 97,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 0,
+        "firstVideoDate": ""
+      },
+      "videos": [],
+      "claudeVerdict": {
+        "score": 70,
+        "verdict": "CAUTION",
+        "reason": "Direct competitor to Claudio's channels. Growing but at 9.3K subs with 97 videos it hasn't broken out — view efficiency is mediocre. Key intel: their scam/automotive content is underperforming vs food/health content. Claudio's existing channels should avoid the scam angle and stay on food/health where RPM is higher.",
+        "nicheBend": "Not a launch target — use as competitive benchmark. Watch what Aussie Truth's food/health videos get vs their scam videos to identify the sub-niche with most Browse traction."
+      }
+    },
+    {
+      "channelId": "UC98pzPYUHkhILW2cQ8M-OyA",
+      "channelTitle": "Aussie Inside",
+      "channelUrl": "https://www.youtube.com/channel/UC98pzPYUHkhILW2cQ8M-OyA",
+      "niche": "Australian consumer product analysis",
+      "whyItMatters": "18200 subs, 1.4M total views, 65 videos. Growing at 13% per month. 'Breaks down what's really being sold, how it's made, and why it matters.' Positioned as AU's answer to consumer label content. Growing faster than Aussie Truth — better format discipline.",
+      "vidiqSignals": {
+        "outlierScore": 0,
+        "viewsPerHour": 0,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["aussie product analysis", "what's really in australian food", "australian food labels exposed", "consumer insights australia", "aussie brand breakdown"]
+      },
+      "stats": {
+        "subscribers": 18200,
+        "averageViews": 21630,
+        "medianViews": 0,
+        "totalVideos": 65,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 0,
+        "firstVideoDate": ""
+      },
+      "videos": [],
+      "claudeVerdict": {
+        "score": 68,
+        "verdict": "CAUTION",
+        "reason": "Closest competitor to Claudio's Food Flip at 18.2K subs with 13% monthly growth. Their growth velocity is respectable but at this size the lane is clearly working — confirms Claudio's existing strategy is sound. Key risk: if Aussie Inside keeps growing, it becomes the dominant player in Claudio's niche.",
+        "nicheBend": "Don't try to out-Aussie-Inside Aussie Inside. Claudio's edge should be more alarming framing ('dangerous' not just 'analysed') and older audience angle (50-70, not generic Aussie consumer). Add a dedicated series: 'What Every Australian Over 60 Needs to Stop Buying at Woolies.'"
+      }
+    },
+    {
+      "channelId": "UCfkYkHhPSo3hSviHdWsuUWg",
+      "channelTitle": "Label Exposed",
+      "channelUrl": "https://www.youtube.com/channel/UCfkYkHhPSo3hSviHdWsuUWg",
+      "niche": "food ingredient label decoding",
+      "whyItMatters": "2640 subs, 164K total views, 13 videos. 14.78% sub growth in 30 days. Breaks down what's really in everyday food — hidden sugars, marketing tricks, product reviews. Early stage but clean format. Not AU-focused — global lane with AU opportunity.",
+      "vidiqSignals": {
+        "outlierScore": 0,
+        "viewsPerHour": 0,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["food label exposed", "hidden ingredients food", "nutrition label decoding", "what's really in your food", "food marketing tricks"]
+      },
+      "stats": {
+        "subscribers": 2640,
+        "averageViews": 12643,
+        "medianViews": 0,
+        "totalVideos": 13,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 0,
+        "firstVideoDate": ""
+      },
+      "videos": [],
+      "claudeVerdict": {
+        "score": 70,
+        "verdict": "GO",
+        "reason": "Clean format, early stage, 164K views from only 13 videos = 12.6K avg. Label education content holds watch time well — viewers are solving a personal problem. Very low saturation with AU-specific angle.",
+        "nicheBend": "What's Really in Your Woolies Product — deep-dive each popular AU supermarket product. 'I Read Every Ingredient in Woolies Frozen Meals So You Don't Have To.' Specific product names = SEO + Browse traffic. AU angle is almost untouched."
+      }
+    },
+    {
+      "channelId": "UCU46OjqSzu4IDAWiruWYuYQ",
+      "channelTitle": "Easy Documentary Nature",
+      "channelUrl": "https://www.youtube.com/channel/UCU46OjqSzu4IDAWiruWYuYQ",
+      "niche": "volcano / natural disaster documentary",
+      "whyItMatters": "4710 subs. 'The Lost Volcano: The Eruption That Shook Every Civilisation on Earth' got 54K views with 155x breakout and 64 VPH. Full-length documentary format (~53 min). Matches Crisis Alert channel concept perfectly.",
+      "vidiqSignals": {
+        "outlierScore": 155,
+        "viewsPerHour": 64,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["lost volcano documentary", "eruption that changed history", "medieval volcanic eruption", "geology mystery documentary", "natural disaster history"]
+      },
+      "stats": {
+        "subscribers": 4710,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 3197,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "mjeYz0cGroM",
+          "title": "The Lost Volcano: The Eruption That Shook Every Civilisation on Earth - Full Nature Documentary",
+          "views": 54409,
+          "publishedAt": "2026-04-01",
+          "duration": 3197,
+          "outlierScore": 155,
+          "viewsPerHour": 64
+        }
+      ],
+      "claudeVerdict": {
+        "score": 74,
+        "verdict": "GO",
+        "reason": "155x breakout on a volcano/civilisation collapse video proves the earth-disaster-meets-history format works. Directly relevant to Crisis Alert channel concept. Long-form documentaries (50+ min) with mystery hooks drive enormous watch time.",
+        "nicheBend": "Crisis Alert: The Australian Mega-Eruption — Australia's supervolcano history (Lake Toba effects on Pacific, the Taupo eruption's reach, volcanic risk zones in northern QLD). Also strong: 'The Earth Event That Will Hit Australia First' — high browse potential for disaster-curious audience."
+      }
+    },
+    {
+      "channelId": "UCLKgoyluFW4mBylTyl4ihBQ",
+      "channelTitle": "biochiao",
+      "channelUrl": "https://www.youtube.com/channel/UCLKgoyluFW4mBylTyl4ihBQ",
+      "niche": "abandoned places by location",
+      "whyItMatters": "4210 subs, two videos this month getting 100K and 92K views — '10 Abandoned Places in Ontario' (100K, 21x breakout) and '10 Abandoned Places in Alberta' (92K). The '[Number] Abandoned Places in [Location]' formula is a reliable Browse magnet — SEO + curiosity combination.",
+      "vidiqSignals": {
+        "outlierScore": 21,
+        "viewsPerHour": 6,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "stable",
+        "keywords": ["abandoned places ontario", "abandoned places alberta", "abandoned places in canada", "abandoned places you don't know", "urban exploration documentary"]
+      },
+      "stats": {
+        "subscribers": 4210,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 1259,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "Eb3k8lUNvHo",
+          "title": "10 Abandoned Places in Ontario I Bet You Don't Know!",
+          "views": 100700,
+          "publishedAt": "2026-04-01",
+          "duration": 1467,
+          "outlierScore": 21,
+          "viewsPerHour": 6
+        },
+        {
+          "videoId": "25gx-1cU-DM",
+          "title": "10 Abandoned Places in Alberta I Bet You Don't Know!",
+          "views": 91963,
+          "publishedAt": "2026-04-07",
+          "duration": 1051,
+          "outlierScore": 5,
+          "viewsPerHour": 7
+        }
+      ],
+      "claudeVerdict": {
+        "score": 72,
+        "verdict": "GO",
+        "reason": "Reliable 90K-100K view formula with only 4210 subs proves the format is Browse-driven not subscription-driven. The 'I Bet You Don't Know' hook in the title is doing heavy lifting. Faceless, fully stock-footage or photo-driven.",
+        "nicheBend": "10 Abandoned Places in [Australian State] I Bet You Don't Know — NSW, VIC, QLD series. Ghost towns in the outback, abandoned asylums, decayed industrial sites. AU-specific content is under-served globally and has strong Browse potential from the AU 45-70 demographic who remember these places."
+      }
+    },
+    {
+      "channelId": "UCSG11qrguVTXJ3tjjcKJ5vQ",
+      "channelTitle": "Bright Side Sleep",
+      "channelUrl": "https://www.youtube.com/channel/UCSG11qrguVTXJ3tjjcKJ5vQ",
+      "niche": "space documentary for sleep / bedtime science",
+      "whyItMatters": "1160 subs but two space documentary videos this month: James Webb Telescope (41K views, 70x breakout) and Life on Mars Detected (7.8K views). 'Space documentary for sleep' is a novel format with low competition — 5-hour videos that people fall asleep to. Very long average watch time = high revenue per video.",
+      "vidiqSignals": {
+        "outlierScore": 70,
+        "viewsPerHour": 2,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["space documentary for sleep", "james webb telescope discoveries", "sleep science documentary", "planet 9 found", "space documentary bedtime"]
+      },
+      "stats": {
+        "subscribers": 1160,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 5326,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "p1mAlpUa2JY",
+          "title": "James Webb Telescope Discovers a Nearby World | Space Documentary for Sleep",
+          "views": 41349,
+          "publishedAt": "2026-04-10",
+          "duration": 5417,
+          "outlierScore": 70,
+          "viewsPerHour": 2
+        },
+        {
+          "videoId": "Pzcc2cDNqrQ",
+          "title": "Life on Mars Detected!? NASA's Latest Findings | Space Documentary for Sleep",
+          "views": 7845,
+          "publishedAt": "2026-05-01",
+          "duration": 5235,
+          "outlierScore": 7,
+          "viewsPerHour": 5
+        }
+      ],
+      "claudeVerdict": {
+        "score": 69,
+        "verdict": "GO",
+        "reason": "41K views from 1160 subs is a 35x ratio. The 'for sleep' format drives 1-3 hour watch sessions per view — extreme revenue efficiency per view count. Low competition. Voidscape should test this exact format: '3 Hours of Cosmic Space: Fall Asleep to the Universe.'",
+        "nicheBend": "Voidscape Sleep Edition — long-form (3-5 hour) cinematic space documentary with calm voiceover specifically designed for sleep. 'Drift Off to the Cosmos: 4 Hours of Space Discoveries' as a series. Target insomniacs and people who use YouTube as a sleep aid — large and underserved."
+      }
+    },
+    {
+      "channelId": "UC88nqsPuZf_ad9YVIbu8aMQ",
+      "channelTitle": "Epic Aussie Encounters",
+      "channelUrl": "https://www.youtube.com/channel/UC88nqsPuZf_ad9YVIbu8aMQ",
+      "niche": "Australian wildlife documentary / trail camera",
+      "whyItMatters": "8000 subs, 3.8M total views, 35 videos. 128% sub growth in 30 days — fastest-growing AU wildlife channel in today's scan. Authentic trail camera footage of Australian bush animals. Fully faceless by definition. Strong AU audience identity.",
+      "vidiqSignals": {
+        "outlierScore": 0,
+        "viewsPerHour": 0,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["australian wildlife", "trail camera australia", "australian bush animals", "wildlife documentary australia", "epic wildlife encounters"]
+      },
+      "stats": {
+        "subscribers": 8000,
+        "averageViews": 108974,
+        "medianViews": 0,
+        "totalVideos": 35,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 0,
+        "firstVideoDate": ""
+      },
+      "videos": [],
+      "claudeVerdict": {
+        "score": 65,
+        "verdict": "CAUTION",
+        "reason": "3.8M views from 35 videos (108K avg) is extraordinary. But this is authentic-footage content — requires real trail camera setup in Australian bush. Not easily replicable with Claudio's stock-footage production model unless using existing wildlife footage libraries.",
+        "nicheBend": "Australian Wildlife Explained — narrated documentary using licensed wildlife footage covering dangerous Australian animals, unknown species, predator-prey encounters. Similar hook (Australian wildlife curiosity) but producible via stock footage without requiring own trail cameras."
+      }
+    },
+    {
+      "channelId": "UCamt5qrkNaMkEjFF4Bhy1eA",
+      "channelTitle": "Loving Australia",
+      "channelUrl": "https://www.youtube.com/channel/UCamt5qrkNaMkEjFF4Bhy1eA",
+      "niche": "Australian hidden gems / retirement living",
+      "whyItMatters": "12300 subs, 1.8M total views, 52 videos. 18.27% sub growth last 30 days. Explores overlooked Australian places — affordable towns, lifestyle trade-offs, real cost of living. Retirement and affordable living angle is built in. Strong AU identity and senior-demographic appeal.",
+      "vidiqSignals": {
+        "outlierScore": 0,
+        "viewsPerHour": 0,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["affordable places to live australia", "hidden australia gems", "retirement living australia", "australian towns to move to", "best places retire australia"]
+      },
+      "stats": {
+        "subscribers": 12300,
+        "averageViews": 35183,
+        "medianViews": 0,
+        "totalVideos": 52,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 0,
+        "firstVideoDate": ""
+      },
+      "videos": [],
+      "claudeVerdict": {
+        "score": 64,
+        "verdict": "GO",
+        "reason": "35K avg views and steady 18% monthly growth. Retirement-affordable-living content hits Claudio's exact demographic. Not saturated at 12K subs. Pairs with Australian Retirement Reality channel concept.",
+        "nicheBend": "Best Australian Towns to Retire in on $1,200/Fortnight — blend the 'hidden Aussie places' format with the retirement finance angle. 'Where Pensioners Actually Live Well in Australia' series hits Browse hard because older Australians are actively searching this."
+      }
+    },
+    {
+      "channelId": "UCwshX3KfRvcLPx6dlsqVmPw",
+      "channelTitle": "Super CentralLink AU",
+      "channelUrl": "https://www.youtube.com/channel/UCwshX3KfRvcLPx6dlsqVmPw",
+      "niche": "Australian superannuation / retirement planning",
+      "whyItMatters": "4460 subs. Video 'Early Retirement in Australia: How Much Money You Really Need Before 60' got 2K views this week. Small but occupies a specific AU retirement finance lane with zero real competition. Superannuation + Centrelink = premium AU advertiser category.",
+      "vidiqSignals": {
+        "outlierScore": 2,
+        "viewsPerHour": 0,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "stable",
+        "keywords": ["early retirement australia", "superannuation early retirement", "retire before 60 australia", "centrelink retirement australia", "how much super do I need"]
+      },
+      "stats": {
+        "subscribers": 4460,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 711,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "yPTWCw3q3ew",
+          "title": "Early Retirement in Australia: How Much Money You Really Need Before 60",
+          "views": 2063,
+          "publishedAt": "2026-04-24",
+          "duration": 711,
+          "outlierScore": 2,
+          "viewsPerHour": 0
+        }
+      ],
+      "claudeVerdict": {
+        "score": 62,
+        "verdict": "BEND",
+        "reason": "Occupies the right lane but views are modest. The AU superannuation topic is correct — premium CPM and highly specific to Claudio's demographic. However the format needs sharpening. Too informational, not alarming enough.",
+        "nicheBend": "The Superannuation Trap Most Australians Over 55 Don't Know About — reframe as an alarm/revelation format instead of educational guide. 'Why Your Super is Shrinking Without You Knowing,' 'The Centrelink Trap That Costs Aussie Retirees $40K.' Alarm framing drives Browse; tutorial framing doesn't."
+      }
+    },
+    {
+      "channelId": "UCqPIg67VjQLbTe5cxqWfSAw",
+      "channelTitle": "Healing Path",
+      "channelUrl": "https://www.youtube.com/channel/UCqPIg67VjQLbTe5cxqWfSAw",
+      "niche": "natural health / senior circulation",
+      "whyItMatters": "20500 subs. 'Drink THIS to Boost Blood Flow in Your Legs' hit 74K views with 123x breakout. Senior circulation content — leg pain, blood flow, natural remedies — is consistently outperforming in the 60+ health niche. Near the 30K ceiling but still relevant as format signal.",
+      "vidiqSignals": {
+        "outlierScore": 123,
+        "viewsPerHour": 340,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "stable",
+        "keywords": ["boost blood flow legs seniors", "leg circulation remedy", "natural blood flow boost", "leg pain at night seniors", "improve circulation after 60"]
+      },
+      "stats": {
+        "subscribers": 20500,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 1161,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "Dhye1KlcSeE",
+          "title": "Over 60 Drink THIS to Boost Blood Flow in Your Legs Fast — Senior Health Tips",
+          "views": 74555,
+          "publishedAt": "2026-04-01",
+          "duration": 1161,
+          "outlierScore": 123,
+          "viewsPerHour": 340
+        }
+      ],
+      "claudeVerdict": {
+        "score": 62,
+        "verdict": "BEND",
+        "reason": "At 20500 subs this channel is at the upper boundary but the video formula is proven: specific body problem (leg blood flow) + drink solution + over 60 hook. The format is worth reverse-engineering even if the channel itself is not an early opportunity.",
+        "nicheBend": "Use this exact video formula for Claudio's senior health channel: 'Drink THIS Every Morning to Fix Leg Circulation After 60 — Australian GPs Are Recommending It.' Add AU food brand specifics (beetroot from Woolies, etc.) and medical localization."
+      }
+    },
+    {
+      "channelId": "UCXJcg1KF71lcDD64fuDXuBg",
+      "channelTitle": "Australian Decode",
+      "channelUrl": "https://www.youtube.com/channel/UCXJcg1KF71lcDD64fuDXuBg",
+      "niche": "Australian political satire",
+      "whyItMatters": "4830 subs, 34.92% sub growth in 30 days — second-fastest AU channel growth in today's scan. AU-based, faceless, political satire and commentary. 316K total views from 37 videos. High engagement audience but lower RPM than health/finance.",
+      "vidiqSignals": {
+        "outlierScore": 0,
+        "viewsPerHour": 0,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["australian politics satire", "australian political commentary", "australia politics parody", "australian election satire", "political humor australia"]
+      },
+      "stats": {
+        "subscribers": 4830,
+        "averageViews": 8544,
+        "medianViews": 0,
+        "totalVideos": 37,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 0,
+        "firstVideoDate": ""
+      },
+      "videos": [],
+      "claudeVerdict": {
+        "score": 58,
+        "verdict": "CAUTION",
+        "reason": "35% monthly growth is impressive but political satire is a low-RPM niche ($1-3) and the content requires more Australian cultural knowledge to execute well. Risk: political content changes rapidly, evergreen production is harder, and demonetization risk is higher.",
+        "nicheBend": "Instead of satire, consider 'Australian Consumer Investigations' — same AU-outrage hook but applied to corporate behavior (not politicians). Higher RPM, lower demonetization risk, more evergreen content library."
+      }
+    },
+    {
+      "channelId": "UCy9Ny6KDgOo8XumJt742PNg",
+      "channelTitle": "Jakes History",
+      "channelUrl": "https://www.youtube.com/channel/UCy9Ny6KDgOo8XumJt742PNg",
+      "niche": "history / disasters that changed civilization",
+      "whyItMatters": "2520 subs. '10 Disasters That Changed Human History Forever' got 12K views with 3.76x breakout and 41 VPH on release day. New channel, early stage. Disaster-history hybrid content is under-served at this channel size.",
+      "vidiqSignals": {
+        "outlierScore": 3,
+        "viewsPerHour": 41,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["disasters that changed history", "historical catastrophes", "events that shaped human history", "history documentary disasters", "catastrophic historical events"]
+      },
+      "stats": {
+        "subscribers": 2520,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 3165,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "_1MlHnye8r4",
+          "title": "10 Disasters That Changed Human History Forever",
+          "views": 12722,
+          "publishedAt": "2026-05-01",
+          "duration": 3165,
+          "outlierScore": 3,
+          "viewsPerHour": 41
+        }
+      ],
+      "claudeVerdict": {
+        "score": 62,
+        "verdict": "GO",
+        "reason": "Small channel but the disaster-history format is a natural fit for Crisis Alert. Good Browse hook — catastrophe + historical stakes = high click. Fully faceless with stock footage/archival material.",
+        "nicheBend": "Crisis Alert: 10 Natural Disasters That Could Hit Australia Without Warning — combine the disaster-history format with a local preparedness angle. Doubles as educational (survives demonetization) and alarm content (drives Browse). 'Are You Prepared for Australia's Next Big One?' series."
+      }
+    },
+    {
+      "channelId": "UCe_lOSQA7d6B-HvUcOIWdvQ",
+      "channelTitle": "British Food Blogger",
+      "channelUrl": "https://www.youtube.com/channel/UCe_lOSQA7d6B-HvUcOIWdvQ",
+      "niche": "UK supermarket food investigations",
+      "whyItMatters": "2220 subs, 69.47% sub growth in 30 days — highest growth rate among small food channels in today's scan. Investigates UK supermarket brands, food quality, shrinkflation, misleading labels. 320K total views from 44 videos = 7.2K avg. Format is identical to what Claudio should be doing for AU.",
+      "vidiqSignals": {
+        "outlierScore": 0,
+        "viewsPerHour": 0,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["uk supermarket food investigation", "shrinkflation uk", "food quality getting worse uk", "supermarket brands to avoid", "misleading food labels uk"]
+      },
+      "stats": {
+        "subscribers": 2220,
+        "averageViews": 7290,
+        "medianViews": 0,
+        "totalVideos": 44,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 0,
+        "firstVideoDate": ""
+      },
+      "videos": [],
+      "claudeVerdict": {
+        "score": 65,
+        "verdict": "GO",
+        "reason": "70% monthly growth from a small base is meaningful. The format (supermarket-specific investigations, not vague food safety) is very structured and producible. AU version has almost no direct competition at this exact angle.",
+        "nicheBend": "Aussie Shrinkflation Exposed — exactly what Australian supermarkets are quietly doing: reducing product sizes, substituting cheaper ingredients, repricing. Highly shareable because it triggers financial anger + health concerns simultaneously. Woolies/Coles brands as specific targets each episode."
+      }
+    },
+    {
+      "channelId": "UCLqz5hkF3k4ael-77Gj7rEA",
+      "channelTitle": "Loving Kingdoms",
+      "channelUrl": "https://www.youtube.com/channel/UCLqz5hkF3k4ael-77Gj7rEA",
+      "niche": "abandoned places UK / urban exploration documentary",
+      "whyItMatters": "5480 subs. '12 Abandoned Places in UK I Bet You Don't Know' hit 53K views with 16x breakout. Consistent format: '[Number] Abandoned Places in [Location] I Bet You Don't Know.' Faceless photo/archive-driven content, no actual location visits required.",
+      "vidiqSignals": {
+        "outlierScore": 16,
+        "viewsPerHour": 40,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "stable",
+        "keywords": ["abandoned places uk", "abandoned uk locations", "forgotten places uk", "abandoned buildings uk", "hidden abandoned places"]
+      },
+      "stats": {
+        "subscribers": 5480,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 2271,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "ESPmHF1Ef2k",
+          "title": "12 Abandoned Places in UK I Bet You Don't Know!",
+          "views": 53603,
+          "publishedAt": "2026-04-23",
+          "duration": 2271,
+          "outlierScore": 16,
+          "viewsPerHour": 40
+        }
+      ],
+      "claudeVerdict": {
+        "score": 63,
+        "verdict": "GO",
+        "reason": "Reliable formula, consistent views, fully producible with stock images and research. The 'I Bet You Don't Know' hook is proven. AU version of this exact channel doesn't exist at scale.",
+        "nicheBend": "Abandoned World — 12 Forgotten Places in [Australian State] You've Never Seen. Pure archival/photo format, no field visits. South Australian ghost towns, Queensland abandoned asylums, Victorian goldfield ruins. Series could run indefinitely given Australia's rich history of abandoned settlements."
+      }
+    },
+    {
+      "channelId": "UCtov7xxNci2y_tSZZyIzScQ",
+      "channelTitle": "Transformers Archive",
+      "channelUrl": "https://www.youtube.com/channel/UCtov7xxNci2y_tSZZyIzScQ",
+      "niche": "animation / franchise lore documentary",
+      "whyItMatters": "2780 subs, created 2026-04-14. Only 5 videos total but avg 202K views/video — outlier score 43.74, best in NexLev cache today. Not a priority niche for Claudio BUT the educational 'Everything Explained' lore format is a template worth noting. Faceless, narration-driven.",
+      "vidiqSignals": {
+        "outlierScore": 43.74,
+        "viewsPerHour": 0,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "rising",
+        "keywords": ["transformers explained", "all primes explained", "transformers lore", "transformers combiners", "everything explained franchise"]
+      },
+      "stats": {
+        "subscribers": 2780,
+        "averageViews": 202962,
+        "medianViews": 177997,
+        "totalVideos": 5,
+        "uploadsPerWeek": 1.25,
+        "avgVideoLengthSec": 691,
+        "firstVideoDate": "2026-04-14"
+      },
+      "videos": [
+        {
+          "videoId": "M4SLYrvH4Tg",
+          "title": "All 13 Original Primes in Transformers Explained.",
+          "views": 407864,
+          "publishedAt": "2026-04-18",
+          "duration": 880,
+          "outlierScore": 43,
+          "viewsPerHour": 0
+        },
+        {
+          "videoId": "fLP37mC0QQo",
+          "title": "Every Eye Color in Transformers Explained.",
+          "views": 209110,
+          "publishedAt": "2026-04-30",
+          "duration": 642,
+          "outlierScore": 43,
+          "viewsPerHour": 0
+        },
+        {
+          "videoId": "NyY8LHIIhis",
+          "title": "Every Transformers Combiner Explained (Part 1)",
+          "views": 178014,
+          "publishedAt": "2026-04-18",
+          "duration": 602,
+          "outlierScore": 43,
+          "viewsPerHour": 0
+        }
+      ],
+      "claudeVerdict": {
+        "score": 55,
+        "verdict": "BEND",
+        "reason": "Wrong niche for Claudio but the format insight is valuable: 'Every [X] in [Franchise] Explained' generates 200K+ views per video on a 2780-sub channel. The formula is: exhaustive classification + visual hierarchy + satisfying completeness. Apply this to AU history or science.",
+        "nicheBend": "Every Dangerous Animal in Australia Explained — ranked by lethality, range, frequency of attacks, historical incidents. Or 'Every Australian Natural Disaster Type Explained' for Crisis Alert. The exhaustive-list documentary format is clearly working and is fully faceless."
+      }
+    },
+    {
+      "channelId": "UCU0b14n5B0qmECiGTSzFiqg",
+      "channelTitle": "The WWII Chronicle",
+      "channelUrl": "https://www.youtube.com/channel/UCU0b14n5B0qmECiGTSzFiqg",
+      "niche": "WWII history documentary",
+      "whyItMatters": "2180 subs, created 2026-03-11. 27 videos in 7 weeks. Patton-focused series getting 45K, 29K, 21K views per video. $7 RPM (history = premium). Faceless, fully producible, 3.25 uploads/week pace. Top outlier video 45K views on a 2180-sub channel = strong Browse signal.",
+      "vidiqSignals": {
+        "outlierScore": 0.18,
+        "viewsPerHour": 0,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "stable",
+        "keywords": ["patton wwii", "wwii documentary", "world war 2 stories", "wwii battles explained", "patton true stories"]
+      },
+      "stats": {
+        "subscribers": 2180,
+        "averageViews": 5131,
+        "medianViews": 720,
+        "totalVideos": 27,
+        "uploadsPerWeek": 3.25,
+        "avgVideoLengthSec": 1834,
+        "firstVideoDate": "2026-03-17"
+      },
+      "videos": [
+        {
+          "videoId": "4ybIhui83bA",
+          "title": "Patton Found Tortured American POWs — His Next Order Shook His Own Men",
+          "views": 45551,
+          "publishedAt": "2026-04-18",
+          "duration": 1190,
+          "outlierScore": 0,
+          "viewsPerHour": 0
+        },
+        {
+          "videoId": "E4nSvHVIs8Y",
+          "title": "Patton's Revenge: What He Did to the Men Who Tortured US POWs",
+          "views": 29683,
+          "publishedAt": "2026-04-18",
+          "duration": 1033,
+          "outlierScore": 0,
+          "viewsPerHour": 0
+        },
+        {
+          "videoId": "D-iv5UNHvtE",
+          "title": "He Insulted Patton to His Face — The General's Reply Was Chilling",
+          "views": 21345,
+          "publishedAt": "2026-04-23",
+          "duration": 1987,
+          "outlierScore": 0,
+          "viewsPerHour": 0
+        }
+      ],
+      "claudeVerdict": {
+        "score": 60,
+        "verdict": "CAUTION",
+        "reason": "Median of 720 views but top video at 45K shows the channel has Browse-trigger content occasionally. WWII is saturated globally but the Patton-specific angle is working. $7 RPM makes this worth noting as format intel.",
+        "nicheBend": "WWII and Australia — the Pacific War, Kokoda Track, Australian POWs in Japanese camps, Darwin bombing, the Battle of the Coral Sea. Same production model but with strong AU national identity appeal. ANZAC-adjacent content gets very high engagement from Claudio's AU 45-70 demographic."
+      }
+    },
+    {
+      "channelId": "UCggo3oHqpYMIB2TSo3IkiFA",
+      "channelTitle": "Natural Healing Lab",
+      "channelUrl": "https://www.youtube.com/channel/UCggo3oHqpYMIB2TSo3IkiFA",
+      "niche": "natural remedies / senior circulation",
+      "whyItMatters": "29700 subs (near limit). Two outlier videos this month: sleeping position for leg circulation (20K, 61x breakout) and blood flow drink (8.9K, 17x breakout). Consistently producing content in the natural healing + senior health overlap. Near-capacity channel but format is proven.",
+      "vidiqSignals": {
+        "outlierScore": 61,
+        "viewsPerHour": 50,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "stable",
+        "keywords": ["natural healing seniors", "sleeping position blood flow", "leg circulation improvement", "natural remedies over 60", "senior circulation tips"]
+      },
+      "stats": {
+        "subscribers": 29700,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 1698,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "gicz5Fr8QE0",
+          "title": "Seniors, THIS Sleeping Position to Increase Blood Flow in Legs Fast",
+          "views": 20021,
+          "publishedAt": "2026-04-17",
+          "duration": 1735,
+          "outlierScore": 61,
+          "viewsPerHour": 50
+        },
+        {
+          "videoId": "pzUBvHpxXG0",
+          "title": "Over 60 Drink THIS to Boost Blood Flow in Your Legs Fast Senior Health Tips",
+          "views": 8918,
+          "publishedAt": "2026-04-19",
+          "duration": 1666,
+          "outlierScore": 17,
+          "viewsPerHour": 8
+        }
+      ],
+      "claudeVerdict": {
+        "score": 57,
+        "verdict": "CAUTION",
+        "reason": "Near the 30K sub ceiling so not an early-entry opportunity. But valuable as format confirmation: the sleeping-position-for-health formula is under-exploited. 'The Exact Sleeping Position That Fixes [Problem] After 60' is highly clickable and under 10 minutes, easy to produce.",
+        "nicheBend": "Not a target channel — use as content formula intel. Reverse-engineer the 'sleeping position' hook for Claudio's senior health content. 'The Sleeping Position Australian GPs Are Now Recommending After 60' would generate strong Browse on Aussie Exposed or a new dedicated senior health channel."
+      }
+    },
+    {
+      "channelId": "UCvkSiQuVWyujqyMeG_HA6Dg",
+      "channelTitle": "Midnight Screams",
+      "channelUrl": "https://www.youtube.com/channel/UCvkSiQuVWyujqyMeG_HA6Dg",
+      "niche": "horror narration / abandoned places encounters",
+      "whyItMatters": "3230 subs. '6 Worst Abandoned Places Encounters in History' hit 43K views with 7x breakout and 156 VPH. Horror narration + abandoned places is a clean sub-niche. Faceless, narration-only format. Not a priority niche but high view efficiency.",
+      "vidiqSignals": {
+        "outlierScore": 7,
+        "viewsPerHour": 156,
+        "searchVolume": 0,
+        "competition": 0,
+        "trend": "stable",
+        "keywords": ["abandoned places encounters horror", "scary abandoned building stories", "paranormal abandoned places", "creepy encounters abandoned", "urban exploration horror stories"]
+      },
+      "stats": {
+        "subscribers": 3230,
+        "averageViews": 0,
+        "medianViews": 0,
+        "totalVideos": 0,
+        "uploadsPerWeek": 0,
+        "avgVideoLengthSec": 2364,
+        "firstVideoDate": ""
+      },
+      "videos": [
+        {
+          "videoId": "gg8gW3ZaW4k",
+          "title": "The 6 Worst Abandoned Places Encounters in History",
+          "views": 43445,
+          "publishedAt": "2026-04-23",
+          "duration": 2364,
+          "outlierScore": 7,
+          "viewsPerHour": 156
+        }
+      ],
+      "claudeVerdict": {
+        "score": 52,
+        "verdict": "SKIP",
+        "reason": "Horror narration is low RPM ($1-3) and outside Claudio's priority niches. The abandoned places hook is working but the monetization ceiling is low. Not worth launching a new channel here given cash constraints.",
+        "nicheBend": "If abandoned places format is launched, avoid the horror angle — go factual documentary instead. The 43K views proves the abandoned places hook works; the horror framing limits RPM. 'The Real Stories Behind Australia's Abandoned Places' is the higher-RPM version."
+      }
+    }
+  ],
+  "keywords": [
+    "senior health tips over 60",
+    "australian food safety",
+    "muscle loss after 60 sarcopenia",
+    "hidden history ancient mysteries",
+    "sumerian tablets explained",
+    "abandoned places australia",
+    "retirement finance australia",
+    "superannuation tips australia",
+    "earth science documentary",
+    "dangerous places on earth",
+    "food label exposed australia",
+    "blood flow after 60",
+    "australian consumer advice",
+    "forbidden history documentary",
+    "space documentary for sleep",
+    "frugal retirement australia",
+    "food safety investigations",
+    "extreme places documentary",
+    "volcano history documentary",
+    "cancer prevention after 60",
+    "shrinkflation australia",
+    "australian health food warning",
+    "lost civilizations documentary",
+    "wwii pacific war australia",
+    "wildlife documentary australia"
+  ]
+}

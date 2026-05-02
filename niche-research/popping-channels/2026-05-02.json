@@ -1,0 +1,31 @@
+{
+  "date": "2026-05-02",
+  "criteria": "Longform >=8min, 3-4 uploads, 100K+ views, last upload within 3 weeks, 0-15K subscribers. Built from direct NexLev MCP cache.",
+  "rankedChannels": [
+    {
+      "rank": 1,
+      "title": "Lewis Woods",
+      "url": "https://www.youtube.com/channel/UCcU5TIACqncUtO34EWleEMA",
+      "niche": "philosophy",
+      "uploads": 3,
+      "subscribers": 4080,
+      "totalViews": 121442,
+      "avgViewPerVideo": 58804,
+      "avgVideoLengthSec": 610,
+      "outlierScore": 14.3,
+      "monthlyRevenueUSD": 0,
+      "rpm": 4.0669,
+      "daysSinceStart": 61,
+      "topVideo": {
+        "title": "Forget Ambition: A Case for Hopeless Creativity",
+        "views": 106817,
+        "url": "https://www.youtube.com/watch?v=JdlagZ2iDgU",
+        "uploadDate": "2026-04-30T00:00:00Z"
+      },
+      "whyWorking": "58,804 avg views/video; 3 uploads; top video 106,817 views"
+    }
+  ],
+  "patternSummary": [
+    "Built directly from NexLev MCP OAuth data; no Claude/Codex inference and no YouTube API used."
+  ]
+}

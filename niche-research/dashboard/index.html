@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Niche Scanner — 2 May 2026</title>
+<title>Niche Scanner — 3 May 2026</title>
 <style>
 
 :root {
@@ -490,6 +490,46 @@ body {
   text-transform: uppercase;
 }
 
+.view-tier-pill {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.view-tier-pill.vt-gold { background: #d4a017; color: #1a1408; }
+.view-tier-pill.vt-silver { background: #b0b0b8; color: #18181d; }
+.view-tier-pill.vt-watchlist { background: #4a4a55; color: #d8d8e0; }
+
+.spike-pill {
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #5a1f1f;
+  color: #ffb3b3;
+  border: 1px solid #8a3838;
+}
+
+.test-plan {
+  margin: 10px 0;
+  padding: 10px;
+  background: rgba(0, 204, 102, 0.05);
+  border: 1px solid rgba(0, 204, 102, 0.25);
+  border-radius: 6px;
+}
+.test-plan summary { cursor: pointer; font-size: 12px; color: #00cc66; list-style: none; }
+.test-plan summary::-webkit-details-marker { display: none; }
+.test-plan summary::before { content: '▶ '; font-size: 9px; }
+.test-plan[open] summary::before { content: '▼ '; }
+.tp-summary-label { font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.test-plan .tp-body { margin-top: 8px; display: flex; flex-direction: column; gap: 8px; }
+.test-plan .tp-block { }
+.test-plan .tp-block-label { font-size: 10px; color: #00cc66; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; font-weight: 700; }
+.test-plan .tp-line { font-size: 12px; color: var(--ink-soft); padding: 1px 0; line-height: 1.4; }
+
 .tag-row { display: flex; gap: 6px; flex-wrap: wrap; }
 .tag { font-size: 10px; padding: 3px 8px; background: var(--pill-bg); border-radius: 3px; color: var(--ink-soft); }
 
@@ -655,7 +695,7 @@ body {
     <div class="doc-meta">
       Prepared for <strong>Claudio Jerez</strong><br>
       Power Media Holdings B.V.<br>
-      Report · 2 May 2026
+      Report · 3 May 2026
     </div>
   </header>
     <section class="legend-block">
@@ -672,11 +712,11 @@ body {
   
 
   <div class="ribbon">
-    <div class="ribbon-stat"><span class="ribbon-num">5</span><span class="ribbon-lbl">approved</span></div>
+    <div class="ribbon-stat"><span class="ribbon-num">4</span><span class="ribbon-lbl">approved</span></div>
     <div class="ribbon-stat"><span class="ribbon-num">1</span><span class="ribbon-lbl">escalated</span></div>
-    <div class="ribbon-stat"><span class="ribbon-num">5</span><span class="ribbon-lbl">score 60+</span></div>
-    <div class="ribbon-stat"><span class="ribbon-num">1028</span><span class="ribbon-lbl">scanned</span></div>
-    <div class="ribbon-stat"><span class="ribbon-num">~3950</span><span class="ribbon-lbl">api quota</span></div>
+    <div class="ribbon-stat"><span class="ribbon-num">1</span><span class="ribbon-lbl">score 60+</span></div>
+    <div class="ribbon-stat"><span class="ribbon-num">1060</span><span class="ribbon-lbl">scanned</span></div>
+    <div class="ribbon-stat"><span class="ribbon-num">~3344</span><span class="ribbon-lbl">api quota</span></div>
   </div>
 
   <!-- FILTER BAR -->
@@ -690,10 +730,7 @@ body {
         <option value="age">Sort: Newest</option>
         <option value="outlier">Sort: Outlier ×</option>
       </select>
-      <select id="f-country" class="fb-select">
-        <option value="all">Country: All</option>
-        <option value="US">US</option><option value="unknown">unknown</option>
-      </select>
+      
       <select id="f-faceless" class="fb-select">
         <option value="all">Faceless: All</option>
         <option value="yes">Faceless: Yes</option>
@@ -714,7 +751,7 @@ body {
 
     <div class="fb-row fb-row-3 fb-collapsible">
       <span class="fb-label">Tags</span>
-      <button class="tchip" data-tag="health">Health <em>2</em></button><button class="tchip" data-tag="senior">Senior <em>1</em></button><button class="tchip" data-tag="food">Food <em>1</em></button><button class="tchip" data-tag="home">Home <em>2</em></button><button class="tchip" data-tag="history">History <em>3</em></button><button class="tchip" data-tag="travel">Travel <em>1</em></button>
+      <button class="tchip" data-tag="health">Health <em>1</em></button><button class="tchip" data-tag="home">Home <em>2</em></button><button class="tchip" data-tag="history">History <em>2</em></button><button class="tchip" data-tag="travel">Travel <em>1</em></button>
     </div>
 
     <div class="fb-row fb-row-4 fb-collapsible">
@@ -749,7 +786,7 @@ body {
     </div>
 
     <div class="fb-row fb-row-5">
-      <span class="fb-status" id="f-status">Showing all 5 of 5 channels</span>
+      <span class="fb-status" id="f-status">Showing all 4 of 4 channels</span>
     </div>
   </div>
 
@@ -757,7 +794,7 @@ body {
   <div class="summary-grid">
     <div class="summary-card">
       <div class="label">Channels qualifying</div>
-      <div class="value" id="sm-count">5</div>
+      <div class="value" id="sm-count">4</div>
       <div class="caption">passed all filters</div>
     </div>
     <div class="summary-card">
@@ -767,12 +804,12 @@ body {
     </div>
     <div class="summary-card">
       <div class="label">Combined monthly views</div>
-      <div class="value" id="sm-views">1.2M</div>
+      <div class="value" id="sm-views">881k</div>
       <div class="caption">aggregate</div>
     </div>
     <div class="summary-card">
       <div class="label">Median channel age</div>
-      <div class="value" id="sm-age">25d</div>
+      <div class="value" id="sm-age">24d</div>
       <div class="caption">since creation</div>
     </div>
   </div>
@@ -791,19 +828,19 @@ body {
     <div class="cards-grid">
       
   <article class="channel-card is-escalated"
-    data-score="66"
+    data-score="56"
     data-revenue="0"
-    data-views-monthly="420920.8"
-    data-views-avg="15706"
+    data-views-monthly="418964"
+    data-views-avg="16114"
     data-rpm="0"
-    data-age="25"
-    data-subs="3930"
-    data-outlier="66.79"
-    data-min-views="497"
+    data-age="26"
+    data-subs="3990"
+    data-outlier="65.10"
+    data-min-views="519"
     data-optimal-age="1"
     data-faceless="yes"
     data-country="US"
-    data-verdict="GO"
+    data-verdict="NONE"
     data-tags="home history travel"
     data-search="old camper stories usa  home history travel  ">
     <div class="ch-head">
@@ -812,10 +849,10 @@ body {
         <div class="ch-name"><a href="https://www.youtube.com/channel/UCmD78Lyfd9H6j8YI5GZniVg" target="_blank">Old Camper Stories USA</a></div>
         <div class="ch-handle">— · started 7 Apr 2026</div>
       </div>
-      <span class="age-pill">25d</span>
+      <span class="age-pill">26d</span>
     </div>
 
-    <div class="pill-row"><span class="esc-pill">⚡ ESCALATED</span><span class="verdict-pill v-go">GO</span><span class="score-pill score-high">66/100</span><span class="optimal-pill">★ OPTIMAL AGE</span></div>
+    <div class="pill-row"><span class="esc-pill">⚡ ESCALATED</span><span class="score-pill score-mid">56/100</span><span class="view-tier-pill vt-silver" title="Estimated 453,529 views/mo">Silver</span><span class="spike-pill" title="Top video 65.1× median with <2 outliers — single-spike risk (-10 score)">⚠ Single-spike</span><span class="optimal-pill">★ OPTIMAL AGE</span></div>
 
     <div class="stat-row-3">
       <div class="stat">
@@ -825,7 +862,7 @@ body {
       </div>
       <div class="stat">
         <div class="stat-label">Monthly views</div>
-        <div class="stat-value">421k</div>
+        <div class="stat-value">419k</div>
         <div class="stat-caption">last 30 days</div>
       </div>
       <div class="stat">
@@ -838,11 +875,11 @@ body {
     <div class="stat-row-2x3">
       <div class="stat stat-views">
         <div class="stat-label">Avg views/video</div>
-        <div class="stat-value sm">15.7K</div>
+        <div class="stat-value sm">16.1K</div>
       </div>
       <div class="stat stat-min-views fail">
         <div class="stat-label">Min views (last 5)</div>
-        <div class="stat-value sm">497</div>
+        <div class="stat-value sm">519</div>
       </div>
       <div class="stat stat-length">
         <div class="stat-label">Avg length</div>
@@ -850,11 +887,11 @@ body {
       </div>
       <div class="stat stat-subs">
         <div class="stat-label">Subscribers</div>
-        <div class="stat-value sm">3.9K</div>
+        <div class="stat-value sm">4.0K</div>
       </div>
       <div class="stat stat-uploads">
         <div class="stat-label">Uploads/week</div>
-        <div class="stat-value sm">6.7</div>
+        <div class="stat-value sm">6.5</div>
       </div>
       <div class="stat stat-firstup">
         <div class="stat-label">First upload</div>
@@ -868,32 +905,15 @@ body {
       <div class="tp-label">Top performer</div>
       <div class="tp-row">
         <span class="tp-title">The 1952 Motorhome That Had a Swimming Pool Americas Most Insane RV Ever Built</span>
-        <span class="tp-views">149.2K</span>
+        <span class="tp-views">152.3K</span>
       </div>
     </div>
 
     
-    <div class="verdict-reason">No direct hits in last 30 days — first mover advantage</div>
-    <div class="esc-reason">⚡ 3 videos over 50K views on a 25-day-old channel</div>
+    
+    <div class="esc-reason">⚡ 3 videos over 50K views on a 26-day-old channel</div>
 
-    <details class="sub-niche">
-      <summary><span class="sn-label">Recommended sub-niche</span> <strong>UK audience</strong></summary>
-      <div class="sn-body">
-        <div class="sn-card">
-          <div class="sn-target">UK audience</div>
-          <div class="sn-why">Adapt for UK market. High RPM from strong pound and premium advertisers. Use UK references (NHS, Tesco, Sainsbury's). Very few faceless channels target UK specifically.</div>
-          <div class="sn-title">"(Title generation unavailable — Claude API error)"</div>
-        </div><div class="sn-card">
-          <div class="sn-target">alternative history</div>
-          <div class="sn-why">Combine real history with mystery/conspiracy-adjacent hooks. Massive engagement. Maintain credibility while adding &quot;forbidden knowledge&quot; tension.</div>
-          <div class="sn-title">"(Title generation unavailable — Claude API error)"</div>
-        </div><div class="sn-card">
-          <div class="sn-target">food safety / health</div>
-          <div class="sn-why">Apply exposé/investigation format to food safety and health topics. Outrage + curiosity drives massive clicks. Food/health niches command top RPM.</div>
-          <div class="sn-title">"(Title generation unavailable — Claude API error)"</div>
-        </div>
-      </div>
-    </details>
+    
 
     <div class="moni-row">
       <span class="moni-label">Monetization</span>
@@ -902,8 +922,10 @@ body {
 
     
 
+    
+
     <div class="ch-foot">
-      <span class="quality"><span class="dot mid"></span>Quality: mid · Outlier 66.79×</span>
+      <span class="quality"><span class="dot mid"></span>Quality: mid · Outlier 65.10×</span>
       <a class="open-btn" href="https://www.youtube.com/channel/UCmD78Lyfd9H6j8YI5GZniVg" target="_blank">Open ↗</a>
     </div>
   </article>
@@ -914,7 +936,7 @@ body {
     <div class="section-title-row">
       <span class="section-num">§ 02</span>
       <h2 class="section-title">Frontier under <span class="accent">30 days</span></h2>
-      <span class="section-count" data-section-count="02">4 channels</span>
+      <span class="section-count" data-section-count="02">3 channels</span>
     </div>
     <p class="section-desc">Channels under 30 days old already showing real signals — first-mover lane. These are the urgent clone candidates.</p>
     <div class="filter-strip">
@@ -923,133 +945,15 @@ body {
     <div class="cards-grid">
       
   <article class="channel-card"
-    data-score="74"
+    data-score="64"
     data-revenue="0"
-    data-views-monthly="175028"
-    data-views-avg="6251"
+    data-views-monthly="68588"
+    data-views-avg="1319"
     data-rpm="0"
-    data-age="18"
-    data-subs="2650"
-    data-outlier="87.66"
-    data-min-views="65"
-    data-optimal-age="1"
-    data-faceless="yes"
-    data-country="US"
-    data-verdict="SKIP"
-    data-tags="health home"
-    data-search="wisdom of age  health home  ">
-    <div class="ch-head">
-      <div class="ch-logo"></div>
-      <div class="ch-id">
-        <div class="ch-name"><a href="https://www.youtube.com/channel/UCFyxBzQ9LWmUrcWX-WbsdDQ" target="_blank">WISDOM OF AGE</a></div>
-        <div class="ch-handle">— · started 14 Apr 2026</div>
-      </div>
-      <span class="age-pill">18d</span>
-    </div>
-
-    <div class="pill-row"><span class="verdict-pill v-skip">SKIP</span><span class="score-pill score-high">74/100</span><span class="optimal-pill">★ OPTIMAL AGE</span></div>
-
-    <div class="stat-row-3">
-      <div class="stat">
-        <div class="stat-label">Monthly $</div>
-        <div class="stat-value">—</div>
-        <div class="stat-caption">revenue</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Monthly views</div>
-        <div class="stat-value">175k</div>
-        <div class="stat-caption">last 30 days</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">RPM total</div>
-        <div class="stat-value">—</div>
-        <div class="stat-caption">inferred</div>
-      </div>
-    </div>
-
-    <div class="stat-row-2x3">
-      <div class="stat stat-views">
-        <div class="stat-label">Avg views/video</div>
-        <div class="stat-value sm">6.3K</div>
-      </div>
-      <div class="stat stat-min-views fail">
-        <div class="stat-label">Min views (last 5)</div>
-        <div class="stat-value sm">65</div>
-      </div>
-      <div class="stat stat-length">
-        <div class="stat-label">Avg length</div>
-        <div class="stat-value sm">22m 6s</div>
-      </div>
-      <div class="stat stat-subs">
-        <div class="stat-label">Subscribers</div>
-        <div class="stat-value sm">2.6K</div>
-      </div>
-      <div class="stat stat-uploads">
-        <div class="stat-label">Uploads/week</div>
-        <div class="stat-value sm">7.0</div>
-      </div>
-      <div class="stat stat-firstup">
-        <div class="stat-label">First upload</div>
-        <div class="stat-value sm" style="font-size:13px;">14 Apr 2026</div>
-      </div>
-    </div>
-
-    <div class="tag-row"><span class="tag">Health</span><span class="tag">Home</span></div>
-
-    <div class="top-perf">
-      <div class="tp-label">Top performer</div>
-      <div class="tp-row">
-        <span class="tp-title">After 60? You NEED These 10 Things to Live Alone Comfortably</span>
-        <span class="tp-views">53.6K</span>
-      </div>
-    </div>
-
-    
-    <div class="verdict-reason">Too crowded — bend harder or move on</div>
-    
-
-    <details class="sub-niche">
-      <summary><span class="sn-label">Recommended sub-niche</span> <strong>food safety / health</strong></summary>
-      <div class="sn-body">
-        <div class="sn-card">
-          <div class="sn-target">food safety / health</div>
-          <div class="sn-why">Apply exposé/investigation format to food safety and health topics. Outrage + curiosity drives massive clicks. Food/health niches command top RPM.</div>
-          <div class="sn-title">"(Title generation unavailable — Claude API error)"</div>
-        </div><div class="sn-card">
-          <div class="sn-target">same niche, outrage framing</div>
-          <div class="sn-why">Same educational content repackaged with outrage framing. Increases CTR 2-3x over neutral educational titles. Retains same audience.</div>
-          <div class="sn-title">"(Title generation unavailable — Claude API error)"</div>
-        </div><div class="sn-card">
-          <div class="sn-target">UK audience</div>
-          <div class="sn-why">Adapt for UK market. High RPM from strong pound and premium advertisers. Use UK references (NHS, Tesco, Sainsbury's). Very few faceless channels target UK specifically.</div>
-          <div class="sn-title">"(Title generation unavailable — Claude API error)"</div>
-        </div>
-      </div>
-    </details>
-
-    <div class="moni-row">
-      <span class="moni-label">Monetization</span>
-      <span class="moni-chip moni-affiliate" title="Glucosamine, MSM, turmeric, collagen via Amazon Associates / ShareASale">Joint/mobility supplements</span><span class="moni-chip moni-affiliate" title="Knee braces, walking aids, heated massagers, TENS units">Mobility aids</span><span class="moni-chip moni-product" title="Lead magnet → email list → 12-week mobility program">$27–47 mobility ebook/program</span><span class="moni-chip moni-leadgen" title="Weekly health tips PDF — recurring revenue if subscriptions added">Health newsletter</span>
-    </div>
-
-    
-
-    <div class="ch-foot">
-      <span class="quality"><span class="dot mid"></span>Quality: mid · Outlier 87.66×</span>
-      <a class="open-btn" href="https://www.youtube.com/channel/UCFyxBzQ9LWmUrcWX-WbsdDQ" target="_blank">Open ↗</a>
-    </div>
-  </article>
-
-  <article class="channel-card"
-    data-score="71"
-    data-revenue="0"
-    data-views-monthly="70408"
-    data-views-avg="1354"
-    data-rpm="0"
-    data-age="21"
-    data-subs="318"
-    data-outlier="24.35"
-    data-min-views="174"
+    data-age="22"
+    data-subs="330"
+    data-outlier="24.33"
+    data-min-views="91"
     data-optimal-age="1"
     data-faceless="yes"
     data-country="US"
@@ -1062,10 +966,10 @@ body {
         <div class="ch-name"><a href="https://www.youtube.com/channel/UC2-Z52Eeq65njMWpUzh12zg" target="_blank">Forgotten Image Secrets</a></div>
         <div class="ch-handle">— · started 11 Apr 2026</div>
       </div>
-      <span class="age-pill">21d</span>
+      <span class="age-pill">22d</span>
     </div>
 
-    <div class="pill-row"><span class="verdict-pill v-skip">SKIP</span><span class="score-pill score-high">71/100</span><span class="optimal-pill">★ OPTIMAL AGE</span></div>
+    <div class="pill-row"><span class="verdict-pill v-skip">SKIP</span><span class="score-pill score-high">64/100</span><span class="spike-pill" title="Top video 24.3× median with <2 outliers — single-spike risk (-10 score)">⚠ Single-spike</span><span class="optimal-pill">★ OPTIMAL AGE</span></div>
 
     <div class="stat-row-3">
       <div class="stat">
@@ -1075,7 +979,7 @@ body {
       </div>
       <div class="stat">
         <div class="stat-label">Monthly views</div>
-        <div class="stat-value">70k</div>
+        <div class="stat-value">69k</div>
         <div class="stat-caption">last 30 days</div>
       </div>
       <div class="stat">
@@ -1088,19 +992,19 @@ body {
     <div class="stat-row-2x3">
       <div class="stat stat-views">
         <div class="stat-label">Avg views/video</div>
-        <div class="stat-value sm">1.4K</div>
+        <div class="stat-value sm">1.3K</div>
       </div>
       <div class="stat stat-min-views fail">
         <div class="stat-label">Min views (last 5)</div>
-        <div class="stat-value sm">174</div>
+        <div class="stat-value sm">91</div>
       </div>
       <div class="stat stat-length">
         <div class="stat-label">Avg length</div>
-        <div class="stat-value sm">16m 22s</div>
+        <div class="stat-value sm">16m 10s</div>
       </div>
       <div class="stat stat-subs">
         <div class="stat-label">Subscribers</div>
-        <div class="stat-value sm">318</div>
+        <div class="stat-value sm">330</div>
       </div>
       <div class="stat stat-uploads">
         <div class="stat-label">Uploads/week</div>
@@ -1152,156 +1056,40 @@ body {
 
     
 
+    
+
     <div class="ch-foot">
-      <span class="quality"><span class="dot mid"></span>Quality: mid · Outlier 24.35×</span>
+      <span class="quality"><span class="dot mid"></span>Quality: mid · Outlier 24.33×</span>
       <a class="open-btn" href="https://www.youtube.com/channel/UC2-Z52Eeq65njMWpUzh12zg" target="_blank">Open ↗</a>
     </div>
   </article>
 
   <article class="channel-card"
-    data-score="66"
+    data-score="59"
     data-revenue="0"
-    data-views-monthly="102860.79999999999"
-    data-views-avg="2296"
+    data-views-monthly="192500"
+    data-views-avg="6875"
     data-rpm="0"
-    data-age="30"
-    data-subs="2160"
-    data-outlier="18.89"
-    data-min-views="305"
-    data-optimal-age="1"
-    data-faceless="yes"
-    data-country="unknown"
-    data-verdict="SKIP"
-    data-tags="history"
-    data-search="ancient dna history  history  ">
-    <div class="ch-head">
-      <div class="ch-logo"></div>
-      <div class="ch-id">
-        <div class="ch-name"><a href="https://www.youtube.com/channel/UCihPT0YR-EQWbFv8iZWh2ag" target="_blank">Ancient DNA History</a></div>
-        <div class="ch-handle">— · started 2 Apr 2026</div>
-      </div>
-      <span class="age-pill">30d</span>
-    </div>
-
-    <div class="pill-row"><span class="verdict-pill v-skip">SKIP</span><span class="score-pill score-high">66/100</span><span class="optimal-pill">★ OPTIMAL AGE</span></div>
-
-    <div class="stat-row-3">
-      <div class="stat">
-        <div class="stat-label">Monthly $</div>
-        <div class="stat-value">—</div>
-        <div class="stat-caption">revenue</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Monthly views</div>
-        <div class="stat-value">103k</div>
-        <div class="stat-caption">last 30 days</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">RPM total</div>
-        <div class="stat-value">—</div>
-        <div class="stat-caption">inferred</div>
-      </div>
-    </div>
-
-    <div class="stat-row-2x3">
-      <div class="stat stat-views">
-        <div class="stat-label">Avg views/video</div>
-        <div class="stat-value sm">2.3K</div>
-      </div>
-      <div class="stat stat-min-views fail">
-        <div class="stat-label">Min views (last 5)</div>
-        <div class="stat-value sm">305</div>
-      </div>
-      <div class="stat stat-length">
-        <div class="stat-label">Avg length</div>
-        <div class="stat-value sm">23m 24s</div>
-      </div>
-      <div class="stat stat-subs">
-        <div class="stat-label">Subscribers</div>
-        <div class="stat-value sm">2.2K</div>
-      </div>
-      <div class="stat stat-uploads">
-        <div class="stat-label">Uploads/week</div>
-        <div class="stat-value sm">11.2</div>
-      </div>
-      <div class="stat stat-firstup">
-        <div class="stat-label">First upload</div>
-        <div class="stat-value sm" style="font-size:13px;">2 Apr 2026</div>
-      </div>
-    </div>
-
-    <div class="tag-row"><span class="tag">History</span></div>
-
-    <div class="top-perf">
-      <div class="tp-label">Top performer</div>
-      <div class="tp-row">
-        <span class="tp-title">Mary Todd Lincoln Wasn't Crazy. Here's What DNA Says.</span>
-        <span class="tp-views">19.3K</span>
-      </div>
-    </div>
-
-    
-    <div class="verdict-reason">Too crowded — bend harder or move on</div>
-    
-
-    <details class="sub-niche">
-      <summary><span class="sn-label">Recommended sub-niche</span> <strong>alternative history</strong></summary>
-      <div class="sn-body">
-        <div class="sn-card">
-          <div class="sn-target">alternative history</div>
-          <div class="sn-why">Combine real history with mystery/conspiracy-adjacent hooks. Massive engagement. Maintain credibility while adding &quot;forbidden knowledge&quot; tension.</div>
-          <div class="sn-title">"(Title generation unavailable — Claude API error)"</div>
-        </div><div class="sn-card">
-          <div class="sn-target">food safety / health</div>
-          <div class="sn-why">Apply exposé/investigation format to food safety and health topics. Outrage + curiosity drives massive clicks. Food/health niches command top RPM.</div>
-          <div class="sn-title">"(Title generation unavailable — Claude API error)"</div>
-        </div><div class="sn-card">
-          <div class="sn-target">survival / prepper</div>
-          <div class="sn-why">Reframe historical content for survivalist/prepper audience. Historical parallels create urgency. Preppers are engaged, high-watch-time viewers.</div>
-          <div class="sn-title">"(Title generation unavailable — Claude API error)"</div>
-        </div>
-      </div>
-    </details>
-
-    <div class="moni-row">
-      <span class="moni-label">Monetization</span>
-      <span class="moni-chip moni-affiliate" title="Amazon books, replica artifacts">Books / collectibles</span><span class="moni-chip moni-sponsorship" title="History Hit, Curiosity Stream, Magellan TV">History sponsorship</span><span class="moni-chip moni-product" title="&quot;Forgotten history&quot; PDF compilations $9–19">Timeline ebook</span>
-    </div>
-
-    
-
-    <div class="ch-foot">
-      <span class="quality"><span class="dot mid"></span>Quality: mid · Outlier 18.89×</span>
-      <a class="open-btn" href="https://www.youtube.com/channel/UCihPT0YR-EQWbFv8iZWh2ag" target="_blank">Open ↗</a>
-    </div>
-  </article>
-
-  <article class="channel-card"
-    data-score="61"
-    data-revenue="0"
-    data-views-monthly="410856"
-    data-views-avg="15105"
-    data-rpm="0"
-    data-age="30"
-    data-subs="7820"
-    data-outlier="131.68"
-    data-min-views="141"
+    data-age="19"
+    data-subs="3050"
+    data-outlier="111.70"
+    data-min-views="54"
     data-optimal-age="1"
     data-faceless="yes"
     data-country="US"
-    data-verdict="SKIP"
-    data-tags="senior health food"
-    data-search="mandell's health clinic  senior health food  ">
+    data-verdict="NONE"
+    data-tags="health home"
+    data-search="wisdom of age  health home  ">
     <div class="ch-head">
       <div class="ch-logo"></div>
       <div class="ch-id">
-        <div class="ch-name"><a href="https://www.youtube.com/channel/UCCTk4mzpRtZlb5rVdMLyqpA" target="_blank">Mandell's Health Clinic</a></div>
-        <div class="ch-handle">— · started 2 Apr 2026</div>
+        <div class="ch-name"><a href="https://www.youtube.com/channel/UCFyxBzQ9LWmUrcWX-WbsdDQ" target="_blank">WISDOM OF AGE</a></div>
+        <div class="ch-handle">— · started 14 Apr 2026</div>
       </div>
-      <span class="age-pill">30d</span>
+      <span class="age-pill">19d</span>
     </div>
 
-    <div class="pill-row"><span class="verdict-pill v-skip">SKIP</span><span class="score-pill score-high">61/100</span><span class="optimal-pill">★ OPTIMAL AGE</span></div>
+    <div class="pill-row"><span class="score-pill score-mid">59/100</span><span class="view-tier-pill vt-watchlist" title="Estimated 208,381 views/mo">Watchlist</span><span class="spike-pill" title="Top video 111.7× median with <2 outliers — single-spike risk (-10 score)">⚠ Single-spike</span><span class="optimal-pill">★ OPTIMAL AGE</span></div>
 
     <div class="stat-row-3">
       <div class="stat">
@@ -1311,7 +1099,7 @@ body {
       </div>
       <div class="stat">
         <div class="stat-label">Monthly views</div>
-        <div class="stat-value">411k</div>
+        <div class="stat-value">193k</div>
         <div class="stat-caption">last 30 days</div>
       </div>
       <div class="stat">
@@ -1324,62 +1112,45 @@ body {
     <div class="stat-row-2x3">
       <div class="stat stat-views">
         <div class="stat-label">Avg views/video</div>
-        <div class="stat-value sm">15.1K</div>
+        <div class="stat-value sm">6.9K</div>
       </div>
       <div class="stat stat-min-views fail">
         <div class="stat-label">Min views (last 5)</div>
-        <div class="stat-value sm">141</div>
+        <div class="stat-value sm">54</div>
       </div>
       <div class="stat stat-length">
         <div class="stat-label">Avg length</div>
-        <div class="stat-value sm">24m 30s</div>
+        <div class="stat-value sm">21m 44s</div>
       </div>
       <div class="stat stat-subs">
         <div class="stat-label">Subscribers</div>
-        <div class="stat-value sm">7.8K</div>
+        <div class="stat-value sm">3.0K</div>
       </div>
       <div class="stat stat-uploads">
         <div class="stat-label">Uploads/week</div>
-        <div class="stat-value sm">6.8</div>
+        <div class="stat-value sm">7.0</div>
       </div>
       <div class="stat stat-firstup">
         <div class="stat-label">First upload</div>
-        <div class="stat-value sm" style="font-size:13px;">2 Apr 2026</div>
+        <div class="stat-value sm" style="font-size:13px;">14 Apr 2026</div>
       </div>
     </div>
 
-    <div class="tag-row"><span class="tag">Senior</span><span class="tag">Health</span><span class="tag">Food</span></div>
+    <div class="tag-row"><span class="tag">Health</span><span class="tag">Home</span></div>
 
     <div class="top-perf">
       <div class="tp-label">Top performer</div>
       <div class="tp-row">
-        <span class="tp-title">Over 60 This 1 Exercise Can Change Your Life!</span>
-        <span class="tp-views">161.7K</span>
+        <span class="tp-title">After 60? You NEED These 10 Things to Live Alone Comfortably</span>
+        <span class="tp-views">70.6K</span>
       </div>
     </div>
 
     
-    <div class="verdict-reason">Too crowded — bend harder or move on</div>
+    
     
 
-    <details class="sub-niche">
-      <summary><span class="sn-label">Recommended sub-niche</span> <strong>health economics / medical costs</strong></summary>
-      <div class="sn-body">
-        <div class="sn-card">
-          <div class="sn-target">health economics / medical costs</div>
-          <div class="sn-why">Combine health content with financial angle (cost of treatment, industry profit motives). Highest RPM niche combination possible. Both verticals attract premium advertisers.</div>
-          <div class="sn-title">"(Title generation unavailable — Claude API error)"</div>
-        </div><div class="sn-card">
-          <div class="sn-target">food safety / health</div>
-          <div class="sn-why">Apply exposé/investigation format to food safety and health topics. Outrage + curiosity drives massive clicks. Food/health niches command top RPM.</div>
-          <div class="sn-title">"(Title generation unavailable — Claude API error)"</div>
-        </div><div class="sn-card">
-          <div class="sn-target">Australian audience</div>
-          <div class="sn-why">Adapt US-proven format for Australian audience. Less competition in AU market. Use Australian references (Woolworths, Coles, Medicare, TGA). Proven model.</div>
-          <div class="sn-title">"(Title generation unavailable — Claude API error)"</div>
-        </div>
-      </div>
-    </details>
+    
 
     <div class="moni-row">
       <span class="moni-label">Monetization</span>
@@ -1388,9 +1159,111 @@ body {
 
     
 
+    
+
     <div class="ch-foot">
-      <span class="quality"><span class="dot mid"></span>Quality: mid · Outlier 131.68×</span>
-      <a class="open-btn" href="https://www.youtube.com/channel/UCCTk4mzpRtZlb5rVdMLyqpA" target="_blank">Open ↗</a>
+      <span class="quality"><span class="dot mid"></span>Quality: mid · Outlier 111.70×</span>
+      <a class="open-btn" href="https://www.youtube.com/channel/UCFyxBzQ9LWmUrcWX-WbsdDQ" target="_blank">Open ↗</a>
+    </div>
+  </article>
+
+  <article class="channel-card"
+    data-score="54"
+    data-revenue="0"
+    data-views-monthly="201040"
+    data-views-avg="8975"
+    data-rpm="0"
+    data-age="25"
+    data-subs="1390"
+    data-outlier="23.56"
+    data-min-views="101"
+    data-optimal-age="1"
+    data-faceless="yes"
+    data-country="US"
+    data-verdict="NONE"
+    data-tags=""
+    data-search="woman influence    ">
+    <div class="ch-head">
+      <div class="ch-logo"></div>
+      <div class="ch-id">
+        <div class="ch-name"><a href="https://www.youtube.com/channel/UCI2vmcYc5IG0EAPXoqJms3g" target="_blank">Woman Influence</a></div>
+        <div class="ch-handle">— · started 8 Apr 2026</div>
+      </div>
+      <span class="age-pill">25d</span>
+    </div>
+
+    <div class="pill-row"><span class="score-pill score-mid">54/100</span><span class="view-tier-pill vt-watchlist" title="Estimated 217,626 views/mo">Watchlist</span><span class="spike-pill" title="Top video 23.6× median with <2 outliers — single-spike risk (-10 score)">⚠ Single-spike</span><span class="optimal-pill">★ OPTIMAL AGE</span></div>
+
+    <div class="stat-row-3">
+      <div class="stat">
+        <div class="stat-label">Monthly $</div>
+        <div class="stat-value">—</div>
+        <div class="stat-caption">revenue</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Monthly views</div>
+        <div class="stat-value">201k</div>
+        <div class="stat-caption">last 30 days</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">RPM total</div>
+        <div class="stat-value">—</div>
+        <div class="stat-caption">inferred</div>
+      </div>
+    </div>
+
+    <div class="stat-row-2x3">
+      <div class="stat stat-views">
+        <div class="stat-label">Avg views/video</div>
+        <div class="stat-value sm">9.0K</div>
+      </div>
+      <div class="stat stat-min-views fail">
+        <div class="stat-label">Min views (last 5)</div>
+        <div class="stat-value sm">101</div>
+      </div>
+      <div class="stat stat-length">
+        <div class="stat-label">Avg length</div>
+        <div class="stat-value sm">5m 54s</div>
+      </div>
+      <div class="stat stat-subs">
+        <div class="stat-label">Subscribers</div>
+        <div class="stat-value sm">1.4K</div>
+      </div>
+      <div class="stat stat-uploads">
+        <div class="stat-label">Uploads/week</div>
+        <div class="stat-value sm">5.6</div>
+      </div>
+      <div class="stat stat-firstup">
+        <div class="stat-label">First upload</div>
+        <div class="stat-value sm" style="font-size:13px;">8 Apr 2026</div>
+      </div>
+    </div>
+
+    
+
+    <div class="top-perf">
+      <div class="tp-label">Top performer</div>
+      <div class="tp-row">
+        <span class="tp-title">Women Can't Resist Men Over 60 Who Do This: The Secrets</span>
+        <span class="tp-views">52.1K</span>
+      </div>
+    </div>
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="ch-foot">
+      <span class="quality"><span class="dot mid"></span>Quality: mid · Outlier 23.56×</span>
+      <a class="open-btn" href="https://www.youtube.com/channel/UCI2vmcYc5IG0EAPXoqJms3g" target="_blank">Open ↗</a>
     </div>
   </article>
     </div>
@@ -1400,13 +1273,13 @@ body {
     <div class="section-title-row">
       <span class="section-num">§ 03</span>
       <h2 class="section-title">Disappeared <span class="accent">channels</span></h2>
-      <span class="section-count">109 channels</span>
+      <span class="section-count">110 channels</span>
     </div>
     <p class="section-desc">Channels previously tracked that have stopped uploading or fallen out of qualifying metrics.</p>
     <table class="data-table">
       <thead><tr><th>Channel</th><th>Last score</th><th>Last subs</th><th>Last seen</th></tr></thead>
       <tbody>
-        <tr><td>Silent Century</td><td>52/100</td><td>6.8K</td><td>2026-05-02</td></tr><tr><td>Mark Invests</td><td>69/100</td><td>2.5K</td><td>2026-04-30</td></tr><tr><td>UK Car Legends </td><td>80/100</td><td>1.6K</td><td>2026-05-02</td></tr><tr><td>EngineScope</td><td>74/100</td><td>787</td><td>2026-05-02</td></tr><tr><td>UK State Watch</td><td>74/100</td><td>1.4K</td><td>2026-05-02</td></tr><tr><td>Vicaw</td><td>72/100</td><td>3.6K</td><td>2026-05-02</td></tr><tr><td>NTN Life</td><td>70/100</td><td>2.0K</td><td>2026-05-02</td></tr><tr><td>Kirneih</td><td>67/100</td><td>2.7K</td><td>2026-05-02</td></tr><tr><td>Deputy Benny</td><td>67/100</td><td>7.7K</td><td>2026-05-02</td></tr><tr><td>Helluva Theory</td><td>67/100</td><td>1.4K</td><td>2026-05-02</td></tr><tr><td>Birds Insider</td><td>66/100</td><td>2.3K</td><td>2026-05-02</td></tr><tr><td>French Nostalgia</td><td>65/100</td><td>805</td><td>2026-05-02</td></tr><tr><td>Transformers Archive</td><td>64/100</td><td>2.8K</td><td>2026-05-02</td></tr><tr><td>Lewis Woods</td><td>64/100</td><td>4.1K</td><td>2026-05-02</td></tr><tr><td>Ancient Faith Explained</td><td>64/100</td><td>7.9K</td><td>2026-05-02</td></tr><tr><td>Aufiora</td><td>64/100</td><td>951</td><td>2026-05-02</td></tr><tr><td>CVH Wildlife</td><td>63/100</td><td>1.4K</td><td>2026-05-02</td></tr><tr><td>Sketchy Eats</td><td>63/100</td><td>5.1K</td><td>2026-05-02</td></tr><tr><td>Football Area</td><td>62/100</td><td>617</td><td>2026-05-02</td></tr><tr><td>Stalin’s Decisions</td><td>62/100</td><td>1.5K</td><td>2026-05-02</td></tr><tr><td>British Crown Arms</td><td>62/100</td><td>1.1K</td><td>2026-05-02</td></tr><tr><td>Best Choice Recaps</td><td>61/100</td><td>935</td><td>2026-05-02</td></tr><tr><td>Forgotten American Weapons</td><td>61/100</td><td>683</td><td>2026-05-02</td></tr><tr><td>Chronicle Cortex</td><td>61/100</td><td>2.2K</td><td>2026-05-02</td></tr><tr><td>World Travel Doc</td><td>60/100</td><td>2.9K</td><td>2026-05-02</td></tr><tr><td>L3th4L Adept</td><td>59/100</td><td>1.1K</td><td>2026-05-02</td></tr><tr><td>Massive Tech</td><td>59/100</td><td>794</td><td>2026-05-02</td></tr><tr><td>Luther Morgan</td><td>59/100</td><td>6.2K</td><td>2026-05-02</td></tr><tr><td>ZELYO</td><td>59/100</td><td>2.8K</td><td>2026-05-02</td></tr><tr><td>USA Legend Archive</td><td>58/100</td><td>2.8K</td><td>2026-05-02</td></tr><tr><td>Psyche Prism</td><td>58/100</td><td>2.1K</td><td>2026-05-02</td></tr><tr><td>Sacred Flora</td><td>58/100</td><td>10.5K</td><td>2026-05-02</td></tr><tr><td>Beana</td><td>57/100</td><td>6.8K</td><td>2026-05-02</td></tr><tr><td> INSTANT FACTS</td><td>57/100</td><td>5.1K</td><td>2026-05-02</td></tr><tr><td>Beaver Engineer</td><td>57/100</td><td>535</td><td>2026-05-02</td></tr><tr><td>Tech Win Cyber</td><td>57/100</td><td>5.3K</td><td>2026-05-02</td></tr><tr><td>Genesis Chamber</td><td>56/100</td><td>20.7K</td><td>2026-05-02</td></tr><tr><td>DIM HISTORY</td><td>56/100</td><td>672</td><td>2026-05-02</td></tr><tr><td>Echo Mane</td><td>56/100</td><td>12.2K</td><td>2026-05-02</td></tr><tr><td>Forkcast</td><td>56/100</td><td>799</td><td>2026-05-02</td></tr><tr><td>Forbidden Origins For Sleep</td><td>55/100</td><td>1.6K</td><td>2026-05-02</td></tr><tr><td>Frontier Historian</td><td>55/100</td><td>2.7K</td><td>2026-05-02</td></tr><tr><td>SMASHLY</td><td>55/100</td><td>3.0K</td><td>2026-05-02</td></tr><tr><td>Canada Pension Plan</td><td>55/100</td><td>6.8K</td><td>2026-05-02</td></tr><tr><td>Setuh</td><td>55/100</td><td>26.4K</td><td>2026-05-02</td></tr><tr><td>Andrew Vikuk</td><td>54/100</td><td>3.2K</td><td>2026-05-02</td></tr><tr><td>Topscore Football Quiz</td><td>54/100</td><td>849</td><td>2026-05-02</td></tr><tr><td>Global Oops</td><td>54/100</td><td>1.5K</td><td>2026-05-02</td></tr><tr><td>ItsWiku</td><td>54/100</td><td>3.1K</td><td>2026-05-02</td></tr><tr><td>Havokzz CN</td><td>54/100</td><td>952</td><td>2026-05-02</td></tr><tr><td>Harlem Shadows: The Untold Empire</td><td>53/100</td><td>756</td><td>2026-05-02</td></tr><tr><td>WWM Girl</td><td>53/100</td><td>9.7K</td><td>2026-05-02</td></tr><tr><td>Stories That Lead to Jesus</td><td>52/100</td><td>1.3K</td><td>2026-05-02</td></tr><tr><td>think femininity.</td><td>52/100</td><td>13.4K</td><td>2026-05-02</td></tr><tr><td>NoPoly</td><td>52/100</td><td>7.5K</td><td>2026-05-02</td></tr><tr><td>GOOD GUY </td><td>52/100</td><td>5.8K</td><td>2026-05-02</td></tr><tr><td>Sebatron</td><td>52/100</td><td>2.7K</td><td>2026-05-02</td></tr><tr><td>Niko Ludwig</td><td>52/100</td><td>21.8K</td><td>2026-05-02</td></tr><tr><td>Unfolded Finance</td><td>52/100</td><td>4.4K</td><td>2026-05-02</td></tr><tr><td>Cold Case Files</td><td>52/100</td><td>901</td><td>2026-05-02</td></tr><tr><td>Professor Morandi analyse</td><td>52/100</td><td>2.6K</td><td>2026-05-02</td></tr><tr><td>Shadow Historians</td><td>51/100</td><td>3.4K</td><td>2026-05-02</td></tr><tr><td>World Brief Live</td><td>51/100</td><td>6.0K</td><td>2026-05-02</td></tr><tr><td>The History Bank</td><td>51/100</td><td>6.9K</td><td>2026-05-02</td></tr><tr><td>Golden Greats</td><td>51/100</td><td>3.7K</td><td>2026-05-02</td></tr><tr><td>The Diary of a Storyteller</td><td>51/100</td><td>1.3K</td><td>2026-05-02</td></tr><tr><td>Zeezypher</td><td>51/100</td><td>537</td><td>2026-05-02</td></tr><tr><td>AI Mind Revolution</td><td>51/100</td><td>10.6K</td><td>2026-05-02</td></tr><tr><td>Robo4T</td><td>50/100</td><td>982</td><td>2026-05-02</td></tr><tr><td>Remember When</td><td>50/100</td><td>2.0K</td><td>2026-05-02</td></tr><tr><td>The Bridge Geo</td><td>50/100</td><td>7.1K</td><td>2026-05-02</td></tr><tr><td>BEN HODGES REPORT</td><td>50/100</td><td>2.0K</td><td>2026-05-02</td></tr><tr><td>The Decision Room</td><td>49/100</td><td>4.5K</td><td>2026-05-02</td></tr><tr><td>Bodycam Now TV</td><td>49/100</td><td>6.0K</td><td>2026-05-02</td></tr><tr><td>WW2 Frontline Stories</td><td>47/100</td><td>1.3K</td><td>2026-05-02</td></tr><tr><td>Soul Undercover</td><td>47/100</td><td>1.2K</td><td>2026-05-02</td></tr><tr><td>Bigfoot Hidden Evidence</td><td>47/100</td><td>992</td><td>2026-05-02</td></tr><tr><td>Anna Zofia</td><td>47/100</td><td>1.1K</td><td>2026-05-02</td></tr><tr><td>International Marketing Consulting LTD</td><td>46/100</td><td>6.6K</td><td>2026-05-02</td></tr><tr><td>Harlem’s Hidden Rulers</td><td>46/100</td><td>5.5K</td><td>2026-05-02</td></tr><tr><td>Screen Radar</td><td>46/100</td><td>6.1K</td><td>2026-05-02</td></tr><tr><td>Whisper of Him</td><td>46/100</td><td>1.5K</td><td>2026-05-02</td></tr><tr><td>MakeNoise_AI</td><td>46/100</td><td>2.3K</td><td>2026-05-02</td></tr><tr><td>Dynasty Undone</td><td>46/100</td><td>787</td><td>2026-05-02</td></tr><tr><td>JDB Report</td><td>45/100</td><td>6.9K</td><td>2026-05-02</td></tr><tr><td>Tesseract </td><td>45/100</td><td>10.9K</td><td>2026-05-02</td></tr><tr><td>The WWII Chronicle</td><td>44/100</td><td>2.2K</td><td>2026-05-02</td></tr><tr><td>The Sleeping Soldier</td><td>42/100</td><td>1.5K</td><td>2026-05-02</td></tr><tr><td>Meri Walks in LONDON</td><td>41/100</td><td>12.8K</td><td>2026-05-02</td></tr><tr><td>Stoic Philosophy</td><td>41/100</td><td>2.8K</td><td>2026-05-02</td></tr><tr><td>The Wild West Stories </td><td>40/100</td><td>2.1K</td><td>2026-05-02</td></tr><tr><td>Story world of imagination </td><td>40/100</td><td>6.7K</td><td>2026-05-02</td></tr><tr><td>The Lost Scriptures</td><td>39/100</td><td>5.4K</td><td>2026-05-02</td></tr><tr><td>NightmareNarratives</td><td>39/100</td><td>1.6K</td><td>2026-05-02</td></tr><tr><td>Silk and Hearts Stories </td><td>38/100</td><td>2.3K</td><td>2026-05-02</td></tr><tr><td>Black Lasso</td><td>37/100</td><td>668</td><td>2026-05-02</td></tr><tr><td>Sunset Stories</td><td>34/100</td><td>6.3K</td><td>2026-05-02</td></tr><tr><td>True Imagination Studio</td><td>34/100</td><td>1.1K</td><td>2026-05-02</td></tr><tr><td>True Cowboy Stories </td><td>29/100</td><td>2.9K</td><td>2026-05-02</td></tr><tr><td>The Wild West Stories</td><td>28/100</td><td>8.8K</td><td>2026-05-02</td></tr><tr><td>Deep Life Science</td><td>51/100</td><td>1.9K</td><td>2026-05-02</td></tr><tr><td>Arcana Travel</td><td>49/100</td><td>3.4K</td><td>2026-05-02</td></tr><tr><td>biochiao</td><td>47/100</td><td>4.2K</td><td>2026-05-02</td></tr><tr><td>Jakes History</td><td>45/100</td><td>2.5K</td><td>2026-05-02</td></tr><tr><td>Loving Kingdoms</td><td>42/100</td><td>5.5K</td><td>2026-05-02</td></tr><tr><td>Easy Documentary Nature</td><td>41/100</td><td>4.7K</td><td>2026-05-02</td></tr><tr><td>Bright Side Sleep</td><td>41/100</td><td>1.2K</td><td>2026-05-02</td></tr><tr><td>Epic Aussie Encounters</td><td>0/100</td><td>8.0K</td><td>2026-05-02</td></tr><tr><td>Midnight Screams</td><td>35/100</td><td>3.2K</td><td>2026-05-02</td></tr>
+        <tr><td>Silent Century</td><td>52/100</td><td>6.8K</td><td>2026-05-02</td></tr><tr><td>Ancient DNA History</td><td>66/100</td><td>2.2K</td><td>2026-05-02</td></tr><tr><td>Mandell's Health Clinic</td><td>61/100</td><td>7.8K</td><td>2026-05-02</td></tr><tr><td>UK Car Legends </td><td>80/100</td><td>1.6K</td><td>2026-05-02</td></tr><tr><td>EngineScope</td><td>74/100</td><td>787</td><td>2026-05-02</td></tr><tr><td>UK State Watch</td><td>74/100</td><td>1.4K</td><td>2026-05-02</td></tr><tr><td>Vicaw</td><td>72/100</td><td>3.6K</td><td>2026-05-02</td></tr><tr><td>NTN Life</td><td>70/100</td><td>2.0K</td><td>2026-05-02</td></tr><tr><td>Kirneih</td><td>67/100</td><td>2.7K</td><td>2026-05-02</td></tr><tr><td>Deputy Benny</td><td>67/100</td><td>7.7K</td><td>2026-05-02</td></tr><tr><td>Helluva Theory</td><td>67/100</td><td>1.4K</td><td>2026-05-02</td></tr><tr><td>Birds Insider</td><td>66/100</td><td>2.3K</td><td>2026-05-02</td></tr><tr><td>French Nostalgia</td><td>65/100</td><td>805</td><td>2026-05-02</td></tr><tr><td>Transformers Archive</td><td>64/100</td><td>2.8K</td><td>2026-05-02</td></tr><tr><td>Lewis Woods</td><td>64/100</td><td>4.1K</td><td>2026-05-02</td></tr><tr><td>Ancient Faith Explained</td><td>64/100</td><td>7.9K</td><td>2026-05-02</td></tr><tr><td>Aufiora</td><td>64/100</td><td>951</td><td>2026-05-02</td></tr><tr><td>CVH Wildlife</td><td>63/100</td><td>1.4K</td><td>2026-05-02</td></tr><tr><td>Sketchy Eats</td><td>63/100</td><td>5.1K</td><td>2026-05-02</td></tr><tr><td>Football Area</td><td>62/100</td><td>617</td><td>2026-05-02</td></tr><tr><td>Stalin’s Decisions</td><td>62/100</td><td>1.5K</td><td>2026-05-02</td></tr><tr><td>British Crown Arms</td><td>62/100</td><td>1.1K</td><td>2026-05-02</td></tr><tr><td>Best Choice Recaps</td><td>61/100</td><td>935</td><td>2026-05-02</td></tr><tr><td>Forgotten American Weapons</td><td>61/100</td><td>683</td><td>2026-05-02</td></tr><tr><td>Chronicle Cortex</td><td>61/100</td><td>2.2K</td><td>2026-05-02</td></tr><tr><td>World Travel Doc</td><td>60/100</td><td>2.9K</td><td>2026-05-02</td></tr><tr><td>L3th4L Adept</td><td>59/100</td><td>1.1K</td><td>2026-05-02</td></tr><tr><td>Massive Tech</td><td>59/100</td><td>794</td><td>2026-05-02</td></tr><tr><td>Luther Morgan</td><td>59/100</td><td>6.2K</td><td>2026-05-02</td></tr><tr><td>ZELYO</td><td>59/100</td><td>2.8K</td><td>2026-05-02</td></tr><tr><td>USA Legend Archive</td><td>58/100</td><td>2.8K</td><td>2026-05-02</td></tr><tr><td>Psyche Prism</td><td>58/100</td><td>2.1K</td><td>2026-05-02</td></tr><tr><td>Sacred Flora</td><td>58/100</td><td>10.5K</td><td>2026-05-02</td></tr><tr><td>Beana</td><td>57/100</td><td>6.8K</td><td>2026-05-02</td></tr><tr><td> INSTANT FACTS</td><td>57/100</td><td>5.1K</td><td>2026-05-02</td></tr><tr><td>Beaver Engineer</td><td>57/100</td><td>535</td><td>2026-05-02</td></tr><tr><td>Tech Win Cyber</td><td>57/100</td><td>5.3K</td><td>2026-05-02</td></tr><tr><td>Genesis Chamber</td><td>56/100</td><td>20.7K</td><td>2026-05-02</td></tr><tr><td>DIM HISTORY</td><td>56/100</td><td>672</td><td>2026-05-02</td></tr><tr><td>Echo Mane</td><td>56/100</td><td>12.2K</td><td>2026-05-02</td></tr><tr><td>Forkcast</td><td>56/100</td><td>799</td><td>2026-05-02</td></tr><tr><td>Forbidden Origins For Sleep</td><td>55/100</td><td>1.6K</td><td>2026-05-02</td></tr><tr><td>Frontier Historian</td><td>55/100</td><td>2.7K</td><td>2026-05-02</td></tr><tr><td>SMASHLY</td><td>55/100</td><td>3.0K</td><td>2026-05-02</td></tr><tr><td>Canada Pension Plan</td><td>55/100</td><td>6.8K</td><td>2026-05-02</td></tr><tr><td>Setuh</td><td>55/100</td><td>26.4K</td><td>2026-05-02</td></tr><tr><td>Andrew Vikuk</td><td>54/100</td><td>3.2K</td><td>2026-05-02</td></tr><tr><td>Topscore Football Quiz</td><td>54/100</td><td>849</td><td>2026-05-02</td></tr><tr><td>Global Oops</td><td>54/100</td><td>1.5K</td><td>2026-05-02</td></tr><tr><td>ItsWiku</td><td>54/100</td><td>3.1K</td><td>2026-05-02</td></tr><tr><td>Havokzz CN</td><td>54/100</td><td>952</td><td>2026-05-02</td></tr><tr><td>Harlem Shadows: The Untold Empire</td><td>53/100</td><td>756</td><td>2026-05-02</td></tr><tr><td>WWM Girl</td><td>53/100</td><td>9.7K</td><td>2026-05-02</td></tr><tr><td>Stories That Lead to Jesus</td><td>52/100</td><td>1.3K</td><td>2026-05-02</td></tr><tr><td>think femininity.</td><td>52/100</td><td>13.4K</td><td>2026-05-02</td></tr><tr><td>NoPoly</td><td>52/100</td><td>7.5K</td><td>2026-05-02</td></tr><tr><td>GOOD GUY </td><td>52/100</td><td>5.8K</td><td>2026-05-02</td></tr><tr><td>Sebatron</td><td>52/100</td><td>2.7K</td><td>2026-05-02</td></tr><tr><td>Niko Ludwig</td><td>52/100</td><td>21.8K</td><td>2026-05-02</td></tr><tr><td>Unfolded Finance</td><td>52/100</td><td>4.4K</td><td>2026-05-02</td></tr><tr><td>Cold Case Files</td><td>52/100</td><td>901</td><td>2026-05-02</td></tr><tr><td>Professor Morandi analyse</td><td>52/100</td><td>2.6K</td><td>2026-05-02</td></tr><tr><td>Shadow Historians</td><td>51/100</td><td>3.4K</td><td>2026-05-02</td></tr><tr><td>World Brief Live</td><td>51/100</td><td>6.0K</td><td>2026-05-02</td></tr><tr><td>The History Bank</td><td>51/100</td><td>6.9K</td><td>2026-05-02</td></tr><tr><td>Golden Greats</td><td>51/100</td><td>3.7K</td><td>2026-05-02</td></tr><tr><td>The Diary of a Storyteller</td><td>51/100</td><td>1.3K</td><td>2026-05-02</td></tr><tr><td>Zeezypher</td><td>51/100</td><td>537</td><td>2026-05-02</td></tr><tr><td>AI Mind Revolution</td><td>51/100</td><td>10.6K</td><td>2026-05-02</td></tr><tr><td>Robo4T</td><td>50/100</td><td>982</td><td>2026-05-02</td></tr><tr><td>Remember When</td><td>50/100</td><td>2.0K</td><td>2026-05-02</td></tr><tr><td>The Bridge Geo</td><td>50/100</td><td>7.1K</td><td>2026-05-02</td></tr><tr><td>BEN HODGES REPORT</td><td>50/100</td><td>2.0K</td><td>2026-05-02</td></tr><tr><td>The Decision Room</td><td>49/100</td><td>4.5K</td><td>2026-05-02</td></tr><tr><td>Bodycam Now TV</td><td>49/100</td><td>6.0K</td><td>2026-05-02</td></tr><tr><td>WW2 Frontline Stories</td><td>47/100</td><td>1.3K</td><td>2026-05-02</td></tr><tr><td>Soul Undercover</td><td>47/100</td><td>1.2K</td><td>2026-05-02</td></tr><tr><td>Bigfoot Hidden Evidence</td><td>47/100</td><td>992</td><td>2026-05-02</td></tr><tr><td>Anna Zofia</td><td>47/100</td><td>1.1K</td><td>2026-05-02</td></tr><tr><td>International Marketing Consulting LTD</td><td>46/100</td><td>6.6K</td><td>2026-05-02</td></tr><tr><td>Harlem’s Hidden Rulers</td><td>46/100</td><td>5.5K</td><td>2026-05-02</td></tr><tr><td>Screen Radar</td><td>46/100</td><td>6.1K</td><td>2026-05-02</td></tr><tr><td>Whisper of Him</td><td>46/100</td><td>1.5K</td><td>2026-05-02</td></tr><tr><td>MakeNoise_AI</td><td>46/100</td><td>2.3K</td><td>2026-05-02</td></tr><tr><td>Dynasty Undone</td><td>46/100</td><td>787</td><td>2026-05-02</td></tr><tr><td>JDB Report</td><td>45/100</td><td>6.9K</td><td>2026-05-02</td></tr><tr><td>Tesseract </td><td>45/100</td><td>10.9K</td><td>2026-05-02</td></tr><tr><td>The WWII Chronicle</td><td>44/100</td><td>2.2K</td><td>2026-05-02</td></tr><tr><td>The Sleeping Soldier</td><td>42/100</td><td>1.5K</td><td>2026-05-02</td></tr><tr><td>Meri Walks in LONDON</td><td>41/100</td><td>12.8K</td><td>2026-05-02</td></tr><tr><td>Stoic Philosophy</td><td>41/100</td><td>2.8K</td><td>2026-05-02</td></tr><tr><td>The Wild West Stories </td><td>40/100</td><td>2.1K</td><td>2026-05-02</td></tr><tr><td>Story world of imagination </td><td>40/100</td><td>6.7K</td><td>2026-05-02</td></tr><tr><td>The Lost Scriptures</td><td>39/100</td><td>5.4K</td><td>2026-05-02</td></tr><tr><td>NightmareNarratives</td><td>39/100</td><td>1.6K</td><td>2026-05-02</td></tr><tr><td>Silk and Hearts Stories </td><td>38/100</td><td>2.3K</td><td>2026-05-02</td></tr><tr><td>Black Lasso</td><td>37/100</td><td>668</td><td>2026-05-02</td></tr><tr><td>Sunset Stories</td><td>34/100</td><td>6.3K</td><td>2026-05-02</td></tr><tr><td>True Imagination Studio</td><td>34/100</td><td>1.1K</td><td>2026-05-02</td></tr><tr><td>True Cowboy Stories </td><td>29/100</td><td>2.9K</td><td>2026-05-02</td></tr><tr><td>The Wild West Stories</td><td>28/100</td><td>8.8K</td><td>2026-05-02</td></tr><tr><td>Deep Life Science</td><td>51/100</td><td>1.9K</td><td>2026-05-02</td></tr><tr><td>Arcana Travel</td><td>49/100</td><td>3.4K</td><td>2026-05-02</td></tr><tr><td>biochiao</td><td>47/100</td><td>4.2K</td><td>2026-05-02</td></tr><tr><td>Jakes History</td><td>45/100</td><td>2.5K</td><td>2026-05-02</td></tr><tr><td>Loving Kingdoms</td><td>42/100</td><td>5.5K</td><td>2026-05-02</td></tr><tr><td>Easy Documentary Nature</td><td>41/100</td><td>4.7K</td><td>2026-05-02</td></tr><tr><td>Bright Side Sleep</td><td>41/100</td><td>1.2K</td><td>2026-05-02</td></tr><tr><td>Epic Aussie Encounters</td><td>0/100</td><td>8.0K</td><td>2026-05-02</td></tr><tr><td>Midnight Screams</td><td>35/100</td><td>3.2K</td><td>2026-05-02</td></tr>
       </tbody>
     </table>
   </section>
@@ -1416,25 +1289,25 @@ body {
       <summary class="section-title-row" style="cursor:pointer;">
         <span class="section-num">§ 04</span>
         <h2 class="section-title">Rejected <span class="accent">today</span></h2>
-        <span class="section-count">3 channels</span>
+        <span class="section-count">2 channels</span>
       </summary>
       <p class="section-desc" style="margin-top:16px;">Channels that surfaced today but failed filters. Expand to audit the rejection reasons.</p>
       <table class="data-table">
         <thead><tr><th>Channel</th><th>Reason</th></tr></thead>
         <tbody>
-          <tr><td>Soft Magic AI</td><td>Channel does not appear to be faceless format</td></tr><tr><td>Dark Lyrics</td><td>Channel does not appear to be faceless format</td></tr><tr><td>Canadian Finance with David</td><td>Channel does not appear to be faceless format</td></tr>
+          <tr><td>Soft Magic AI</td><td>Channel does not appear to be faceless format</td></tr><tr><td>Dark Lyrics</td><td>Channel does not appear to be faceless format</td></tr>
         </tbody>
       </table>
     </details>
   </section>
 
   <footer class="footer">
-    Niche Scanner · 2 May 2026 · Quota ~3950/10,000 · Power Media Holdings B.V.
+    Niche Scanner · 3 May 2026 · Quota ~3344/10,000 · Power Media Holdings B.V.
   </footer>
 </div>
 
 <script>
-window.__SECTIONS__ = [{"num":"01","count":1},{"num":"02","count":4}];
+window.__SECTIONS__ = [{"num":"01","count":1},{"num":"02","count":3}];
 
 (function(){
   const $ = (s, r=document) => r.querySelector(s);

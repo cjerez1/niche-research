@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-02",
+  "lastUpdated": "2026-05-03",
   "channels": {
     "UClXLMgQJAxWrKJC8tMQaKbg": {
       "channelTitle": "The DNA Archive",
@@ -3922,6 +3922,12 @@
           "score": 71,
           "subscribers": 318,
           "avgViews": 1354
+        },
+        {
+          "date": "2026-05-03",
+          "score": 64,
+          "subscribers": 330,
+          "avgViews": 1319
         }
       ]
     },
@@ -4086,6 +4092,12 @@
           "score": 66,
           "subscribers": 3930,
           "avgViews": 15706
+        },
+        {
+          "date": "2026-05-03",
+          "score": 56,
+          "subscribers": 3990,
+          "avgViews": 16114
         }
       ]
     },
@@ -4114,6 +4126,12 @@
           "score": 74,
           "subscribers": 2650,
           "avgViews": 6251
+        },
+        {
+          "date": "2026-05-03",
+          "score": 59,
+          "subscribers": 3050,
+          "avgViews": 6875
         }
       ]
     },
@@ -5291,6 +5309,17 @@
           "score": 35,
           "subscribers": 3230,
           "avgViews": 0
+        }
+      ]
+    },
+    "UCI2vmcYc5IG0EAPXoqJms3g": {
+      "channelTitle": "Woman Influence",
+      "snapshots": [
+        {
+          "date": "2026-05-03",
+          "score": 54,
+          "subscribers": 1390,
+          "avgViews": 8975
         }
       ]
     }
